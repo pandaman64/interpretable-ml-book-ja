@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.2 What Is Machine Learning? | Interpretable Machine Learning</title>
+  <title>2.4 解釈可能性の評価 | Interpretable Machine Learning</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.2 What Is Machine Learning? | Interpretable Machine Learning" />
+  <meta property="og:title" content="2.4 解釈可能性の評価 | Interpretable Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="christophM/interpretable-ml-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.2 What Is Machine Learning? | Interpretable Machine Learning" />
+  <meta name="twitter:title" content="2.4 解釈可能性の評価 | Interpretable Machine Learning" />
   
   <meta name="twitter:description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Christoph Molnar" />
 
 
-<meta name="date" content="2020-12-07" />
+<meta name="date" content="2020-12-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="storytime.html"/>
-<link rel="next" href="terminology.html"/>
+<link rel="prev" href="解釈可能性の範囲.html"/>
+<link rel="next" href="properties.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,8 +50,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -108,38 +106,37 @@ window.cookieconsent.initialise({
 <li><a href="./">Interpretable machine learning</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Summary</a></li>
-<li class="chapter" data-level="" data-path="preface-by-the-author.html"><a href="preface-by-the-author.html"><i class="fa fa-check"></i>Preface by the Author</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="storytime.html"><a href="storytime.html"><i class="fa fa-check"></i><b>1.1</b> Story Time</a><ul>
-<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#lightning-never-strikes-twice"><i class="fa fa-check"></i>Lightning Never Strikes Twice</a></li>
-<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#trust-fall"><i class="fa fa-check"></i>Trust Fall</a></li>
-<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#fermis-paperclips"><i class="fa fa-check"></i>Fermi's Paperclips</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>要約</a></li>
+<li class="chapter" data-level="" data-path="著者による序文.html"><a href="著者による序文.html"><i class="fa fa-check"></i>著者による序文</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> イントロダクション</a><ul>
+<li class="chapter" data-level="1.1" data-path="storytime.html"><a href="storytime.html"><i class="fa fa-check"></i><b>1.1</b> 物語の時間</a><ul>
+<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#稲妻は二度と打たない"><i class="fa fa-check"></i>稲妻は二度と打たない</a></li>
+<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#信用失墜"><i class="fa fa-check"></i>信用失墜</a></li>
+<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#フェルミのペーパークリップ"><i class="fa fa-check"></i>フェルミのペーパー・クリップ</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="what-is-machine-learning.html"><a href="what-is-machine-learning.html"><i class="fa fa-check"></i><b>1.2</b> What Is Machine Learning?</a></li>
-<li class="chapter" data-level="1.3" data-path="terminology.html"><a href="terminology.html"><i class="fa fa-check"></i><b>1.3</b> Terminology</a></li>
+<li class="chapter" data-level="1.2" data-path="機械学習とは何か.html"><a href="機械学習とは何か.html"><i class="fa fa-check"></i><b>1.2</b> 機械学習とは何か？</a></li>
+<li class="chapter" data-level="1.3" data-path="terminology.html"><a href="terminology.html"><i class="fa fa-check"></i><b>1.3</b> 専門用語</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="interpretability.html"><a href="interpretability.html"><i class="fa fa-check"></i><b>2</b> Interpretability</a><ul>
-<li class="chapter" data-level="2.1" data-path="interpretability-importance.html"><a href="interpretability-importance.html"><i class="fa fa-check"></i><b>2.1</b> Importance of Interpretability</a></li>
-<li class="chapter" data-level="2.2" data-path="taxonomy-of-interpretability-methods.html"><a href="taxonomy-of-interpretability-methods.html"><i class="fa fa-check"></i><b>2.2</b> Taxonomy of Interpretability Methods</a></li>
-<li class="chapter" data-level="2.3" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html"><i class="fa fa-check"></i><b>2.3</b> Scope of Interpretability</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#algorithm-transparency"><i class="fa fa-check"></i><b>2.3.1</b> Algorithm Transparency</a></li>
-<li class="chapter" data-level="2.3.2" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#global-holistic-model-interpretability"><i class="fa fa-check"></i><b>2.3.2</b> Global, Holistic Model Interpretability</a></li>
-<li class="chapter" data-level="2.3.3" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#global-model-interpretability-on-a-modular-level"><i class="fa fa-check"></i><b>2.3.3</b> Global Model Interpretability on a Modular Level</a></li>
-<li class="chapter" data-level="2.3.4" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#local-interpretability-for-a-single-prediction"><i class="fa fa-check"></i><b>2.3.4</b> Local Interpretability for a Single Prediction</a></li>
-<li class="chapter" data-level="2.3.5" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#local-interpretability-for-a-group-of-predictions"><i class="fa fa-check"></i><b>2.3.5</b> Local Interpretability for a Group of Predictions</a></li>
+<li class="chapter" data-level="2" data-path="interpretability.html"><a href="interpretability.html"><i class="fa fa-check"></i><b>2</b> 解釈可能性</a><ul>
+<li class="chapter" data-level="2.1" data-path="interpretability-importance.html"><a href="interpretability-importance.html"><i class="fa fa-check"></i><b>2.1</b> 解釈可能性の重要性</a></li>
+<li class="chapter" data-level="2.2" data-path="解釈可能な手法の分類.html"><a href="解釈可能な手法の分類.html"><i class="fa fa-check"></i><b>2.2</b> 解釈可能な手法の分類</a></li>
+<li class="chapter" data-level="2.3" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html"><i class="fa fa-check"></i><b>2.3</b> 解釈可能性の範囲</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#アルゴリズムの透明性"><i class="fa fa-check"></i><b>2.3.1</b> アルゴリズムの透明性</a></li>
+<li class="chapter" data-level="2.3.2" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#全体的なモデルの解釈可能性"><i class="fa fa-check"></i><b>2.3.2</b> 全体的なモデルの解釈可能性</a></li>
+<li class="chapter" data-level="2.3.3" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#モジュールレベルのモデルの全体的な解釈可能性"><i class="fa fa-check"></i><b>2.3.3</b> モジュールレベルのモデルの全体的な解釈可能性</a></li>
+<li class="chapter" data-level="2.3.4" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#単一の予測に対する局所的な解釈"><i class="fa fa-check"></i><b>2.3.4</b> 単一の予測に対する局所的な解釈</a></li>
+<li class="chapter" data-level="2.3.5" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#予測のグループに対する局所的な解釈"><i class="fa fa-check"></i><b>2.3.5</b> 予測のグループに対する局所的な解釈</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="evaluation-of-interpretability.html"><a href="evaluation-of-interpretability.html"><i class="fa fa-check"></i><b>2.4</b> Evaluation of Interpretability</a></li>
-<li class="chapter" data-level="2.5" data-path="properties.html"><a href="properties.html"><i class="fa fa-check"></i><b>2.5</b> Properties of Explanations</a></li>
-<li class="chapter" data-level="2.6" data-path="explanation.html"><a href="explanation.html"><i class="fa fa-check"></i><b>2.6</b> Human-friendly Explanations</a><ul>
-<li class="chapter" data-level="2.6.1" data-path="explanation.html"><a href="explanation.html#what-is-an-explanation"><i class="fa fa-check"></i><b>2.6.1</b> What Is an Explanation?</a></li>
-<li class="chapter" data-level="2.6.2" data-path="explanation.html"><a href="explanation.html#good-explanation"><i class="fa fa-check"></i><b>2.6.2</b> What Is a Good Explanation?</a></li>
+<li class="chapter" data-level="2.4" data-path="解釈可能性の評価.html"><a href="解釈可能性の評価.html"><i class="fa fa-check"></i><b>2.4</b> 解釈可能性の評価</a></li>
+<li class="chapter" data-level="2.5" data-path="properties.html"><a href="properties.html"><i class="fa fa-check"></i><b>2.5</b> 説明に関する性質</a></li>
+<li class="chapter" data-level="2.6" data-path="explanation.html"><a href="explanation.html"><i class="fa fa-check"></i><b>2.6</b> 人間に優しい説明</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="explanation.html"><a href="explanation.html#説明とはなにか"><i class="fa fa-check"></i><b>2.6.1</b> 説明とはなにか</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Datasets</a><ul>
-<li class="chapter" data-level="3.1" data-path="bike-data.html"><a href="bike-data.html"><i class="fa fa-check"></i><b>3.1</b> Bike Rentals (Regression)</a></li>
-<li class="chapter" data-level="3.2" data-path="spam-data.html"><a href="spam-data.html"><i class="fa fa-check"></i><b>3.2</b> YouTube Spam Comments (Text Classification)</a></li>
-<li class="chapter" data-level="3.3" data-path="cervical.html"><a href="cervical.html"><i class="fa fa-check"></i><b>3.3</b> Risk Factors for Cervical Cancer (Classification)</a></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> データセット</a><ul>
+<li class="chapter" data-level="3.1" data-path="bike-data.html"><a href="bike-data.html"><i class="fa fa-check"></i><b>3.1</b> 自転車レンタル (回帰)</a></li>
+<li class="chapter" data-level="3.2" data-path="spam-data.html"><a href="spam-data.html"><i class="fa fa-check"></i><b>3.2</b> YouTube スパムコメント (テキスト分類)</a></li>
+<li class="chapter" data-level="3.3" data-path="cervical.html"><a href="cervical.html"><i class="fa fa-check"></i><b>3.3</b> 子宮頸がんのリスク要因(クラス分類)</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="simple.html"><a href="simple.html"><i class="fa fa-check"></i><b>4</b> Interpretable Models</a><ul>
 <li class="chapter" data-level="4.1" data-path="limo.html"><a href="limo.html"><i class="fa fa-check"></i><b>4.1</b> Linear Regression</a><ul>
@@ -284,7 +281,7 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="6" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>6</b> Example-Based Explanations</a><ul>
 <li class="chapter" data-level="6.1" data-path="counterfactual.html"><a href="counterfactual.html"><i class="fa fa-check"></i><b>6.1</b> Counterfactual Explanations</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="counterfactual.html"><a href="counterfactual.html#generating-counterfactual-explanations"><i class="fa fa-check"></i><b>6.1.1</b> Generating Counterfactual Explanations</a></li>
-<li class="chapter" data-level="6.1.2" data-path="counterfactual.html"><a href="counterfactual.html#example-8"><i class="fa fa-check"></i><b>6.1.2</b> Example</a></li>
+<li class="chapter" data-level="6.1.2" data-path="counterfactual.html"><a href="counterfactual.html#examples-5"><i class="fa fa-check"></i><b>6.1.2</b> Examples</a></li>
 <li class="chapter" data-level="6.1.3" data-path="counterfactual.html"><a href="counterfactual.html#advantages-15"><i class="fa fa-check"></i><b>6.1.3</b> Advantages</a></li>
 <li class="chapter" data-level="6.1.4" data-path="counterfactual.html"><a href="counterfactual.html#disadvantages-15"><i class="fa fa-check"></i><b>6.1.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="6.1.5" data-path="counterfactual.html"><a href="counterfactual.html#example-software"><i class="fa fa-check"></i><b>6.1.5</b> Software and Alternatives</a></li>
@@ -295,7 +292,7 @@ window.cookieconsent.initialise({
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="proto.html"><a href="proto.html"><i class="fa fa-check"></i><b>6.3</b> Prototypes and Criticisms</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="proto.html"><a href="proto.html#theory-5"><i class="fa fa-check"></i><b>6.3.1</b> Theory</a></li>
-<li class="chapter" data-level="6.3.2" data-path="proto.html"><a href="proto.html#examples-5"><i class="fa fa-check"></i><b>6.3.2</b> Examples</a></li>
+<li class="chapter" data-level="6.3.2" data-path="proto.html"><a href="proto.html#examples-6"><i class="fa fa-check"></i><b>6.3.2</b> Examples</a></li>
 <li class="chapter" data-level="6.3.3" data-path="proto.html"><a href="proto.html#advantages-16"><i class="fa fa-check"></i><b>6.3.3</b> Advantages</a></li>
 <li class="chapter" data-level="6.3.4" data-path="proto.html"><a href="proto.html#disadvantages-16"><i class="fa fa-check"></i><b>6.3.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="6.3.5" data-path="proto.html"><a href="proto.html#code-and-alternatives"><i class="fa fa-check"></i><b>6.3.5</b> Code and Alternatives</a></li>
@@ -348,24 +345,61 @@ window.cookieconsent.initialise({
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="what-is-machine-learning" class="section level2">
-<h2><span class="header-section-number">1.2</span> What Is Machine Learning?</h2>
-<p>Machine learning is a set of methods that computers use to make and improve predictions or behaviors based on data.</p>
-<p>For example, to predict the value of a house, the computer would learn patterns from past house sales. The book focuses on supervised machine learning, which covers all prediction problems where we have a dataset for which we already know the outcome of interest (e.g. past house prices) and want to learn to predict the outcome for new data. Excluded from supervised learning are for example clustering tasks (= unsupervised learning) where we do not have a specific outcome of interest, but want to find clusters of data points. Also excluded are things like reinforcement learning, where an agent learns to optimize a certain reward by acting in an environment (e.g. a computer playing Tetris). The goal of supervised learning is to learn a predictive model that maps features of the data (e.g. house size, location, floor type, ...) to an output (e.g. house price). If the output is categorical, the task is called classification, and if it is numerical, it is called regression. The machine learning algorithm learns a model by estimating parameters (like weights) or learning structures (like trees). The algorithm is guided by a score or loss function that is minimized. In the house value example, the machine minimizes the difference between the estimated house price and the predicted price. A fully trained machine learning model can then be used to make predictions for new instances.</p>
-<p>Estimation of house prices, product recommendations, street sign detection, credit default prediction and fraud detection: All these examples have in common that they can be solved by machine learning. The tasks are different, but the approach is the same:<br />
-Step 1: Data collection. The more, the better. The data must contain the outcome you want to predict and additional information from which to make the prediction. For a street sign detector (&quot;Is there a street sign in the image?&quot;), you would collect street images and label whether a street sign is visible or not. For a credit default predictor, you need past data on actual loans, information on whether the customers were in default with their loans, and data that will help you make predictions, such as income, past credit defaults, and so on. For an automatic house value estimator program, you could collect data from past house sales and information about the real estate such as size, location, and so on.<br />
-Step 2: Enter this information into a machine learning algorithm that generates a sign detector model, a credit rating model or a house value estimator.<br />
-Step 3: Use model with new data. Integrate the model into a product or process, such as a self-driving car, a credit application process or a real estate marketplace website.</p>
-<p>Machines surpass humans in many tasks, such as playing chess (or more recently Go) or predicting the weather. Even if the machine is as good as a human or a bit worse at a task, there remain great advantages in terms of speed, reproducibility and scaling. A once implemented machine learning model can complete a task much faster than humans, reliably delivers consistent results and can be copied infinitely. Replicating a machine learning model on another machine is fast and cheap. The training of a human for a task can take decades (especially when they are young) and is very costly. A major disadvantage of using machine learning is that insights about the data and the task the machine solves is hidden in increasingly complex models. You need millions of numbers to describe a deep neural network, and there is no way to understand the model in its entirety. Other models, such as the random forest, consist of hundreds of decision trees that &quot;vote&quot; for predictions. To understand how the decision was made, you would have to look into the votes and structures of each of the hundreds of trees. That just does not work no matter how clever you are or how good your working memory is. The best performing models are often blends of several models (also called ensembles) that cannot be interpreted, even if each single model could be interpreted. If you focus only on performance, you will automatically get more and more opaque models. Just take a look at <a href="http://blog.kaggle.com/">interviews with winners on the kaggle.com machine learning competition platform</a>: The winning models were mostly ensembles of models or very complex models such as boosted trees or deep neural networks.</p>
+<div id="解釈可能性の評価" class="section level2">
+<h2><span class="header-section-number">2.4</span> 解釈可能性の評価</h2>
+<!--
+There is no real consensus about what interpretability is in machine learning.
+Nor is it clear how to measure it.
+But there is some initial research on this and an attempt to formulate some approaches for evaluation, as described in the following section.
+-->
+<p>機械学習における解釈性に関しての総意はありません。 それを測定する方法も明確ではありません。 しかし、これに関するいくつかの先行研究や、評価のための定式化の試みが行われているため、以下ではそれについて紹介します。</p>
+<!--
+Doshi-Velez and Kim (2017) propose three main levels for the evaluation of interpretability:
+-->
+<p>Doshi-Velez と Kim (2017) は解釈可能性を評価するための3つの主要なレベルを提案しています。</p>
+<!--
+**Application level evaluation (real task)**:
+
+Put the explanation into the product and have it tested by the end user.
+Imagine fracture detection software with a machine learning component that locates and marks fractures in X-rays.
+At the application level, radiologists would test the fracture detection software directly to evaluate the model.
+This requires a good experimental setup and an understanding of how to assess quality.
+A good baseline for this is always how good a human would be at explaining the same decision.
+-->
+<p><strong>アプリケーションレベルの評価 (真の作業)</strong> 製品に説明書を同梱して、エンドユーザーに試用してもらいます。 機械学習によってX線画像から骨折箇所を見つけて印をつける骨折検出ソフトウェアを想像してください。 アプリケーションレベルでは、放射線科医が骨折検出ソフトウェアを直接試用してモデルを評価します。 これには優れた実験設定と品質評価の方法に関する理解が必要とされます。 そのための適切な基準は、同様の決定を人間が説明する際に毎回どのくらい優れているかということです。</p>
+<!--
+**Human level evaluation (simple task)** is a  simplified application level evaluation.
+The difference is that these experiments are not carried out with the domain experts, but with laypersons.
+This makes experiments cheaper (especially if the domain experts are radiologists) and it is easier to find more testers.
+An example would be to show a user different explanations and the user would choose the best one.
+-->
+<p><strong>人間レベルの評価 (単純な作業)</strong> は単純化されたアプリケーションレベルの評価です。 これらの実験間の違いは、人間レベルの評価実験が分野の専門家によってではなく、素人によって行われることです。 これによって実験が(分野の専門家が放射線科医の場合は特に)安価になり、さらに多くの試験車を探しやすくなります。 実験の例としては、ユーザーにそれぞれ異なるいくつかの説明を見せて、一番良いものを選んでもらう方法があります。</p>
+<!--
+**Function level evaluation (proxy task)** does not require humans.
+This works best when the class of model used has already been evaluated by someone else in a human level evaluation.
+For example, it might be known that the end users understand decision trees.
+In this case, a proxy for explanation quality may be the depth of the tree.
+Shorter trees would get a better explainability score.
+It would make sense to add the constraint that the predictive performance of the tree remains good and does not decrease too much compared to a larger tree.
+-->
+<p><strong>機能レベルの評価 (代理的な作業)</strong> は人間を必要としません。 これは、使用されるモデルのクラスがすでに誰かによって、人間レベルで評価されている場合に最もいい方法です。 例えば、エンドユーザーが決定木を理解していると分かっている場合があります。 この場合、評価の質を表すのは木の深さかもしれません。 より短い木はより説明可能性の数値を高めるでしょう。 木の予測性能が良好なままで、より大きな木と比較してもそれほど性能が低下しないという制約を追加することには意味があるでしょう。</p>
+<!--
+The next chapter focuses on the evaluation of explanations for individual predictions on the function level.
+What are the relevant properties of explanations that we would consider for their evaluation?
+-->
+<p>次の章では、機能レベルでの個々の予測に対する説明の評価に焦点を当てます。 説明に対する評価を検討する上で関連する性質は何でしょうか？</p>
 <!--{pagebreak}-->
+<!-- 
+## Properties of Explanations {#properties} 
+-->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="storytime.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="terminology.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="解釈可能性の範囲.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="properties.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -396,7 +430,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/christophM/interpretable-ml-book/edit/master/01.3-ml-definitions.Rmd",
+"link": "https://github.com/christophM/interpretable-ml-book/edit/master/02-interpretability.Rmd",
 "text": "Edit"
 },
 "history": {

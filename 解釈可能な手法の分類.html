@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 Taxonomy of Interpretability Methods | Interpretable Machine Learning</title>
+  <title>2.2 解釈可能な手法の分類 | Interpretable Machine Learning</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 Taxonomy of Interpretability Methods | Interpretable Machine Learning" />
+  <meta property="og:title" content="2.2 解釈可能な手法の分類 | Interpretable Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="christophM/interpretable-ml-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 Taxonomy of Interpretability Methods | Interpretable Machine Learning" />
+  <meta name="twitter:title" content="2.2 解釈可能な手法の分類 | Interpretable Machine Learning" />
   
   <meta name="twitter:description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Christoph Molnar" />
 
 
-<meta name="date" content="2020-12-07" />
+<meta name="date" content="2020-12-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="interpretability-importance.html"/>
-<link rel="next" href="scope-of-interpretability.html"/>
+<link rel="next" href="解釈可能性の範囲.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,8 +50,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -108,38 +106,37 @@ window.cookieconsent.initialise({
 <li><a href="./">Interpretable machine learning</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Summary</a></li>
-<li class="chapter" data-level="" data-path="preface-by-the-author.html"><a href="preface-by-the-author.html"><i class="fa fa-check"></i>Preface by the Author</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="storytime.html"><a href="storytime.html"><i class="fa fa-check"></i><b>1.1</b> Story Time</a><ul>
-<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#lightning-never-strikes-twice"><i class="fa fa-check"></i>Lightning Never Strikes Twice</a></li>
-<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#trust-fall"><i class="fa fa-check"></i>Trust Fall</a></li>
-<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#fermis-paperclips"><i class="fa fa-check"></i>Fermi's Paperclips</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>要約</a></li>
+<li class="chapter" data-level="" data-path="著者による序文.html"><a href="著者による序文.html"><i class="fa fa-check"></i>著者による序文</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> イントロダクション</a><ul>
+<li class="chapter" data-level="1.1" data-path="storytime.html"><a href="storytime.html"><i class="fa fa-check"></i><b>1.1</b> 物語の時間</a><ul>
+<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#稲妻は二度と打たない"><i class="fa fa-check"></i>稲妻は二度と打たない</a></li>
+<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#信用失墜"><i class="fa fa-check"></i>信用失墜</a></li>
+<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#フェルミのペーパークリップ"><i class="fa fa-check"></i>フェルミのペーパー・クリップ</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="what-is-machine-learning.html"><a href="what-is-machine-learning.html"><i class="fa fa-check"></i><b>1.2</b> What Is Machine Learning?</a></li>
-<li class="chapter" data-level="1.3" data-path="terminology.html"><a href="terminology.html"><i class="fa fa-check"></i><b>1.3</b> Terminology</a></li>
+<li class="chapter" data-level="1.2" data-path="機械学習とは何か.html"><a href="機械学習とは何か.html"><i class="fa fa-check"></i><b>1.2</b> 機械学習とは何か？</a></li>
+<li class="chapter" data-level="1.3" data-path="terminology.html"><a href="terminology.html"><i class="fa fa-check"></i><b>1.3</b> 専門用語</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="interpretability.html"><a href="interpretability.html"><i class="fa fa-check"></i><b>2</b> Interpretability</a><ul>
-<li class="chapter" data-level="2.1" data-path="interpretability-importance.html"><a href="interpretability-importance.html"><i class="fa fa-check"></i><b>2.1</b> Importance of Interpretability</a></li>
-<li class="chapter" data-level="2.2" data-path="taxonomy-of-interpretability-methods.html"><a href="taxonomy-of-interpretability-methods.html"><i class="fa fa-check"></i><b>2.2</b> Taxonomy of Interpretability Methods</a></li>
-<li class="chapter" data-level="2.3" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html"><i class="fa fa-check"></i><b>2.3</b> Scope of Interpretability</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#algorithm-transparency"><i class="fa fa-check"></i><b>2.3.1</b> Algorithm Transparency</a></li>
-<li class="chapter" data-level="2.3.2" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#global-holistic-model-interpretability"><i class="fa fa-check"></i><b>2.3.2</b> Global, Holistic Model Interpretability</a></li>
-<li class="chapter" data-level="2.3.3" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#global-model-interpretability-on-a-modular-level"><i class="fa fa-check"></i><b>2.3.3</b> Global Model Interpretability on a Modular Level</a></li>
-<li class="chapter" data-level="2.3.4" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#local-interpretability-for-a-single-prediction"><i class="fa fa-check"></i><b>2.3.4</b> Local Interpretability for a Single Prediction</a></li>
-<li class="chapter" data-level="2.3.5" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#local-interpretability-for-a-group-of-predictions"><i class="fa fa-check"></i><b>2.3.5</b> Local Interpretability for a Group of Predictions</a></li>
+<li class="chapter" data-level="2" data-path="interpretability.html"><a href="interpretability.html"><i class="fa fa-check"></i><b>2</b> 解釈可能性</a><ul>
+<li class="chapter" data-level="2.1" data-path="interpretability-importance.html"><a href="interpretability-importance.html"><i class="fa fa-check"></i><b>2.1</b> 解釈可能性の重要性</a></li>
+<li class="chapter" data-level="2.2" data-path="解釈可能な手法の分類.html"><a href="解釈可能な手法の分類.html"><i class="fa fa-check"></i><b>2.2</b> 解釈可能な手法の分類</a></li>
+<li class="chapter" data-level="2.3" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html"><i class="fa fa-check"></i><b>2.3</b> 解釈可能性の範囲</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#アルゴリズムの透明性"><i class="fa fa-check"></i><b>2.3.1</b> アルゴリズムの透明性</a></li>
+<li class="chapter" data-level="2.3.2" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#全体的なモデルの解釈可能性"><i class="fa fa-check"></i><b>2.3.2</b> 全体的なモデルの解釈可能性</a></li>
+<li class="chapter" data-level="2.3.3" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#モジュールレベルのモデルの全体的な解釈可能性"><i class="fa fa-check"></i><b>2.3.3</b> モジュールレベルのモデルの全体的な解釈可能性</a></li>
+<li class="chapter" data-level="2.3.4" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#単一の予測に対する局所的な解釈"><i class="fa fa-check"></i><b>2.3.4</b> 単一の予測に対する局所的な解釈</a></li>
+<li class="chapter" data-level="2.3.5" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#予測のグループに対する局所的な解釈"><i class="fa fa-check"></i><b>2.3.5</b> 予測のグループに対する局所的な解釈</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="evaluation-of-interpretability.html"><a href="evaluation-of-interpretability.html"><i class="fa fa-check"></i><b>2.4</b> Evaluation of Interpretability</a></li>
-<li class="chapter" data-level="2.5" data-path="properties.html"><a href="properties.html"><i class="fa fa-check"></i><b>2.5</b> Properties of Explanations</a></li>
-<li class="chapter" data-level="2.6" data-path="explanation.html"><a href="explanation.html"><i class="fa fa-check"></i><b>2.6</b> Human-friendly Explanations</a><ul>
-<li class="chapter" data-level="2.6.1" data-path="explanation.html"><a href="explanation.html#what-is-an-explanation"><i class="fa fa-check"></i><b>2.6.1</b> What Is an Explanation?</a></li>
-<li class="chapter" data-level="2.6.2" data-path="explanation.html"><a href="explanation.html#good-explanation"><i class="fa fa-check"></i><b>2.6.2</b> What Is a Good Explanation?</a></li>
+<li class="chapter" data-level="2.4" data-path="解釈可能性の評価.html"><a href="解釈可能性の評価.html"><i class="fa fa-check"></i><b>2.4</b> 解釈可能性の評価</a></li>
+<li class="chapter" data-level="2.5" data-path="properties.html"><a href="properties.html"><i class="fa fa-check"></i><b>2.5</b> 説明に関する性質</a></li>
+<li class="chapter" data-level="2.6" data-path="explanation.html"><a href="explanation.html"><i class="fa fa-check"></i><b>2.6</b> 人間に優しい説明</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="explanation.html"><a href="explanation.html#説明とはなにか"><i class="fa fa-check"></i><b>2.6.1</b> 説明とはなにか</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Datasets</a><ul>
-<li class="chapter" data-level="3.1" data-path="bike-data.html"><a href="bike-data.html"><i class="fa fa-check"></i><b>3.1</b> Bike Rentals (Regression)</a></li>
-<li class="chapter" data-level="3.2" data-path="spam-data.html"><a href="spam-data.html"><i class="fa fa-check"></i><b>3.2</b> YouTube Spam Comments (Text Classification)</a></li>
-<li class="chapter" data-level="3.3" data-path="cervical.html"><a href="cervical.html"><i class="fa fa-check"></i><b>3.3</b> Risk Factors for Cervical Cancer (Classification)</a></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> データセット</a><ul>
+<li class="chapter" data-level="3.1" data-path="bike-data.html"><a href="bike-data.html"><i class="fa fa-check"></i><b>3.1</b> 自転車レンタル (回帰)</a></li>
+<li class="chapter" data-level="3.2" data-path="spam-data.html"><a href="spam-data.html"><i class="fa fa-check"></i><b>3.2</b> YouTube スパムコメント (テキスト分類)</a></li>
+<li class="chapter" data-level="3.3" data-path="cervical.html"><a href="cervical.html"><i class="fa fa-check"></i><b>3.3</b> 子宮頸がんのリスク要因(クラス分類)</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="simple.html"><a href="simple.html"><i class="fa fa-check"></i><b>4</b> Interpretable Models</a><ul>
 <li class="chapter" data-level="4.1" data-path="limo.html"><a href="limo.html"><i class="fa fa-check"></i><b>4.1</b> Linear Regression</a><ul>
@@ -284,7 +281,7 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="6" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>6</b> Example-Based Explanations</a><ul>
 <li class="chapter" data-level="6.1" data-path="counterfactual.html"><a href="counterfactual.html"><i class="fa fa-check"></i><b>6.1</b> Counterfactual Explanations</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="counterfactual.html"><a href="counterfactual.html#generating-counterfactual-explanations"><i class="fa fa-check"></i><b>6.1.1</b> Generating Counterfactual Explanations</a></li>
-<li class="chapter" data-level="6.1.2" data-path="counterfactual.html"><a href="counterfactual.html#example-8"><i class="fa fa-check"></i><b>6.1.2</b> Example</a></li>
+<li class="chapter" data-level="6.1.2" data-path="counterfactual.html"><a href="counterfactual.html#examples-5"><i class="fa fa-check"></i><b>6.1.2</b> Examples</a></li>
 <li class="chapter" data-level="6.1.3" data-path="counterfactual.html"><a href="counterfactual.html#advantages-15"><i class="fa fa-check"></i><b>6.1.3</b> Advantages</a></li>
 <li class="chapter" data-level="6.1.4" data-path="counterfactual.html"><a href="counterfactual.html#disadvantages-15"><i class="fa fa-check"></i><b>6.1.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="6.1.5" data-path="counterfactual.html"><a href="counterfactual.html#example-software"><i class="fa fa-check"></i><b>6.1.5</b> Software and Alternatives</a></li>
@@ -295,7 +292,7 @@ window.cookieconsent.initialise({
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="proto.html"><a href="proto.html"><i class="fa fa-check"></i><b>6.3</b> Prototypes and Criticisms</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="proto.html"><a href="proto.html#theory-5"><i class="fa fa-check"></i><b>6.3.1</b> Theory</a></li>
-<li class="chapter" data-level="6.3.2" data-path="proto.html"><a href="proto.html#examples-5"><i class="fa fa-check"></i><b>6.3.2</b> Examples</a></li>
+<li class="chapter" data-level="6.3.2" data-path="proto.html"><a href="proto.html#examples-6"><i class="fa fa-check"></i><b>6.3.2</b> Examples</a></li>
 <li class="chapter" data-level="6.3.3" data-path="proto.html"><a href="proto.html#advantages-16"><i class="fa fa-check"></i><b>6.3.3</b> Advantages</a></li>
 <li class="chapter" data-level="6.3.4" data-path="proto.html"><a href="proto.html#disadvantages-16"><i class="fa fa-check"></i><b>6.3.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="6.3.5" data-path="proto.html"><a href="proto.html#code-and-alternatives"><i class="fa fa-check"></i><b>6.3.5</b> Code and Alternatives</a></li>
@@ -348,21 +345,83 @@ window.cookieconsent.initialise({
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="taxonomy-of-interpretability-methods" class="section level2">
-<h2><span class="header-section-number">2.2</span> Taxonomy of Interpretability Methods</h2>
-<p>Methods for machine learning interpretability can be classified according to various criteria.</p>
-<p><strong>Intrinsic or post hoc?</strong> This criteria distinguishes whether interpretability is achieved by restricting the complexity of the machine learning model (intrinsic) or by applying methods that analyze the model after training (post hoc). Intrinsic interpretability refers to machine learning models that are considered interpretable due to their simple structure, such as short decision trees or sparse linear models. Post hoc interpretability refers to the application of interpretation methods after model training. Permutation feature importance is, for example, a post hoc interpretation method. Post hoc methods can also be applied to intrinsically interpretable models. For example, permutation feature importance can be computed for decision trees. The organization of the chapters in this book is determined by the distinction between <a href="simple.html#simple">intrinsically interpretable models</a> and <a href="agnostic.html#agnostic">post hoc (and model-agnostic) interpretation methods</a>.</p>
-<p><strong>Result of the interpretation method</strong> The various interpretation methods can be roughly differentiated according to their results.</p>
+<div id="解釈可能な手法の分類" class="section level2">
+<h2><span class="header-section-number">2.2</span> 解釈可能な手法の分類</h2>
+<!--
+Methods for machine learning interpretability can be classified according to various criteria. 
+-->
+<p>機械学習の解釈方法は様々な指標で分類できます。</p>
+<!--
+**Intrinsic or post hoc?**
+This criteria distinguishes whether interpretability is achieved by restricting the complexity of the machine learning model (intrinsic) or by applying methods that analyze the model after training (post hoc).
+Intrinsic interpretability refers to machine learning models that are considered interpretable due to their simple structure, such as short decision trees or sparse linear models.
+Post hoc interpretability refers to the application of interpretation methods after model training.
+Permutation feature importance is, for example, a post hoc interpretation method.
+Post hoc methods can also be applied to intrinsically interpretable models.
+For example, permutation feature importance can be computed for decision trees.
+The organization of the chapters in this book is determined by the distinction between [intrinsically interpretable models](#simple) and [post hoc (and model-agnostic) interpretation methods](#agnostic).
+-->
+<p><strong>本質的 (intrinsic) か後付けか (post-hoc)</strong> この指標は、解釈性の獲得を、機械学習モデルの複雑度を制限することで行う本質的 (intrinsic)と、モデルを訓練した後に分析することで行う後付け(post-hoc)に分かれます。 本質的な解釈は機械学習モデルの単純な構造によるものであり、たとえば、単純な決定木やスパース制約をかけた線形モデルが該当します。 後付けの解釈はモデルを学習した後に解釈するための手法です。 例えば、Permutation Feature Importance は後付けの解釈方法です。 後付けの手法は本質的に解釈可能なモデルに対しても適用できます。 例として、Permutation Feature Importance は決定木に適用できます。 本書はこの分類方法を用いて<a href="simple.html#simple">本質的に解釈可能なモデル</a>と<a href="agnostic.html#agnostic">後付けでモデル非依存の解釈方法</a>の2つの章を設けています。</p>
+<!--
+**Result of the interpretation method**
+The various interpretation methods can be roughly differentiated according to their results.
+-->
+<p><strong>解釈方法の結果</strong> 解釈方法は様々ですが、その結果に応じて大まかに分類可能です。</p>
+<!--
+- **Feature summary statistic**:
+Many interpretation methods provide summary statistics for each feature.
+Some methods return a single number per feature, such as feature importance, or a more complex result, such as the pairwise feature interaction strengths, which consist of a number for each feature pair.
+- **Feature summary visualization**:
+Most of the feature summary statistics can also be visualized. 
+Some feature summaries are actually only meaningful if they are visualized and a table would be a wrong choice.
+The partial dependence of a feature is such a case. 
+Partial dependence plots are curves that show a feature and the average predicted outcome.
+The best way to present partial dependences is to actually draw the curve instead of printing the coordinates.
+- **Model internals (e.g. learned weights)**:
+The interpretation of intrinsically interpretable models falls into this category. 
+Examples are the weights in linear models or the learned tree structure (the features and thresholds used for the splits) of decision trees. 
+The lines are blurred between model internals and feature summary statistic in, for example, linear models, because the weights are both model internals and summary statistics for the features at the same time.
+Another method that outputs model internals is the visualization of feature detectors learned in convolutional neural networks. 
+Interpretability methods that output model internals are by definition model-specific (see next criterion). 
+- **Data point**:
+This category includes all methods that return data points (already existent or newly created) to make a model interpretable. 
+One method is called counterfactual explanations.
+To explain the prediction of a data instance, the method finds a similar data point by changing some of the features for which the predicted outcome changes in a relevant way (e.g. a flip in the predicted class). 
+Another example is the identification of prototypes of predicted classes. 
+To be useful, interpretation methods that output new data points require that the data points themselves can be interpreted. 
+This works well for images and texts, but is less useful for tabular data with hundreds of features.
+- **Intrinsically interpretable model**:
+One solution to interpreting black box models is to approximate them (either globally or locally) with an interpretable model. 
+The interpretable model itself is interpreted by looking at internal model parameters or feature summary statistics.
+-->
 <ul>
-<li><strong>Feature summary statistic</strong>: Many interpretation methods provide summary statistics for each feature. Some methods return a single number per feature, such as feature importance, or a more complex result, such as the pairwise feature interaction strengths, which consist of a number for each feature pair.</li>
-<li><strong>Feature summary visualization</strong>: Most of the feature summary statistics can also be visualized. Some feature summaries are actually only meaningful if they are visualized and a table would be a wrong choice. The partial dependence of a feature is such a case. Partial dependence plots are curves that show a feature and the average predicted outcome. The best way to present partial dependences is to actually draw the curve instead of printing the coordinates.</li>
-<li><strong>Model internals (e.g. learned weights)</strong>: The interpretation of intrinsically interpretable models falls into this category. Examples are the weights in linear models or the learned tree structure (the features and thresholds used for the splits) of decision trees. The lines are blurred between model internals and feature summary statistic in, for example, linear models, because the weights are both model internals and summary statistics for the features at the same time. Another method that outputs model internals is the visualization of feature detectors learned in convolutional neural networks. Interpretability methods that output model internals are by definition model-specific (see next criterion).</li>
-<li><strong>Data point</strong>: This category includes all methods that return data points (already existent or newly created) to make a model interpretable. One method is called counterfactual explanations. To explain the prediction of a data instance, the method finds a similar data point by changing some of the features for which the predicted outcome changes in a relevant way (e.g. a flip in the predicted class). Another example is the identification of prototypes of predicted classes. To be useful, interpretation methods that output new data points require that the data points themselves can be interpreted. This works well for images and texts, but is less useful for tabular data with hundreds of features.</li>
-<li><strong>Intrinsically interpretable model</strong>: One solution to interpreting black box models is to approximate them (either globally or locally) with an interpretable model. The interpretable model itself is interpreted by looking at internal model parameters or feature summary statistics.</li>
+<li><strong>特徴量の要約統計量</strong>: 解釈方法の多くは、特徴量ごとに要約統計量を算出します。 特徴量重要度のように特徴量ごとに1つの値を計算するものもあれば、 2項間の相互作用の強さ(pairwise feature interaction strengths)のように特徴量のペアごとに計算するものもあります。</li>
+<li><strong>特徴量の視覚的要約</strong>: 特徴量の要約統計量は大抵、可視化できます。 中には特徴量の Partial dependence のように、解釈に表が適さず、可視化が頼りになるものもあります。 Partial dependence plots は、注目したい特徴量の値と平均的な予測の結果との関係を表します。そのため、Partial dependenceの表現方法は、座標を記載するのではなく、実際に曲線を描くことです。</li>
+<li><strong>モデルの内部(例：学習後の重み)</strong>: 本質的に解釈可能なモデルはこの分類に属し、例えば、線形モデルの重みや学習された木構造 (分割のための特徴量と閾値) があります。 特徴量の要約統計量との境界は曖昧で、線形モデルの重みはモデルの本質であると同時に、特徴量の要約統計量でもあります。 他にもモデルの中身を出力する方法として、畳み込みニューラルネットワークで検出した特徴を可視化する手法があります。 モデルの中身を出力する解釈方法は、本質的にモデル専用の方法です(次項参照)。</li>
+<li><strong>データ点</strong>: モデルを解釈するために既存の、あるいは新しく作ったデータ点を出力するすべての方法がこのカテゴリに属します。 一例としてcounterfactual explanationsを挙げます。 ある観測値から得た予測を解釈する時、予測結果（たとえば分類結果）が変わるように特徴量の一部を改変します。 他の例として、特定の予測結果を得る典型的な特徴量（prototype）を特定する方法があります。 利便性の観点から、新しいデータ点を出力する解釈方法は、データ点そのものの解釈可能性が求められます。 この方法は画像やテキストに向いている一方で、何百もの特徴量から成るテーブルデータには向いていません。</li>
+<li><strong>本質的に解釈可能なモデル</strong>: ブラックボックスなモデルを解釈する1つの方法として、モデルを大局的ないし局所的に解釈可能なモデルで近似してしまう手があります。 解釈可能なモデルは、モデル内部のパラメータや特徴量の要約統計量を確認することで解釈が可能です。</li>
 </ul>
-<p><strong>Model-specific or model-agnostic?</strong> Model-specific interpretation tools are limited to specific model classes. The interpretation of regression weights in a linear model is a model-specific interpretation, since -- by definition -- the interpretation of intrinsically interpretable models is always model-specific. Tools that only work for the interpretation of e.g. neural networks are model-specific. Model-agnostic tools can be used on any machine learning model and are applied after the model has been trained (post hoc). These agnostic methods usually work by analyzing feature input and output pairs. By definition, these methods cannot have access to model internals such as weights or structural information.</p>
-<p><strong>Local or global?</strong> Does the interpretation method explain an individual prediction or the entire model behavior? Or is the scope somewhere in between? Read more about the scope criterion in the next section.</p>
+<!--
+**Model-specific or model-agnostic?**
+Model-specific interpretation tools are limited to specific model classes.
+The interpretation of regression weights in a linear model is a model-specific interpretation, since -- by definition -- the interpretation of intrinsically interpretable models is always model-specific.
+Tools that only work for the interpretation of e.g. neural networks are model-specific.
+Model-agnostic tools can be used on any machine learning model and are applied after the model has been trained (post hoc).
+These agnostic methods usually work by analyzing feature input and output pairs. 
+By definition, these methods cannot have access to model internals such as weights or structural information.
+-->
+<p><strong>モデル専用か汎用か</strong> モデル専用の解釈方法は、特定のモデルやクラスに限定されています。 線形モデルの重みの解釈はモデル固有の解釈方法であり、定義から、本質的に解釈可能なモデルの解釈方法は常にモデル特有の方法と言えます。 例えば、ニュートラルネットワークの解釈のみに使える手法もモデル専用です。 モデルに依存しない手法はいかなる機械学習モデルにも適用でき、学習済みモデルにも使えます(post hoc)。 これらの汎用手法は、たいてい、入力特徴量と出力の組を分析することで機能します。 定義より、これらの手法は重みや構造の情報といったモデル内部へはアクセスできません。</p>
+<!--
+**Local or global?**
+Does the interpretation method explain an individual prediction or the entire model behavior? 
+Or is the scope somewhere in between?
+Read more about the scope criterion in the next section.
+-->
+<p><strong>局所的か大局的か</strong> 解釈方法が個々の予測を説明するか、モデル全体の挙動を説明するか、はたまたその中間でしょうか。 この分類に関しては次節で説明します。</p>
 <!--{pagebreak}-->
+<!--
+## Scope of Interpretability
+-->
 </div>
             </section>
 
@@ -370,7 +429,7 @@ window.cookieconsent.initialise({
         </div>
       </div>
 <a href="interpretability-importance.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="scope-of-interpretability.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="解釈可能性の範囲.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
