@@ -4,7 +4,7 @@ set -e # Exit with nonzero exit code if anything fails
 
 # Copied from here: https://gist.github.com/domenic/ec8b0fc8ab45f39403dd
 
-SOURCE_BRANCH="master"
+SOURCE_BRANCH="japanese"
 TARGET_BRANCH="gh-pages"
 LEANPUB_BRANCH="leanpub"
 
@@ -25,7 +25,7 @@ make -B html
 cd ..
 
 ## Only deploy when on master branch of main repository
-if [  "$BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ] ; then
+if [  "$BRANCH" = "japanese" -a "$TRAVIS_PULL_REQUEST" = "false" ] ; then
 
   echo "Deploying master to gh-pages."
   # Clone the existing gh-pages for this repo into out/
