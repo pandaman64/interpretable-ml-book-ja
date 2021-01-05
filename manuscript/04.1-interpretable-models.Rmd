@@ -1,27 +1,60 @@
+<!--
 # Interpretable Models {#simple}
+-->
+# 解釈可能なモデル {#simple}
 
+<!--
 The easiest way to achieve interpretability is to use only a subset of algorithms that create interpretable models.
 Linear regression, logistic regression and the decision tree are commonly used interpretable models.
+-->
+解釈可能性を手に入れる最も簡単な方法は、 解釈可能なモデルを作るようなアルゴリズムのみを使うことです。 線形回帰や、ロジスティック回帰、決定木は一般的に用いられる解釈可能なモデルです。
 
+<!--
 In the following chapters we will talk about these models.
 Not in detail, only the basics, because there is already a ton of books, videos, tutorials, papers and more material available.
 We will focus on how to interpret the models.
 The book discusses [linear regression](#limo), [logistic regression](#logistic), [other linear regression extensions](#extend-lm), [decision trees](#tree), [decision rules](#rules) and [the RuleFit algorithm](#rulefit) in more detail. 
 It also lists [other interpretable models](#other-interpretable).
+-->
+以下の章ではこれらのモデルについて紹介します。
+既に多くの本や動画、チュートリアル、論文、その他閲覧可能なものが存在するので、細部には拘らず、基本的なことのみに留めます。
+特に、モデルの解釈方法に焦点を当てます。
+本書では[線形回帰](#limo)、[ロジスティック回帰](#logistic)、[その他の線形回帰の拡張](#extend-lm)、[決定木](#tree)、[決定規則](#rules)、[RuleFit](#rulefit)についてより詳細に記述されています。
+また、[その他の解釈可能なモデル](#other-interpretable)もいくつか挙げています。
 
+<!--
 All interpretable models explained in this book are interpretable on a modular level, with the exception of the k-nearest neighbors method.
 The following table gives an overview of the interpretable model types and their properties.
+-->
+本書で説明されている全ての解釈可能なモデルは、k近傍法を除いてモジュールレベルで解釈可能です。
+後述の表は解釈可能なモデルの種類と特性を示しています。
+
+<!--
 A model is linear if the association between features and target is modelled linearly.
 A model with monotonicity constraints ensures that the relationship between a feature and the target outcome always goes in the same direction over the entire range of the feature:
 An increase in the feature value either always leads to an increase or always to a decrease in the target outcome.
 Monotonicity is useful for the interpretation of a model because it makes it easier to understand a relationship.
 Some models can automatically include interactions between features to predict the target outcome.
+-->
+特徴量と目的変数との関係が線形にモデル化されている場合，そのモデルは線形であると言います。
+単調制約を持つモデルは、特徴量の全域にわたって、特徴量と目的変数が常に同じ方向に変化することを保証します。
+特徴量が増加すると、目的変数は常に増加する、または減少するかのどちらかになります。
+単調性は関係性を理解しやすくするため、モデルの解釈に有用です。
+一部のモデルでは、目的変数の出力を予測するための特徴量間の交互作用を自動的に含めることができます。
+
+<!--
 You can include interactions in any type of model by manually creating interaction features.
 Interactions can improve predictive performance, but too many or too complex interactions can hurt interpretability.
 Some models handle only regression, some only classification, and still others both.
+-->
+手動で特徴量の交互作用を含めることで、あらゆる種類のモデルに交互作用を含めることができます。
+交互作用項を導入することで、予測性能を改善できますが、多すぎるもしくは複雑すぎる交互作用は解釈性を損なう可能性があります。
+いくつかのモデルは、回帰または、分類のみであり、どちらも対応可能なモデルもあります。
 
-From this table, you can select a suitable interpretable model for your task, either regression (regr) or classification (class):
+<!--From this table, you can select a suitable interpretable model for your task, either regression (regr) or classification (class):-->
+この表から、回帰　(regr)　もしくは分類　(class)　のタスクに対して、適切な解釈可能モデルを選べます。
 
+<!--
 | Algorithm |Linear |Monotone|Interaction|Task|
 |:--------------|:----|:----|:------|:--------|
 | Linear regression | Yes | Yes | No | regr |
@@ -30,4 +63,14 @@ From this table, you can select a suitable interpretable model for your task, ei
 | RuleFit| Yes | No | Yes| class,regr |
 | Naive Bayes | No | Yes | No | class |
 | k-nearest neighbors | No | No | No | class,regr|
+-->
+
+| アルゴリズム |線形性 |単調性|交互作用|タスク|
+|:--------------|:----|:----|:------|:--------|
+| 線形回帰 | あり | あり | なし | regr |
+| ロジスティック回帰 | なし | あり | なし | class|
+| 決定木 | なし | いくつか | あり | class, regr|
+| RuleFit| あり | なし | あり| class, regr |
+| 単純ベイズ法 | なし | あり | なし | class | 
+| k近傍法 | なし | なし | なし | class, regr|
 
