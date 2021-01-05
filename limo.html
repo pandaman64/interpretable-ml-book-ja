@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.1 Linear Regression | Interpretable Machine Learning</title>
+  <title>4.1 線形回帰 | Interpretable Machine Learning</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.1 Linear Regression | Interpretable Machine Learning" />
+  <meta property="og:title" content="4.1 線形回帰 | Interpretable Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="christophM/interpretable-ml-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.1 Linear Regression | Interpretable Machine Learning" />
+  <meta name="twitter:title" content="4.1 線形回帰 | Interpretable Machine Learning" />
   
   <meta name="twitter:description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Christoph Molnar" />
 
 
-<meta name="date" content="2020-12-21" />
+<meta name="date" content="2021-01-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -138,23 +138,23 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="3.2" data-path="spam-data.html"><a href="spam-data.html"><i class="fa fa-check"></i><b>3.2</b> YouTube スパムコメント (テキスト分類)</a></li>
 <li class="chapter" data-level="3.3" data-path="cervical.html"><a href="cervical.html"><i class="fa fa-check"></i><b>3.3</b> 子宮頸がんのリスク要因(クラス分類)</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="simple.html"><a href="simple.html"><i class="fa fa-check"></i><b>4</b> Interpretable Models</a><ul>
-<li class="chapter" data-level="4.1" data-path="limo.html"><a href="limo.html"><i class="fa fa-check"></i><b>4.1</b> Linear Regression</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="limo.html"><a href="limo.html#interpretation"><i class="fa fa-check"></i><b>4.1.1</b> Interpretation</a></li>
-<li class="chapter" data-level="4.1.2" data-path="limo.html"><a href="limo.html#example"><i class="fa fa-check"></i><b>4.1.2</b> Example</a></li>
-<li class="chapter" data-level="4.1.3" data-path="limo.html"><a href="limo.html#visual-interpretation"><i class="fa fa-check"></i><b>4.1.3</b> Visual Interpretation</a></li>
-<li class="chapter" data-level="4.1.4" data-path="limo.html"><a href="limo.html#explain-individual-predictions"><i class="fa fa-check"></i><b>4.1.4</b> Explain Individual Predictions</a></li>
-<li class="chapter" data-level="4.1.5" data-path="limo.html"><a href="limo.html#cat-code"><i class="fa fa-check"></i><b>4.1.5</b> Encoding of Categorical Features</a></li>
-<li class="chapter" data-level="4.1.6" data-path="limo.html"><a href="limo.html#do-linear-models-create-good-explanations"><i class="fa fa-check"></i><b>4.1.6</b> Do Linear Models Create Good Explanations?</a></li>
-<li class="chapter" data-level="4.1.7" data-path="limo.html"><a href="limo.html#sparse-linear"><i class="fa fa-check"></i><b>4.1.7</b> Sparse Linear Models</a></li>
-<li class="chapter" data-level="4.1.8" data-path="limo.html"><a href="limo.html#advantages"><i class="fa fa-check"></i><b>4.1.8</b> Advantages</a></li>
-<li class="chapter" data-level="4.1.9" data-path="limo.html"><a href="limo.html#disadvantages"><i class="fa fa-check"></i><b>4.1.9</b> Disadvantages</a></li>
+<li class="chapter" data-level="4" data-path="simple.html"><a href="simple.html"><i class="fa fa-check"></i><b>4</b> 解釈可能なモデル</a><ul>
+<li class="chapter" data-level="4.1" data-path="limo.html"><a href="limo.html"><i class="fa fa-check"></i><b>4.1</b> 線形回帰</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="limo.html"><a href="limo.html#解釈"><i class="fa fa-check"></i><b>4.1.1</b> 解釈</a></li>
+<li class="chapter" data-level="4.1.2" data-path="limo.html"><a href="limo.html#例"><i class="fa fa-check"></i><b>4.1.2</b> 例</a></li>
+<li class="chapter" data-level="4.1.3" data-path="limo.html"><a href="limo.html#可視化による解釈"><i class="fa fa-check"></i><b>4.1.3</b> 可視化による解釈</a></li>
+<li class="chapter" data-level="4.1.4" data-path="limo.html"><a href="limo.html#個々の予測に対する説明"><i class="fa fa-check"></i><b>4.1.4</b> 個々の予測に対する説明</a></li>
+<li class="chapter" data-level="4.1.5" data-path="limo.html"><a href="limo.html#カテゴリカル特徴量のエンコーディング"><i class="fa fa-check"></i><b>4.1.5</b> カテゴリカル特徴量のエンコーディング</a></li>
+<li class="chapter" data-level="4.1.6" data-path="limo.html"><a href="limo.html#線形モデルは良い説明を与えるか"><i class="fa fa-check"></i><b>4.1.6</b> 線形モデルは良い説明を与えるか?</a></li>
+<li class="chapter" data-level="4.1.7" data-path="limo.html"><a href="limo.html#sparse-linear"><i class="fa fa-check"></i><b>4.1.7</b> スパースな線形モデル</a></li>
+<li class="chapter" data-level="4.1.8" data-path="limo.html"><a href="limo.html#長所"><i class="fa fa-check"></i><b>4.1.8</b> 長所</a></li>
+<li class="chapter" data-level="4.1.9" data-path="limo.html"><a href="limo.html#短所"><i class="fa fa-check"></i><b>4.1.9</b> 短所</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>4.2</b> Logistic Regression</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="logistic.html"><a href="logistic.html#what-is-wrong-with-linear-regression-for-classification"><i class="fa fa-check"></i><b>4.2.1</b> What is Wrong with Linear Regression for Classification?</a></li>
 <li class="chapter" data-level="4.2.2" data-path="logistic.html"><a href="logistic.html#theory"><i class="fa fa-check"></i><b>4.2.2</b> Theory</a></li>
-<li class="chapter" data-level="4.2.3" data-path="logistic.html"><a href="logistic.html#interpretation-1"><i class="fa fa-check"></i><b>4.2.3</b> Interpretation</a></li>
-<li class="chapter" data-level="4.2.4" data-path="logistic.html"><a href="logistic.html#example-1"><i class="fa fa-check"></i><b>4.2.4</b> Example</a></li>
+<li class="chapter" data-level="4.2.3" data-path="logistic.html"><a href="logistic.html#interpretation"><i class="fa fa-check"></i><b>4.2.3</b> Interpretation</a></li>
+<li class="chapter" data-level="4.2.4" data-path="logistic.html"><a href="logistic.html#example"><i class="fa fa-check"></i><b>4.2.4</b> Example</a></li>
 <li class="chapter" data-level="4.2.5" data-path="logistic.html"><a href="logistic.html#advantages-and-disadvantages"><i class="fa fa-check"></i><b>4.2.5</b> Advantages and Disadvantages</a></li>
 <li class="chapter" data-level="4.2.6" data-path="logistic.html"><a href="logistic.html#software"><i class="fa fa-check"></i><b>4.2.6</b> Software</a></li>
 </ul></li>
@@ -162,31 +162,31 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="4.3.1" data-path="extend-lm.html"><a href="extend-lm.html#glm"><i class="fa fa-check"></i><b>4.3.1</b> Non-Gaussian Outcomes - GLMs</a></li>
 <li class="chapter" data-level="4.3.2" data-path="extend-lm.html"><a href="extend-lm.html#lm-interact"><i class="fa fa-check"></i><b>4.3.2</b> Interactions</a></li>
 <li class="chapter" data-level="4.3.3" data-path="extend-lm.html"><a href="extend-lm.html#gam"><i class="fa fa-check"></i><b>4.3.3</b> Nonlinear Effects - GAMs</a></li>
-<li class="chapter" data-level="4.3.4" data-path="extend-lm.html"><a href="extend-lm.html#advantages-1"><i class="fa fa-check"></i><b>4.3.4</b> Advantages</a></li>
-<li class="chapter" data-level="4.3.5" data-path="extend-lm.html"><a href="extend-lm.html#disadvantages-1"><i class="fa fa-check"></i><b>4.3.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="4.3.4" data-path="extend-lm.html"><a href="extend-lm.html#advantages"><i class="fa fa-check"></i><b>4.3.4</b> Advantages</a></li>
+<li class="chapter" data-level="4.3.5" data-path="extend-lm.html"><a href="extend-lm.html#disadvantages"><i class="fa fa-check"></i><b>4.3.5</b> Disadvantages</a></li>
 <li class="chapter" data-level="4.3.6" data-path="extend-lm.html"><a href="extend-lm.html#software-1"><i class="fa fa-check"></i><b>4.3.6</b> Software</a></li>
 <li class="chapter" data-level="4.3.7" data-path="extend-lm.html"><a href="extend-lm.html#more-lm-extension"><i class="fa fa-check"></i><b>4.3.7</b> Further Extensions</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="tree.html"><a href="tree.html"><i class="fa fa-check"></i><b>4.4</b> Decision Tree</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="tree.html"><a href="tree.html#interpretation-2"><i class="fa fa-check"></i><b>4.4.1</b> Interpretation</a></li>
-<li class="chapter" data-level="4.4.2" data-path="tree.html"><a href="tree.html#example-2"><i class="fa fa-check"></i><b>4.4.2</b> Example</a></li>
-<li class="chapter" data-level="4.4.3" data-path="tree.html"><a href="tree.html#advantages-2"><i class="fa fa-check"></i><b>4.4.3</b> Advantages</a></li>
-<li class="chapter" data-level="4.4.4" data-path="tree.html"><a href="tree.html#disadvantages-2"><i class="fa fa-check"></i><b>4.4.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tree.html"><a href="tree.html#interpretation-1"><i class="fa fa-check"></i><b>4.4.1</b> Interpretation</a></li>
+<li class="chapter" data-level="4.4.2" data-path="tree.html"><a href="tree.html#example-1"><i class="fa fa-check"></i><b>4.4.2</b> Example</a></li>
+<li class="chapter" data-level="4.4.3" data-path="tree.html"><a href="tree.html#advantages-1"><i class="fa fa-check"></i><b>4.4.3</b> Advantages</a></li>
+<li class="chapter" data-level="4.4.4" data-path="tree.html"><a href="tree.html#disadvantages-1"><i class="fa fa-check"></i><b>4.4.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="4.4.5" data-path="tree.html"><a href="tree.html#software-2"><i class="fa fa-check"></i><b>4.4.5</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="rules.html"><a href="rules.html"><i class="fa fa-check"></i><b>4.5</b> Decision Rules</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="rules.html"><a href="rules.html#learn-rules-from-a-single-feature-oner"><i class="fa fa-check"></i><b>4.5.1</b> Learn Rules from a Single Feature (OneR)</a></li>
 <li class="chapter" data-level="4.5.2" data-path="rules.html"><a href="rules.html#sequential-covering"><i class="fa fa-check"></i><b>4.5.2</b> Sequential Covering</a></li>
 <li class="chapter" data-level="4.5.3" data-path="rules.html"><a href="rules.html#bayesian-rule-lists"><i class="fa fa-check"></i><b>4.5.3</b> Bayesian Rule Lists</a></li>
-<li class="chapter" data-level="4.5.4" data-path="rules.html"><a href="rules.html#advantages-3"><i class="fa fa-check"></i><b>4.5.4</b> Advantages</a></li>
-<li class="chapter" data-level="4.5.5" data-path="rules.html"><a href="rules.html#disadvantages-3"><i class="fa fa-check"></i><b>4.5.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="4.5.4" data-path="rules.html"><a href="rules.html#advantages-2"><i class="fa fa-check"></i><b>4.5.4</b> Advantages</a></li>
+<li class="chapter" data-level="4.5.5" data-path="rules.html"><a href="rules.html#disadvantages-2"><i class="fa fa-check"></i><b>4.5.5</b> Disadvantages</a></li>
 <li class="chapter" data-level="4.5.6" data-path="rules.html"><a href="rules.html#software-and-alternatives"><i class="fa fa-check"></i><b>4.5.6</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="rulefit.html"><a href="rulefit.html"><i class="fa fa-check"></i><b>4.6</b> RuleFit</a><ul>
 <li class="chapter" data-level="4.6.1" data-path="rulefit.html"><a href="rulefit.html#interpretation-and-example"><i class="fa fa-check"></i><b>4.6.1</b> Interpretation and Example</a></li>
 <li class="chapter" data-level="4.6.2" data-path="rulefit.html"><a href="rulefit.html#theory-1"><i class="fa fa-check"></i><b>4.6.2</b> Theory</a></li>
-<li class="chapter" data-level="4.6.3" data-path="rulefit.html"><a href="rulefit.html#advantages-4"><i class="fa fa-check"></i><b>4.6.3</b> Advantages</a></li>
-<li class="chapter" data-level="4.6.4" data-path="rulefit.html"><a href="rulefit.html#disadvantages-4"><i class="fa fa-check"></i><b>4.6.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="4.6.3" data-path="rulefit.html"><a href="rulefit.html#advantages-3"><i class="fa fa-check"></i><b>4.6.3</b> Advantages</a></li>
+<li class="chapter" data-level="4.6.4" data-path="rulefit.html"><a href="rulefit.html#disadvantages-3"><i class="fa fa-check"></i><b>4.6.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="4.6.5" data-path="rulefit.html"><a href="rulefit.html#software-and-alternative"><i class="fa fa-check"></i><b>4.6.5</b> Software and Alternative</a></li>
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="other-interpretable.html"><a href="other-interpretable.html"><i class="fa fa-check"></i><b>4.7</b> Other Interpretable Models</a><ul>
@@ -197,14 +197,14 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="5" data-path="agnostic.html"><a href="agnostic.html"><i class="fa fa-check"></i><b>5</b> Model-Agnostic Methods</a><ul>
 <li class="chapter" data-level="5.1" data-path="pdp.html"><a href="pdp.html"><i class="fa fa-check"></i><b>5.1</b> Partial Dependence Plot (PDP)</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="pdp.html"><a href="pdp.html#examples"><i class="fa fa-check"></i><b>5.1.1</b> Examples</a></li>
-<li class="chapter" data-level="5.1.2" data-path="pdp.html"><a href="pdp.html#advantages-5"><i class="fa fa-check"></i><b>5.1.2</b> Advantages</a></li>
-<li class="chapter" data-level="5.1.3" data-path="pdp.html"><a href="pdp.html#disadvantages-5"><i class="fa fa-check"></i><b>5.1.3</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.1.2" data-path="pdp.html"><a href="pdp.html#advantages-4"><i class="fa fa-check"></i><b>5.1.2</b> Advantages</a></li>
+<li class="chapter" data-level="5.1.3" data-path="pdp.html"><a href="pdp.html#disadvantages-4"><i class="fa fa-check"></i><b>5.1.3</b> Disadvantages</a></li>
 <li class="chapter" data-level="5.1.4" data-path="pdp.html"><a href="pdp.html#software-and-alternatives-1"><i class="fa fa-check"></i><b>5.1.4</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="ice.html"><a href="ice.html"><i class="fa fa-check"></i><b>5.2</b> Individual Conditional Expectation (ICE)</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="ice.html"><a href="ice.html#examples-1"><i class="fa fa-check"></i><b>5.2.1</b> Examples</a></li>
-<li class="chapter" data-level="5.2.2" data-path="ice.html"><a href="ice.html#advantages-6"><i class="fa fa-check"></i><b>5.2.2</b> Advantages</a></li>
-<li class="chapter" data-level="5.2.3" data-path="ice.html"><a href="ice.html#disadvantages-6"><i class="fa fa-check"></i><b>5.2.3</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.2.2" data-path="ice.html"><a href="ice.html#advantages-5"><i class="fa fa-check"></i><b>5.2.2</b> Advantages</a></li>
+<li class="chapter" data-level="5.2.3" data-path="ice.html"><a href="ice.html#disadvantages-5"><i class="fa fa-check"></i><b>5.2.3</b> Disadvantages</a></li>
 <li class="chapter" data-level="5.2.4" data-path="ice.html"><a href="ice.html#software-and-alternatives-2"><i class="fa fa-check"></i><b>5.2.4</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="ale.html"><a href="ale.html"><i class="fa fa-check"></i><b>5.3</b> Accumulated Local Effects (ALE) Plot</a><ul>
@@ -212,16 +212,16 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="5.3.2" data-path="ale.html"><a href="ale.html#theory-2"><i class="fa fa-check"></i><b>5.3.2</b> Theory</a></li>
 <li class="chapter" data-level="5.3.3" data-path="ale.html"><a href="ale.html#estimation"><i class="fa fa-check"></i><b>5.3.3</b> Estimation</a></li>
 <li class="chapter" data-level="5.3.4" data-path="ale.html"><a href="ale.html#examples-2"><i class="fa fa-check"></i><b>5.3.4</b> Examples</a></li>
-<li class="chapter" data-level="5.3.5" data-path="ale.html"><a href="ale.html#advantages-7"><i class="fa fa-check"></i><b>5.3.5</b> Advantages</a></li>
-<li class="chapter" data-level="5.3.6" data-path="ale.html"><a href="ale.html#disadvantages-7"><i class="fa fa-check"></i><b>5.3.6</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.3.5" data-path="ale.html"><a href="ale.html#advantages-6"><i class="fa fa-check"></i><b>5.3.5</b> Advantages</a></li>
+<li class="chapter" data-level="5.3.6" data-path="ale.html"><a href="ale.html#disadvantages-6"><i class="fa fa-check"></i><b>5.3.6</b> Disadvantages</a></li>
 <li class="chapter" data-level="5.3.7" data-path="ale.html"><a href="ale.html#implementation-and-alternatives"><i class="fa fa-check"></i><b>5.3.7</b> Implementation and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="interaction.html"><a href="interaction.html"><i class="fa fa-check"></i><b>5.4</b> Feature Interaction</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="interaction.html"><a href="interaction.html#feature-interaction"><i class="fa fa-check"></i><b>5.4.1</b> Feature Interaction?</a></li>
 <li class="chapter" data-level="5.4.2" data-path="interaction.html"><a href="interaction.html#theory-friedmans-h-statistic"><i class="fa fa-check"></i><b>5.4.2</b> Theory: Friedman's H-statistic</a></li>
 <li class="chapter" data-level="5.4.3" data-path="interaction.html"><a href="interaction.html#examples-3"><i class="fa fa-check"></i><b>5.4.3</b> Examples</a></li>
-<li class="chapter" data-level="5.4.4" data-path="interaction.html"><a href="interaction.html#advantages-8"><i class="fa fa-check"></i><b>5.4.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.4.5" data-path="interaction.html"><a href="interaction.html#disadvantages-8"><i class="fa fa-check"></i><b>5.4.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.4.4" data-path="interaction.html"><a href="interaction.html#advantages-7"><i class="fa fa-check"></i><b>5.4.4</b> Advantages</a></li>
+<li class="chapter" data-level="5.4.5" data-path="interaction.html"><a href="interaction.html#disadvantages-7"><i class="fa fa-check"></i><b>5.4.5</b> Disadvantages</a></li>
 <li class="chapter" data-level="5.4.6" data-path="interaction.html"><a href="interaction.html#implementations"><i class="fa fa-check"></i><b>5.4.6</b> Implementations</a></li>
 <li class="chapter" data-level="5.4.7" data-path="interaction.html"><a href="interaction.html#alternatives"><i class="fa fa-check"></i><b>5.4.7</b> Alternatives</a></li>
 </ul></li>
@@ -229,38 +229,38 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="5.5.1" data-path="feature-importance.html"><a href="feature-importance.html#theory-3"><i class="fa fa-check"></i><b>5.5.1</b> Theory</a></li>
 <li class="chapter" data-level="5.5.2" data-path="feature-importance.html"><a href="feature-importance.html#feature-importance-data"><i class="fa fa-check"></i><b>5.5.2</b> Should I Compute Importance on Training or Test Data?</a></li>
 <li class="chapter" data-level="5.5.3" data-path="feature-importance.html"><a href="feature-importance.html#example-and-interpretation"><i class="fa fa-check"></i><b>5.5.3</b> Example and Interpretation</a></li>
-<li class="chapter" data-level="5.5.4" data-path="feature-importance.html"><a href="feature-importance.html#advantages-9"><i class="fa fa-check"></i><b>5.5.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.5.5" data-path="feature-importance.html"><a href="feature-importance.html#disadvantages-9"><i class="fa fa-check"></i><b>5.5.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.5.4" data-path="feature-importance.html"><a href="feature-importance.html#advantages-8"><i class="fa fa-check"></i><b>5.5.4</b> Advantages</a></li>
+<li class="chapter" data-level="5.5.5" data-path="feature-importance.html"><a href="feature-importance.html#disadvantages-8"><i class="fa fa-check"></i><b>5.5.5</b> Disadvantages</a></li>
 <li class="chapter" data-level="5.5.6" data-path="feature-importance.html"><a href="feature-importance.html#software-and-alternatives-3"><i class="fa fa-check"></i><b>5.5.6</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="global.html"><a href="global.html"><i class="fa fa-check"></i><b>5.6</b> Global Surrogate</a><ul>
 <li class="chapter" data-level="5.6.1" data-path="global.html"><a href="global.html#theory-4"><i class="fa fa-check"></i><b>5.6.1</b> Theory</a></li>
-<li class="chapter" data-level="5.6.2" data-path="global.html"><a href="global.html#example-4"><i class="fa fa-check"></i><b>5.6.2</b> Example</a></li>
-<li class="chapter" data-level="5.6.3" data-path="global.html"><a href="global.html#advantages-10"><i class="fa fa-check"></i><b>5.6.3</b> Advantages</a></li>
-<li class="chapter" data-level="5.6.4" data-path="global.html"><a href="global.html#disadvantages-10"><i class="fa fa-check"></i><b>5.6.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.6.2" data-path="global.html"><a href="global.html#example-3"><i class="fa fa-check"></i><b>5.6.2</b> Example</a></li>
+<li class="chapter" data-level="5.6.3" data-path="global.html"><a href="global.html#advantages-9"><i class="fa fa-check"></i><b>5.6.3</b> Advantages</a></li>
+<li class="chapter" data-level="5.6.4" data-path="global.html"><a href="global.html#disadvantages-9"><i class="fa fa-check"></i><b>5.6.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="5.6.5" data-path="global.html"><a href="global.html#software-3"><i class="fa fa-check"></i><b>5.6.5</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="5.7" data-path="lime.html"><a href="lime.html"><i class="fa fa-check"></i><b>5.7</b> Local Surrogate (LIME)</a><ul>
 <li class="chapter" data-level="5.7.1" data-path="lime.html"><a href="lime.html#lime-for-tabular-data"><i class="fa fa-check"></i><b>5.7.1</b> LIME for Tabular Data</a></li>
 <li class="chapter" data-level="5.7.2" data-path="lime.html"><a href="lime.html#lime-for-text"><i class="fa fa-check"></i><b>5.7.2</b> LIME for Text</a></li>
 <li class="chapter" data-level="5.7.3" data-path="lime.html"><a href="lime.html#images-lime"><i class="fa fa-check"></i><b>5.7.3</b> LIME for Images</a></li>
-<li class="chapter" data-level="5.7.4" data-path="lime.html"><a href="lime.html#advantages-11"><i class="fa fa-check"></i><b>5.7.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.7.5" data-path="lime.html"><a href="lime.html#disadvantages-11"><i class="fa fa-check"></i><b>5.7.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.7.4" data-path="lime.html"><a href="lime.html#advantages-10"><i class="fa fa-check"></i><b>5.7.4</b> Advantages</a></li>
+<li class="chapter" data-level="5.7.5" data-path="lime.html"><a href="lime.html#disadvantages-10"><i class="fa fa-check"></i><b>5.7.5</b> Disadvantages</a></li>
 </ul></li>
 <li class="chapter" data-level="5.8" data-path="anchors.html"><a href="anchors.html"><i class="fa fa-check"></i><b>5.8</b> Scoped Rules (Anchors)</a><ul>
 <li class="chapter" data-level="5.8.1" data-path="anchors.html"><a href="anchors.html#finding-anchors"><i class="fa fa-check"></i><b>5.8.1</b> Finding Anchors</a></li>
 <li class="chapter" data-level="5.8.2" data-path="anchors.html"><a href="anchors.html#complexity-and-runtime"><i class="fa fa-check"></i><b>5.8.2</b> Complexity and Runtime</a></li>
 <li class="chapter" data-level="5.8.3" data-path="anchors.html"><a href="anchors.html#tabular-data-example"><i class="fa fa-check"></i><b>5.8.3</b> Tabular Data Example</a></li>
-<li class="chapter" data-level="5.8.4" data-path="anchors.html"><a href="anchors.html#advantages-12"><i class="fa fa-check"></i><b>5.8.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.8.5" data-path="anchors.html"><a href="anchors.html#disadvantages-12"><i class="fa fa-check"></i><b>5.8.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.8.4" data-path="anchors.html"><a href="anchors.html#advantages-11"><i class="fa fa-check"></i><b>5.8.4</b> Advantages</a></li>
+<li class="chapter" data-level="5.8.5" data-path="anchors.html"><a href="anchors.html#disadvantages-11"><i class="fa fa-check"></i><b>5.8.5</b> Disadvantages</a></li>
 <li class="chapter" data-level="5.8.6" data-path="anchors.html"><a href="anchors.html#software-and-alternatives-4"><i class="fa fa-check"></i><b>5.8.6</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.9" data-path="shapley.html"><a href="shapley.html"><i class="fa fa-check"></i><b>5.9</b> Shapley Values</a><ul>
 <li class="chapter" data-level="5.9.1" data-path="shapley.html"><a href="shapley.html#general-idea"><i class="fa fa-check"></i><b>5.9.1</b> General Idea</a></li>
 <li class="chapter" data-level="5.9.2" data-path="shapley.html"><a href="shapley.html#examples-and-interpretation"><i class="fa fa-check"></i><b>5.9.2</b> Examples and Interpretation</a></li>
 <li class="chapter" data-level="5.9.3" data-path="shapley.html"><a href="shapley.html#the-shapley-value-in-detail"><i class="fa fa-check"></i><b>5.9.3</b> The Shapley Value in Detail</a></li>
-<li class="chapter" data-level="5.9.4" data-path="shapley.html"><a href="shapley.html#advantages-13"><i class="fa fa-check"></i><b>5.9.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.9.5" data-path="shapley.html"><a href="shapley.html#disadvantages-13"><i class="fa fa-check"></i><b>5.9.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.9.4" data-path="shapley.html"><a href="shapley.html#advantages-12"><i class="fa fa-check"></i><b>5.9.4</b> Advantages</a></li>
+<li class="chapter" data-level="5.9.5" data-path="shapley.html"><a href="shapley.html#disadvantages-12"><i class="fa fa-check"></i><b>5.9.5</b> Disadvantages</a></li>
 <li class="chapter" data-level="5.9.6" data-path="shapley.html"><a href="shapley.html#software-and-alternatives-5"><i class="fa fa-check"></i><b>5.9.6</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.10" data-path="shap.html"><a href="shap.html"><i class="fa fa-check"></i><b>5.10</b> SHAP (SHapley Additive exPlanations)</a><ul>
@@ -273,8 +273,8 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="5.10.7" data-path="shap.html"><a href="shap.html#shap-dependence-plot"><i class="fa fa-check"></i><b>5.10.7</b> SHAP Dependence Plot</a></li>
 <li class="chapter" data-level="5.10.8" data-path="shap.html"><a href="shap.html#shap-interaction-values"><i class="fa fa-check"></i><b>5.10.8</b> SHAP Interaction Values</a></li>
 <li class="chapter" data-level="5.10.9" data-path="shap.html"><a href="shap.html#clustering-shap-values"><i class="fa fa-check"></i><b>5.10.9</b> Clustering SHAP values</a></li>
-<li class="chapter" data-level="5.10.10" data-path="shap.html"><a href="shap.html#advantages-14"><i class="fa fa-check"></i><b>5.10.10</b> Advantages</a></li>
-<li class="chapter" data-level="5.10.11" data-path="shap.html"><a href="shap.html#disadvantages-14"><i class="fa fa-check"></i><b>5.10.11</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.10.10" data-path="shap.html"><a href="shap.html#advantages-13"><i class="fa fa-check"></i><b>5.10.10</b> Advantages</a></li>
+<li class="chapter" data-level="5.10.11" data-path="shap.html"><a href="shap.html#disadvantages-13"><i class="fa fa-check"></i><b>5.10.11</b> Disadvantages</a></li>
 <li class="chapter" data-level="5.10.12" data-path="shap.html"><a href="shap.html#software-4"><i class="fa fa-check"></i><b>5.10.12</b> Software</a></li>
 </ul></li>
 </ul></li>
@@ -282,8 +282,8 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="6.1" data-path="counterfactual.html"><a href="counterfactual.html"><i class="fa fa-check"></i><b>6.1</b> Counterfactual Explanations</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="counterfactual.html"><a href="counterfactual.html#generating-counterfactual-explanations"><i class="fa fa-check"></i><b>6.1.1</b> Generating Counterfactual Explanations</a></li>
 <li class="chapter" data-level="6.1.2" data-path="counterfactual.html"><a href="counterfactual.html#examples-5"><i class="fa fa-check"></i><b>6.1.2</b> Examples</a></li>
-<li class="chapter" data-level="6.1.3" data-path="counterfactual.html"><a href="counterfactual.html#advantages-15"><i class="fa fa-check"></i><b>6.1.3</b> Advantages</a></li>
-<li class="chapter" data-level="6.1.4" data-path="counterfactual.html"><a href="counterfactual.html#disadvantages-15"><i class="fa fa-check"></i><b>6.1.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="6.1.3" data-path="counterfactual.html"><a href="counterfactual.html#advantages-14"><i class="fa fa-check"></i><b>6.1.3</b> Advantages</a></li>
+<li class="chapter" data-level="6.1.4" data-path="counterfactual.html"><a href="counterfactual.html#disadvantages-14"><i class="fa fa-check"></i><b>6.1.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="6.1.5" data-path="counterfactual.html"><a href="counterfactual.html#example-software"><i class="fa fa-check"></i><b>6.1.5</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="adversarial.html"><a href="adversarial.html"><i class="fa fa-check"></i><b>6.2</b> Adversarial Examples</a><ul>
@@ -293,8 +293,8 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="6.3" data-path="proto.html"><a href="proto.html"><i class="fa fa-check"></i><b>6.3</b> Prototypes and Criticisms</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="proto.html"><a href="proto.html#theory-5"><i class="fa fa-check"></i><b>6.3.1</b> Theory</a></li>
 <li class="chapter" data-level="6.3.2" data-path="proto.html"><a href="proto.html#examples-6"><i class="fa fa-check"></i><b>6.3.2</b> Examples</a></li>
-<li class="chapter" data-level="6.3.3" data-path="proto.html"><a href="proto.html#advantages-16"><i class="fa fa-check"></i><b>6.3.3</b> Advantages</a></li>
-<li class="chapter" data-level="6.3.4" data-path="proto.html"><a href="proto.html#disadvantages-16"><i class="fa fa-check"></i><b>6.3.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="6.3.3" data-path="proto.html"><a href="proto.html#advantages-15"><i class="fa fa-check"></i><b>6.3.3</b> Advantages</a></li>
+<li class="chapter" data-level="6.3.4" data-path="proto.html"><a href="proto.html#disadvantages-15"><i class="fa fa-check"></i><b>6.3.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="6.3.5" data-path="proto.html"><a href="proto.html#code-and-alternatives"><i class="fa fa-check"></i><b>6.3.5</b> Code and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="influential.html"><a href="influential.html"><i class="fa fa-check"></i><b>6.4</b> Influential Instances</a><ul>
@@ -309,8 +309,8 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="7.1" data-path="cnn-features.html"><a href="cnn-features.html"><i class="fa fa-check"></i><b>7.1</b> Learned Features</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="cnn-features.html"><a href="cnn-features.html#feature-visualization"><i class="fa fa-check"></i><b>7.1.1</b> Feature Visualization</a></li>
 <li class="chapter" data-level="7.1.2" data-path="cnn-features.html"><a href="cnn-features.html#network-dissection"><i class="fa fa-check"></i><b>7.1.2</b> Network Dissection</a></li>
-<li class="chapter" data-level="7.1.3" data-path="cnn-features.html"><a href="cnn-features.html#advantages-17"><i class="fa fa-check"></i><b>7.1.3</b> Advantages</a></li>
-<li class="chapter" data-level="7.1.4" data-path="cnn-features.html"><a href="cnn-features.html#disadvantages-17"><i class="fa fa-check"></i><b>7.1.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="7.1.3" data-path="cnn-features.html"><a href="cnn-features.html#advantages-16"><i class="fa fa-check"></i><b>7.1.3</b> Advantages</a></li>
+<li class="chapter" data-level="7.1.4" data-path="cnn-features.html"><a href="cnn-features.html#disadvantages-16"><i class="fa fa-check"></i><b>7.1.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="7.1.5" data-path="cnn-features.html"><a href="cnn-features.html#software-and-further-material"><i class="fa fa-check"></i><b>7.1.5</b> Software and Further Material</a></li>
 </ul></li>
 </ul></li>
@@ -346,62 +346,209 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="limo" class="section level2">
-<h2><span class="header-section-number">4.1</span> Linear Regression</h2>
-<p>A linear regression model predicts the target as a weighted sum of the feature inputs. The linearity of the learned relationship makes the interpretation easy. Linear regression models have long been used by statisticians, computer scientists and other people who tackle quantitative problems.</p>
-<p>Linear models can be used to model the dependence of a regression target y on some features x. The learned relationships are linear and can be written for a single instance i as follows:</p>
+<h2><span class="header-section-number">4.1</span> 線形回帰</h2>
+<!-- A linear regression model predicts the target as a weighted sum of the feature inputs.
+The linearity of the learned relationship makes the interpretation easy.
+Linear regression models have long been used by statisticians, computer scientists and other people who tackle quantitative problems. -->
+<p>線形回帰モデルは予測値を特徴量の重み付き和として表します。 学習された関係の線形性が解釈を簡単にしてくれます。 線形回帰モデルは長い間、定量的な問題に取り組む統計学者や計算機科学者たちによって使用されてきました。</p>
+<!-- Linear models can be used to model the dependence of a regression target y on some features x.
+The learned relationships are linear and can be written for a single instance i as follows: -->
+<p>線形モデルでは、特徴量 x が目的変数 y にどれくらい依存するかをモデリングできます。 学習された関係は線形で、1つのデータ i に対して次のように表すことができます。</p>
 <p><span class="math display">\[y=\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}+\epsilon\]</span></p>
-<p>The predicted outcome of an instance is a weighted sum of its p features. The betas (<span class="math inline">\(\beta_{j}\)</span>) represent the learned feature weights or coefficients. The first weight in the sum (<span class="math inline">\(\beta_0\)</span>) is called the intercept and is not multiplied with a feature. The epsilon (<span class="math inline">\(\epsilon\)</span>) is the error we still make, i.e. the difference between the prediction and the actual outcome. These errors are assumed to follow a Gaussian distribution, which means that we make errors in both negative and positive directions and make many small errors and few large errors.</p>
-<p>Various methods can be used to estimate the optimal weight. The ordinary least squares method is usually used to find the weights that minimize the squared differences between the actual and the estimated outcomes:</p>
+<!-- The predicted outcome of an instance is a weighted sum of its p features.
+The betas ($\beta_{j}$) represent the learned feature weights or coefficients.
+The first weight in the sum ($\beta_0$) is called the intercept and is not multiplied with a feature.
+The epsilon ($\epsilon$) is the error we still make, i.e. the difference between the prediction and the actual outcome.
+These errors are assumed to follow a Gaussian distribution, which means that we make errors in both negative and positive directions and make many small errors and few large errors. -->
+<p>予測結果は p 個の特徴量の重み付き和です。 <span class="math inline">\(\beta_{j}\)</span> は学習された特徴の重み、つまり係数を表します。 1つ目の重み (<span class="math inline">\(\beta_0\)</span>) は切片と呼ばれ、特徴量と乗算はしません。 <span class="math inline">\(\epsilon\)</span> は予測と実際の結果との差、つまり誤差です。 これらの誤差値はガウス分布に従うと仮定されます。誤差が正の方向にも負の方向にも存在して、小さい誤差は多く、大きい誤差は少ないと仮定するという意味です。</p>
+<!-- Various methods can be used to estimate the optimal weight.
+The ordinary least squares method is usually used to find the weights that minimize the squared differences between the actual and the estimated outcomes: -->
+<p>最適な重みを推定するために様々な方法が用いられます。 実際の結果と推定結果との差の二乗和を最小化するような重みを求めるために、最小二乗法がよく用いられます。</p>
 <p><span class="math display">\[\hat{\boldsymbol{\beta}}=\arg\!\min_{\beta_0,\ldots,\beta_p}\sum_{i=1}^n\left(y^{(i)}-\left(\beta_0+\sum_{j=1}^p\beta_jx^{(i)}_{j}\right)\right)^{2}\]</span></p>
-<p>We will not discuss in detail how the optimal weights can be found, but if you are interested, you can read chapter 3.2 of the book &quot;The Elements of Statistical Learning&quot; (Friedman, Hastie and Tibshirani 2009)<a href="#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a> or one of the other online resources on linear regression models.</p>
-<p>The biggest advantage of linear regression models is linearity: It makes the estimation procedure simple and, most importantly, these linear equations have an easy to understand interpretation on a modular level (i.e. the weights). This is one of the main reasons why the linear model and all similar models are so widespread in academic fields such as medicine, sociology, psychology, and many other quantitative research fields. For example, in the medical field, it is not only important to predict the clinical outcome of a patient, but also to quantify the influence of the drug and at the same time take sex, age, and other features into account in an interpretable way.</p>
-<p>Estimated weights come with confidence intervals. A confidence interval is a range for the weight estimate that covers the &quot;true&quot; weight with a certain confidence. For example, a 95% confidence interval for a weight of 2 could range from 1 to 3. The interpretation of this interval would be: If we repeated the estimation 100 times with newly sampled data, the confidence interval would include the true weight in 95 out of 100 cases, given that the linear regression model is the correct model for the data.</p>
-<p>Whether the model is the &quot;correct&quot; model depends on whether the relationships in the data meet certain assumptions, which are linearity, normality, homoscedasticity, independence, fixed features, and absence of multicollinearity.</p>
-<p><strong>Linearity</strong><br />
-The linear regression model forces the prediction to be a linear combination of features, which is both its greatest strength and its greatest limitation. Linearity leads to interpretable models. Linear effects are easy to quantify and describe. They are additive, so it is easy to separate the effects. If you suspect feature interactions or a nonlinear association of a feature with the target value, you can add interaction terms or use regression splines.</p>
-<p><strong>Normality</strong><br />
-It is assumed that the target outcome given the features follows a normal distribution. If this assumption is violated, the estimated confidence intervals of the feature weights are invalid.</p>
-<p><strong>Homoscedasticity</strong> (constant variance)<br />
-The variance of the error terms is assumed to be constant over the entire feature space. Suppose you want to predict the value of a house given the living area in square meters. You estimate a linear model that assumes that, regardless of the size of the house, the error around the predicted response has the same variance. This assumption is often violated in reality. In the house example, it is plausible that the variance of error terms around the predicted price is higher for larger houses, since prices are higher and there is more room for price fluctuations. Suppose the average error (difference between predicted and actual price) in your linear regression model is 50,000 Euros. If you assume homoscedasticity, you assume that the average error of 50,000 is the same for houses that cost 1 million and for houses that cost only 40,000. This is unreasonable because it would mean that we can expect negative house prices.</p>
-<p><strong>Independence</strong><br />
-It is assumed that each instance is independent of any other instance. If you perform repeated measurements, such as multiple blood tests per patient, the data points are not independent. For dependent data you need special linear regression models, such as mixed effect models or GEEs. If you use the &quot;normal&quot; linear regression model, you might draw wrong conclusions from the model.</p>
-<p><strong>Fixed features</strong><br />
-The input features are considered &quot;fixed&quot;. Fixed means that they are treated as &quot;given constants&quot; and not as statistical variables. This implies that they are free of measurement errors. This is a rather unrealistic assumption. Without that assumption, however, you would have to fit very complex measurement error models that account for the measurement errors of your input features. And usually you do not want to do that.</p>
-<p><strong>Absence of multicollinearity</strong><br />
-You do not want strongly correlated features, because this messes up the estimation of the weights. In a situation where two features are strongly correlated, it becomes problematic to estimate the weights because the feature effects are additive and it becomes indeterminable to which of the correlated features to attribute the effects.</p>
-<div id="interpretation" class="section level3">
-<h3><span class="header-section-number">4.1.1</span> Interpretation</h3>
-<p>The interpretation of a weight in the linear regression model depends on the type of the corresponding feature.</p>
+<!-- We will not discuss in detail how the optimal weights can be found, but if you are interested, you can read chapter 3.2 of the book "The Elements of Statistical Learning" (Friedman, Hastie and Tibshirani 2009)[^Hastie] or one of the other online resources on linear regression models. -->
+<p>具体的に最適な重みがどう求められるかはここでは論じませんが、興味があれば、&quot;The Elements of Statistical Learning&quot; (Friedman, Hastie and Tibshirani 2009)<a href="#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a> の 3.2 章や他の線形回帰に関するオンライン資料を参考にしてください。</p>
+<!-- The biggest advantage of linear regression models is linearity:
+It makes the estimation procedure simple and, most importantly, these linear equations have an easy to understand interpretation on a modular level (i.e. the weights).
+This is one of the main reasons why the linear model and all similar models are so widespread in academic fields such as medicine, sociology, psychology, and many other quantitative research fields.
+For example, in the medical field,  it is not only important to predict the clinical outcome of a patient, but also to quantify the influence of the drug and at the same time take sex, age, and other features into account in an interpretable way. -->
+<p>線形回帰の最大の利点は線形性です。 線形性により予測手順が簡単になります。最も重要なことは、これらの一次方程式がモジュールレベル（つまり重み）で理解しやすくなります。 これが、線形モデルおよび同様のモデルが、医学、社会学、心理学の学術分野および他の多くの定量的研究分野で広く普及している主な理由の 1つです。 例えば、医療分野では、患者の臨床成果の予測だけでなく、薬の影響を定量化し、同時に性別、年齢、その他の特徴を解釈可能な方法で考慮することが重要です。</p>
+<!--
+Estimated weights come with confidence intervals.
+A confidence interval is a range for the weight estimate that covers the "true" weight with a certain confidence.
+For example, a 95% confidence interval for a weight of 2 could range from 1 to 3.
+The interpretation of this interval would be:
+If we repeated the estimation 100 times with newly sampled data, the confidence interval would include the true weight in 95 out of 100 cases, given that the linear regression model is the correct model for the data. -->
+<p>推定される重みには信頼区間があります。 信頼区間とは、ある信頼度で「真」の重みを含むような重み推定の範囲です。 例えば、重み2に対する信頼度 95％ の信頼区間は1から3の範囲になる可能性があります。 この信頼区間は、「回帰モデルが与えられるデータに正しいという仮定のもとで、新しくサンプリングされたデータに対して推定を 100 回繰り返したときに、この信頼区間は 100 回中 95 回真の重みを含む」と解釈できます。</p>
+<!-- Whether the model is the "correct" model depends on whether the relationships in the data meet certain assumptions, which are linearity, normality, homoscedasticity, independence, fixed features, and absence of multicollinearity. -->
+<p>モデルが「正しい」かはデータ中の関係が、線形性、正規性、等分散性、独立性、固定された特徴量、また、多重共線性の欠如 というこれらの仮定を満たしているかどうかによります。</p>
+<!-- **Linearity** 
+The linear regression model forces the prediction to be a linear combination of features, which is both its greatest strength and its greatest limitation.
+Linearity leads to interpretable models.
+Linear effects are easy to quantify and describe.
+They are additive, so it is easy to separate the effects.
+If you suspect feature interactions or a nonlinear association of a feature with the target value, you can add interaction terms or use regression splines.
+-->
+<p><strong>線形性</strong> 線形回帰モデルは予測が特徴量の線形結合になることを要請しますが、これは線形回帰の最大の強みでもあり、最大の制約でもあります。 線形性は解釈可能なモデルに繋がります。 線形効果は定量化しやすく、説明しやすいです。 線形的に足されるため、効果を分離することも簡単です。 特徴量の相互作用や、特徴量と目的値の間の非線形性が疑われる場合は、相互作用項を追加するか、スプライン回帰を使うことができます。</p>
+<!-- **Normality**  
+It is assumed that the target outcome given the features follows a normal distribution.
+If this assumption is violated, the estimated confidence intervals of the feature weights are invalid. -->
+<p><strong>正規性</strong> 与えられた特徴量に対する目的値は正規分布に従うと仮定されます。 もしこの仮定が破れると、特徴量に対する重みの推定信頼区間は意味を持たなくなります。</p>
+<!-- **Homoscedasticity** (constant variance)  
+The variance of the error terms is assumed to be constant over the entire feature space.
+Suppose you want to predict the value of a house given the living area in square meters.
+You estimate a linear model that assumes that, regardless of the size of the house, the error around the predicted response has the same variance.
+This assumption is often violated in reality.
+In the house example, it is plausible that the variance of error terms around the predicted price is higher for larger houses, since prices are higher and there is more room for price fluctuations.
+Suppose the average error (difference between predicted and actual price) in your linear regression model is 50,000 Euros.
+If you assume homoscedasticity, you assume that the average error of 50,000 is the same for houses that cost 1 million and for houses that cost only 40,000.
+This is unreasonable because it would mean that we can expect negative house prices. -->
+<p><strong>等分散性</strong> 誤差項の分散は、特徴空間全体において一定であると想定されます。 平方メートルで与えられる居住面積に基づいて住宅の価格を予測するとします。 家の大きさに関わらず、予測値における誤差の分散が一定であると想定する線形モデルを作ります。 この仮定は、実際には現実に反します。 住宅の例でいうと、家の価値が高いほど価格変動の余地が大きく、価格の予測値における誤差項の分散が大きくなるかもしれません。 線形回帰モデルの平均誤差（予測価格と実際の価格との差）が 50,000 ユーロであるとしましょう。 等分散性を想定すると、平均 50,000 の誤差が 100 万ユーロの家と 4 万ユーロの家とに対して同じであるとすることになります。 これは家の価格がマイナスになりうるということになり、合理的ではありません。</p>
+<!-- **Independence**  
+It is assumed that each instance is independent of any other instance.
+If you perform repeated measurements, such as multiple blood tests per patient, the data points are not independent.
+For dependent data you need special linear regression models, such as mixed effect models or GEEs.
+If you use the "normal" linear regression model, you might draw wrong conclusions from the model. -->
+<p><strong>独立性</strong> 各データは互いに独立であることが想定されます。 患者ごとに血液検査を複数回行うなど、繰り返して測定する場合、データ点は互いに独立になりません。 従属なデータに対しては混合効果モデルや GEE などの特殊な線形回帰モデルが必要です。 このような場合に、「標準的な」線形回帰モデルを使ってしまうと、モデルから誤った結論を導き出してしまう恐れがあります。</p>
+<!-- **Fixed features**  
+The input features are considered "fixed".
+Fixed means that they are treated as "given constants" and not as statistical variables.
+This implies that they are free of measurement errors.
+This is a rather unrealistic assumption.
+Without that assumption, however, you would have to fit very complex measurement error models that account for the measurement errors of your input features.
+And usually you do not want to do that. -->
+<p><strong>固定された特徴量</strong> 入力特徴量は「固定されている」と見なします。 固定されているとは、入力特徴量が統計的な変数でなく、「与えられた定数」として扱われるということです。 これは測定誤差がないことを意味します。 これは、かなり非現実的な仮定です。 しかし、この仮定なしでは、入力特徴の測定誤差を説明するために非常に複雑な測定誤差モデルを使う必要があります。 通常、そんなことはしたくないでしょう。</p>
+<!--
+**Absence of multicollinearity**  
+You do not want strongly correlated features, because this messes up the estimation of the weights.
+In a situation where two features are strongly correlated, it becomes problematic to estimate the weights because the feature effects are additive and it becomes indeterminable to which of the correlated features to attribute the effects.
+-->
+<p><strong>多重共線性の欠如</strong> 強い相関関係にある特徴量は、重みの推定を台無しにするので望ましくありません。 2つの特徴量が強く相関している場合、特徴量の効果が相加的であり、相関する特徴量のどちらが影響を与えているのか不定となるため、重みを推定するときに確定できません。</p>
+<!--
+### Interpretation
+-->
+<div id="解釈" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> 解釈</h3>
+<!--
+The interpretation of a weight in the linear regression model depends on the type of the corresponding feature.
+-->
+<p>線形回帰モデルの重みの解釈は、対応する特徴量のタイプに依存します。</p>
+<!--
+- Numerical feature: Increasing the numerical feature by one unit changes the estimated outcome by its weight. 
+An example of a numerical feature is the size of a house.
+- Binary feature: A feature that takes one of two possible values for each instance.
+An example is the feature "House comes with a garden".
+One of the values counts as the reference category (in some programming languages encoded with 0), such as "No garden".
+Changing the feature from the reference category to the other category changes the estimated outcome by the feature's weight.
+- Categorical feature with multiple categories:
+A feature with a fixed number of possible values.
+An example is the feature "floor type", with possible categories "carpet", "laminate" and "parquet".
+A solution to deal with many categories is the one-hot-encoding, meaning that each category has its own binary column.
+For a categorical feature with L categories, you only need L-1 columns, because the L-th column would have redundant information (e.g. when columns 1 to L-1 all have value 0 for one instance, we know that the categorical feature of this instance takes on category L).
+The interpretation for each category is then the same as the interpretation for binary features.
+Some languages, such as R, allow you to encode categorical features in various ways, as [described later in this chapter](#cat-code).
+- Intercept $\beta_0$: 
+The intercept is the feature weight for the "constant feature", which is always 1 for all instances.
+Most software packages automatically add this "1"-feature to estimate the intercept.
+The interpretation is:
+For an instance with all numerical feature values at zero and the categorical feature values at the reference categories, the model prediction is the intercept weight.
+The interpretation of the intercept is usually not relevant because instances with all features values at zero often make no sense.
+The interpretation is only meaningful when the features have been standardised (mean of zero, standard deviation of one).
+Then the intercept reflects the predicted outcome of an instance where all features are at their mean value.
+The interpretation of the features in the linear regression model can be automated by using following text templates.
+-->
 <ul>
-<li>Numerical feature: Increasing the numerical feature by one unit changes the estimated outcome by its weight. An example of a numerical feature is the size of a house.</li>
-<li>Binary feature: A feature that takes one of two possible values for each instance. An example is the feature &quot;House comes with a garden&quot;. One of the values counts as the reference category (in some programming languages encoded with 0), such as &quot;No garden&quot;. Changing the feature from the reference category to the other category changes the estimated outcome by the feature's weight.</li>
-<li>Categorical feature with multiple categories: A feature with a fixed number of possible values. An example is the feature &quot;floor type&quot;, with possible categories &quot;carpet&quot;, &quot;laminate&quot; and &quot;parquet&quot;. A solution to deal with many categories is the one-hot-encoding, meaning that each category has its own binary column. For a categorical feature with L categories, you only need L-1 columns, because the L-th column would have redundant information (e.g. when columns 1 to L-1 all have value 0 for one instance, we know that the categorical feature of this instance takes on category L). The interpretation for each category is then the same as the interpretation for binary features. Some languages, such as R, allow you to encode categorical features in various ways, as <a href="limo.html#cat-code">described later in this chapter</a>.</li>
-<li>Intercept <span class="math inline">\(\beta_0\)</span>: The intercept is the feature weight for the &quot;constant feature&quot;, which is always 1 for all instances. Most software packages automatically add this &quot;1&quot;-feature to estimate the intercept. The interpretation is: For an instance with all numerical feature values at zero and the categorical feature values at the reference categories, the model prediction is the intercept weight. The interpretation of the intercept is usually not relevant because instances with all features values at zero often make no sense. The interpretation is only meaningful when the features have been standardised (mean of zero, standard deviation of one). Then the intercept reflects the predicted outcome of an instance where all features are at their mean value.</li>
+<li>量的特徴量 (Numerical feature): 量的特徴量の値が1単位分増えると、推定結果が重み分変化します。量的特徴量の一例としては、家の大きさが挙げられます。</li>
+<li>バイナリ特徴量 (Binary feature): それぞれのインスタンスごとに、2つの値のどちらか一方のみを取る特徴量のことです。 そのような特徴量の一例として、庭付きの家であるかどうかが挙げられます。値のうちの1つは&quot;庭付きでない&quot;のような参照カテゴリ（プログラミング言語によっては 0 と符号化されます）として数えられます。ある特徴量の参照カテゴリが別のカテゴリに変化すると、推定結果は特徴量の重み分変化します。</li>
+<li>複数のカテゴリを含んだカテゴリカル特徴量: 取りうる値の数が固定された特徴量のことです。一例として、&quot;カーペット&quot;、&quot;ラミネート&quot;、&quot;寄木細工&quot;というカテゴリを取りうる”床の種類”という特徴量が挙げられます。 多くのカテゴリを扱う解決策の1つとして、one-hot エンコーディングというものがあります。one-hot エンコーディングとは、それぞれのカテゴリごとに 0, 1 の値を取るカラムを設定するエンコーディングの手法です。 L 個のカテゴリがあるカテゴリカル特徴量に対しては、L-1 個のカラムがあれば十分です。なぜならば、L 番目のカラムは冗長な情報だからです（例えば、ある1つのインスタンスに対して 1 番目から L-1 番目のカラムが全て 0 であるとき、そのインスタンスのカテゴリは L 番目のものであることが分かるからです）。 各カテゴリに対する解釈はバイナリ特徴量に対する解釈と同じです。 R のような言語では、<a href="#cat-code">この章で後ほど説明するような</a>様々な方法でカテゴリカル特徴量をエンコードすることが出来ます。</li>
+<li>切片<span class="math inline">\(\beta_0\)</span>: 切片は、全てのインスタンスについて常に1をとる”定数特徴量”に対する重みであるとみなすことが出来ます。 大抵のソフトウェアパッケージは切片を推定するために定数特徴量を自動的に追加します。 これに対する解釈は以下の通りです。 全ての量的特徴量が0であり、カテゴリカルデータの値が参照カテゴリであるインスタンスの場合には、モデルの予測値は切片の重みになります。 そのような、全ての特徴量の値が0であるようなインスタンスは多くの場合意味をなさないため、切片の解釈は通常関係がありません。 切片の解釈は、全ての特徴量が平均0、標準偏差1に標準化されているときにのみ意味があるものとなります。 そのような場合、切片は全ての特徴量が平均値であるようなインスタンスの予測結果を反映しています。 線形回帰モデルの特徴量の解釈は以下のテンプレートを用いて自動化できます。</li>
 </ul>
-<p>The interpretation of the features in the linear regression model can be automated by using following text templates.</p>
-<p><strong>Interpretation of a Numerical Feature</strong></p>
-<p>An increase of feature <span class="math inline">\(x_{k}\)</span> by one unit increases the prediction for y by <span class="math inline">\(\beta_k\)</span> units when all other feature values remain fixed.</p>
-<p><strong>Interpretation of a Categorical Feature</strong></p>
-<p>Changing feature <span class="math inline">\(x_{k}\)</span> from the reference category to the other category increases the prediction for y by <span class="math inline">\(\beta_{k}\)</span> when all other features remain fixed.</p>
-<p>Another important measurement for interpreting linear models is the R-squared measurement. R-squared tells you how much of the total variance of your target outcome is explained by the model. The higher R-squared, the better your model explains the data. The formula for calculating R-squared is:</p>
+<!--
+**Interpretation of a Numerical Feature**
+-->
+<p><strong>量的特徴量の解釈</strong></p>
+<!--
+An increase of feature $x_{k}$ by one unit increases the prediction for y by $\beta_k$ units when all other feature values remain fixed.
+-->
+<p>特徴量 <span class="math inline">\(x_{k}\)</span> が 1 だけ増えて、その他の特徴量は固定されている場合、予測結果 y は <span class="math inline">\(\beta_k\)</span> だけ増えます。</p>
+<!--
+**Interpretation of a Categorical Feature**
+-->
+<p><strong>カテゴリカル特徴量の解釈</strong></p>
+<!--
+Changing feature $x_{k}$ from the reference category to the other category increases the prediction for y by $\beta_{k}$ when all other features remain fixed.
+-->
+<p>特徴量 <span class="math inline">\(x_{k}\)</span> が参照カテゴリから他のカテゴリに変化し、その他の特徴量は固定されている場合、予測結果 y は <span class="math inline">\(\beta_{k}\)</span> だけ増えます。</p>
+<!--
+Another important measurement for interpreting linear models is the R-squared measurement.
+R-squared tells you how much of the total variance of your target outcome is explained by the model.
+The higher R-squared, the better your model explains the data.
+The formula for calculating R-squared is: 
+-->
+<p>もう1つの重要な指標は、決定係数 <span class="math inline">\(R^2\)</span> です。 <span class="math inline">\(R^2\)</span> はモデルによって、どの程度、目的値の全てのばらつきが説明されているかを教えてくれます。 <span class="math inline">\(R^2\)</span> が高くなればなるほど、そのモデルはデータを説明していることになります。 <span class="math inline">\(R^2\)</span> の計算方法は以下の通りです。</p>
 <p><span class="math display">\[R^2=1-SSE/SST\]</span></p>
-<p>SSE is the squared sum of the error terms:</p>
+<!--
+SSE is the squared sum of the error terms:
+-->
+<p>SSE は、二乗和誤差 (Squared Sum of the Error)です。</p>
 <p><span class="math display">\[SSE=\sum_{i=1}^n(y^{(i)}-\hat{y}^{(i)})^2\]</span></p>
-<p>SST is the squared sum of the data variance:</p>
+<!--
+SST is the squared sum of the data variance:
+-->
+<p>SST は、データの分散の二乗和です。</p>
 <p><span class="math display">\[SST=\sum_{i=1}^n(y^{(i)}-\bar{y})^2\]</span></p>
-<p>The SSE tells you how much variance remains after fitting the linear model, which is measured by the squared differences between the predicted and actual target values. SST is the total variance of the target outcome. R-squared tells you how much of your variance can be explained by the linear model. R-squared ranges between 0 for models where the model does not explain the data at all and 1 for models that explain all of the variance in your data.</p>
-<p>There is a catch, because R-squared increases with the number of features in the model, even if they do not contain any information about the target value at all. Therefore, it is better to use the adjusted R-squared, which accounts for the number of features used in the model. Its calculation is:</p>
+<!--
+The SSE tells you how much variance remains after fitting the linear model, which is measured by the squared differences between the predicted and actual target values.
+SST is the total variance of the target outcome.
+R-squared tells you how much of your variance can be explained by the linear model.
+R-squared ranges between 0 for models where the model does not explain the data at all and 1 for models that explain all of the variance in your data.
+-->
+<p>SSE は線形回帰で学習した後、どの程度のばらつきが残っているかを教えてくれます。これは、予測と実際の目的値の間の二乗誤差を計測することで求めます。 SST はデータ自体の目的値の全体の分散です。 <span class="math inline">\(R^2\)</span> は、線形モデルによって、どの程度ばらつきが説明できているのかを教えてくれます。 <span class="math inline">\(R^2\)</span> は 0 のとき、モデルはデータを全く説明できていないのに対して、1 のときは、データのばらつきを完全に説明できていることを意味します。</p>
+<!--
+There is a catch, because R-squared increases with the number of features in the model, even if they do not contain any information about the target value at all.
+Therefore, it is better to use the adjusted R-squared, which accounts for the number of features used in the model.
+Its calculation is:
+-->
+<p>実は、たとえ目的値に対する情報を全く含んでいない特徴量を付け加えたとしても、モデルの特徴量の数を増やすと <span class="math inline">\(R^2\)</span> の値を増加させることができます。 そのため、モデルで使われている特徴量の数を反映した、自由度調整済みの決定係数 <span class="math inline">\(R^2\)</span> を使用することが推奨されます。 その計算方法は次のようになります。</p>
 <p><span class="math display">\[\bar{R}^2=1-(1-R^2)\frac{n-1}{n-p-1}\]</span></p>
-<p>where p is the number of features and n the number of instances.</p>
-<p>It is not meaningful to interpret a model with very low (adjusted) R-squared, because such a model basically does not explain much of the variance. Any interpretation of the weights would not be meaningful.</p>
-<p><strong>Feature Importance</strong></p>
-<p>The importance of a feature in a linear regression model can be measured by the absolute value of its t-statistic. The t-statistic is the estimated weight scaled with its standard error.</p>
+<!--
+where p is the number of features and n the number of instances.
+-->
+<p>ただし、 p は特徴量の数で、n はインスタンスの数です。</p>
+<!--
+It is not meaningful to interpret a model with very low (adjusted) R-squared, because such a model basically does not explain much of the variance.
+Any interpretation of the weights would not be meaningful.
+-->
+<p>(自由度調整済み)決定係数 <span class="math inline">\(R^2\)</span> がとても低いモデルに対しては、そもそもモデルがデータをうまく説明できていないため、そのモデルの解釈をしても意味がありません。 どのように重みの解釈しても、意味がないでしょう。</p>
+<!--
+**Feature Importance**
+-->
+<p><strong>特徴量重要度 (Feature Importance)</strong></p>
+<!--
+The importance of a feature in a linear regression model can be measured by the absolute value of its t-statistic.
+The t-statistic is the estimated weight scaled with its standard error.
+-->
+<p>線形回帰モデルの特徴量の重要度は t 統計量の絶対値で計測できます。 t 統計量は標準誤差でスケーリングされた推定重みです。</p>
 <p><span class="math display">\[t_{\hat{\beta}_j}=\frac{\hat{\beta}_j}{SE(\hat{\beta}_j)}\]</span></p>
-<p>Let us examine what this formula tells us: The importance of a feature increases with increasing weight. This makes sense. The more variance the estimated weight has (= the less certain we are about the correct value), the less important the feature is. This also makes sense.</p>
+<!--
+Let us examine what this formula tells us:
+The importance of a feature increases with increasing weight.
+This makes sense.
+The more variance the estimated weight has (= the less certain we are about the correct value), the less important the feature is.
+This also makes sense.
+-->
+<p>この式は何を意味しているのでしょうか。 特徴量の重要度は、重みが増えると増加します。 これは理にかなっています。 推定された重みに、よりばらつきがあると (正しい値に関しての確証が小さくなる)、その特徴量に対する重要度は小さくなります。 これも理にかなっています。</p>
+<!--
+###  Example
+-->
 </div>
-<div id="example" class="section level3">
-<h3><span class="header-section-number">4.1.2</span> Example</h3>
-<p>In this example, we use the linear regression model to predict the <a href="bike-data.html#bike-data">number of rented bikes</a> on a particular day, given weather and calendar information. For the interpretation, we examine the estimated regression weights. The features consist of numerical and categorical features. For each feature, the table shows the estimated weight, the standard error of the estimate (SE), and the absolute value of the t-statistic (|t|).</p>
+<div id="例" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> 例</h3>
+<!-- In this example, we use the linear regression model to predict the [number of rented bikes](#bike-data) on a particular day, given weather and calendar information. -->
+<p>この例では、線形回帰モデルを使って、天気や日付情報が与えられたときの<a href="bike-data.html#bike-data">自転車レンタル台数</a> の予測をします。</p>
+<!-- For the interpretation, we examine the estimated regression weights.
+The features consist of numerical and categorical features.
+For each feature, the table shows the estimated weight, the standard error of the estimate (SE), and the absolute value of the t-statistic (|t|).-->
+<p>解釈のために、回帰の重みについて調べます。 特徴量は、量的特徴量、カテゴリカル特徴量のどちらもがあります。 各特徴に対して、推定された重み、推定値の標準誤差 (SE)、及び t 統計量の絶対値(|t|)を表に示します。</p>
 <table>
 <thead>
 <tr class="header">
@@ -486,41 +633,112 @@ You do not want strongly correlated features, because this messes up the estimat
 </tr>
 </tbody>
 </table>
-<p>Interpretation of a numerical feature (temperature): An increase of the temperature by 1 degree Celsius increases the predicted number of bicycles by 110.7, when all other features remain fixed.</p>
-<p>Interpretation of a categorical feature (&quot;weathersit&quot;): The estimated number of bicycles is -1901.5 lower when it is raining, snowing or stormy, compared to good weather -- again assuming that all other features do not change. When the weather is misty, the predicted number of bicycles is -379.4 lower compared to good weather, given all other features remain the same.</p>
-<p>All the interpretations always come with the footnote that &quot;all other features remain the same&quot;. This is because of the nature of linear regression models. The predicted target is a linear combination of the weighted features. The estimated linear equation is a hyperplane in the feature/target space (a simple line in the case of a single feature). The weights specify the slope (gradient) of the hyperplane in each direction. The good side is that the additivity isolates the interpretation of an individual feature effect from all other features. That is possible because all the feature effects (= weight times feature value) in the equation are combined with a plus. On the bad side of things, the interpretation ignores the joint distribution of the features. Increasing one feature, but not changing another, can lead to unrealistic or at least unlikely data points. For example increasing the number of rooms might be unrealistic without also increasing the size of a house.</p>
+<!-- Interpretation of a numerical feature (temperature):
+An increase of the temperature by 1 degree Celsius increases the predicted number of bicycles by 110.7, when all other features remain fixed.-->
+<p>量的特徴量の解釈について (temperature): 摂氏が1度上昇したとき、他の特徴量は全て同じとすると、自転車のレンタル台数の予測は 110.7 だけ増加します。</p>
+<!-- Interpretation of a categorical feature ("weathersit"):
+The estimated number of bicycles is -1901.5 lower when it is raining, snowing or stormy, compared to good weather -- again assuming that all other features do not change.
+When the weather is misty, the predicted number of bicycles is -379.4 lower compared to good weather, given all other features remain the same.-->
+<p>カテゴリカル特徴量の解釈について (weathersit): 自転車のレンタル数の予測値は、天気の良い日と比べて、雨や雪や嵐のとき -1901.5 だけ変化します。ただし、このときも他の特徴量は変化しないことを想定しています。 晴れた日に比べて、霧が濃い時は、自転車のレンタル台数の予測値は -379.4 だけ変化します。</p>
+<!--
+All the interpretations always come with the footnote that "all other features remain the same".
+This is because of the nature of linear regression models.
+The predicted target is a linear combination of the weighted features.
+The estimated linear equation is a hyperplane in the feature/target space (a simple line in the case of a single feature).
+The weights specify the slope (gradient) of the hyperplane in each direction.
+The good side is that the additivity isolates the interpretation of an individual feature effect from all other features.
+That is possible because all the feature effects (= weight times feature value) in the equation are combined with a plus. 
+On the bad side of things, the interpretation ignores the joint distribution of the features.
+Increasing one feature, but not changing another, can lead to unrealistic or at least unlikely data points.
+For example increasing the number of rooms might be unrealistic without also increasing the size of a house.
+-->
+<p>全ての解釈では必ず、&quot;他の特徴量は変化させない&quot;という脚注がついています。 これは、線形回帰モデルの性質です。 予測値は、重み付けされた特徴量の線形和です。 推定された線形方程式は特徴量/予測値空間の超平面です (単一の特徴量の場合単純な直線になります)。 重みは各方向の超平面の傾き(勾配)を指定しています。 良い点としては、加法性によって個々の特徴量の効果を他の全ての特徴量から分離できることです。 これが可能なのは、全ての特徴量の効果(重みと特徴量の積)が和によって組み合わされているからなのです。 悪い点としては、この解釈は特徴量の同時分布を無視していることです。 ある特徴量を増やすが、他の特徴量は変化させないとき、非現実的か好ましくないデータが得られるかもしれません。 例えば、家の大きさを広くすることなく、部屋の数を増加させることは現実的ではないでしょう。</p>
+<!-- ### Visual Interpretation -->
 </div>
-<div id="visual-interpretation" class="section level3">
-<h3><span class="header-section-number">4.1.3</span> Visual Interpretation</h3>
-<p>Various visualizations make the linear regression model easy and quick to grasp for humans.</p>
-<div id="weight-plot" class="section level4">
-<h4><span class="header-section-number">4.1.3.1</span> Weight Plot</h4>
-<p>The information of the weight table (weight and variance estimates) can be visualized in a weight plot. The following plot shows the results from the previous linear regression model.</p>
+<div id="可視化による解釈" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> 可視化による解釈</h3>
+<!--
+Various visualizations make the linear regression model easy and quick to grasp for humans.! -->
+<p>種々の可視化手法を用いることで、線形回帰モデルを簡単かつ素早く把握できます。</p>
+<!-- #### Weight Plot -->
+<div id="重みプロット-weight-plot" class="section level4">
+<h4><span class="header-section-number">4.1.3.1</span> 重みプロット (Weight Plot)</h4>
+<!--
+The information of the weight table (weight and variance estimates) can be visualized in a weight plot.
+The following plot shows the results from the previous linear regression model. 
+-->
+<p>重みの情報（重みと分散の推定値）は重みプロットを用いることで簡単に可視化できます。 以下のプロットでは、先ほどの線形回帰の結果を可視化しています。</p>
+<!--
+fig.cap="Weights are displayed as points and the 95% confidence intervals as lines."
+-->
 <div class="figure"><span id="fig:linear-weights-plot"></span>
-<img src="images/linear-weights-plot-1.png" alt="Weights are displayed as points and the 95% confidence intervals as lines." width="1050" />
+<img src="images/linear-weights-plot-1.png" alt="重みが点として、95%信頼区間が線として表示されている。" width="1050" />
 <p class="caption">
-FIGURE 4.1: Weights are displayed as points and the 95% confidence intervals as lines.
+FIGURE 4.1: 重みが点として、95%信頼区間が線として表示されている。
 </p>
 </div>
-<p>The weight plot shows that rainy/snowy/stormy weather has a strong negative effect on the predicted number of bikes. The weight of the working day feature is close to zero and zero is included in the 95% interval, which means that the effect is not statistically significant. Some confidence intervals are very short and the estimates are close to zero, yet the feature effects were statistically significant. Temperature is one such candidate. The problem with the weight plot is that the features are measured on different scales. While for the weather the estimated weight reflects the difference between good and rainy/stormy/snowy weather, for temperature it only reflects an increase of 1 degree Celsius. You can make the estimated weights more comparable by scaling the features (zero mean and standard deviation of one) before fitting the linear model.</p>
+<!--The weight plot shows that rainy/snowy/stormy weather has a strong negative effect on the predicted number of bikes.
+The weight of the working day feature is close to zero and zero is included in the 95% interval, which means that the effect is not statistically significant.
+Some confidence intervals are very short and the estimates are close to zero, yet the feature effects were statistically significant.
+Temperature is one such candidate.
+The problem with the weight plot is that the features are measured on different scales.
+While for the weather the estimated weight reflects the difference between good and rainy/stormy/snowy weather, for temperature it only reflects an increase of 1 degree Celsius.
+You can make the estimated weights more comparable by scaling the features (zero mean and standard deviation of one) before fitting the linear model.-->
+<p>重みプロットは、自転車のレンタル台数を予測するにあたって、雨、雪、嵐といった天気は大きな負の影響を及ぼすことを示しています。 稼働日数の重みはほぼ 0 になっており、かつ 95% 信頼区間に 0 は含まれています。従って、この特徴量は統計的に重要でないことが示されます。 気温についても同様のことが言える可能性があります。 重みプロットにおける問題は、各特徴量が異なるスケールで計測されているということです。 天気の推定された重みは晴れ、雨、嵐、雪のそれぞれの天気の違いを反映していますが、気温は 1 度の変化による影響を反映しています。 特徴をスケーリングすることで、線形回帰モデルを学習させる前に、推定された重みを比較できるようになります。（例えば標準化など）</p>
+<!-- #### Effect Plot -->
 </div>
-<div id="effect-plot" class="section level4">
-<h4><span class="header-section-number">4.1.3.2</span> Effect Plot</h4>
-<p>The weights of the linear regression model can be more meaningfully analyzed when they are multiplied by the actual feature values. The weights depend on the scale of the features and will be different if you have a feature that measures e.g. a person's height and you switch from meter to centimeter. The weight will change, but the actual effects in your data will not. It is also important to know the distribution of your feature in the data, because if you have a very low variance, it means that almost all instances have similar contribution from this feature. The effect plot can help you understand how much the combination of weight and feature contributes to the predictions in your data. Start by calculating the effects, which is the weight per feature times the feature value of an instance:</p>
+<div id="影響力プロット-effect-plot" class="section level4">
+<h4><span class="header-section-number">4.1.3.2</span> 影響力プロット (Effect Plot)</h4>
+<!--
+The weights of the linear regression model can be more meaningfully analyzed when they are multiplied by the actual feature values.
+The weights depend on the scale of the features and will be different if you have a feature that measures e.g. a person's height and you switch from meter to centimeter.
+The weight will change, but the actual effects in your data will not.
+It is also important to know the distribution of your feature in the data, because if you have a very low variance, it means that almost all instances have similar contribution from this feature.
+The effect plot can help you understand how much the combination of weight and feature contributes to the predictions in your data.
+Start by calculating the effects, which is the weight per feature times the feature value of an instance:
+-->
+<p>線形回帰モデルの重みは特徴量と掛け合わせることで、より意味のある分析になり得ます。重みは特徴量のスケールに依存し、例えば身長の単位をメートルからセンチメートルに変更すればまた異なる重みになります。 ただ、重みは変化したとしても、重みが実際にデータに及ぼす影響は変化しません。 また特徴量の分布を知ることは重要です。なぜなら、ある特徴量の分散が非常に低い場合、ほとんどのインスタンスがその特徴量から同じような影響を受けることを意味するからです。 影響力プロットは、重みと特徴の組み合わせがどれほど予測に貢献しているかを理解する助けになります。 影響力を計算するのは、各特徴ごとの重みと、特徴量をインスタンスごとに掛け合わせます。</p>
 <p><span class="math display">\[\text{effect}_{j}^{(i)}=w_{j}x_{j}^{(i)}\]</span></p>
-<p>The effects can be visualized with boxplots. A box in a boxplot contains the effect range for half of your data (25% to 75% effect quantiles). The vertical line in the box is the median effect, i.e. 50% of the instances have a lower and the other half a higher effect on the prediction. The horizontal lines extend to <span class="math inline">\(\pm1.5\text{IQR}/\sqrt{n}\)</span>, with IQR being the inter quartile range (75% quantile minus 25% quantile). The dots are outliers. The categorical feature effects can be summarized in a single boxplot, compared to the weight plot, where each category has its own row.</p>
+<!--
+The effects can be visualized with boxplots.
+A box in a boxplot contains the effect range for half of your data (25% to 75% effect quantiles).
+The vertical line in the box is the median effect, i.e. 50% of the instances have a lower and the other half a higher effect on the prediction.
+The horizontal lines extend to $\pm1.5\text{IQR}/\sqrt{n}$, with IQR being the inter quartile range (75% quantile minus 25% quantile).
+The dots are outliers.
+The categorical feature effects can be summarized in a single boxplot, compared to the weight plot, where each category has its own row.
+-->
+<p>影響力は箱ひげ図を用いて可視化できます。 箱ひげ図内の各箱は、全データのうち半分のデータに対する影響力の範囲を表します（第1四分位点から第3四分位点まで）。箱内の縦線は中央値を表します。つまり、予測時に半数のインスタンスはこれよりも低い影響力をもち、もう半数は高い影響力を持つということです。 横線は <span class="math inline">\(\pm1.5\text{IQR}/\sqrt{n}\)</span> まで引かれていて、IQR は四分位範囲（inter quartile range）（第3四分位数から第1四分数を引いたもの）のことです。</p>
+<!-- fig.cap="The feature effect plot shows the distribution of effects (= feature value times feature weight) across the data per feature." -->
 <div class="figure"><span id="fig:linear-effects"></span>
-<img src="images/linear-effects-1.png" alt="The feature effect plot shows the distribution of effects (= feature value times feature weight) across the data per feature." width="1050" />
+<img src="images/linear-effects-1.png" alt="特徴量の影響力プロットは、特徴量ごとのデータに対する影響 (特徴量と重みの積) の分布を示している。" width="1050" />
 <p class="caption">
-FIGURE 4.2: The feature effect plot shows the distribution of effects (= feature value times feature weight) across the data per feature.
+FIGURE 4.2: 特徴量の影響力プロットは、特徴量ごとのデータに対する影響 (特徴量と重みの積) の分布を示している。
 </p>
 </div>
-<p>The largest contributions to the expected number of rented bicycles comes from the temperature feature and the days feature, which captures the trend of bike rentals over time. The temperature has a broad range of how much it contributes to the prediction. The day trend feature goes from zero to large positive contributions, because the first day in the dataset (01.01.2011) has a very small trend effect and the estimated weight for this feature is positive (4.93). This means that the effect increases with each day and is highest for the last day in the dataset (31.12.2012). Note that for effects with a negative weight, the instances with a positive effect are those that have a negative feature value. For example, days with a high negative effect of windspeed are the ones with high wind speeds.</p>
+<!--
+The largest contributions to the expected number of rented bicycles comes from the temperature feature and the days feature, which captures the trend of bike rentals over time.
+The temperature has a broad range of how much it contributes to the prediction.
+The day trend feature goes from zero to large positive contributions, because the first day in the dataset (01.01.2011) has a very small trend effect and the estimated weight for this feature is positive (4.93).
+This means that the effect increases with each day and is highest for the last day in the dataset (31.12.2012).
+Note that for effects with a negative weight, the instances with a positive effect are those that have a negative feature value.
+For example, days with a high negative effect of windspeed are the ones with high wind speeds.
+-->
+<p>図から、自転車のレンタル台数の予測に大きく寄与している特徴量は、気温と日数の特徴であることがわかります。この特徴量は、自転車レンタルのトレンドを捉えていると言えます。 気温が予測にどれだけ寄与しているかの範囲はかなり広くなっています。日数の特徴量は 0 から大きな正の値に渡って寄与していることがわかります。これは、データセット内での初日（2011/1/1）ではトレンドの影響は非常に小さく、かつ推測された重みは正の値 (4.93) だったからです。これが意味するのは、影響力は毎日上昇し続け、データセット内の最終日（2013/12/31）に最大値を迎えるということです。 重みが負の値のとき、あるインスタンスが正の影響力を持っていたとすると、特徴量が負であるということに注意してください。 例えば、風速が大きく負の影響力を持っているような日は、風速がかなり強い日であるということです。</p>
+<!--
+### Explain Individual Predictions
+-->
 </div>
 </div>
-<div id="explain-individual-predictions" class="section level3">
-<h3><span class="header-section-number">4.1.4</span> Explain Individual Predictions</h3>
-<p>How much has each feature of an instance contributed to the prediction? This can be answered by computing the effects for this instance. An interpretation of instance-specific effects only makes sense in comparison to the distribution of the effect for each feature. We want to explain the prediction of the linear model for the 6-th instance from the bicycle dataset. The instance has the following feature values.</p>
+<div id="個々の予測に対する説明" class="section level3">
+<h3><span class="header-section-number">4.1.4</span> 個々の予測に対する説明</h3>
+<!--
+How much has each feature of an instance contributed to the prediction?
+This can be answered by computing the effects for this instance.
+An interpretation of instance-specific effects only makes sense in comparison to the distribution of the effect for each feature.
+We want to explain the prediction of the linear model for the 6-th instance from the bicycle dataset.
+The instance has the following feature values.
+-->
+<p>あるインスタンスの各特徴量はどれだけ予測に貢献したのでしょうか。 この疑問への回答はインスタンスに対する効果を計算することで得られます。 インスタンスに固有の効果の解釈は各特徴量に関する効果の分布を比較することでのみ意味を持ちます。 自転車データセットの6番目のインスタンスに対する線形モデルの予測について説明します。 このインスタンスは以下の特徴量をもっています。</p>
 <table>
 <thead>
 <tr class="header">
@@ -579,53 +797,192 @@ FIGURE 4.2: The feature effect plot shows the distribution of effects (= feature
 </tr>
 </tbody>
 </table>
-<p>To obtain the feature effects of this instance, we have to multiply its feature values by the corresponding weights from the linear regression model. For the value &quot;WORKING DAY&quot; of feature &quot;workingday&quot;, the effect is, 124.9. For a temperature of 1.6 degrees Celsius, the effect is 177.6. We add these individual effects as crosses to the effect plot, which shows us the distribution of the effects in the data. This allows us to compare the individual effects with the distribution of effects in the data.</p>
+<!--
+To obtain the feature effects of this instance, we have to multiply its feature values by the corresponding weights from the linear regression model.
+For the value "WORKING DAY" of feature "workingday", the effect is, 124.9.
+For a temperature of 1.6 degrees Celsius, the effect is 177.6.
+We add these individual effects as crosses to the effect plot, which shows us the distribution of the effects in the data.
+This allows us to compare the individual effects with the distribution of effects in the data. 
+-->
+<p>このインスタンスの特徴量の効果を知るため、その特徴量と、それに対応する線形回帰モデルの重みの積を求めなくてはなりません。 特徴量 &quot;workingday&quot; の値 &quot;WORKING DAY&quot; に対する効果は 124.9 となります。 気温 1.6 度の効果は 177.6 です。 これらの個々の効果をデータ全体への効果の分布を示す図にX印としてプロットします。 これにより個々の効果とデータ全体の効果が比較できます。</p>
+<!--
+fig.cap="The effect plot for one instance shows the effect distribution and highlights the effects of the instance of interest.
+-->
 <div class="figure"><span id="fig:linear-effects-single"></span>
-<img src="images/linear-effects-single-1.png" alt="The effect plot for one instance shows the effect distribution and highlights the effects of the instance of interest." width="1050" />
+<img src="images/linear-effects-single-1.png" alt="1つのインスタンスに対する影響力プロットは、影響力の分布を示し、興味のあるインスタンスの効果のハイライトする。" width="1050" />
 <p class="caption">
-FIGURE 4.3: The effect plot for one instance shows the effect distribution and highlights the effects of the instance of interest.
+FIGURE 4.3: 1つのインスタンスに対する影響力プロットは、影響力の分布を示し、興味のあるインスタンスの効果のハイライトする。
 </p>
 </div>
-<p>If we average the predictions for the training data instances, we get an average of 4504. In comparison, the prediction of the 6-th instance is small, since only 1571 bicycle rents are predicted. The effect plot reveals the reason why. The boxplots show the distributions of the effects for all instances of the dataset, the crosses show the effects for the 6-th instance. The 6-th instance has a low temperature effect because on this day the temperature was 2 degrees, which is low compared to most other days (and remember that the weight of the temperature feature is positive). Also, the effect of the trend feature &quot;days_since_2011&quot; is small compared to the other data instances because this instance is from early 2011 (5 days) and the trend feature also has a positive weight.</p>
+<!--
+If we average the predictions for the training data instances, we get an average of 4504。
+In comparison, the prediction of the 6-th instance is small, since only 1571 bicycle rents are predicted。
+The effect plot reveals the reason why。
+The boxplots show the distributions of the effects for all instances of the dataset, the crosses show the effects for the 6-th instance.
+The 6-th instance has a low temperature effect because on this day the temperature was 2 degrees, which is low compared to most other days (and remember that the weight of the temperature feature is positive)。
+Also, the effect of the trend feature "days_since_2011" is small compared to the other data instances because this instance is from early 2011 (5 days) and the trend feature also has a positive weight。
+-->
+<p>訓練データのインスタンスに対する予測を平均すると、4504 の平均となります. それと比較すると、6 番目のインスタンスによる自転車の台数予測は 1571 しかないことから、小さいといえます。 影響力プロットはその理由を明らかにしています。 箱ひげ図はデータセットにおける全インスタンスの効果分布を表し、X印は 6 番目のインスタンスの効果を示しています。 6 番目のインスタンスは、この日の気温が 2 度であり、その他のほとんどの日と比べて気温が低いことから、気温による影響は小さいと言えます ( 気温に対する重みは正であることに注意)。 また、トレンド特徴量である &quot;days_since_2011&quot; の効果も、このインスタンスが2011初頭(5 days) のものであることと、トレンドに対する重みが正であることから、影響力は小さいと言えます。</p>
+<!-- ### Encoding of Categorical Features {#cat-code} -->
 </div>
-<div id="cat-code" class="section level3">
-<h3><span class="header-section-number">4.1.5</span> Encoding of Categorical Features</h3>
-<p>There are several ways to encode a categorical feature, and the choice influences the interpretation of the weights.</p>
-<p>The standard in linear regression models is treatment coding, which is sufficient in most cases. Using different encodings boils down to creating different (design) matrices from a single column with the categorical feature. This section presents three different encodings, but there are many more. The example used has six instances and a categorical feature with three categories. For the first two instances, the feature takes category A; for instances three and four, category B; and for the last two instances, category C.</p>
+<div id="カテゴリカル特徴量のエンコーディング" class="section level3">
+<h3><span class="header-section-number">4.1.5</span> カテゴリカル特徴量のエンコーディング</h3>
+<!-- There are several ways to encode a categorical feature, and the choice influences the interpretation of the weights.-->
+<p>カテゴリカル特徴量をエンコーディングする方法は複数あり、選択した方法によって重みの解釈に影響が生じます。</p>
+<!-- The standard in linear regression models is treatment coding, which is sufficient in most cases.
+Using different encodings boils down to creating different (design) matrices from a single column with the categorical feature.-->
+<p>線形回帰モデルにおいて標準となるのは treatment coding で、これは多くの場合で十分に機能します。 異なるエンコーディングの手法は1つのカテゴリカル特徴量から異なる計画行列を作り出すことに相当します。</p>
+<!-- This section presents three different encodings, but there are many more.
+The example used has six instances and a categorical feature with three categories.
+For the first two instances, the feature takes category A;
+for instances three and four, category B;
+and for the last two instances, category C.-->
+<p>この節では3つの異なるエンコーディングの方法について紹介しますが、他にも多くの手法が知られています。 使用する例では、6つのインスタンスと3つのカテゴリを持つカテゴリカル特徴量を持ちます。 最初の2つのインスタンスでは、特徴量はカテゴリAを取ります。 3番目、4番目のインスタンスでは、カテゴリーBを取り、最後2つのインスタンスはカテゴリーCを取ります。</p>
+<!-- **Treatment coding** -->
 <p><strong>Treatment coding</strong></p>
-<p>In treatment coding, the weight per category is the estimated difference in the prediction between the corresponding category and the reference category. The intercept of the linear model is the mean of the reference category (when all other features remain the same). The first column of the design matrix is the intercept, which is always 1. Column two indicates whether instance i is in category B, column three indicates whether it is in category C. There is no need for a column for category A, because then the linear equation would be overspecified and no unique solution for the weights can be found. It is sufficient to know that an instance is neither in category B or C.</p>
-<p>Feature matrix: <span class="math display">\[\begin{pmatrix}1&amp;0&amp;0\\1&amp;0&amp;0\\1&amp;1&amp;0\\1&amp;1&amp;0\\1&amp;0&amp;1\\1&amp;0&amp;1\\\end{pmatrix}\]</span></p>
+<!-- In treatment coding, the weight per category is the estimated difference in the prediction between the corresponding category and the reference category.
+The intercept of the linear model is the mean of the reference category (when all other features remain the same). -->
+<p>treatment coding では、カテゴリごとの重みは、対応するカテゴリと参照カテゴリ間の予測の差の推定値とします。 線形モデルの切片は参照カテゴリの平均値です。(他の全ての特徴量が変わらない場合)</p>
+<!-- The first column of the design matrix is the intercept, which is always 1.
+Column two indicates whether instance i is in category B, column three indicates whether it is in category C. -->
+<p>計画行列の最初の列は切片で常に 1 となります。 2 列目はインスタンス i がカテゴリ B かどうかを示しており、3 列目はインスタンスがカテゴリ C かどうかを示しています。</p>
+<!-- There is no need for a column for category A, because then the linear equation would be overspecified and no unique solution for the weights can be found.
+It is sufficient to know that an instance is neither in category B or C. -->
+<p>線形方程式が過剰になり、重みに対して一意な解を見つけることができなくなるため、カテゴリ A に対する列は必要ありません。 インスタンスがカテゴリ B にも C にも属していないことがわかれば十分なのです。</p>
+<!-- Feature matrix: -->
+<p>Feature matrix:</p>
+<p><span class="math display">\[\begin{pmatrix}1&amp;0&amp;0\\1&amp;0&amp;0\\1&amp;1&amp;0\\1&amp;1&amp;0\\1&amp;0&amp;1\\1&amp;0&amp;1\\\end{pmatrix}\]</span></p>
+<!-- **Effect coding** -->
 <p><strong>Effect coding</strong></p>
-<p>The weight per category is the estimated y-difference from the corresponding category to the overall mean (given all other features are zero or the reference category). The first column is used to estimate the intercept. The weight <span class="math inline">\(\beta_{0}\)</span> associated with the intercept represents the overall mean and <span class="math inline">\(\beta_{1}\)</span>, the weight for column two, is the difference between the overall mean and category B. The total effect of category B is <span class="math inline">\(\beta_{0}+\beta_{1}\)</span>. The interpretation for category C is equivalent. For the reference category A, <span class="math inline">\(-(\beta_{1}+\beta_{2})\)</span> is the difference to the overall mean and <span class="math inline">\(\beta_{0}-(\beta_{1}+\beta_{2})\)</span> the overall effect.</p>
-<p>Feature matrix: <span class="math display">\[\begin{pmatrix}1&amp;-1&amp;-1\\1&amp;-1&amp;-1\\1&amp;1&amp;0\\1&amp;1&amp;0\\1&amp;0&amp;1\\1&amp;0&amp;1\\\end{pmatrix}\]</span></p>
+<!--
+The weight per category is the estimated y-difference from the corresponding category to the overall mean (given all other features are zero or the reference category).
+The first column is used to estimate the intercept.
+-->
+<p>カテゴリごとの重みは、対応するカテゴリと全体の平均 (他のすべての特徴がゼロまたは参照カテゴリである場合) の推定された y の差です。 最初の列は切片を推定するために用いられます。</p>
+<!--
+The weight $\beta_{0}$ associated with the intercept represents the overall mean and $\beta_{1}$, the weight for column two, is the difference between the overall mean and category B.
+The total effect of category B is $\beta_{0}+\beta_{1}$.
+-->
+<p>切片に関連づけられた重み <span class="math inline">\(\beta_{0}\)</span> は、全体の平均を表し、2 列目に対する重み <span class="math inline">\(\beta_{1}\)</span> は、 全体の平均とカテゴリ B との間の差となります。 したがって、カテゴリ B の全体の効果は <span class="math inline">\(\beta_{0}+\beta_{1}\)</span> となります。</p>
+<!--
+The interpretation for category C is equivalent.
+For the reference category A, $-(\beta_{1}+\beta_{2})$ is the difference to the overall mean and $\beta_{0}-(\beta_{1}+\beta_{2})$ the overall effect.
+-->
+<p>カテゴリ C に対する解釈も同様です。 参照カテゴリ A に対しては、<span class="math inline">\(-(\beta_{1}+\beta_{2})\)</span>が全体の平均を表し、<span class="math inline">\(\beta_{0}-(\beta_{1}+\beta_{2})\)</span>が全体の影響となります。</p>
+<!-- Feature matrix: -->
+<p>Feature matrix:</p>
+<p><span class="math display">\[\begin{pmatrix}1&amp;-1&amp;-1\\1&amp;-1&amp;-1\\1&amp;1&amp;0\\1&amp;1&amp;0\\1&amp;0&amp;1\\1&amp;0&amp;1\\\end{pmatrix}\]</span></p>
+<!-- **Dummy coding** -->
 <p><strong>Dummy coding</strong></p>
-<p>The <span class="math inline">\(\beta\)</span> per category is the estimated mean value of y for each category (given all other feature values are zero or the reference category). Note that the intercept has been omitted here so that a unique solution can be found for the linear model weights.</p>
-<p>Feature matrix: <span class="math display">\[\begin{pmatrix}1&amp;0&amp;0\\1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;1\\\end{pmatrix}\]</span></p>
-<p>If you want to dive a little deeper into the different encodings of categorical features, checkout <a href="http://stats.idre.ucla.edu/r/library/r-library-contrast-coding-systems-for-categorical-variables/">this overview webpage</a> and <a href="http://heidiseibold.github.io/page7/">this blog post</a>.</p>
+<!--
+The $\beta$ per category is the estimated mean value of y for each category (given all other feature values are zero or the reference category).
+Note that the intercept has been omitted here so that a unique solution can be found for the linear model weights.
+-->
+<p>カテゴリごとの <span class="math inline">\(\beta\)</span> は各カテゴリに対する推定された y の平均値です。（その他の特徴量はゼロもしくは、参照カテゴリ） ただし、切片は、線形モデルの重みに対して一意な解が見つけられるように、省略されていることに注意してください。</p>
+<!-- Feature matrix: -->
+<p>Feature matrix:</p>
+<p><span class="math display">\[\begin{pmatrix}1&amp;0&amp;0\\1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;1\\\end{pmatrix}\]</span></p>
+<!-- If you want to dive a little deeper into the different encodings of categorical features, checkout [this overview webpage](http://stats.idre.ucla.edu/r/library/r-library-contrast-coding-systems-for-categorical-variables/) and
+[this blog post](http://heidiseibold.github.io/page7/). -->
+<p>カテゴリカル特徴量に対するエンコーディング手法にさらに興味がある場合は次のサイトをご覧ください。 <a href="http://stats.idre.ucla.edu/r/library/r-library-contrast-coding-systems-for-categorical-variables/">概要サイト</a>、 <a href="http://heidiseibold.github.io/page7/">ブログ</a>.</p>
+<!--
+### Do Linear Models Create Good Explanations?
+-->
 </div>
-<div id="do-linear-models-create-good-explanations" class="section level3">
-<h3><span class="header-section-number">4.1.6</span> Do Linear Models Create Good Explanations?</h3>
-<p>Judging by the attributes that constitute a good explanation, as presented <a href="#good-explanation">in the Human-Friendly Explanations chapter</a>, linear models do not create the best explanations. They are contrastive, but the reference instance is a data point where all numerical features are zero and the categorical features are at their reference categories. This is usually an artificial, meaningless instance that is unlikely to occur in your data or reality. There is an exception: If all numerical features are mean centered (feature minus mean of feature) and all categorical features are effect coded, the reference instance is the data point where all the features take on the mean feature value. This might also be a non-existent data point, but it might at least be more likely or more meaningful. In this case, the weights times the feature values (feature effects) explain the contribution to the predicted outcome contrastive to the &quot;mean-instance&quot;. Another aspect of a good explanation is selectivity, which can be achieved in linear models by using less features or by training sparse linear models. But by default, linear models do not create selective explanations. Linear models create truthful explanations, as long as the linear equation is an appropriate model for the relationship between features and outcome. The more non-linearities and interactions there are, the less accurate the linear model will be and the less truthful the explanations become. Linearity makes the explanations more general and simpler. The linear nature of the model, I believe, is the main factor why people use linear models for explaining relationships.</p>
+<div id="線形モデルは良い説明を与えるか" class="section level3">
+<h3><span class="header-section-number">4.1.6</span> 線形モデルは良い説明を与えるか?</h3>
+<!--
+Judging by the attributes that constitute a good explanation, as presented [in the Human-Friendly Explanations chapter](#good-explanation), linear models do not create the best explanations.
+They are contrastive, but the reference instance is a data point where all numerical features are zero and the categorical features are at their reference categories.
+This is usually an artificial, meaningless instance that is unlikely to occur in your data or reality.
+-->
+<p><a href="#good-explanation">人間に優しい説明</a>の章で説明した、良い説明とは何かという観点で見ると、線形モデルは最良の説明を与えるというわけではありません。 これらは対照的ですが、参照インスタンスは全ての量的特徴量が0でありカテゴリカル特徴量は参照カテゴリであるようなデータ点となります。 これは大抵、現実的には起こりそうもない人工的で意味のないインスタンスです。</p>
+<!--
+There is an exception:
+If all numerical features are mean centered (feature minus mean of feature) and all categorical features are effect coded, the reference instance is the data point where all the features take on the mean feature value.
+This might also be a non-existent data point, but it might at least be more likely or more meaningful.
+-->
+<p>例外もあります： すべての量的特徴量が平均化（特徴量から特徴量の平均値を引いた値）されており、すべてのカテゴリ特徴量がエンコードされている場合、参照インスタンスは、すべての特徴量が平均値を取るデータ点となります。 これは実在しないデータ点かもしれませんが、少なくとも可能性が高く意味があるものかもしれません。</p>
+<!--
+In this case, the weights times the feature values (feature effects) explain the contribution to the predicted outcome contrastive to the "mean-instance".
+Another aspect of a good explanation is selectivity, which can be achieved in linear models by using less features or by training sparse linear models.
+But by default, linear models do not create selective explanations.
+-->
+<p>この場合、特徴量に重みを掛けたもの（feature effects）は、&quot;平均的なインスタンス&quot;と比較したときの予測結果への貢献度を説明しています。 良い説明のもう1つの側面は選択性であり、線形モデルにはおいては、より少ない特徴量を使うこと、もしくはスパースな線形モデルを用いることが挙げられます。 線形モデル自体では選択性を持つ説明は達成できないことに注意してください。</p>
+<!--
+Linear models create truthful explanations, as long as the linear equation is an appropriate model for the relationship between features and outcome.
+The more non-linearities and interactions there are, the less accurate the linear model will be and the less truthful the explanations become.
+Linearity makes the explanations more general and simpler.
+The linear nature of the model, I believe, is the main factor why people use linear models for explaining relationships.
+-->
+<p>線形モデルは、線形方程式が特徴量と出力結果の関係を表す適切なモデルであるかぎり、正しい説明を与えます。 非線形性や交互作用が多いほど、線形モデルは正確ではなくなり、説明も真実味の欠如が起こります。 線形性はモデルに対する説明を、より一般的に単純にします。 人々が関係性を説明するために線形モデルを使う主な理由は、モデルの線形の性質によるものだと考えられます。</p>
+<!--
+###  Sparse Linear Models {#sparse-linear}
+-->
 </div>
 <div id="sparse-linear" class="section level3">
-<h3><span class="header-section-number">4.1.7</span> Sparse Linear Models</h3>
-<p>The examples of the linear models that I have chosen all look nice and neat, do they not? But in reality you might not have just a handful of features, but hundreds or thousands. And your linear regression models? Interpretability goes downhill. You might even find yourself in a situation where there are more features than instances, and you cannot fit a standard linear model at all. The good news is that there are ways to introduce sparsity (= few features) into linear models.</p>
+<h3><span class="header-section-number">4.1.7</span> スパースな線形モデル</h3>
+<!--
+The examples of the linear models that I have chosen all look nice and neat, do they not?
+But in reality you might not have just a handful of features, but hundreds or thousands.
+And your linear regression models?
+Interpretability goes downhill.
+You might even find yourself in a situation where there are more features than instances, and you cannot fit a standard linear model at all.
+The good news is that there are ways to introduce sparsity (= few features) into linear models.
+-->
+<p>私が選んだ線形モデルの例は、どれも上手くいきましたよね？ しかし実際のデータでは、ほんの一握りの特徴量ではなく、何百、何千の特徴量を持ってるかもしれません。 そのときに、線形回帰モデルはどうなるでしょうか。 解釈性は下がります。 インスタンスよりも特徴量が多く、標準的な線形モデルでは学習ができないという状況に陥ってしまうこともあるかもしれません。 このような時は、線形モデルにスパース性（＝少数の特徴量）を導入することで解決できます。</p>
+<!--
+#### Lasso {#lasso}
+-->
 <div id="lasso" class="section level4">
 <h4><span class="header-section-number">4.1.7.1</span> Lasso</h4>
-<p>Lasso is an automatic and convenient way to introduce sparsity into the linear regression model. Lasso stands for &quot;least absolute shrinkage and selection operator&quot; and, when applied in a linear regression model, performs feature selection and regularization of the selected feature weights. Let us consider the minimization problem that the weights optimize:</p>
+<!--
+Lasso is an automatic and convenient way to introduce sparsity into the linear regression model.
+Lasso stands for "least absolute shrinkage and selection operator" and, when applied in a linear regression model, performs feature selection and regularization of the selected feature weights.
+Let us consider the minimization problem that the weights optimize:
+-->
+<p>Lasso は、線形回帰モデルにスパース性を導入するための便利な方法です。 Lasso は「least absolute shrinkage and selection operator」の略で、線形回帰モデルに適用すると、特徴量の選択と選択された特徴量の重みの正則化を行います。 以下の重みを最適化する最小化問題を考えてみましょう。</p>
 <p><span class="math display">\[min_{\boldsymbol{\beta}}\left(\frac{1}{n}\sum_{i=1}^n(y^{(i)}-x_i^T\boldsymbol{\beta})^2\right)\]</span></p>
-<p>Lasso adds a term to this optimization problem.</p>
+<!--
+Lasso adds a term to this optimization problem.
+-->
+<p>Lasso は、この最適化問題に新しく項を付け加えます。</p>
 <p><span class="math display">\[min_{\boldsymbol{\beta}}\left(\frac{1}{n}\sum_{i=1}^n(y^{(i)}-x_{i}^T\boldsymbol{\beta})^2+\lambda||\boldsymbol{\beta}||_1\right)\]</span></p>
-<p>The term <span class="math inline">\(||\boldsymbol{\beta}||_1\)</span>, the L1-norm of the feature vector, leads to a penalization of large weights. Since the L1-norm is used, many of the weights receive an estimate of 0 and the others are shrunk. The parameter lambda (<span class="math inline">\(\lambda\)</span>) controls the strength of the regularizing effect and is usually tuned by cross-validation. Especially when lambda is large, many weights become 0. The feature weights can be visualized as a function of the penalty term lambda. Each feature weight is represented by a curve in the following figure.</p>
+<!--
+The term $||\boldsymbol{\beta}||_1$, the L1-norm of the feature vector,  leads to a penalization of large weights.
+Since the L1-norm is used, many of the weights receive an estimate of 0 and the others are shrunk.
+The parameter lambda ($\lambda$) controls the strength of the regularizing effect and is usually tuned by cross-validation.
+Especially when lambda is large, many weights become 0.
+The feature weights can be visualized as a function of the penalty term lambda.
+Each feature weight is represented by a curve in the following figure.
+-->
+<p><span class="math inline">\(||\boldsymbol{\beta}||_1\)</span> の項は、重みに対する L1 ノルムであり、大きな重みに対するペナルティの役割があります。 L1 ノルムを使用しているため、多くの重みは 0 となり、他の重みは小さくなります。 パラメータ <span class="math inline">\(\lambda\)</span> は正則化効果の強さを制御し、通常はクロスバリデーションによって調整されます。 特に <span class="math inline">\(\lambda\)</span> が大きいと、多くの重みが 0 になります。 特徴量の重みは、ペナルティ項 <span class="math inline">\(\lambda\)</span> の関数として可視化できます。 各特徴量の重みは、次の図のように曲線で表すことができます。</p>
+<!--
+fig.cap="With increasing penalty of the weights, fewer and fewer features receive a non-zero weight estimate. These curves are also called regularization paths. The number above the plot is the number of non-zero weights."
+-->
 <div class="figure"><span id="fig:lasso-path"></span>
-<img src="images/lasso-path-1.png" alt="With increasing penalty of the weights, fewer and fewer features receive a non-zero weight estimate. These curves are also called regularization paths. The number above the plot is the number of non-zero weights." width="1050" />
+<img src="images/lasso-path-1.png" alt="重みに対するペナルティが大きくなるにつれて、非ゼロの重みを持つ特徴量が少なくなっていきます。これらの曲線は解パス図とも呼ばれます。プロットの上の数字は、非ゼロの重みの数です。" width="1050" />
 <p class="caption">
-FIGURE 4.4: With increasing penalty of the weights, fewer and fewer features receive a non-zero weight estimate. These curves are also called regularization paths. The number above the plot is the number of non-zero weights.
+FIGURE 4.4: 重みに対するペナルティが大きくなるにつれて、非ゼロの重みを持つ特徴量が少なくなっていきます。これらの曲線は解パス図とも呼ばれます。プロットの上の数字は、非ゼロの重みの数です。
 </p>
 </div>
-<p>What value should we choose for lambda? If you see the penalization term as a tuning parameter, then you can find the lambda that minimizes the model error with cross-validation. You can also consider lambda as a parameter to control the interpretability of the model. The larger the penalization, the fewer features are present in the model (because their weights are zero) and the better the model can be interpreted.</p>
-<p><strong>Example with Lasso</strong></p>
-<p>We will predict bicycle rentals using Lasso. We set the number of features we want to have in the model beforehand. Let us first set the number to 2 features:</p>
+<!--
+What value should we choose for lambda?
+If you see the penalization term as a tuning parameter, then you can find the lambda that minimizes the model error with cross-validation.
+You can also consider lambda as a parameter to control the interpretability of the model.
+The larger the penalization, the fewer features are present in the model (because their weights are zero) and the better the model can be interpreted.
+-->
+<p><span class="math inline">\(\lambda\)</span> にはどのような値を選ぶべきでしょうか？ ペナルティ項をチューニングできるパラメータとして捉えれば、クロスバリデーションでモデル誤差を最小化する <span class="math inline">\(\lambda\)</span> を求めることができます。 <span class="math inline">\(\lambda\)</span> をモデルの解釈性を制御するパラメータとして考えることもできます。 ペナルティが大きければ大きいほど、モデルに存在する特徴量が少なくなり（重みがゼロになるので）、モデルの解釈性が良くなります。</p>
+<!--
+**Example with Lasso**
+-->
+<p><strong>Lassoを使用した例</strong></p>
+<!--
+We will predict bicycle rentals using Lasso. 
+We set the number of features we want to have in the model beforehand.
+Let us first set the number to 2 features:
+-->
+<p>Lasso を使ってレンタル自転車の数を予測してみましょう。 モデルに持たせたい特徴量の数を事前に設定しておきます。 まずは特徴量の数を 2 に設定してみましょう。</p>
 <table>
 <thead>
 <tr class="header">
@@ -684,8 +1041,14 @@ FIGURE 4.4: With increasing penalty of the weights, fewer and fewer features rec
 </tr>
 </tbody>
 </table>
-<p>The first two features with non-zero weights in the Lasso path are temperature (&quot;temp&quot;) and the time trend (&quot;days_since_2011&quot;).</p>
-<p>Now, let us select 5 features:</p>
+<!--
+The first two features with non-zero weights in the Lasso path are temperature ("temp") and the time trend ("days_since_2011").
+-->
+<p>Lasso により重みが 0 にならなかったのは2つの特徴量は、温度（&quot;temp&quot;）と時間トレンド（&quot;days_since_2011&quot;）です。</p>
+<!--
+Now, let us select 5 features:
+-->
+<p>では、次に、5つの特徴量を選択してみましょう。</p>
 <table>
 <thead>
 <tr class="header">
@@ -744,34 +1107,117 @@ FIGURE 4.4: With increasing penalty of the weights, fewer and fewer features rec
 </tr>
 </tbody>
 </table>
-<p>Note that the weights for &quot;temp&quot; and &quot;days_since_2011&quot; differ from the model with two features. The reason for this is that by decreasing lambda even features that are already &quot;in&quot; the model are penalized less and may get a larger absolute weight. The interpretation of the Lasso weights corresponds to the interpretation of the weights in the linear regression model. You only need to pay attention to whether the features are standardized or not, because this affects the weights. In this example, the features were standardized by the software, but the weights were automatically transformed back for us to match the original feature scales.</p>
-<p><strong>Other methods for sparsity in linear models</strong></p>
-<p>A wide spectrum of methods can be used to reduce the number of features in a linear model.</p>
-<p>Pre-processing methods:</p>
+<!--
+Note that the weights for "temp" and "days_since_2011" differ from the model with two features.
+The reason for this is that by decreasing lambda even features that are already "in" the model are penalized less and may get a larger absolute weight.
+The interpretation of the Lasso weights corresponds to the interpretation of the weights in the linear regression model.
+You only need to pay attention to whether the features are standardized or not, because this affects the weights.
+In this example, the features were standardized by the software, but the weights were automatically transformed back for us to match the original feature scales.
+-->
+<p>&quot;temp&quot; と &quot;days_since_2011&quot; の重みが、先に示した2つの特徴量を持つモデルとは異なることに注意してください。 この理由は、<span class="math inline">\(\lambda\)</span> を減少させることで、2つの特徴量を持つモデルで選択された特徴量であっても、ペナルティが少なくなり、より大きな重みが得られる可能性があるからです。 Lasso の重みの解釈は、線形回帰モデルの重みの解釈に対応しています。 重みに影響するため、特徴量が標準化されているかどうかに注意を払う必要があります。 この例では、特徴量はソフトウェアによって標準化されていますが、重みは元の特徴量の尺度と一致するように自動的に変換されています。</p>
+<!--
+**Other methods for sparsity in linear models**
+-->
+<p><strong>線形モデルのスパース性のための他の方法</strong></p>
+<!--
+A wide spectrum of methods can be used to reduce the number of features in a linear model.
+-->
+<p>線形モデルの特徴量の数を減らすために、さまざまな手法があります。</p>
+<!--
+Pre-processing methods:
+
+- Manually selected features:
+You can always use expert knowledge to select or discard some features.
+The big drawback is that it cannot be automated and you need to have access to someone who understands the data.
+- Univariate selection:
+An example is the correlation coefficient.
+You only consider features that exceed a certain threshold of correlation between the feature and the target.
+The disadvantage is that it only considers the features individually.
+Some features might not show a correlation until the linear model has accounted for some other features.
+Those ones you will miss with univariate selection methods.
+-->
+<p><strong>前処理に関する方法</strong></p>
 <ul>
-<li>Manually selected features: You can always use expert knowledge to select or discard some features. The big drawback is that it cannot be automated and you need to have access to someone who understands the data.</li>
-<li>Univariate selection: An example is the correlation coefficient. You only consider features that exceed a certain threshold of correlation between the feature and the target. The disadvantage is that it only considers the features individually. Some features might not show a correlation until the linear model has accounted for some other features. Those ones you will miss with univariate selection methods.</li>
+<li>手動による特徴量選択: 専門家の知識・ドメイン知識を使うことで、特徴量の選択ができます。 自動化できないのが大きな欠点で、データを理解している人と協力する必要があります。</li>
+<li>単変量選択: 例としては、相関係数があります。 特徴量と目的変数の相関関係が一定の閾値を超えた特徴量のみを選択します。 デメリットは、特徴量を単体でしか考えていないことです。 いくつかの特徴量は、線形モデルが他の特徴量を説明するまで相関を示さないかもしれません。 こういった場合、単変量選択法では見逃してしまいます。</li>
 </ul>
-<p>Step-wise methods:</p>
+<!--
+Step-wise methods:
+
+- Forward selection:
+Fit the linear model with one feature.
+Do this with each feature.
+Select the model that works best (e.g. highest R-squared).
+Now again, for the remaining features, fit different versions of your model by adding each feature to your current best model.
+Select the one that performs best.
+Continue until some criterion is reached, such as the maximum number of features in the model.
+- Backward selection:
+Similar to forward selection.
+But instead of adding features, start with the model that contains all features and try out which feature you have to remove to get the highest performance increase.
+Repeat this until some stopping criterion is reached.
+
+I recommend using Lasso, because it can be automated, considers all features simultaneously, and can be controlled via lambda.
+It also works for the [logistic regression model](#logistic) for classification.
+-->
+<p><strong>段階的な方法</strong></p>
 <ul>
-<li>Forward selection: Fit the linear model with one feature. Do this with each feature. Select the model that works best (e.g. highest R-squared). Now again, for the remaining features, fit different versions of your model by adding each feature to your current best model. Select the one that performs best. Continue until some criterion is reached, such as the maximum number of features in the model.</li>
-<li>Backward selection: Similar to forward selection. But instead of adding features, start with the model that contains all features and try out which feature you have to remove to get the highest performance increase. Repeat this until some stopping criterion is reached.</li>
+<li>Forward selection: 1つの特徴量で線形モデルをフィットします。 これを特徴量ごとに行います。 最も性能の良いモデルを選択してください (例: 決定係数 <span class="math inline">\(R^2\)</span> が最大)。 ここでもう一度、残りの特徴量について、現在の最良のモデルに新たな特徴量を1つ追加することで、異なるバージョンのモデルを学習させます。 そして、最も性能の良いモデルを選びます。 この作業をモデル内の特徴量の最大数など、ある基準に達するまで続けましょう。</li>
+<li>Backward selection: この手法は Forward selection と似ています。 しかし、特徴量を追加するのではなく、すべての特徴量を含むモデルから始めて、どの特徴を削除すれば最高の性能向上が得られるかを試してみましょう。 これを、ある停止基準に達するまで繰り返します。</li>
 </ul>
-<p>I recommend using Lasso, because it can be automated, considers all features simultaneously, and can be controlled via lambda. It also works for the <a href="logistic.html#logistic">logistic regression model</a> for classification.</p>
+<p>Lasso を使うことをお勧めする理由は、すべての特徴量を同時に考慮し、<span class="math inline">\(\lambda\)</span> を変更することで制御できるからです。 また、Lassoは、分類のための<a href="logistic.html#logistic">ロジスティック回帰モデル</a>でも使用できます。</p>
+<!--
+### Advantages
+-->
 </div>
 </div>
-<div id="advantages" class="section level3">
-<h3><span class="header-section-number">4.1.8</span> Advantages</h3>
-<p>The modeling of the predictions as a <strong>weighted sum</strong> makes it transparent how predictions are produced. And with Lasso we can ensure that the number of features used remains small.</p>
-<p>Many people use linear regression models. This means that in many places it is <strong>accepted</strong> for predictive modeling and doing inference. There is a <strong>high level of collective experience and expertise</strong>, including teaching materials on linear regression models and software implementations. Linear regression can be found in R, Python, Java, Julia, Scala, Javascript, ...</p>
-<p>Mathematically, it is straightforward to estimate the weights and you have a <strong>guarantee to find optimal weights</strong> (given all assumptions of the linear regression model are met by the data).</p>
-<p>Together with the weights you get confidence intervals, tests, and solid statistical theory. There are also many extensions of the linear regression model (see <a href="extend-lm.html#extend-lm">chapter on GLM, GAM and more</a>).</p>
+<div id="長所" class="section level3">
+<h3><span class="header-section-number">4.1.8</span> 長所</h3>
+<!--
+The modeling of the predictions as a **weighted sum** makes it transparent how predictions are produced.
+And with Lasso we can ensure that the number of features used remains small.
+
+Many people use linear regression models.
+This means that in many places it is **accepted** for predictive modeling and doing inference.
+There is a **high level of collective experience and expertise**, including teaching materials on linear regression models and   software implementations.
+Linear regression can be found in R, Python, Java, Julia, Scala, Javascript, ...
+
+Mathematically, it is straightforward to estimate the weights and you have a **guarantee to find optimal weights** (given all assumptions of the linear regression model are met by the data).
+
+Together with the weights you get confidence intervals, tests, and solid statistical theory. 
+There are also many extensions of the linear regression model (see [chapter on GLM, GAM and more](#extend-lm)).
+-->
+<p>予測値を<strong>重み付き和</strong>としてモデル化することで、予測値がどのように生成されるかの透明性を高くできます。 そして、Lasso を使用することで、使用される特徴量の数を減らすことができます。</p>
+<p>多くの人が線形回帰モデルを使います。 これは、多くの場所で、予測モデルや推論実行のために線形モデルが受け入れられていることを意味します。 線形回帰に関して、<strong>高度な経験をもつ専門家</strong>がいたり、教材やソフトウェアなども豊富にあります。 線形回帰はR、Python、Java、Julia、Scala、Javascript、その他多数で使用できます。</p>
+<p>数学的には、重みを推定するのは簡単で、最適な重みを見つけることができることが保証されています（線形回帰モデルのすべての仮定がデータによって満たされている場合）。</p>
+<p>重みと一緒に、信頼区間、検定、強固な統計理論を得ることができます。 線形回帰モデルの拡張もたくさん知られています（<a href="extend-lm.html#extend-lm">GLM,GAMなどの章</a>を参照）。</p>
+<!--
+### Disadvantages
+-->
 </div>
-<div id="disadvantages" class="section level3">
-<h3><span class="header-section-number">4.1.9</span> Disadvantages</h3>
-<p>Linear regression models can only represent linear relationships, i.e. a weighted sum of the input features. Each <strong>nonlinearity or interaction has to be hand-crafted</strong> and explicitly given to the model as an input feature.</p>
-<p>Linear models are also often <strong>not that good regarding predictive performance</strong>, because the relationships that can be learned are so restricted and usually oversimplify how complex reality is.</p>
-<p>The interpretation of a weight <strong>can be unintuitive</strong> because it depends on all other features. A feature with high positive correlation with the outcome y and another feature might get a negative weight in the linear model, because, given the other correlated feature, it is negatively correlated with y in the high-dimensional space. Completely correlated features make it even impossible to find a unique solution for the linear equation. An example: You have a model to predict the value of a house and have features like number of rooms and size of the house. House size and number of rooms are highly correlated: the bigger a house is, the more rooms it has. If you take both features into a linear model, it might happen, that the size of the house is the better predictor and gets a large positive weight. The number of rooms might end up getting a negative weight, because, given that a house has the same size, increasing the number of rooms could make it less valuable or the linear equation becomes less stable, when the correlation is too strong.</p>
+<div id="短所" class="section level3">
+<h3><span class="header-section-number">4.1.9</span> 短所</h3>
+<!--
+Linear regression models can only represent linear relationships, i.e. a weighted sum of the input features.
+Each **nonlinearity or interaction has to be hand-crafted** and explicitly given to the model as an input feature.
+
+Linear models are also often **not that good regarding predictive performance**, because the relationships that can be learned are so restricted and usually oversimplify how complex reality is.
+-->
+<p>線形回帰モデルは、線形関係しか表現できません。 非線形性や交互作用を考慮するには、手作業で新たに特徴量を作成する必要があります。</p>
+<p>線形モデルは、学習できる関係が非常に制限されており、実際には複雑な関係を単純化しすぎているため、<strong>予測性能に関してもあまり良くない</strong>ことが多いです。</p>
+<!--
+The interpretation of a weight **can be unintuitive** because it depends on all other features.
+A feature with high positive correlation with the outcome y and another feature might get a negative weight in the linear model, because, given the other correlated feature, it is negatively correlated with y in the high-dimensional space.
+Completely correlated features make it even impossible to find a unique solution for the linear equation.
+-->
+<p>重みの解釈は、他のすべての特徴量に依存しているため、<strong>直感的ではない</strong>場合があります。 出力 y と他の特徴量に対して強い正の相関のある特徴量は、線形モデルにおいては、負の重みとなる可能性があります。なぜなら、他にも相関のある特徴量がある場合、高次元空間において y と負の相関があるためです。 完全に相関のある特徴量がある場合は、線形方程式の一意の解を見つけることが不可能になります。</p>
+<!--
+An example:
+You have a model to predict the value of a house and have features like number of rooms and size of the house.
+House size and number of rooms are highly correlated: the bigger a house is, the more rooms it has.
+If you take both features into a linear model, it might happen, that the size of the house is the better predictor and gets a large positive weight.
+The number of rooms might end up getting a negative weight, because, given that a house has the same size, increasing the number of rooms could make it less valuable or the linear equation becomes less stable, when the correlation is too strong.
+-->
+<p>例: 家の価値を予測するモデルがあり、部屋数や広さなどの特徴量があります。 家の大きさと部屋の数は非常に強い相関関係があります。つまり、家が大きければ大きいほど、部屋数が多くなります。 線形モデルに両方の特徴量を使用した場合、家のサイズがより良い予測指標となり、大きな正の重みを取得することが起こるかもしれません。 そうすると、同じ広さの家でも、部屋数を増やすと価値が下がったり、相関関係が強すぎると線形方程式が安定しなくなったりするので、部屋の数に対する重みは負になるかもしれません。</p>
 
 <!--{pagebreak}-->
 </div>
