@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.2 Logistic Regression | Interpretable Machine Learning</title>
+  <title>4.2 ロジスティック回帰 | Interpretable Machine Learning</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.2 Logistic Regression | Interpretable Machine Learning" />
+  <meta property="og:title" content="4.2 ロジスティック回帰 | Interpretable Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="christophM/interpretable-ml-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.2 Logistic Regression | Interpretable Machine Learning" />
+  <meta name="twitter:title" content="4.2 ロジスティック回帰 | Interpretable Machine Learning" />
   
   <meta name="twitter:description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Christoph Molnar" />
 
 
-<meta name="date" content="2021-01-05" />
+<meta name="date" content="2021-01-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,13 +150,13 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="4.1.8" data-path="limo.html"><a href="limo.html#長所"><i class="fa fa-check"></i><b>4.1.8</b> 長所</a></li>
 <li class="chapter" data-level="4.1.9" data-path="limo.html"><a href="limo.html#短所"><i class="fa fa-check"></i><b>4.1.9</b> 短所</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>4.2</b> Logistic Regression</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="logistic.html"><a href="logistic.html#what-is-wrong-with-linear-regression-for-classification"><i class="fa fa-check"></i><b>4.2.1</b> What is Wrong with Linear Regression for Classification?</a></li>
-<li class="chapter" data-level="4.2.2" data-path="logistic.html"><a href="logistic.html#theory"><i class="fa fa-check"></i><b>4.2.2</b> Theory</a></li>
-<li class="chapter" data-level="4.2.3" data-path="logistic.html"><a href="logistic.html#interpretation"><i class="fa fa-check"></i><b>4.2.3</b> Interpretation</a></li>
-<li class="chapter" data-level="4.2.4" data-path="logistic.html"><a href="logistic.html#example"><i class="fa fa-check"></i><b>4.2.4</b> Example</a></li>
-<li class="chapter" data-level="4.2.5" data-path="logistic.html"><a href="logistic.html#advantages-and-disadvantages"><i class="fa fa-check"></i><b>4.2.5</b> Advantages and Disadvantages</a></li>
-<li class="chapter" data-level="4.2.6" data-path="logistic.html"><a href="logistic.html#software"><i class="fa fa-check"></i><b>4.2.6</b> Software</a></li>
+<li class="chapter" data-level="4.2" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>4.2</b> ロジスティック回帰</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="logistic.html"><a href="logistic.html#線形回帰モデルを分類のために使うと何がいけないか"><i class="fa fa-check"></i><b>4.2.1</b> 線形回帰モデルを分類のために使うと何がいけないか。</a></li>
+<li class="chapter" data-level="4.2.2" data-path="logistic.html"><a href="logistic.html#理論"><i class="fa fa-check"></i><b>4.2.2</b> 理論</a></li>
+<li class="chapter" data-level="4.2.3" data-path="logistic.html"><a href="logistic.html#解釈性"><i class="fa fa-check"></i><b>4.2.3</b> 解釈性</a></li>
+<li class="chapter" data-level="4.2.4" data-path="logistic.html"><a href="logistic.html#例-1"><i class="fa fa-check"></i><b>4.2.4</b> 例</a></li>
+<li class="chapter" data-level="4.2.5" data-path="logistic.html"><a href="logistic.html#長所と短所"><i class="fa fa-check"></i><b>4.2.5</b> 長所と短所</a></li>
+<li class="chapter" data-level="4.2.6" data-path="logistic.html"><a href="logistic.html#ソフトウェア"><i class="fa fa-check"></i><b>4.2.6</b> ソフトウェア</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="extend-lm.html"><a href="extend-lm.html"><i class="fa fa-check"></i><b>4.3</b> GLM, GAM and more</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="extend-lm.html"><a href="extend-lm.html#glm"><i class="fa fa-check"></i><b>4.3.1</b> Non-Gaussian Outcomes - GLMs</a></li>
@@ -164,15 +164,15 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="4.3.3" data-path="extend-lm.html"><a href="extend-lm.html#gam"><i class="fa fa-check"></i><b>4.3.3</b> Nonlinear Effects - GAMs</a></li>
 <li class="chapter" data-level="4.3.4" data-path="extend-lm.html"><a href="extend-lm.html#advantages"><i class="fa fa-check"></i><b>4.3.4</b> Advantages</a></li>
 <li class="chapter" data-level="4.3.5" data-path="extend-lm.html"><a href="extend-lm.html#disadvantages"><i class="fa fa-check"></i><b>4.3.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="4.3.6" data-path="extend-lm.html"><a href="extend-lm.html#software-1"><i class="fa fa-check"></i><b>4.3.6</b> Software</a></li>
+<li class="chapter" data-level="4.3.6" data-path="extend-lm.html"><a href="extend-lm.html#software"><i class="fa fa-check"></i><b>4.3.6</b> Software</a></li>
 <li class="chapter" data-level="4.3.7" data-path="extend-lm.html"><a href="extend-lm.html#more-lm-extension"><i class="fa fa-check"></i><b>4.3.7</b> Further Extensions</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="tree.html"><a href="tree.html"><i class="fa fa-check"></i><b>4.4</b> Decision Tree</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="tree.html"><a href="tree.html#interpretation-1"><i class="fa fa-check"></i><b>4.4.1</b> Interpretation</a></li>
-<li class="chapter" data-level="4.4.2" data-path="tree.html"><a href="tree.html#example-1"><i class="fa fa-check"></i><b>4.4.2</b> Example</a></li>
+<li class="chapter" data-level="4.4.1" data-path="tree.html"><a href="tree.html#interpretation"><i class="fa fa-check"></i><b>4.4.1</b> Interpretation</a></li>
+<li class="chapter" data-level="4.4.2" data-path="tree.html"><a href="tree.html#example"><i class="fa fa-check"></i><b>4.4.2</b> Example</a></li>
 <li class="chapter" data-level="4.4.3" data-path="tree.html"><a href="tree.html#advantages-1"><i class="fa fa-check"></i><b>4.4.3</b> Advantages</a></li>
 <li class="chapter" data-level="4.4.4" data-path="tree.html"><a href="tree.html#disadvantages-1"><i class="fa fa-check"></i><b>4.4.4</b> Disadvantages</a></li>
-<li class="chapter" data-level="4.4.5" data-path="tree.html"><a href="tree.html#software-2"><i class="fa fa-check"></i><b>4.4.5</b> Software</a></li>
+<li class="chapter" data-level="4.4.5" data-path="tree.html"><a href="tree.html#software-1"><i class="fa fa-check"></i><b>4.4.5</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="rules.html"><a href="rules.html"><i class="fa fa-check"></i><b>4.5</b> Decision Rules</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="rules.html"><a href="rules.html#learn-rules-from-a-single-feature-oner"><i class="fa fa-check"></i><b>4.5.1</b> Learn Rules from a Single Feature (OneR)</a></li>
@@ -184,7 +184,7 @@ window.cookieconsent.initialise({
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="rulefit.html"><a href="rulefit.html"><i class="fa fa-check"></i><b>4.6</b> RuleFit</a><ul>
 <li class="chapter" data-level="4.6.1" data-path="rulefit.html"><a href="rulefit.html#interpretation-and-example"><i class="fa fa-check"></i><b>4.6.1</b> Interpretation and Example</a></li>
-<li class="chapter" data-level="4.6.2" data-path="rulefit.html"><a href="rulefit.html#theory-1"><i class="fa fa-check"></i><b>4.6.2</b> Theory</a></li>
+<li class="chapter" data-level="4.6.2" data-path="rulefit.html"><a href="rulefit.html#theory"><i class="fa fa-check"></i><b>4.6.2</b> Theory</a></li>
 <li class="chapter" data-level="4.6.3" data-path="rulefit.html"><a href="rulefit.html#advantages-3"><i class="fa fa-check"></i><b>4.6.3</b> Advantages</a></li>
 <li class="chapter" data-level="4.6.4" data-path="rulefit.html"><a href="rulefit.html#disadvantages-3"><i class="fa fa-check"></i><b>4.6.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="4.6.5" data-path="rulefit.html"><a href="rulefit.html#software-and-alternative"><i class="fa fa-check"></i><b>4.6.5</b> Software and Alternative</a></li>
@@ -209,7 +209,7 @@ window.cookieconsent.initialise({
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="ale.html"><a href="ale.html"><i class="fa fa-check"></i><b>5.3</b> Accumulated Local Effects (ALE) Plot</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="ale.html"><a href="ale.html#motivation-and-intuition"><i class="fa fa-check"></i><b>5.3.1</b> Motivation and Intuition</a></li>
-<li class="chapter" data-level="5.3.2" data-path="ale.html"><a href="ale.html#theory-2"><i class="fa fa-check"></i><b>5.3.2</b> Theory</a></li>
+<li class="chapter" data-level="5.3.2" data-path="ale.html"><a href="ale.html#theory-1"><i class="fa fa-check"></i><b>5.3.2</b> Theory</a></li>
 <li class="chapter" data-level="5.3.3" data-path="ale.html"><a href="ale.html#estimation"><i class="fa fa-check"></i><b>5.3.3</b> Estimation</a></li>
 <li class="chapter" data-level="5.3.4" data-path="ale.html"><a href="ale.html#examples-2"><i class="fa fa-check"></i><b>5.3.4</b> Examples</a></li>
 <li class="chapter" data-level="5.3.5" data-path="ale.html"><a href="ale.html#advantages-6"><i class="fa fa-check"></i><b>5.3.5</b> Advantages</a></li>
@@ -226,7 +226,7 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="5.4.7" data-path="interaction.html"><a href="interaction.html#alternatives"><i class="fa fa-check"></i><b>5.4.7</b> Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="feature-importance.html"><a href="feature-importance.html"><i class="fa fa-check"></i><b>5.5</b> Permutation Feature Importance</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="feature-importance.html"><a href="feature-importance.html#theory-3"><i class="fa fa-check"></i><b>5.5.1</b> Theory</a></li>
+<li class="chapter" data-level="5.5.1" data-path="feature-importance.html"><a href="feature-importance.html#theory-2"><i class="fa fa-check"></i><b>5.5.1</b> Theory</a></li>
 <li class="chapter" data-level="5.5.2" data-path="feature-importance.html"><a href="feature-importance.html#feature-importance-data"><i class="fa fa-check"></i><b>5.5.2</b> Should I Compute Importance on Training or Test Data?</a></li>
 <li class="chapter" data-level="5.5.3" data-path="feature-importance.html"><a href="feature-importance.html#example-and-interpretation"><i class="fa fa-check"></i><b>5.5.3</b> Example and Interpretation</a></li>
 <li class="chapter" data-level="5.5.4" data-path="feature-importance.html"><a href="feature-importance.html#advantages-8"><i class="fa fa-check"></i><b>5.5.4</b> Advantages</a></li>
@@ -234,11 +234,11 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="5.5.6" data-path="feature-importance.html"><a href="feature-importance.html#software-and-alternatives-3"><i class="fa fa-check"></i><b>5.5.6</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="global.html"><a href="global.html"><i class="fa fa-check"></i><b>5.6</b> Global Surrogate</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="global.html"><a href="global.html#theory-4"><i class="fa fa-check"></i><b>5.6.1</b> Theory</a></li>
-<li class="chapter" data-level="5.6.2" data-path="global.html"><a href="global.html#example-3"><i class="fa fa-check"></i><b>5.6.2</b> Example</a></li>
+<li class="chapter" data-level="5.6.1" data-path="global.html"><a href="global.html#theory-3"><i class="fa fa-check"></i><b>5.6.1</b> Theory</a></li>
+<li class="chapter" data-level="5.6.2" data-path="global.html"><a href="global.html#example-2"><i class="fa fa-check"></i><b>5.6.2</b> Example</a></li>
 <li class="chapter" data-level="5.6.3" data-path="global.html"><a href="global.html#advantages-9"><i class="fa fa-check"></i><b>5.6.3</b> Advantages</a></li>
 <li class="chapter" data-level="5.6.4" data-path="global.html"><a href="global.html#disadvantages-9"><i class="fa fa-check"></i><b>5.6.4</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.6.5" data-path="global.html"><a href="global.html#software-3"><i class="fa fa-check"></i><b>5.6.5</b> Software</a></li>
+<li class="chapter" data-level="5.6.5" data-path="global.html"><a href="global.html#software-2"><i class="fa fa-check"></i><b>5.6.5</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="5.7" data-path="lime.html"><a href="lime.html"><i class="fa fa-check"></i><b>5.7</b> Local Surrogate (LIME)</a><ul>
 <li class="chapter" data-level="5.7.1" data-path="lime.html"><a href="lime.html#lime-for-tabular-data"><i class="fa fa-check"></i><b>5.7.1</b> LIME for Tabular Data</a></li>
@@ -275,7 +275,7 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="5.10.9" data-path="shap.html"><a href="shap.html#clustering-shap-values"><i class="fa fa-check"></i><b>5.10.9</b> Clustering SHAP values</a></li>
 <li class="chapter" data-level="5.10.10" data-path="shap.html"><a href="shap.html#advantages-13"><i class="fa fa-check"></i><b>5.10.10</b> Advantages</a></li>
 <li class="chapter" data-level="5.10.11" data-path="shap.html"><a href="shap.html#disadvantages-13"><i class="fa fa-check"></i><b>5.10.11</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.10.12" data-path="shap.html"><a href="shap.html#software-4"><i class="fa fa-check"></i><b>5.10.12</b> Software</a></li>
+<li class="chapter" data-level="5.10.12" data-path="shap.html"><a href="shap.html#software-3"><i class="fa fa-check"></i><b>5.10.12</b> Software</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>6</b> Example-Based Explanations</a><ul>
@@ -291,7 +291,7 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="6.2.2" data-path="adversarial.html"><a href="adversarial.html#the-cybersecurity-perspective"><i class="fa fa-check"></i><b>6.2.2</b> The Cybersecurity Perspective</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="proto.html"><a href="proto.html"><i class="fa fa-check"></i><b>6.3</b> Prototypes and Criticisms</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="proto.html"><a href="proto.html#theory-5"><i class="fa fa-check"></i><b>6.3.1</b> Theory</a></li>
+<li class="chapter" data-level="6.3.1" data-path="proto.html"><a href="proto.html#theory-4"><i class="fa fa-check"></i><b>6.3.1</b> Theory</a></li>
 <li class="chapter" data-level="6.3.2" data-path="proto.html"><a href="proto.html#examples-6"><i class="fa fa-check"></i><b>6.3.2</b> Examples</a></li>
 <li class="chapter" data-level="6.3.3" data-path="proto.html"><a href="proto.html#advantages-15"><i class="fa fa-check"></i><b>6.3.3</b> Advantages</a></li>
 <li class="chapter" data-level="6.3.4" data-path="proto.html"><a href="proto.html#disadvantages-15"><i class="fa fa-check"></i><b>6.3.4</b> Disadvantages</a></li>
@@ -346,73 +346,205 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="logistic" class="section level2">
-<h2><span class="header-section-number">4.2</span> Logistic Regression</h2>
-<p>Logistic regression models the probabilities for classification problems with two possible outcomes. It's an extension of the linear regression model for classification problems.</p>
-<div id="what-is-wrong-with-linear-regression-for-classification" class="section level3">
-<h3><span class="header-section-number">4.2.1</span> What is Wrong with Linear Regression for Classification?</h3>
-<p>The linear regression model can work well for regression, but fails for classification. Why is that? In case of two classes, you could label one of the classes with 0 and the other with 1 and use linear regression. Technically it works and most linear model programs will spit out weights for you. But there are a few problems with this approach:</p>
-<p>A linear model does not output probabilities, but it treats the classes as numbers (0 and 1) and fits the best hyperplane (for a single feature, it is a line) that minimizes the distances between the points and the hyperplane. So it simply interpolates between the points, and you cannot interpret it as probabilities.</p>
-<p>A linear model also extrapolates and gives you values below zero and above one. This is a good sign that there might be a smarter approach to classification.</p>
-<p>Since the predicted outcome is not a probability, but a linear interpolation between points, there is no meaningful threshold at which you can distinguish one class from the other. A good illustration of this issue has been given on <a href="https://stats.stackexchange.com/questions/22381/why-not-approach-classification-through-regression">Stackoverflow</a>.</p>
-<p>Linear models do not extend to classification problems with multiple classes. You would have to start labeling the next class with 2, then 3, and so on. The classes might not have any meaningful order, but the linear model would force a weird structure on the relationship between the features and your class predictions. The higher the value of a feature with a positive weight, the more it contributes to the prediction of a class with a higher number, even if classes that happen to get a similar number are not closer than other classes.</p>
+<h2><span class="header-section-number">4.2</span> ロジスティック回帰</h2>
+<!--
+Logistic regression models the probabilities for classification problems with two possible outcomes.
+It's an extension of the linear regression model for classification problems.
+-->
+<p>ロジスティック回帰は2つの可能な結果を伴う分類問題の確率をモデル化します。これは線形回帰モデルの分類問題への拡張です。</p>
+<!--
+### What is Wrong with Linear Regression for Classification?
+-->
+<div id="線形回帰モデルを分類のために使うと何がいけないか" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> 線形回帰モデルを分類のために使うと何がいけないか。</h3>
+<!--
+The  linear regression model can work well for regression, but fails for classification.
+Why is that?
+In case of two classes, you could label one of the classes with 0 and the other with 1 and use linear regression.
+Technically it works and most linear model programs will spit out weights for you.
+But there are a few problems with this approach:
+
+A linear model does not output probabilities, but it treats the classes as numbers (0 and 1) and fits the best hyperplane (for a single feature, it is a line) that minimizes the distances between the points and the hyperplane.
+So it simply interpolates between the points, and you cannot interpret it as probabilities.
+
+A linear model also extrapolates and gives you values below zero and above one.
+This is a good sign that there might be a smarter approach to classification.
+
+Since the predicted outcome is not a probability, but a linear interpolation between points, there is no meaningful threshold at which you can distinguish one class from the other.
+A good illustration of this issue has been given on [Stackoverflow](https://stats.stackexchange.com/questions/22381/why-not-approach-classification-through-regression).
+
+Linear models do not extend to classification problems with multiple classes.
+You would have to start labeling the next class with 2, then 3, and so on.
+The classes might not have any meaningful order, but the linear model would force a weird structure on the relationship between the features and your class predictions.
+The higher the value of a feature with a positive weight, the more it contributes to the prediction of a class with a higher number, even if classes that happen to get a similar number are not closer than other classes.
+-->
+<p>線形回帰モデルは回帰問題ではうまく働きますが、分類問題ではうまくいきません。 なぜでしょうか？ 2クラス分類の場合、あるクラスを 0、もう一方を 1 とラベル付けし、線形回帰モデルを使ったとしましょう。 技術的にはうまく働き、線形モデルは重みを計算します。 しかし、この方法にはいくらか問題があります。</p>
+<p>線形モデルは確率を出力せず、クラスを数字として扱い、点との距離を最小化するような最適な超平面に (単一の特徴量に対しては線として) 適合させます。 それは、単に、点の間の補間をしているだけなので、確率として解釈できません。</p>
+<p>また、線形モデルは外挿し、0 より小さかったり、1 より大きな値を出力します。 これは分類問題に対する、より良いアプローチがあるかもしれないというよい徴候です。</p>
+<p>予測結果が確率ではなく、点の間の線形補間なので、クラスを分けるための、意味のある閾値というものは存在しません。 この問題に関するわかりやすい説明は<a href="https://stats.stackexchange.com/questions/22381/why-not-approach-classification-through-regression">Stackoverflow</a> に示されています。</p>
+<p>線形モデルは多クラス分類には拡張できません。 次のクラスを 2 だったり、3 だったりとラベル付けするかもしれません。 クラスの順序に意味のないときもあるでしょうが、線形モデルにおいては特徴量と予測クラスに不自然な関係性を作ることが強制されます。 同じような値に偶然なったクラスが他のクラスと近くなかったとしても、正の重みをもつ特徴量の値が高ければ高いほど、予測されるクラスはより大きな数になりやすくなっていきます。</p>
+<!--
+fig.cap="A linear model classifies tumors as malignant (1) or benign (0) given their size. The lines show the prediction of the linear model. For the data on the left, we can use 0.5 as classification threshold. After introducing a few more malignant tumor cases, the regression line shifts and a threshold of 0.5 no longer separates the classes. Points are slightly jittered to reduce over-plotting. "
+-->
 <div class="figure"><span id="fig:linear-class-threshold"></span>
-<img src="images/linear-class-threshold-1.png" alt="A linear model classifies tumors as malignant (1) or benign (0) given their size. The lines show the prediction of the linear model. For the data on the left, we can use 0.5 as classification threshold. After introducing a few more malignant tumor cases, the regression line shifts and a threshold of 0.5 no longer separates the classes. Points are slightly jittered to reduce over-plotting. " width="1050" />
+<img src="images/linear-class-threshold-1.png" alt="線形モデルで大きさによって腫瘍が良性であるか、悪性であるか分類しています。直線は線形モデルの予測を表しています。左にあるデータでは 0.5 を閾値として用いています。いくつか悪性のケースが入った場合では、回帰直線はシフトし、0.5 はもはや閾値としては機能しなくなっています。表示する点を少しだけ減らして、見やすくしています。" width="1050" />
 <p class="caption">
-FIGURE 4.5: A linear model classifies tumors as malignant (1) or benign (0) given their size. The lines show the prediction of the linear model. For the data on the left, we can use 0.5 as classification threshold. After introducing a few more malignant tumor cases, the regression line shifts and a threshold of 0.5 no longer separates the classes. Points are slightly jittered to reduce over-plotting.
+FIGURE 4.5: 線形モデルで大きさによって腫瘍が良性であるか、悪性であるか分類しています。直線は線形モデルの予測を表しています。左にあるデータでは 0.5 を閾値として用いています。いくつか悪性のケースが入った場合では、回帰直線はシフトし、0.5 はもはや閾値としては機能しなくなっています。表示する点を少しだけ減らして、見やすくしています。
 </p>
 </div>
+<!--
+### Theory
+-->
 </div>
-<div id="theory" class="section level3">
-<h3><span class="header-section-number">4.2.2</span> Theory</h3>
-<p>A solution for classification is logistic regression. Instead of fitting a straight line or hyperplane, the logistic regression model uses the logistic function to squeeze the output of a linear equation between 0 and 1. The logistic function is defined as:</p>
+<div id="理論" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> 理論</h3>
+<!--
+A solution for classification is logistic regression.
+Instead of fitting a straight line or hyperplane, the logistic regression model uses the logistic function to squeeze the output of a linear equation between 0 and 1.
+The logistic function is defined as:
+-->
+<p>分類のための解決策は、ロジスティック回帰です。 直線や超平面を当てはめる代わりに、ロジスティック回帰モデルでは、ロジスティック関数を使用して、0 と 1 の間へ線形方程式の出力を変形します。 ロジスティック関数は次のように定義されます。</p>
 <p><span class="math display">\[\text{logistic}(\eta)=\frac{1}{1+exp(-\eta)}\]</span></p>
-<p>And it looks like this:</p>
+<!--
+And it looks like this:
+-->
+<p>下図のようになります。</p>
+<!--
+fig.cap="The logistic function. It outputs numbers between 0 and 1. At input 0, it outputs 0.5."
+-->
 <div class="figure"><span id="fig:logistic-function"></span>
-<img src="images/logistic-function-1.png" alt="The logistic function. It outputs numbers between 0 and 1. At input 0, it outputs 0.5." width="1050" />
+<img src="images/logistic-function-1.png" alt="ロジスティック関数。 出力は 0 から 1 の間を取ります。 入力が 0 のとき、出力は 0.5 です。" width="1050" />
 <p class="caption">
-FIGURE 4.6: The logistic function. It outputs numbers between 0 and 1. At input 0, it outputs 0.5.
+FIGURE 4.6: ロジスティック関数。 出力は 0 から 1 の間を取ります。 入力が 0 のとき、出力は 0.5 です。
 </p>
 </div>
-<p>The step from linear regression to logistic regression is kind of straightforward. In the linear regression model, we have modelled the relationship between outcome and features with a linear equation:</p>
+<!--
+The step from linear regression to logistic regression is kind of straightforward.
+In the linear regression model, we have modelled the relationship between outcome and features with a linear equation:
+-->
+<p>線形回帰からロジスティック回帰への変換は理解しやすいです。 線形回帰モデルでは、結果と特徴量の関係を線形方程式でモデル化しています。</p>
 <p><span class="math display">\[\hat{y}^{(i)}=\beta_{0}+\beta_{1}x^{(i)}_{1}+\ldots+\beta_{p}x^{(i)}_{p}\]</span></p>
-<p>For classification, we prefer probabilities between 0 and 1, so we wrap the right side of the equation into the logistic function. This forces the output to assume only values between 0 and 1.</p>
+<!--
+For classification, we prefer probabilities between 0 and 1, so we wrap the right side of the equation into the logistic function.
+This forces the output to assume only values between 0 and 1.
+-->
+<p>分類において、値が 0 から 1 の間となるように、右式をロジスティック関数に組み込みます。 この変換によって、出力は 0 から 1 の間の値を取るようにできます。</p>
 <p><span class="math display">\[P(y^{(i)}=1)=\frac{1}{1+exp(-(\beta_{0}+\beta_{1}x^{(i)}_{1}+\ldots+\beta_{p}x^{(i)}_{p}))}\]</span></p>
-<p>Let us revisit the tumor size example again. But instead of the linear regression model, we use the logistic regression model:</p>
+<!--
+Let us revisit the tumor size example again.
+But instead of the linear regression model, we use the logistic regression model:
+-->
+<p>腫瘍の大きさの例をもう一度見てみましょう。 線形回帰モデルの代わりにロジスティック回帰モデルを使っています。</p>
+<!--
+fig.cap="The logistic regression model finds the correct decision boundary between malignant and benign depending on tumor size. The line is the logistic function shifted and squeezed to fit the data."
+-->
 <div class="figure"><span id="fig:logistic-class-threshold"></span>
-<img src="images/logistic-class-threshold-1.png" alt="The logistic regression model finds the correct decision boundary between malignant and benign depending on tumor size. The line is the logistic function shifted and squeezed to fit the data." width="1050" />
+<img src="images/logistic-class-threshold-1.png" alt="ロジスティック回帰モデルは、腫瘍のサイズに応じて、悪性と良性の間の正しい決定境界を見つけます。 この線は、データに適合するように変形されたロジスティック関数です。" width="1050" />
 <p class="caption">
-FIGURE 4.7: The logistic regression model finds the correct decision boundary between malignant and benign depending on tumor size. The line is the logistic function shifted and squeezed to fit the data.
+FIGURE 4.7: ロジスティック回帰モデルは、腫瘍のサイズに応じて、悪性と良性の間の正しい決定境界を見つけます。 この線は、データに適合するように変形されたロジスティック関数です。
 </p>
 </div>
-<p>Classification works better with logistic regression and we can use 0.5 as a threshold in both cases. The inclusion of additional points does not really affect the estimated curve.</p>
+<!--
+Classification works better with logistic regression and we can use 0.5 as a threshold in both cases. The inclusion of additional points does not really affect the estimated curve.
+-->
+<p>ロジスティック回帰はうまく分類し、両方のケースで 0.5 を閾値として使うことができます。点を追加することは、推定された曲線にそこまで影響を与えません。</p>
+<!--
+### Interpretation
+-->
 </div>
-<div id="interpretation" class="section level3">
-<h3><span class="header-section-number">4.2.3</span> Interpretation</h3>
-<p>The interpretation of the weights in logistic regression differs from the interpretation of the weights in linear regression, since the outcome in logistic regression is a probability between 0 and 1. The weights do not influence the probability linearly any longer. The weighted sum is transformed by the logistic function to a probability. Therefore we need to reformulate the equation for the interpretation so that only the linear term is on the right side of the formula.</p>
+<div id="解釈性" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> 解釈性</h3>
+<!--
+The interpretation of the weights in logistic regression differs from the interpretation of the weights in linear regression, since the outcome in logistic regression is a probability between 0 and 1.
+The weights do not influence the probability linearly any longer.
+The weighted sum is transformed by the logistic function to a probability.
+Therefore we need to reformulate the equation for the interpretation so that only the linear term is on the right side of the formula.
+-->
+<p>ロジスティック回帰モデルの出力は 0 から 1 の確率で表現されるため、ロジスティック回帰の重みの解釈は線形回帰モデルの重みの解釈とは異なります。 重みは確率に対して、線形に影響を及ぼすわけではありません。 重みの合計はロジスティック関数によって確率に変換されます。 したがって、解釈のために、方程式の右側の線形項を式変形する必要があります。</p>
 <p><span class="math display">\[log\left(\frac{P(y=1)}{1-P(y=1)}\right)=log\left(\frac{P(y=1)}{P(y=0)}\right)=\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}\]</span></p>
-<p>We call the term in the log() function &quot;odds&quot; (probability of event divided by probability of no event) and wrapped in the logarithm it is called log odds.</p>
-<p>This formula shows that the logistic regression model is a linear model for the log odds. Great! That does not sound helpful! With a little shuffling of the terms, you can figure out how the prediction changes when one of the features <span class="math inline">\(x_j\)</span> is changed by 1 unit. To do this, we can first apply the exp() function to both sides of the equation:</p>
+<!--
+We call the term in the log() function "odds" (probability of event divided by probability of no event) and wrapped in the logarithm it is called log odds.
+
+This formula shows that the logistic regression model is a linear model for the log odds.
+Great!
+That does not sound helpful!
+With a little shuffling of the terms, you can figure out how the prediction changes when one of the features $x_j$ is changed by 1 unit.
+To do this, we can first apply the exp() function to both sides of the equation:
+-->
+<p>この log()関数の中の項を &quot;オッズ&quot; (イベントの確率をイベントが起こらない確率で割ったもの) といい、対数をとったものを対数オッズといいます。</p>
+<p>この式はロジスティック回帰モデルが対数オッズに対する線形モデルであることを表しています。 すばらしい！ それでは役に立つようには見えません。 少し項を入れ替えると、特徴量 <span class="math inline">\(x_j\)</span> の1つを 1 単位変化した時、どのように予測が変化するか分かります。 このように変換すると、exp() 関数を方程式の両辺にかけることができます。</p>
 <p><span class="math display">\[\frac{P(y=1)}{1-P(y=1)}=odds=exp\left(\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}\right)\]</span></p>
-<p>Then we compare what happens when we increase one of the feature values by 1. But instead of looking at the difference, we look at the ratio of the two predictions:</p>
+<!--
+Then we compare what happens when we increase one of the feature values by 1.
+But instead of looking at the difference, we look at the ratio of the two predictions:
+-->
+<p>そして、1つの特徴量の値を 1 増加させると何が起きるかを比較します。 このとき、差をみるのではなく、2つの予測の比に注目します。</p>
 <p><span class="math display">\[\frac{odds_{x_j+1}}{odds}=\frac{exp\left(\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{j}(x_{j}+1)+\ldots+\beta_{p}x_{p}\right)}{exp\left(\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{j}x_{j}+\ldots+\beta_{p}x_{p}\right)}\]</span></p>
-<p>We apply the following rule:</p>
+<!--
+We apply the following rule:
+-->
+<p>以下のルールを適用します。</p>
 <p><span class="math display">\[\frac{exp(a)}{exp(b)}=exp(a-b)\]</span></p>
-<p>And we remove many terms:</p>
+<!--
+And we remove many terms:
+-->
+<p>そして、項を削除します。</p>
 <p><span class="math display">\[\frac{odds_{x_j+1}}{odds}=exp\left(\beta_{j}(x_{j}+1)-\beta_{j}x_{j}\right)=exp\left(\beta_j\right)\]</span></p>
-<p>In the end, we have something as simple as exp() of a feature weight. A change in a feature by one unit changes the odds ratio (multiplicative) by a factor of <span class="math inline">\(\exp(\beta_j)\)</span>. We could also interpret it this way: A change in <span class="math inline">\(x_j\)</span> by one unit increases the log odds ratio by the value of the corresponding weight. Most people interpret the odds ratio because thinking about the log() of something is known to be hard on the brain. Interpreting the odds ratio already requires some getting used to. For example, if you have odds of 2, it means that the probability for y=1 is twice as high as y=0. If you have a weight (= log odds ratio) of 0.7, then increasing the respective feature by one unit multiplies the odds by exp(0.7) (approximately 2) and the odds change to 4. But usually you do not deal with the odds and interpret the weights only as the odds ratios. Because for actually calculating the odds you would need to set a value for each feature, which only makes sense if you want to look at one specific instance of your dataset.</p>
-<p>These are the interpretations for the logistic regression model with different feature types:</p>
+<!--
+In the end, we have something as simple as exp() of a feature weight.
+A change in a feature by one unit changes the odds ratio (multiplicative) by a factor of $\exp(\beta_j)$.
+We could also interpret it this way:
+A change in $x_j$ by one unit increases the log odds ratio by the value of the corresponding weight.
+Most people interpret the odds ratio because thinking about the log() of something is known to be hard on the brain.
+Interpreting the odds ratio already requires some getting used to.
+For example, if you have odds of 2, it means that the probability for y=1 is twice as high as y=0.
+If you have a weight (= log odds ratio) of 0.7, then increasing the respective feature by one unit multiplies the odds by exp(0.7) (approximately 2) and the odds change to 4.
+But usually you do not deal with the odds and interpret the weights only as the odds ratios.
+Because for actually calculating the odds you would need to set a value for each feature, which only makes sense if you want to look at one specific instance of your dataset.
+-->
+<p>最終的に、特徴量の重みの exp() のような単純な式を得ることができます。 特徴量の中の 1 単位の変化は、オッズ比を <span class="math inline">\(\exp(\beta_j)\)</span> 倍に変化させます。 この式は以下のように解釈できます。 <span class="math inline">\(x_j\)</span> を 1 単位だけ変化させると、対応する重みの値だけ対数オッズ比が増加します。 ほとんどの人は、対数について頭で考えることが困難なため、オッズ比を解釈します。 オッズ比を解釈するには慣れが必要です。 例えば、もしオッズ比として 2 が与えられたら、 y=0 の確率より y=1 の方が 2 倍高いことを意味します。 重み（=対数オッズ比）が 0.7 の場合、それに対応する特徴量を 1 単位増やすと、オッズに exp(0.7)（=約 2）が乗算され、オッズは4に変わります。 しかし、通常はオッズを扱う必要がなく、重みだけをオッズ比として解釈します。 オッズを実際に計算するためには、それぞれの特徴量に値を設定する必要があるためです。 これは、データセットの特定のインスタンスに注目したいときのみ意味を成します。</p>
+<!--
+These are the interpretations for the logistic regression model with different feature types:
+-->
+<p>特徴量の種類に応じて、ロジスティック回帰の解釈は異なります。</p>
+<!--
+- Numerical feature:
+If you increase the value of feature $x_{j}$ by one unit, the estimated odds change by a factor of $\exp(\beta_{j})$
+- Binary categorical feature:
+One of the two values of the feature is the reference category (in some languages, the one encoded in 0).
+Changing the feature $x_{j}$ from the reference category to the other category changes the estimated odds by a factor of $\exp(\beta_{j})$.
+- Categorical feature with more than two categories:
+One solution to deal with multiple categories is one-hot-encoding, meaning that each category has its own column.
+You only need L-1 columns for a categorical feature with L categories, otherwise it is over-parameterized.
+The L-th category is then the reference category.
+You can use any other encoding that can be used in linear regression.
+The interpretation for each category then is equivalent to the interpretation of binary features.
+- Intercept $\beta_{0}$:
+When all numerical features are zero and the categorical features are at the reference category, the estimated odds are $\exp(\beta_{0})$.
+The interpretation of the intercept weight is usually not relevant.
+-->
 <ul>
-<li>Numerical feature: If you increase the value of feature <span class="math inline">\(x_{j}\)</span> by one unit, the estimated odds change by a factor of <span class="math inline">\(\exp(\beta_{j})\)</span></li>
-<li>Binary categorical feature: One of the two values of the feature is the reference category (in some languages, the one encoded in 0). Changing the feature <span class="math inline">\(x_{j}\)</span> from the reference category to the other category changes the estimated odds by a factor of <span class="math inline">\(\exp(\beta_{j})\)</span>.</li>
-<li>Categorical feature with more than two categories: One solution to deal with multiple categories is one-hot-encoding, meaning that each category has its own column. You only need L-1 columns for a categorical feature with L categories, otherwise it is over-parameterized. The L-th category is then the reference category. You can use any other encoding that can be used in linear regression. The interpretation for each category then is equivalent to the interpretation of binary features.</li>
-<li>Intercept <span class="math inline">\(\beta_{0}\)</span>: When all numerical features are zero and the categorical features are at the reference category, the estimated odds are <span class="math inline">\(\exp(\beta_{0})\)</span>. The interpretation of the intercept weight is usually not relevant.</li>
+<li>数的特徴量 (Numerical feature)の場合: <span class="math inline">\(x_{j}\)</span> を 1 単位だけ増加させると、予測されるオッズは <span class="math inline">\(\exp(\beta_{j})\)</span> 倍に変化します。</li>
+<li>バイナリ特徴量 (Binary categorical feature) の場合: 特徴量の2つの値のうちの1つは 参照カテゴリ (いくつかのプログラミング言語では、0 とエンコードされる) です。 特徴量 <span class="math inline">\(x_{j}\)</span> が参照カテゴリから他のカテゴリに変化した時、オッズは <span class="math inline">\(\exp(\beta_{j})\)</span> 倍になります。</li>
+<li>2つ以上のカテゴリを持つ、カテゴリカルデータの場合: 複数のカテゴリを扱う1つの方法は one-hot-encoding です。one-hot-encoding はそれぞれのカテゴリがそれぞれ列を持ちます。 L 個のカテゴリを持つとき、L-1 列のみ必要で、そうでなければ、パラメータが過剰となります。 L 番目のカテゴリは参照カテゴリである必要があります。 他にも、線形回帰で使用可能な任意のエンコード方法を用いることができます。 それぞれのカテゴリの解釈はバイナリ特徴量の解釈と同様です。</li>
+<li>切片<span class="math inline">\(\beta_{0}\)</span>: 全ての特徴量がゼロでカテゴリカル特徴量が参照カテゴリの時、予測されるオッズの値は <span class="math inline">\(\exp(\beta_{0})\)</span> です。 切片の重みの解釈は、たいてい意味がありません。</li>
 </ul>
+<!--
+### Example
+-->
 </div>
-<div id="example" class="section level3">
-<h3><span class="header-section-number">4.2.4</span> Example</h3>
-<p>We use the logistic regression model to predict <a href="cervical.html#cervical">cervical cancer</a> based on some risk factors. The following table shows the estimate weights, the associated odds ratios, and the standard error of the estimates.</p>
+<div id="例-1" class="section level3">
+<h3><span class="header-section-number">4.2.4</span> 例</h3>
+<!--
+We use the logistic regression model to predict [cervical cancer](#cervical) based on some risk factors.
+The following table shows the estimate weights, the associated odds ratios, and the standard error of the estimates.
+-->
+<p>ここでは、ロジスティック回帰をリスク要因に基づいた<a href="cervical.html#cervical">子宮頸がんの予測</a>に使用します。 以下の表は推測された重み、オッズ比、予測の標準誤差を表しています。</p>
+<!--
+caption='The results of fitting a logistic regression model on the cervical cancer dataset. Shown are the features used in the model, their estimated weights and corresponding odds ratios, and the standard errors of the estimated weights.'
+-->
 <table>
-<caption><span id="tab:logistic-example">TABLE 4.1: </span>The results of fitting a logistic regression model on the cervical cancer dataset. Shown are the features used in the model, their estimated weights and corresponding odds ratios, and the standard errors of the estimated weights.</caption>
+<caption><span id="tab:logistic-example">TABLE 4.1: </span>ロジスティック回帰モデルを子宮頸がんデータセットに適合させた結果。 モデルで使用されている特徴量、それらの推定された重みと対応するオッズ比、および推定された重みの標準誤差が示されています。</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -460,21 +592,62 @@ FIGURE 4.7: The logistic regression model finds the correct decision boundary be
 </tr>
 </tbody>
 </table>
-<p>Interpretation of a numerical feature (&quot;Num. of diagnosed STDs&quot;): An increase in the number of diagnosed STDs (sexually transmitted diseases) changes (increases) the odds of cancer vs. no cancer by a factor of 2.26, when all other features remain the same. Keep in mind that correlation does not imply causation.</p>
-<p>Interpretation of a categorical feature (&quot;Hormonal contraceptives y/n&quot;): For women using hormonal contraceptives, the odds for cancer vs. no cancer are by a factor of 0.89 lower, compared to women without hormonal contraceptives, given all other features stay the same.</p>
-<p>Like in the linear model, the interpretations always come with the clause that 'all other features stay the same'.</p>
+<!--
+Interpretation of a numerical feature ("Num. of diagnosed STDs"):
+An increase in the number of diagnosed STDs (sexually transmitted diseases) changes (increases) the odds of cancer vs. no cancer by a factor of 2.26, when all other features remain the same.
+Keep in mind that correlation does not imply causation.
+
+Interpretation of a categorical feature ("Hormonal contraceptives y/n"):
+For women using hormonal contraceptives, the odds for cancer vs. no cancer are by a factor of 0.89 lower, compared to women without hormonal contraceptives, given all other features stay the same.
+
+Like in the linear model, the interpretations always come with the clause that 'all other features stay the same'.
+-->
+<p>量的特徴量の解釈 (&quot;Num. of diagnosed STDs&quot;): STDs (性感染症, sexually transmitted diseases) と診断された回数が増えると、癌かそうでないかのオッズは 2.26 倍変化します。 ただし、他の特徴量を固定した場合です。 相関は因果関係を示しているとは限らないことに注意してください。</p>
+<p>カテゴリカル特徴量の解釈(&quot;Hormonal contraceptives y/n&quot;): ホルモン避妊薬を使っている女性に関して、癌かそうでないかのオッズは、ホルモン避妊薬を使っていない人に比べて 0.89 倍低いです。 ただし、他の特徴量を固定した場合です。</p>
+<p>線形モデルと同様に、解釈では常に他の特徴量が固定されているという仮定の元で行われます。</p>
+<!--
+### Advantages and Disadvantages
+-->
 </div>
-<div id="advantages-and-disadvantages" class="section level3">
-<h3><span class="header-section-number">4.2.5</span> Advantages and Disadvantages</h3>
-<p>Many of the pros and cons of the <a href="limo.html#limo">linear regression model</a> also apply to the logistic regression model. Logistic regression has been widely used by many different people, but it struggles with its restrictive expressiveness (e.g. interactions must be added manually) and other models may have better predictive performance.</p>
-<p>Another disadvantage of the logistic regression model is that the interpretation is more difficult because the interpretation of the weights is multiplicative and not additive.</p>
-<p>Logistic regression can suffer from <strong>complete separation</strong>. If there is a feature that would perfectly separate the two classes, the logistic regression model can no longer be trained. This is because the weight for that feature would not converge, because the optimal weight would be infinite. This is really a bit unfortunate, because such a feature is really useful. But you do not need machine learning if you have a simple rule that separates both classes. The problem of complete separation can be solved by introducing penalization of the weights or defining a prior probability distribution of weights.</p>
-<p>On the good side, the logistic regression model is not only a classification model, but also gives you probabilities. This is a big advantage over models that can only provide the final classification. Knowing that an instance has a 99% probability for a class compared to 51% makes a big difference.</p>
-<p>Logistic regression can also be extended from binary classification to multi-class classification. Then it is called Multinomial Regression.</p>
+<div id="長所と短所" class="section level3">
+<h3><span class="header-section-number">4.2.5</span> 長所と短所</h3>
+<!--
+Many of the pros and cons of the [linear regression model](#limo) also apply to the logistic regression model.
+Logistic regression has been widely used by many different people, but it struggles with its restrictive expressiveness (e.g. interactions must be added manually) and other models may have better predictive performance.
+
+Another disadvantage of the logistic regression model is that the interpretation is more difficult because the interpretation of the weights is multiplicative and not additive.
+
+Logistic regression can suffer from **complete separation**. 
+If there is a feature that would perfectly separate the two classes, the logistic regression model can no longer be trained.
+This is because the weight for that feature would not converge, because the optimal weight would be infinite.
+This is really a bit unfortunate, because such a feature is really useful. 
+But you do not need machine learning if you have a simple rule that separates both classes.
+The problem of complete separation can be solved by introducing penalization of the weights or defining a prior probability distribution of weights.
+
+On the good side, the logistic regression model is not only a classification model, but also gives you probabilities. 
+This is a big advantage over models that can only provide the final classification.
+Knowing that an instance has a 99% probability for a class compared to 51% makes a big difference.
+
+Logistic regression can also be extended from binary classification to multi-class classification.
+Then it is called Multinomial Regression.
+-->
+<p><a href="limo.html#limo">線形回帰モデル</a>の長所と短所は、ロジスティック回帰モデルにも当てはまります。</p>
+<p>ロジスティック回帰は様々な分野の人々によって広く使用されていますが、その表現力の低さが問題であり（たとえば、相互作用を手動で追加する必要があります）、他のモデルの方が予測性能が優れていることもあります。</p>
+<p>ロジスティック回帰モデルのもう1つの欠点は、重みの解釈は乗法的であり、加法的ではないため、解釈が難しくなることです。</p>
+<p>ロジスティック回帰は、<strong>完全分離</strong>に悩まされることがあります。 2つのクラスを完全に分離できる特徴量がある場合、ロジスティック回帰モデルは学習できなくなります。 これは、その特徴量の最適な重みが無限大となり、収束しないためです。 このような特徴量はクラス分類の際に有用なので、これは残念なことです。 しかし、このように2つのクラスを分離する単純なルールがある場合は、機械学習は必要ありません。 完全分離の問題は、重みのペナルティを導入するか、重みの事前分布を定義することで解決できます。</p>
+<p>良い面として、ロジスティック回帰モデルは分類モデルであるだけでなく、確率を出力します。 これは、最終的な分類結果しか提供できないモデルに比べて大きな利点と言えます。 インスタンスが、あるクラスに分類される確率が51％ではなく99％であること知れるのは大きな違いがあります。</p>
+<p>ロジスティック回帰は、2クラス分類から多クラス分類に拡張できます。 それは多項回帰 (Multinomial Regression) と呼ばれます。</p>
+<!--
+### Software
+-->
 </div>
-<div id="software" class="section level3">
-<h3><span class="header-section-number">4.2.6</span> Software</h3>
-<p>I used the <code>glm</code> function in R for all examples. You can find logistic regression in any programming language that can be used for performing data analysis, such as Python, Java, Stata, Matlab, ...</p>
+<div id="ソフトウェア" class="section level3">
+<h3><span class="header-section-number">4.2.6</span> ソフトウェア</h3>
+<!--
+I used the `glm` function in R for all examples.
+You can find logistic regression in any programming language that can be used for performing data analysis, such as Python, Java, Stata, Matlab, ...
+-->
+<p>上記の例は、すべて R の <code>glm</code> 関数を使用しました。 ロジスティック回帰は、Python、Java、Stata、Matlab など、データ分析に用いられるあらゆるプログラミング言語で実装されています。</p>
 
 <!--{pagebreak}-->
 </div>
