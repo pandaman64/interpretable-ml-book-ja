@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.3 GLM, GAM and more | Interpretable Machine Learning</title>
+  <title>4.3 GLM、GAM、その他 | Interpretable Machine Learning</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.3 GLM, GAM and more | Interpretable Machine Learning" />
+  <meta property="og:title" content="4.3 GLM、GAM、その他 | Interpretable Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="christophM/interpretable-ml-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.3 GLM, GAM and more | Interpretable Machine Learning" />
+  <meta name="twitter:title" content="4.3 GLM、GAM、その他 | Interpretable Machine Learning" />
   
   <meta name="twitter:description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Christoph Molnar" />
 
 
-<meta name="date" content="2021-01-06" />
+<meta name="date" content="2021-02-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,110 +158,110 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="4.2.5" data-path="logistic.html"><a href="logistic.html#長所と短所"><i class="fa fa-check"></i><b>4.2.5</b> 長所と短所</a></li>
 <li class="chapter" data-level="4.2.6" data-path="logistic.html"><a href="logistic.html#ソフトウェア"><i class="fa fa-check"></i><b>4.2.6</b> ソフトウェア</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="extend-lm.html"><a href="extend-lm.html"><i class="fa fa-check"></i><b>4.3</b> GLM, GAM and more</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="extend-lm.html"><a href="extend-lm.html#glm"><i class="fa fa-check"></i><b>4.3.1</b> Non-Gaussian Outcomes - GLMs</a></li>
-<li class="chapter" data-level="4.3.2" data-path="extend-lm.html"><a href="extend-lm.html#lm-interact"><i class="fa fa-check"></i><b>4.3.2</b> Interactions</a></li>
-<li class="chapter" data-level="4.3.3" data-path="extend-lm.html"><a href="extend-lm.html#gam"><i class="fa fa-check"></i><b>4.3.3</b> Nonlinear Effects - GAMs</a></li>
-<li class="chapter" data-level="4.3.4" data-path="extend-lm.html"><a href="extend-lm.html#advantages"><i class="fa fa-check"></i><b>4.3.4</b> Advantages</a></li>
-<li class="chapter" data-level="4.3.5" data-path="extend-lm.html"><a href="extend-lm.html#disadvantages"><i class="fa fa-check"></i><b>4.3.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="4.3.6" data-path="extend-lm.html"><a href="extend-lm.html#software"><i class="fa fa-check"></i><b>4.3.6</b> Software</a></li>
-<li class="chapter" data-level="4.3.7" data-path="extend-lm.html"><a href="extend-lm.html#more-lm-extension"><i class="fa fa-check"></i><b>4.3.7</b> Further Extensions</a></li>
+<li class="chapter" data-level="4.3" data-path="extend-lm.html"><a href="extend-lm.html"><i class="fa fa-check"></i><b>4.3</b> GLM、GAM、その他</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="extend-lm.html"><a href="extend-lm.html#glm"><i class="fa fa-check"></i><b>4.3.1</b> 結果が正規分布に従わない場合 - GLMs</a></li>
+<li class="chapter" data-level="4.3.2" data-path="extend-lm.html"><a href="extend-lm.html#lm-interact"><i class="fa fa-check"></i><b>4.3.2</b> 相互作用</a></li>
+<li class="chapter" data-level="4.3.3" data-path="extend-lm.html"><a href="extend-lm.html#gam"><i class="fa fa-check"></i><b>4.3.3</b> 非線形効果 - GAM</a></li>
+<li class="chapter" data-level="4.3.4" data-path="extend-lm.html"><a href="extend-lm.html#長所-1"><i class="fa fa-check"></i><b>4.3.4</b> 長所</a></li>
+<li class="chapter" data-level="4.3.5" data-path="extend-lm.html"><a href="extend-lm.html#短所-1"><i class="fa fa-check"></i><b>4.3.5</b> 短所</a></li>
+<li class="chapter" data-level="4.3.6" data-path="extend-lm.html"><a href="extend-lm.html#ソフトウェア-1"><i class="fa fa-check"></i><b>4.3.6</b> ソフトウェア</a></li>
+<li class="chapter" data-level="4.3.7" data-path="extend-lm.html"><a href="extend-lm.html#more-lm-extension"><i class="fa fa-check"></i><b>4.3.7</b> さらなる拡張</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="tree.html"><a href="tree.html"><i class="fa fa-check"></i><b>4.4</b> Decision Tree</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="tree.html"><a href="tree.html#interpretation"><i class="fa fa-check"></i><b>4.4.1</b> Interpretation</a></li>
-<li class="chapter" data-level="4.4.2" data-path="tree.html"><a href="tree.html#example"><i class="fa fa-check"></i><b>4.4.2</b> Example</a></li>
-<li class="chapter" data-level="4.4.3" data-path="tree.html"><a href="tree.html#advantages-1"><i class="fa fa-check"></i><b>4.4.3</b> Advantages</a></li>
-<li class="chapter" data-level="4.4.4" data-path="tree.html"><a href="tree.html#disadvantages-1"><i class="fa fa-check"></i><b>4.4.4</b> Disadvantages</a></li>
-<li class="chapter" data-level="4.4.5" data-path="tree.html"><a href="tree.html#software-1"><i class="fa fa-check"></i><b>4.4.5</b> Software</a></li>
+<li class="chapter" data-level="4.4" data-path="tree.html"><a href="tree.html"><i class="fa fa-check"></i><b>4.4</b> 決定木</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="tree.html"><a href="tree.html#決定木の解釈"><i class="fa fa-check"></i><b>4.4.1</b> 決定木の解釈</a></li>
+<li class="chapter" data-level="4.4.2" data-path="tree.html"><a href="tree.html#例-2"><i class="fa fa-check"></i><b>4.4.2</b> 例</a></li>
+<li class="chapter" data-level="4.4.3" data-path="tree.html"><a href="tree.html#長所-2"><i class="fa fa-check"></i><b>4.4.3</b> 長所</a></li>
+<li class="chapter" data-level="4.4.4" data-path="tree.html"><a href="tree.html#短所-2"><i class="fa fa-check"></i><b>4.4.4</b> 短所</a></li>
+<li class="chapter" data-level="4.4.5" data-path="tree.html"><a href="tree.html#ソフトウェア-2"><i class="fa fa-check"></i><b>4.4.5</b> ソフトウェア</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="rules.html"><a href="rules.html"><i class="fa fa-check"></i><b>4.5</b> Decision Rules</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="rules.html"><a href="rules.html#learn-rules-from-a-single-feature-oner"><i class="fa fa-check"></i><b>4.5.1</b> Learn Rules from a Single Feature (OneR)</a></li>
+<li class="chapter" data-level="4.5" data-path="rules.html"><a href="rules.html"><i class="fa fa-check"></i><b>4.5</b> 決定規則</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="rules.html"><a href="rules.html#単一の特徴量による規則学習-oner"><i class="fa fa-check"></i><b>4.5.1</b> 単一の特徴量による規則学習 (OneR)</a></li>
 <li class="chapter" data-level="4.5.2" data-path="rules.html"><a href="rules.html#sequential-covering"><i class="fa fa-check"></i><b>4.5.2</b> Sequential Covering</a></li>
 <li class="chapter" data-level="4.5.3" data-path="rules.html"><a href="rules.html#bayesian-rule-lists"><i class="fa fa-check"></i><b>4.5.3</b> Bayesian Rule Lists</a></li>
-<li class="chapter" data-level="4.5.4" data-path="rules.html"><a href="rules.html#advantages-2"><i class="fa fa-check"></i><b>4.5.4</b> Advantages</a></li>
-<li class="chapter" data-level="4.5.5" data-path="rules.html"><a href="rules.html#disadvantages-2"><i class="fa fa-check"></i><b>4.5.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="4.5.6" data-path="rules.html"><a href="rules.html#software-and-alternatives"><i class="fa fa-check"></i><b>4.5.6</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="4.5.4" data-path="rules.html"><a href="rules.html#長所-3"><i class="fa fa-check"></i><b>4.5.4</b> 長所</a></li>
+<li class="chapter" data-level="4.5.5" data-path="rules.html"><a href="rules.html#短所-3"><i class="fa fa-check"></i><b>4.5.5</b> 短所</a></li>
+<li class="chapter" data-level="4.5.6" data-path="rules.html"><a href="rules.html#ソフトウェアと代替手法"><i class="fa fa-check"></i><b>4.5.6</b> ソフトウェアと代替手法</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="rulefit.html"><a href="rulefit.html"><i class="fa fa-check"></i><b>4.6</b> RuleFit</a><ul>
-<li class="chapter" data-level="4.6.1" data-path="rulefit.html"><a href="rulefit.html#interpretation-and-example"><i class="fa fa-check"></i><b>4.6.1</b> Interpretation and Example</a></li>
-<li class="chapter" data-level="4.6.2" data-path="rulefit.html"><a href="rulefit.html#theory"><i class="fa fa-check"></i><b>4.6.2</b> Theory</a></li>
-<li class="chapter" data-level="4.6.3" data-path="rulefit.html"><a href="rulefit.html#advantages-3"><i class="fa fa-check"></i><b>4.6.3</b> Advantages</a></li>
-<li class="chapter" data-level="4.6.4" data-path="rulefit.html"><a href="rulefit.html#disadvantages-3"><i class="fa fa-check"></i><b>4.6.4</b> Disadvantages</a></li>
-<li class="chapter" data-level="4.6.5" data-path="rulefit.html"><a href="rulefit.html#software-and-alternative"><i class="fa fa-check"></i><b>4.6.5</b> Software and Alternative</a></li>
+<li class="chapter" data-level="4.6.1" data-path="rulefit.html"><a href="rulefit.html#解釈と例"><i class="fa fa-check"></i><b>4.6.1</b> 解釈と例</a></li>
+<li class="chapter" data-level="4.6.2" data-path="rulefit.html"><a href="rulefit.html#理論-1"><i class="fa fa-check"></i><b>4.6.2</b> 理論</a></li>
+<li class="chapter" data-level="4.6.3" data-path="rulefit.html"><a href="rulefit.html#長所-4"><i class="fa fa-check"></i><b>4.6.3</b> 長所</a></li>
+<li class="chapter" data-level="4.6.4" data-path="rulefit.html"><a href="rulefit.html#短所-4"><i class="fa fa-check"></i><b>4.6.4</b> 短所</a></li>
+<li class="chapter" data-level="4.6.5" data-path="rulefit.html"><a href="rulefit.html#ソフトウェアと代替手法-1"><i class="fa fa-check"></i><b>4.6.5</b> ソフトウェアと代替手法</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="other-interpretable.html"><a href="other-interpretable.html"><i class="fa fa-check"></i><b>4.7</b> Other Interpretable Models</a><ul>
-<li class="chapter" data-level="4.7.1" data-path="other-interpretable.html"><a href="other-interpretable.html#naive-bayes-classifier"><i class="fa fa-check"></i><b>4.7.1</b> Naive Bayes Classifier</a></li>
-<li class="chapter" data-level="4.7.2" data-path="other-interpretable.html"><a href="other-interpretable.html#k-nearest-neighbors"><i class="fa fa-check"></i><b>4.7.2</b> K-Nearest Neighbors</a></li>
+<li class="chapter" data-level="4.7" data-path="other-interpretable.html"><a href="other-interpretable.html"><i class="fa fa-check"></i><b>4.7</b> その他の解釈可能なモデル</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="other-interpretable.html"><a href="other-interpretable.html#単純ベイズ分類器-naive-bayes-classifier"><i class="fa fa-check"></i><b>4.7.1</b> 単純ベイズ分類器 (Naive Bayes Classifier)</a></li>
+<li class="chapter" data-level="4.7.2" data-path="other-interpretable.html"><a href="other-interpretable.html#k近傍法"><i class="fa fa-check"></i><b>4.7.2</b> k近傍法</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="agnostic.html"><a href="agnostic.html"><i class="fa fa-check"></i><b>5</b> Model-Agnostic Methods</a><ul>
 <li class="chapter" data-level="5.1" data-path="pdp.html"><a href="pdp.html"><i class="fa fa-check"></i><b>5.1</b> Partial Dependence Plot (PDP)</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="pdp.html"><a href="pdp.html#examples"><i class="fa fa-check"></i><b>5.1.1</b> Examples</a></li>
-<li class="chapter" data-level="5.1.2" data-path="pdp.html"><a href="pdp.html#advantages-4"><i class="fa fa-check"></i><b>5.1.2</b> Advantages</a></li>
-<li class="chapter" data-level="5.1.3" data-path="pdp.html"><a href="pdp.html#disadvantages-4"><i class="fa fa-check"></i><b>5.1.3</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.1.4" data-path="pdp.html"><a href="pdp.html#software-and-alternatives-1"><i class="fa fa-check"></i><b>5.1.4</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="5.1.2" data-path="pdp.html"><a href="pdp.html#advantages"><i class="fa fa-check"></i><b>5.1.2</b> Advantages</a></li>
+<li class="chapter" data-level="5.1.3" data-path="pdp.html"><a href="pdp.html#disadvantages"><i class="fa fa-check"></i><b>5.1.3</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.1.4" data-path="pdp.html"><a href="pdp.html#software-and-alternatives"><i class="fa fa-check"></i><b>5.1.4</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="ice.html"><a href="ice.html"><i class="fa fa-check"></i><b>5.2</b> Individual Conditional Expectation (ICE)</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="ice.html"><a href="ice.html#examples-1"><i class="fa fa-check"></i><b>5.2.1</b> Examples</a></li>
-<li class="chapter" data-level="5.2.2" data-path="ice.html"><a href="ice.html#advantages-5"><i class="fa fa-check"></i><b>5.2.2</b> Advantages</a></li>
-<li class="chapter" data-level="5.2.3" data-path="ice.html"><a href="ice.html#disadvantages-5"><i class="fa fa-check"></i><b>5.2.3</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.2.4" data-path="ice.html"><a href="ice.html#software-and-alternatives-2"><i class="fa fa-check"></i><b>5.2.4</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="5.2.2" data-path="ice.html"><a href="ice.html#advantages-1"><i class="fa fa-check"></i><b>5.2.2</b> Advantages</a></li>
+<li class="chapter" data-level="5.2.3" data-path="ice.html"><a href="ice.html#disadvantages-1"><i class="fa fa-check"></i><b>5.2.3</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.2.4" data-path="ice.html"><a href="ice.html#software-and-alternatives-1"><i class="fa fa-check"></i><b>5.2.4</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="ale.html"><a href="ale.html"><i class="fa fa-check"></i><b>5.3</b> Accumulated Local Effects (ALE) Plot</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="ale.html"><a href="ale.html#motivation-and-intuition"><i class="fa fa-check"></i><b>5.3.1</b> Motivation and Intuition</a></li>
-<li class="chapter" data-level="5.3.2" data-path="ale.html"><a href="ale.html#theory-1"><i class="fa fa-check"></i><b>5.3.2</b> Theory</a></li>
+<li class="chapter" data-level="5.3.2" data-path="ale.html"><a href="ale.html#theory"><i class="fa fa-check"></i><b>5.3.2</b> Theory</a></li>
 <li class="chapter" data-level="5.3.3" data-path="ale.html"><a href="ale.html#estimation"><i class="fa fa-check"></i><b>5.3.3</b> Estimation</a></li>
 <li class="chapter" data-level="5.3.4" data-path="ale.html"><a href="ale.html#examples-2"><i class="fa fa-check"></i><b>5.3.4</b> Examples</a></li>
-<li class="chapter" data-level="5.3.5" data-path="ale.html"><a href="ale.html#advantages-6"><i class="fa fa-check"></i><b>5.3.5</b> Advantages</a></li>
-<li class="chapter" data-level="5.3.6" data-path="ale.html"><a href="ale.html#disadvantages-6"><i class="fa fa-check"></i><b>5.3.6</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.3.5" data-path="ale.html"><a href="ale.html#advantages-2"><i class="fa fa-check"></i><b>5.3.5</b> Advantages</a></li>
+<li class="chapter" data-level="5.3.6" data-path="ale.html"><a href="ale.html#disadvantages-2"><i class="fa fa-check"></i><b>5.3.6</b> Disadvantages</a></li>
 <li class="chapter" data-level="5.3.7" data-path="ale.html"><a href="ale.html#implementation-and-alternatives"><i class="fa fa-check"></i><b>5.3.7</b> Implementation and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="interaction.html"><a href="interaction.html"><i class="fa fa-check"></i><b>5.4</b> Feature Interaction</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="interaction.html"><a href="interaction.html#feature-interaction"><i class="fa fa-check"></i><b>5.4.1</b> Feature Interaction?</a></li>
 <li class="chapter" data-level="5.4.2" data-path="interaction.html"><a href="interaction.html#theory-friedmans-h-statistic"><i class="fa fa-check"></i><b>5.4.2</b> Theory: Friedman's H-statistic</a></li>
 <li class="chapter" data-level="5.4.3" data-path="interaction.html"><a href="interaction.html#examples-3"><i class="fa fa-check"></i><b>5.4.3</b> Examples</a></li>
-<li class="chapter" data-level="5.4.4" data-path="interaction.html"><a href="interaction.html#advantages-7"><i class="fa fa-check"></i><b>5.4.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.4.5" data-path="interaction.html"><a href="interaction.html#disadvantages-7"><i class="fa fa-check"></i><b>5.4.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.4.4" data-path="interaction.html"><a href="interaction.html#advantages-3"><i class="fa fa-check"></i><b>5.4.4</b> Advantages</a></li>
+<li class="chapter" data-level="5.4.5" data-path="interaction.html"><a href="interaction.html#disadvantages-3"><i class="fa fa-check"></i><b>5.4.5</b> Disadvantages</a></li>
 <li class="chapter" data-level="5.4.6" data-path="interaction.html"><a href="interaction.html#implementations"><i class="fa fa-check"></i><b>5.4.6</b> Implementations</a></li>
 <li class="chapter" data-level="5.4.7" data-path="interaction.html"><a href="interaction.html#alternatives"><i class="fa fa-check"></i><b>5.4.7</b> Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="feature-importance.html"><a href="feature-importance.html"><i class="fa fa-check"></i><b>5.5</b> Permutation Feature Importance</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="feature-importance.html"><a href="feature-importance.html#theory-2"><i class="fa fa-check"></i><b>5.5.1</b> Theory</a></li>
+<li class="chapter" data-level="5.5.1" data-path="feature-importance.html"><a href="feature-importance.html#theory-1"><i class="fa fa-check"></i><b>5.5.1</b> Theory</a></li>
 <li class="chapter" data-level="5.5.2" data-path="feature-importance.html"><a href="feature-importance.html#feature-importance-data"><i class="fa fa-check"></i><b>5.5.2</b> Should I Compute Importance on Training or Test Data?</a></li>
 <li class="chapter" data-level="5.5.3" data-path="feature-importance.html"><a href="feature-importance.html#example-and-interpretation"><i class="fa fa-check"></i><b>5.5.3</b> Example and Interpretation</a></li>
-<li class="chapter" data-level="5.5.4" data-path="feature-importance.html"><a href="feature-importance.html#advantages-8"><i class="fa fa-check"></i><b>5.5.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.5.5" data-path="feature-importance.html"><a href="feature-importance.html#disadvantages-8"><i class="fa fa-check"></i><b>5.5.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.5.6" data-path="feature-importance.html"><a href="feature-importance.html#software-and-alternatives-3"><i class="fa fa-check"></i><b>5.5.6</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="5.5.4" data-path="feature-importance.html"><a href="feature-importance.html#advantages-4"><i class="fa fa-check"></i><b>5.5.4</b> Advantages</a></li>
+<li class="chapter" data-level="5.5.5" data-path="feature-importance.html"><a href="feature-importance.html#disadvantages-4"><i class="fa fa-check"></i><b>5.5.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.5.6" data-path="feature-importance.html"><a href="feature-importance.html#software-and-alternatives-2"><i class="fa fa-check"></i><b>5.5.6</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="global.html"><a href="global.html"><i class="fa fa-check"></i><b>5.6</b> Global Surrogate</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="global.html"><a href="global.html#theory-3"><i class="fa fa-check"></i><b>5.6.1</b> Theory</a></li>
-<li class="chapter" data-level="5.6.2" data-path="global.html"><a href="global.html#example-2"><i class="fa fa-check"></i><b>5.6.2</b> Example</a></li>
-<li class="chapter" data-level="5.6.3" data-path="global.html"><a href="global.html#advantages-9"><i class="fa fa-check"></i><b>5.6.3</b> Advantages</a></li>
-<li class="chapter" data-level="5.6.4" data-path="global.html"><a href="global.html#disadvantages-9"><i class="fa fa-check"></i><b>5.6.4</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.6.5" data-path="global.html"><a href="global.html#software-2"><i class="fa fa-check"></i><b>5.6.5</b> Software</a></li>
+<li class="chapter" data-level="5.6.1" data-path="global.html"><a href="global.html#theory-2"><i class="fa fa-check"></i><b>5.6.1</b> Theory</a></li>
+<li class="chapter" data-level="5.6.2" data-path="global.html"><a href="global.html#example-1"><i class="fa fa-check"></i><b>5.6.2</b> Example</a></li>
+<li class="chapter" data-level="5.6.3" data-path="global.html"><a href="global.html#advantages-5"><i class="fa fa-check"></i><b>5.6.3</b> Advantages</a></li>
+<li class="chapter" data-level="5.6.4" data-path="global.html"><a href="global.html#disadvantages-5"><i class="fa fa-check"></i><b>5.6.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.6.5" data-path="global.html"><a href="global.html#software"><i class="fa fa-check"></i><b>5.6.5</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="5.7" data-path="lime.html"><a href="lime.html"><i class="fa fa-check"></i><b>5.7</b> Local Surrogate (LIME)</a><ul>
 <li class="chapter" data-level="5.7.1" data-path="lime.html"><a href="lime.html#lime-for-tabular-data"><i class="fa fa-check"></i><b>5.7.1</b> LIME for Tabular Data</a></li>
 <li class="chapter" data-level="5.7.2" data-path="lime.html"><a href="lime.html#lime-for-text"><i class="fa fa-check"></i><b>5.7.2</b> LIME for Text</a></li>
 <li class="chapter" data-level="5.7.3" data-path="lime.html"><a href="lime.html#images-lime"><i class="fa fa-check"></i><b>5.7.3</b> LIME for Images</a></li>
-<li class="chapter" data-level="5.7.4" data-path="lime.html"><a href="lime.html#advantages-10"><i class="fa fa-check"></i><b>5.7.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.7.5" data-path="lime.html"><a href="lime.html#disadvantages-10"><i class="fa fa-check"></i><b>5.7.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.7.4" data-path="lime.html"><a href="lime.html#advantages-6"><i class="fa fa-check"></i><b>5.7.4</b> Advantages</a></li>
+<li class="chapter" data-level="5.7.5" data-path="lime.html"><a href="lime.html#disadvantages-6"><i class="fa fa-check"></i><b>5.7.5</b> Disadvantages</a></li>
 </ul></li>
 <li class="chapter" data-level="5.8" data-path="anchors.html"><a href="anchors.html"><i class="fa fa-check"></i><b>5.8</b> Scoped Rules (Anchors)</a><ul>
 <li class="chapter" data-level="5.8.1" data-path="anchors.html"><a href="anchors.html#finding-anchors"><i class="fa fa-check"></i><b>5.8.1</b> Finding Anchors</a></li>
 <li class="chapter" data-level="5.8.2" data-path="anchors.html"><a href="anchors.html#complexity-and-runtime"><i class="fa fa-check"></i><b>5.8.2</b> Complexity and Runtime</a></li>
 <li class="chapter" data-level="5.8.3" data-path="anchors.html"><a href="anchors.html#tabular-data-example"><i class="fa fa-check"></i><b>5.8.3</b> Tabular Data Example</a></li>
-<li class="chapter" data-level="5.8.4" data-path="anchors.html"><a href="anchors.html#advantages-11"><i class="fa fa-check"></i><b>5.8.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.8.5" data-path="anchors.html"><a href="anchors.html#disadvantages-11"><i class="fa fa-check"></i><b>5.8.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.8.6" data-path="anchors.html"><a href="anchors.html#software-and-alternatives-4"><i class="fa fa-check"></i><b>5.8.6</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="5.8.4" data-path="anchors.html"><a href="anchors.html#advantages-7"><i class="fa fa-check"></i><b>5.8.4</b> Advantages</a></li>
+<li class="chapter" data-level="5.8.5" data-path="anchors.html"><a href="anchors.html#disadvantages-7"><i class="fa fa-check"></i><b>5.8.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.8.6" data-path="anchors.html"><a href="anchors.html#software-and-alternatives-3"><i class="fa fa-check"></i><b>5.8.6</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.9" data-path="shapley.html"><a href="shapley.html"><i class="fa fa-check"></i><b>5.9</b> Shapley Values</a><ul>
 <li class="chapter" data-level="5.9.1" data-path="shapley.html"><a href="shapley.html#general-idea"><i class="fa fa-check"></i><b>5.9.1</b> General Idea</a></li>
 <li class="chapter" data-level="5.9.2" data-path="shapley.html"><a href="shapley.html#examples-and-interpretation"><i class="fa fa-check"></i><b>5.9.2</b> Examples and Interpretation</a></li>
 <li class="chapter" data-level="5.9.3" data-path="shapley.html"><a href="shapley.html#the-shapley-value-in-detail"><i class="fa fa-check"></i><b>5.9.3</b> The Shapley Value in Detail</a></li>
-<li class="chapter" data-level="5.9.4" data-path="shapley.html"><a href="shapley.html#advantages-12"><i class="fa fa-check"></i><b>5.9.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.9.5" data-path="shapley.html"><a href="shapley.html#disadvantages-12"><i class="fa fa-check"></i><b>5.9.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.9.6" data-path="shapley.html"><a href="shapley.html#software-and-alternatives-5"><i class="fa fa-check"></i><b>5.9.6</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="5.9.4" data-path="shapley.html"><a href="shapley.html#advantages-8"><i class="fa fa-check"></i><b>5.9.4</b> Advantages</a></li>
+<li class="chapter" data-level="5.9.5" data-path="shapley.html"><a href="shapley.html#disadvantages-8"><i class="fa fa-check"></i><b>5.9.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.9.6" data-path="shapley.html"><a href="shapley.html#software-and-alternatives-4"><i class="fa fa-check"></i><b>5.9.6</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="5.10" data-path="shap.html"><a href="shap.html"><i class="fa fa-check"></i><b>5.10</b> SHAP (SHapley Additive exPlanations)</a><ul>
 <li class="chapter" data-level="5.10.1" data-path="shap.html"><a href="shap.html#definition"><i class="fa fa-check"></i><b>5.10.1</b> Definition</a></li>
@@ -273,17 +273,17 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="5.10.7" data-path="shap.html"><a href="shap.html#shap-dependence-plot"><i class="fa fa-check"></i><b>5.10.7</b> SHAP Dependence Plot</a></li>
 <li class="chapter" data-level="5.10.8" data-path="shap.html"><a href="shap.html#shap-interaction-values"><i class="fa fa-check"></i><b>5.10.8</b> SHAP Interaction Values</a></li>
 <li class="chapter" data-level="5.10.9" data-path="shap.html"><a href="shap.html#clustering-shap-values"><i class="fa fa-check"></i><b>5.10.9</b> Clustering SHAP values</a></li>
-<li class="chapter" data-level="5.10.10" data-path="shap.html"><a href="shap.html#advantages-13"><i class="fa fa-check"></i><b>5.10.10</b> Advantages</a></li>
-<li class="chapter" data-level="5.10.11" data-path="shap.html"><a href="shap.html#disadvantages-13"><i class="fa fa-check"></i><b>5.10.11</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.10.12" data-path="shap.html"><a href="shap.html#software-3"><i class="fa fa-check"></i><b>5.10.12</b> Software</a></li>
+<li class="chapter" data-level="5.10.10" data-path="shap.html"><a href="shap.html#advantages-9"><i class="fa fa-check"></i><b>5.10.10</b> Advantages</a></li>
+<li class="chapter" data-level="5.10.11" data-path="shap.html"><a href="shap.html#disadvantages-9"><i class="fa fa-check"></i><b>5.10.11</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.10.12" data-path="shap.html"><a href="shap.html#software-1"><i class="fa fa-check"></i><b>5.10.12</b> Software</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>6</b> Example-Based Explanations</a><ul>
 <li class="chapter" data-level="6.1" data-path="counterfactual.html"><a href="counterfactual.html"><i class="fa fa-check"></i><b>6.1</b> Counterfactual Explanations</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="counterfactual.html"><a href="counterfactual.html#generating-counterfactual-explanations"><i class="fa fa-check"></i><b>6.1.1</b> Generating Counterfactual Explanations</a></li>
 <li class="chapter" data-level="6.1.2" data-path="counterfactual.html"><a href="counterfactual.html#examples-5"><i class="fa fa-check"></i><b>6.1.2</b> Examples</a></li>
-<li class="chapter" data-level="6.1.3" data-path="counterfactual.html"><a href="counterfactual.html#advantages-14"><i class="fa fa-check"></i><b>6.1.3</b> Advantages</a></li>
-<li class="chapter" data-level="6.1.4" data-path="counterfactual.html"><a href="counterfactual.html#disadvantages-14"><i class="fa fa-check"></i><b>6.1.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="6.1.3" data-path="counterfactual.html"><a href="counterfactual.html#advantages-10"><i class="fa fa-check"></i><b>6.1.3</b> Advantages</a></li>
+<li class="chapter" data-level="6.1.4" data-path="counterfactual.html"><a href="counterfactual.html#disadvantages-10"><i class="fa fa-check"></i><b>6.1.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="6.1.5" data-path="counterfactual.html"><a href="counterfactual.html#example-software"><i class="fa fa-check"></i><b>6.1.5</b> Software and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="adversarial.html"><a href="adversarial.html"><i class="fa fa-check"></i><b>6.2</b> Adversarial Examples</a><ul>
@@ -291,10 +291,10 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="6.2.2" data-path="adversarial.html"><a href="adversarial.html#the-cybersecurity-perspective"><i class="fa fa-check"></i><b>6.2.2</b> The Cybersecurity Perspective</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="proto.html"><a href="proto.html"><i class="fa fa-check"></i><b>6.3</b> Prototypes and Criticisms</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="proto.html"><a href="proto.html#theory-4"><i class="fa fa-check"></i><b>6.3.1</b> Theory</a></li>
+<li class="chapter" data-level="6.3.1" data-path="proto.html"><a href="proto.html#theory-3"><i class="fa fa-check"></i><b>6.3.1</b> Theory</a></li>
 <li class="chapter" data-level="6.3.2" data-path="proto.html"><a href="proto.html#examples-6"><i class="fa fa-check"></i><b>6.3.2</b> Examples</a></li>
-<li class="chapter" data-level="6.3.3" data-path="proto.html"><a href="proto.html#advantages-15"><i class="fa fa-check"></i><b>6.3.3</b> Advantages</a></li>
-<li class="chapter" data-level="6.3.4" data-path="proto.html"><a href="proto.html#disadvantages-15"><i class="fa fa-check"></i><b>6.3.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="6.3.3" data-path="proto.html"><a href="proto.html#advantages-11"><i class="fa fa-check"></i><b>6.3.3</b> Advantages</a></li>
+<li class="chapter" data-level="6.3.4" data-path="proto.html"><a href="proto.html#disadvantages-11"><i class="fa fa-check"></i><b>6.3.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="6.3.5" data-path="proto.html"><a href="proto.html#code-and-alternatives"><i class="fa fa-check"></i><b>6.3.5</b> Code and Alternatives</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="influential.html"><a href="influential.html"><i class="fa fa-check"></i><b>6.4</b> Influential Instances</a><ul>
@@ -302,15 +302,15 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="6.4.2" data-path="influential.html"><a href="influential.html#influence-functions"><i class="fa fa-check"></i><b>6.4.2</b> Influence Functions</a></li>
 <li class="chapter" data-level="6.4.3" data-path="influential.html"><a href="influential.html#advantages-of-identifying-influential-instances"><i class="fa fa-check"></i><b>6.4.3</b> Advantages of Identifying Influential Instances</a></li>
 <li class="chapter" data-level="6.4.4" data-path="influential.html"><a href="influential.html#disadvantages-of-identifying-influential-instances"><i class="fa fa-check"></i><b>6.4.4</b> Disadvantages of Identifying Influential Instances</a></li>
-<li class="chapter" data-level="6.4.5" data-path="influential.html"><a href="influential.html#software-and-alternatives-6"><i class="fa fa-check"></i><b>6.4.5</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="6.4.5" data-path="influential.html"><a href="influential.html#software-and-alternatives-5"><i class="fa fa-check"></i><b>6.4.5</b> Software and Alternatives</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="neural-networks.html"><a href="neural-networks.html"><i class="fa fa-check"></i><b>7</b> Neural Network Interpretation</a><ul>
 <li class="chapter" data-level="7.1" data-path="cnn-features.html"><a href="cnn-features.html"><i class="fa fa-check"></i><b>7.1</b> Learned Features</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="cnn-features.html"><a href="cnn-features.html#feature-visualization"><i class="fa fa-check"></i><b>7.1.1</b> Feature Visualization</a></li>
 <li class="chapter" data-level="7.1.2" data-path="cnn-features.html"><a href="cnn-features.html#network-dissection"><i class="fa fa-check"></i><b>7.1.2</b> Network Dissection</a></li>
-<li class="chapter" data-level="7.1.3" data-path="cnn-features.html"><a href="cnn-features.html#advantages-16"><i class="fa fa-check"></i><b>7.1.3</b> Advantages</a></li>
-<li class="chapter" data-level="7.1.4" data-path="cnn-features.html"><a href="cnn-features.html#disadvantages-16"><i class="fa fa-check"></i><b>7.1.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="7.1.3" data-path="cnn-features.html"><a href="cnn-features.html#advantages-12"><i class="fa fa-check"></i><b>7.1.3</b> Advantages</a></li>
+<li class="chapter" data-level="7.1.4" data-path="cnn-features.html"><a href="cnn-features.html#disadvantages-12"><i class="fa fa-check"></i><b>7.1.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="7.1.5" data-path="cnn-features.html"><a href="cnn-features.html#software-and-further-material"><i class="fa fa-check"></i><b>7.1.5</b> Software and Further Material</a></li>
 </ul></li>
 </ul></li>
@@ -346,75 +346,245 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="extend-lm" class="section level2">
-<h2><span class="header-section-number">4.3</span> GLM, GAM and more</h2>
-<p>The biggest strength but also the biggest weakness of the <a href="limo.html#limo">linear regression model</a> is that the prediction is modeled as a weighted sum of the features. In addition, the linear model comes with many other assumptions. The bad news is (well, not really news) that all those assumptions are often violated in reality: The outcome given the features might have a non-Gaussian distribution, the features might interact and the relationship between the features and the outcome might be nonlinear. The good news is that the statistics community has developed a variety of modifications that transform the linear regression model from a simple blade into a Swiss knife.</p>
-<p>This chapter is definitely not your definite guide to extending linear models. Rather, it serves as an overview of extensions such as Generalized Linear Models (GLMs) and Generalized Additive Models (GAMs) and gives you a little intuition. After reading, you should have a solid overview of how to extend linear models. If you want to learn more about the linear regression model first, I suggest you read the <a href="limo.html#limo">chapter on linear regression models</a>, if you have not already.</p>
-<p>Let us remember the formula of a linear regression model:</p>
+<h2><span class="header-section-number">4.3</span> GLM、GAM、その他</h2>
+<!--
+The biggest strength but also the biggest weakness of the [linear regression model](#limo) is that the prediction is modeled as a weighted sum of the features.
+In addition, the linear model comes with  many other assumptions.
+The bad news is (well, not really news) that all those assumptions are often violated in reality: 
+The outcome given the features might have a non-Gaussian distribution, the features might interact and the relationship between the features and the outcome might be nonlinear.
+The good news is that the statistics community has developed a variety of modifications that transform the linear regression model from a simple blade into a Swiss knife.
+-->
+<p><a href="limo.html#limo">線形モデル</a>は、予測を特徴量の重み付き和としてモデル化する点が、最大の長所であり短所でもあります。 それに加えて、線形モデルは多くの仮定を必要とします。 悪いニュースは（実際にはニュースではありませんが）、それらの仮定が現実問題には当てはまらないということがしばしば起こるということです。 例えば、結果が正規分布に従わなかったり、特徴量間に相互作用があったり、あるいは、特徴量と結果の間の真の関係が非線形であったりするような場合です。 一方で良いニュースは、専門家のコミュニティが、この線形回帰モデルという単純なものを、スイスのアーミーナイフのように扱いやすくするために様々な改良をしてきたということです。</p>
+<!--
+This chapter is definitely not your definite guide to extending linear models. 
+Rather, it serves as an overview of extensions such as Generalized Linear Models (GLMs) and Generalized Additive Models (GAMs) and gives you a little intuition.
+After reading, you should have a solid overview of how to extend linear models.
+If you want to learn more about the linear regression model first, I suggest you read the [chapter on linear regression models](#limo), if you have not already.
+-->
+<p>この章は、線形モデルを拡張するための明確なガイドを提供しようとするものではなく、一般化線形モデル（GLM）や一般化加法モデル（GAM）などの拡張モデルの概要を紹介し、直感的な理解を与えることが目的です。 したがって、この章を読み終わった後に、どのように線形モデルを拡張するのかについてしっかりと理解する必要があるでしょう。 もしあなたが最初に線形回帰モデルについて理解したいのにも関わらず、まだ<a href="limo.html#limo">線形回帰モデルの章</a>を読んでいないのなら、先にその章を読むことをお勧めします。</p>
+<!--
+Let us remember the formula of a linear regression model:
+-->
+<p>線形回帰モデルの式を思い出してみましょう。</p>
 <p><span class="math display">\[y=\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}+\epsilon\]</span></p>
-<p>The linear regression model assumes that the outcome y of an instance can be expressed by a weighted sum of its p features with an individual error <span class="math inline">\(\epsilon\)</span> that follows a Gaussian distribution. By forcing the data into this corset of a formula, we obtain a lot of model interpretability. The feature effects are additive, meaning no interactions, and the relationship is linear, meaning an increase of a feature by one unit can be directly translated into an increase/decrease of the predicted outcome. The linear model allows us to compress the relationship between a feature and the expected outcome into a single number, namely the estimated weight.</p>
-<p>But a simple weighted sum is too restrictive for many real world prediction problems. In this chapter we will learn about three problems of the classical linear regression model and how to solve them. There are many more problems with possibly violated assumptions, but we will focus on the three shown in the following figure:</p>
+<!--
+The linear regression model assumes that the outcome y of an instance can be expressed by a weighted sum of its p features with an individual error $\epsilon$ that follows a Gaussian distribution.
+By forcing the data into this corset of a formula, we obtain a lot of model interpretability.
+The feature effects are additive, meaning no interactions, and the relationship is linear, meaning an increase of a feature by one unit can be directly translated into an increase/decrease of the predicted outcome.
+The linear model allows us to compress the relationship between a feature and the expected outcome into a single number, namely the estimated weight.
+-->
+<p>線形回帰モデルは、結果 y は、p 個の特徴量の重み付き和に正規分布に従う誤差 <span class="math inline">\(\epsilon\)</span> が付与されたものであると仮定しています。 このようにデータを定式化することで、モデルの高い解釈可能性が得られるわけです。 線形回帰モデルでは、特徴量の効果は加法的で、相互作用はなく、特徴量と出力の関係は線形です。つまり、特徴量が 1 増加すると、直接的に予測結果が増加/減少します。 線形モデルを使用することで、特徴量と予測結果の関係を、1つの数値、すなわち推定された重みとして表現します。</p>
+<!--
+But a simple weighted sum is too restrictive for many real world prediction problems.
+In this chapter we will learn about three problems of the classical linear regression model and how to solve them.
+There are many more problems with possibly violated assumptions, but we will focus on the three shown in the following figure:
+-->
+<p>しかし、単純な重み付き和は制約として強すぎるため、現実世界の多くの予測問題にそのまま適用することは出来ません。 この章では、線形回帰モデルの典型的な3つの問題を取り上げ、それらをどう解決するかについて紹介します。 モデル仮定に反する可能性のある問題は他にも多くありますが、次の図に示す3つの問題に焦点を当てます。</p>
+<!--fig.cap = "Three assumptions of the linear model (left side):
+ Gaussian distribution of the outcome given the features, additivity (= no interactions) and linear relationship. 
+ Reality usually does not adhere to those assumptions (right side): 
+ Outcomes might have non-Gaussian distributions, features might interact and the relationship might be nonlinear."-->
 <div class="figure"><span id="fig:three-lm-problems"></span>
-<img src="images/three-lm-problems-1.png" alt="Three assumptions of the linear model (left side): Gaussian distribution of the outcome given the features, additivity (= no interactions) and linear relationship. Reality usually does not adhere to those assumptions (right side): Outcomes might have non-Gaussian distributions, features might interact and the relationship might be nonlinear." width="1050" />
+<img src="images/three-lm-problems-1.png" alt="線形モデルの3つの仮定(左側):特徴量に対する出力が正規分布であること、加法性が成り立つ（=相互作用がない）こと、及び線形関係にあること。現実では通常これらの仮定を満たさない(右側):出力が正規分布に従わなかったり、特徴量間に相互作用が存在したり、非線形の関係があったりするかもしれません。" width="1050" />
 <p class="caption">
-FIGURE 4.8: Three assumptions of the linear model (left side): Gaussian distribution of the outcome given the features, additivity (= no interactions) and linear relationship. Reality usually does not adhere to those assumptions (right side): Outcomes might have non-Gaussian distributions, features might interact and the relationship might be nonlinear.
+FIGURE 4.8: 線形モデルの3つの仮定(左側):特徴量に対する出力が正規分布であること、加法性が成り立つ（=相互作用がない）こと、及び線形関係にあること。現実では通常これらの仮定を満たさない(右側):出力が正規分布に従わなかったり、特徴量間に相互作用が存在したり、非線形の関係があったりするかもしれません。
 </p>
 </div>
-<p>There is a solution to all these problems:</p>
-<p><strong>Problem</strong>: The target outcome y given the features does not follow a Gaussian distribution.<br />
-<strong>Example</strong>: Suppose I want to predict how many minutes I will ride my bike on a given day. As features I have the type of day, the weather and so on. If I use a linear model, it could predict negative minutes because it assumes a Gaussian distribution which does not stop at 0 minutes. Also if I want to predict probabilities with a linear model, I can get probabilities that are negative or greater than 1.<br />
-<strong>Solution</strong>: <a href="extend-lm.html#glm">Generalized Linear Models (GLMs)</a>.</p>
-<p><strong>Problem</strong>: The features interact.<br />
-<strong>Example</strong>: On average, light rain has a slight negative effect on my desire to go cycling. But in summer, during rush hour, I welcome rain, because then all the fair-weather cyclists stay at home and I have the bicycle paths for myself! This is an interaction between time and weather that cannot be captured by a purely additive model.<br />
-<strong>Solution</strong>: <a href="extend-lm.html#lm-interact">Adding interactions manually</a>.</p>
-<p><strong>Problem</strong>: The true relationship between the features and y is not linear.<br />
-<strong>Example</strong>: Between 0 and 25 degrees Celsius, the influence of the temperature on my desire to ride a bike could be linear, which means that an increase from 0 to 1 degree causes the same increase in cycling desire as an increase from 20 to 21. But at higher temperatures my motivation to cycle levels off and even decreases - I do not like to bike when it is too hot.<br />
-<strong>Solutions</strong>: <a href="extend-lm.html#gam">Generalized Additive Models (GAMs); transformation of features</a>.</p>
-<p>The solutions to these three problems are presented in this chapter. Many further extensions of the linear model are omitted. If I attempted to cover everything here, the chapter would quickly turn into a book within a book about a topic that is already covered in many other books. But since you are already here, I have made a little problem plus solution overview for linear model extensions, which you can find at the <a href="extend-lm.html#more-lm-extension">end of the chapter</a>. The name of the solution is meant to serve as a starting point for a search.</p>
+<!--
+There is a solution to all these problems:
+
+**Problem**: The target outcome y given the features does not follow a Gaussian distribution.  
+**Example**: Suppose I want to predict how many minutes I will ride my bike on a given day.
+As features I have the type of day, the weather and so on.
+If I use a linear model, it could predict negative minutes because it assumes a Gaussian distribution which does not stop at 0 minutes.
+Also if I want to predict probabilities with a linear model, I can get probabilities that are negative or greater than 1.  
+**Solution**: [Generalized Linear Models (GLMs)](#glm).
+-->
+<p>これらすべての問題に対する解決策があります。</p>
+<p><strong>問題</strong>: 特徴量が与えられたときの結果 y が、正規分布に従わない。<br />
+<strong>例</strong>: ある日に何分間、自転車に乗るかを予測したいとします。<br />
+この場合、特徴量としては曜日や天気などがあります。 しかしながら、線形モデルを使用した場合、正規分布を想定しているため、0 分以下にならないとは限らず、負の時間を予測してしまうかもしれません。 その他の例として、線形モデルを使用して確率を予測した場合、負または1より大きい確率が予測値として得られることになります。<br />
+<strong>解決策</strong>: <a href="extend-lm.html#glm">一般化線形モデル（GLMs）</a></p>
+<!--
+**Problem**: The features interact.  
+**Example**: On average, light rain has a slight negative effect on my desire to go cycling.
+But in summer, during rush hour, I welcome rain, because then all the fair-weather cyclists stay at home and I have the bicycle paths for myself!
+This is an interaction between time and weather that cannot be captured by a purely additive model.  
+**Solution**: [Adding interactions manually](#lm-interact).
+-->
+<p><strong>問題</strong>: 特徴量間に相互作用が存在する。<br />
+<strong>例</strong>: 私は、小雨が降るとサイクリングしたいという気持ちが少し萎えますが、夏のラッシュアワー時には雨を歓迎します。 それは、晴天を好むサイクリストが全員家にいて、自転車道が空くからです。 これは時間と天気の間の相互作用であるため、単純な加法モデルでは捉えることができません。<br />
+<strong>解決策</strong>: <a href="extend-lm.html#lm-interact">相互作用項を手動で追加する</a></p>
+<!--
+**Problem**: The true relationship between the features and y is not linear.  
+**Example**: Between 0 and 25 degrees Celsius, the influence of the temperature on my desire to ride a bike could be linear, which means that an increase from 0 to 1 degree causes the same increase in cycling desire as an increase from 20 to 21. 
+But at higher temperatures my motivation to cycle levels off and even decreases - I do not like to bike when it is too hot.  
+**Solutions**: [Generalized Additive Models (GAMs); transformation of features](#gam).
+-->
+<p><strong>問題</strong>: 特徴量と結果 y の間の真の関係性が線形ではない。<br />
+<strong>例</strong>: 摂氏0度から25度の間では、自転車に乗りたいという私の欲求に対する温度の影響は、線形である可能性があります。 つまり、気温が0度から1度に上昇した場合と、20度から21度に上昇した場合のモチベーションの増加は同じということです。 しかし、その気温よりが高くなれば、暑すぎるときに自転車に乗るのは好きでないので、サイクリングへのモチベーションは横ばいになり、やがて低下します。<br />
+<strong>解決策</strong>: <a href="extend-lm.html#gam">一般化された加法モデル (GAM); 特徴量の変換</a></p>
+<!--
+The solutions to these three problems are presented in this chapter.
+Many further extensions of the linear model are omitted.
+If I attempted to cover everything here, the chapter would quickly turn into a book within a book about a topic that is already covered in many other books.
+But since you are already here, I have made a little problem plus solution overview for linear model extensions, which you can find at the [end of the chapter](#more-lm-extension).
+The name of the solution is meant to serve as a starting point for a search.
+-->
+<p>この章では、これら3つの問題の解決策を示します。 線形モデルの拡張は他にも多くありますが、ここでは割愛します。 ここで全てを説明しようとすれば、この章自体がすでに他の多くの専門書の中で説明されている内容を集めた本となってしまうでしょう。 とはいえ、せっかくですので、<a href="extend-lm.html#more-lm-extension">章の終わり</a>で線形モデル拡張について問題と解決策のちょっとした概要を作成しておきました。 解決策の名前は、自身で詳細を調べるときに役に立つことでしょう。</p>
+<!--
+### Non-Gaussian Outcomes - GLMs {#glm}
+
+The linear regression model assumes that the outcome given the input features follows a Gaussian distribution.
+This assumption excludes many cases:
+The outcome can also be a category (cancer vs. healthy), a count (number of children), the time to the occurrence of an event (time to failure of a machine) or a very skewed outcome with a few very high values (household income).
+The linear regression model can be extended to model all these types of outcomes.
+This extension is called **Generalized Linear Models** or **GLMs** for short.
+Throughout this chapter, I will use the name GLM for both the general framework and for particular models from that framework.
+The core concept of any GLM is: 
+Keep the weighted sum of the features, but allow non-Gaussian outcome distributions and connect the expected mean of this distribution and the weighted sum through a possibly nonlinear function.
+For example, the logistic regression model assumes a Bernoulli distribution for the outcome and links the expected mean and the weighted sum using the logistic function.
+-->
 <div id="glm" class="section level3">
-<h3><span class="header-section-number">4.3.1</span> Non-Gaussian Outcomes - GLMs</h3>
-<p>The linear regression model assumes that the outcome given the input features follows a Gaussian distribution. This assumption excludes many cases: The outcome can also be a category (cancer vs. healthy), a count (number of children), the time to the occurrence of an event (time to failure of a machine) or a very skewed outcome with a few very high values (household income). The linear regression model can be extended to model all these types of outcomes. This extension is called <strong>Generalized Linear Models</strong> or <strong>GLMs</strong> for short. Throughout this chapter, I will use the name GLM for both the general framework and for particular models from that framework. The core concept of any GLM is: Keep the weighted sum of the features, but allow non-Gaussian outcome distributions and connect the expected mean of this distribution and the weighted sum through a possibly nonlinear function. For example, the logistic regression model assumes a Bernoulli distribution for the outcome and links the expected mean and the weighted sum using the logistic function.</p>
-<p>The GLM mathematically links the weighted sum of the features with the mean value of the assumed distribution using the link function g, which can be chosen flexibly depending on the type of outcome.</p>
+<h3><span class="header-section-number">4.3.1</span> 結果が正規分布に従わない場合 - GLMs</h3>
+<p>線形回帰モデルは、特徴量が与えられたときの結果は正規分布に従うと仮定としています。 しかし、この仮定が成り立たない場合は多くあります。 結果は、カテゴリ (がん or 健康)、整数 (子供の数)、出来事が起こるまでの時間 (機械が故障するまでの時間)、少数のとても大きな数が存在する偏った出力 (世帯収入) などがあります。 実は、線形回帰モデルはこれらすべてのタイプに拡張できます。 この拡張は<strong>一般化線形モデル (Generalized Linear Models)</strong>もしくは省略して<strong>GLMs</strong>と呼ばれます。 この章では、GLMという用語を一般的なフレームワークとこのフレームワークに由来する特定のモデル、両方を表す際に使います。 GLM のコアとなる概念は、「特徴量の重み付き和を保持するが、結果の分布の非正規性を許容し、この分布の平均と重み付き和をある非線型関数で関連づけること」です。 例えば、ロジスティック回帰モデルでは結果が二項分布 (Bernoulli distribution) に従うことを仮定しており、ロジスティック関数を通して分布の平均と重み付き和が関連付けられています。</p>
+<!--
+The GLM mathematically links the weighted sum of the features with the mean value of the assumed distribution using the link function g, which can be chosen flexibly depending on the type of outcome. 
+-->
+<p>GLM は特徴量の重み付き和と、仮定された分布の平均を、リンク関数 g を用いて数学的に関連付けます。このとき、 g は結果の種類によって柔軟に決められます。</p>
 <p><span class="math display">\[g(E_Y(y|x))=\beta_0+\beta_1{}x_{1}+\ldots{}\beta_p{}x_{p}\]</span></p>
-<p>GLMs consist of three components: The link function g, the weighted sum <span class="math inline">\(X^T\beta\)</span> (sometimes called linear predictor) and a probability distribution from the exponential family that defines <span class="math inline">\(E_Y\)</span>.</p>
-<p>The exponential family is a set of distributions that can be written with the same (parameterized) formula that includes an exponent, the mean and variance of the distribution and some other parameters. I will not go into the mathematical details because this is a very big universe of its own that I do not want to enter. Wikipedia has a neat <a href="https://en.wikipedia.org/wiki/Exponential_family#Table_of_distributions">list of distributions from the exponential family</a>. Any distribution from this list can be chosen for your GLM. Based on the type of the outcome you want to predict, choose a suitable distribution. Is the outcome a count of something (e.g. number of children living in a household)? Then the Poisson distribution could be a good choice. Is the outcome always positive (e.g. time between two events)? Then the exponential distribution could be a good choice.</p>
-<p>Let us consider the classic linear model as a special case of a GLM. The link function for the Gaussian distribution in the classic linear model is simply the identity function. The Gaussian distribution is parameterized by the mean and the variance parameters. The mean describes the value that we expect on average and the variance describes how much the values vary around this mean. In the linear model, the link function links the weighted sum of the features to the mean of the Gaussian distribution.</p>
-<p>Under the GLM framework, this concept generalizes to any distribution (from the exponential family) and arbitrary link functions. If y is a count of something, such as the number of coffees someone drinks on a certain day, we could model it with a GLM with a Poisson distribution and the natural logarithm as the link function:</p>
+<!--
+GLMs consist of three components:
+The link function g, the weighted sum $X^T\beta$ (sometimes called linear predictor) and a probability distribution from the exponential family that defines $E_Y$.
+-->
+<p>GLM は次の3つの要素からなります。 それは、リンク関数 g、重み付き和 <span class="math inline">\(X^T\beta\)</span> (線形予測器とも呼ばれる) と、<span class="math inline">\(E_Y\)</span> を定義する指数型分布族に由来する確率分布です。</p>
+<!--
+The exponential family is a set of distributions that can be written with the same (parameterized) formula that includes an exponent, the mean and variance of the distribution and some other parameters.
+I will not go into the mathematical details because this is a very big universe of its own that I do not want to enter.
+Wikipedia has a neat [list of distributions from the exponential family](https://en.wikipedia.org/wiki/Exponential_family#Table_of_distributions). 
+Any distribution from this list can be chosen for your GLM.
+Based on the type of the outcome you want to predict, choose a suitable distribution.
+Is the outcome a count of something (e.g. number of children living in a household)?
+Then the Poisson distribution could be a good choice.
+Is the outcome always positive (e.g. time between two events)?
+Then the exponential distribution could be a good choice.
+-->
+<p>指数型分布族は、分布の平均、分散、その他のパラメータを持つ指数が含まれた共通の式によって記述できる分布の集合です。 それ自体、とてつもなく広い分野であり、深入りはしたくないので、数学的な詳細まで今回は扱いません。 Wikipedia にはよく整理された<a href="https://en.wikipedia.org/wiki/Exponential_family#Table_of_distributions">指数型分布族に該当する分布の表</a>があります。 このリストの中ならどの分布でも GLM に適用できます。 予測したい結果の種類に応じて、適切な分布を選んでください。 例えば、結果が数 (例：一家庭における子供の数) ならばポアソン分布、 結果が常に正 (例：2つのイベント間の時間) ならば指数分布が良いでしょう。</p>
+<!--
+Let us consider the classic linear model as a special case of a GLM.
+The link function for the Gaussian distribution in the classic linear model is simply the identity function.
+The Gaussian distribution is parameterized by the mean and the variance parameters.
+The mean describes the value that we expect on average and the variance describes how much the values vary around this mean.
+In the linear model, the link function links the weighted sum of the features to the mean of the Gaussian distribution.
+-->
+<p>GLM の特殊な場合として、古典的な線形モデルについて考えてみましょう。 線形モデルにおける正規分布のリンク関数は単に恒等関数となります。 正規分布は平均と分散によって決まります。 平均値は平均的に期待される値、分散は平均の周りでどのくらい値がばらつくかを表す値です。 線形モデルでは、リンク関数は特徴量の重み付き和と正規分布の平均を関連付けます。</p>
+<!--
+Under the GLM framework, this concept generalizes to any distribution (from the exponential family) and arbitrary link functions.
+If y is a count of something, such as the number of coffees someone drinks on a certain day, we could model it with a GLM with a Poisson distribution and the natural logarithm as the link function:
+-->
+<p>GLM　のフレームワークでは、この概念は (指数型分布族に由来する) すべての分布とリンク関数に一般化されます。 y が例えば一日に飲むコーヒーの数といったような数であったなら、ポアソン分布とリンク関数である自然対数を用いたGLMでモデル化できます。</p>
 <p><span class="math display">\[ln(E_Y(y|x))=x^{T}\beta\]</span></p>
-<p>The logistic regression model is also a GLM that assumes a Bernoulli distribution and uses the logit function as the link function. The mean of the binomial distribution used in logistic regression is the probability that y is 1.</p>
+<!--
+The logistic regression model is also a GLM that assumes a Bernoulli distribution and uses the logit function as the link function.
+The mean of the binomial distribution used in logistic regression is the probability that y is 1.
+-->
+<p>ロジスティック回帰モデルも二項分布を仮定した GLM で、ロジット関数がリンク関数として使われています。 ロジスティック回帰で用いられる二項分布の平均は y が 1 である確率です。</p>
 <p><span class="math display">\[x^{T}\beta=ln\left(\frac{E_Y(y|x)}{1-E_Y(y|x)}\right)=ln\left(\frac{P(y=1|x)}{1-P(y=1|x)}\right)\]</span></p>
-<p>And if we solve this equation to have P(y=1) on one side, we get the logistic regression formula:</p>
+<!--
+And if we solve this equation to have P(y=1) on one side, we get the logistic regression formula:
+-->
+<p>そして、この式を片方が P(y=1) となるように変形すれば、ロジスティック回帰の公式が得られます。</p>
 <p><span class="math display">\[P(y=1)=\frac{1}{1+exp(-x^{T}\beta)}\]</span></p>
-<p>Each distribution from the exponential family has a canonical link function that can be derived mathematically from the distribution. The GLM framework makes it possible to choose the link function independently of the distribution. How to choose the right link function? There is no perfect recipe. You take into account knowledge about the distribution of your target, but also theoretical considerations and how well the model fits your actual data. For some distributions the canonical link function can lead to values that are invalid for that distribution. In the case of the exponential distribution, the canonical link function is the negative inverse, which can lead to negative predictions that are outside the domain of the exponential distribution. Since you can choose any link function, the simple solution is to choose another function that respects the domain of the distribution.</p>
-<p><strong>Examples</strong></p>
-<p>I have simulated a dataset on coffee drinking behavior to highlight the need for GLMs. Suppose you have collected data about your daily coffee drinking behavior. If you do not like coffee, pretend it is about tea. Along with number of cups, you record your current stress level on a scale of 1 to 10, how well you slept the night before on a scale of 1 to 10 and whether you had to work on that day. The goal is to predict the number of coffees given the features stress, sleep and work. I simulated data for 200 days. Stress and sleep were drawn uniformly between 1 and 10 and work yes/no was drawn with a 50/50 chance (what a life!). For each day, the number of coffees was then drawn from a Poisson distribution, modelling the intensity <span class="math inline">\(\lambda\)</span> (which is also the expected value of the Poisson distribution) as a function of the features sleep, stress and work. You can guess where this story will lead: <em>&quot;Hey, let us model this data with a linear model ... Oh it does not work ... Let us try a GLM with Poisson distribution ... SURPRISE! Now it works!&quot;.</em> I hope I did not spoil the story too much for you.</p>
-<p>Let us look at the distribution of the target variable, the number of coffees on a given day:</p>
+<!--
+Each distribution from the exponential family has a canonical link function that can be derived mathematically from the distribution.
+The GLM framework makes it possible to choose the link function independently of the distribution.
+How to choose the right link function?
+There is no perfect recipe. 
+You take into account knowledge about the distribution of your target, but also theoretical considerations and how well the model fits your actual data.
+For some distributions the canonical link function can lead to values that are invalid for that distribution.
+In the case of the exponential distribution, the canonical link function is the negative inverse, which can lead to negative predictions that are outside the domain of the exponential distribution.
+Since you can choose any link function, the simple solution is to choose another function that respects the domain of the distribution.
+-->
+<p>指数型分布族に属する分布は、分布から数学的に導ける正準リンク関数 (canonical link function) があります。 GLM の枠組みはその分布と関係なくリンク関数を選ぶことができます。 どうやって、適切なリンク関数を選ぶのでしょうか。 そこには、完璧なレシピはありません。 目的値の分布だけでなく、理論的な考察と実際のデータにどれだけ適合しているかを考慮に入れます。 分布の中には、正準リンク関数がその分布に対して無効であるような値につながるものもあります。 指数型分布族の分布の場合、正準リンク関数は負の逆関数であり、指数分布の領域の外側であるような負の予測値を出してしまうことがあります。 ただ、リンク関数は任意に選べるので、単純な解決策は分布の領域に適合するような別の関数を選ぶことです。</p>
+<!--
+**Examples**
+
+I have simulated a dataset on coffee drinking behavior to highlight the need for GLMs.
+Suppose you have collected data about your daily coffee drinking behavior.
+If you do not like coffee, pretend it is about tea.
+Along with number of cups, you record your current stress level on a scale of 1 to 10, how well you slept the night before on a scale of 1 to 10 and whether you had to work on that day.
+The goal is to predict the number of coffees given the features stress, sleep and work.
+I simulated data for 200 days.
+Stress and sleep were drawn uniformly between 1 and 10 and work yes/no was drawn with a 50/50 chance (what a life!). 
+For each day, the number of coffees was then drawn from a Poisson distribution, modelling the intensity $\lambda$ (which is also the expected value of the Poisson distribution) as a function of the features sleep, stress and work.
+You can guess where this story will lead:
+*"Hey, let us model this data with a linear model ... Oh it does not work ... Let us try a GLM with Poisson distribution ... SURPRISE! Now it works!".*
+I hope I did not spoil the story too much for you.
+-->
+<p><strong>例</strong></p>
+<p>GLM の必要性を強調するために、一日どれくらいコーヒーを飲むかについてのデータセットについて考えてみました。 一日にコーヒーを飲む量についてのデータを集めたとします。 コーヒーが好きでないのなら、お茶でもかまいません。 コーヒーを飲んだ数とともに、現在のストレスレベル（1から10）、夜どれくらいよく眠れたか（1から10）、その日仕事があったかについて記録します。 目標は200日間のこれらのデータからコーヒーを飲んだ数を予測することです。 ストレスと睡眠については1から10まで均一の分布であり、仕事について yes/no が50%ずつとします（なんて生活でしょうか！）。 コーヒーを飲んだ数はポアソン分布に従い、<span class="math inline">\(\lambda\)</span>（ポアソン分布の期待値）を睡眠、ストレス、仕事の特徴量の関数としてモデル化します。 この話がどうなっていくか予測できるでしょうか？ <em>「線形モデルでこのデータをモデル化してみよう...うまくいかないなぁ...じゃあ、ポアソン分布を用いてGLMでやったらどうかな...あ!うまくいったぞ!!!!!!!」</em> 読者のためにあまり話が逸れないようにしなければ...。</p>
+<!--
+Let us look at the distribution of the target variable, the number of coffees on a given day:
+-->
+<p>一日に飲んだコーヒーの数を目的変数としたときの分布をみてみましょう。</p>
+<!--fig.cap = "Simulated distribution of number of daily coffees for 200 days."-->
 <div class="figure"><span id="fig:poisson-data"></span>
-<img src="images/poisson-data-1.png" alt="Simulated distribution of number of daily coffees for 200 days." width="1050" />
+<img src="images/poisson-data-1.png" alt="200日間のコーヒーを飲んだ量の分布" width="1050" />
 <p class="caption">
-FIGURE 4.9: Simulated distribution of number of daily coffees for 200 days.
+FIGURE 4.9: 200日間のコーヒーを飲んだ量の分布
 </p>
 </div>
-<p>On 76 of the 200 days you had no coffee at all and on the most extreme day you had 7. Let us naively use a linear model to predict the number of coffees using sleep level, stress level and work yes/no as features. What can go wrong when we falsely assume a Gaussian distribution? A wrong assumption can invalidate the estimates, especially the confidence intervals of the weights. A more obvious problem is that the predictions do not match the &quot;allowed&quot; domain of the true outcome, as the following figure shows.</p>
+<!--
+On 76 of the 200 days you had no coffee at all and on the most extreme day you had 7.
+Let us naively use a linear model to predict the number of coffees using sleep level, stress level and work yes/no as features.
+What can go wrong when we falsely assume a Gaussian distribution?
+A wrong assumption can invalidate the estimates, especially the confidence intervals of the weights. 
+A more obvious problem is that the predictions do not match the "allowed" domain of the true outcome, as the following figure shows.
+-->
+<p>76 日中 200 日はまったくコーヒーを飲んでおらず、一番飲んだ日は7 杯も飲んでいます。 愚直に線形モデルを用いて、睡眠レベル、ストレスレベル、仕事の有無の特徴量から飲んだ コーヒーの数を予測してみましょう。 誤って正規分布を仮定すると何がおかしくなるのでしょうか? 間違った仮定は推定値、特に重みの信頼区間を無効にしてしまいます。 さらに明らかな問題は、次の図に示すように予測値が真の結果の&quot;許された&quot;領域と合致しないということです。</p>
+<!--fig.cap = "Predicted number of coffees dependent on stress, sleep and work. The linear model predicts negative values."-->
 <div class="figure"><span id="fig:failing-linear-model"></span>
-<img src="images/failing-linear-model-1.png" alt="Predicted number of coffees dependent on stress, sleep and work. The linear model predicts negative values." width="1050" />
+<img src="images/failing-linear-model-1.png" alt="ストレス、睡眠、仕事に応じて予測されたコーヒーを飲む量の予測値。線形モデルは負の値を予測しています。" width="1050" />
 <p class="caption">
-FIGURE 4.10: Predicted number of coffees dependent on stress, sleep and work. The linear model predicts negative values.
+FIGURE 4.10: ストレス、睡眠、仕事に応じて予測されたコーヒーを飲む量の予測値。線形モデルは負の値を予測しています。
 </p>
 </div>
-<p>The linear model does not make sense, because it predicts negative number of coffees. This problem can be solved with Generalized Linear Models (GLMs). We can change the link function and the assumed distribution. One possibility is to keep the Gaussian distribution and use a link function that always leads to positive predictions such as the log-link (the inverse is the exp-function) instead of the identity function. Even better: We choose a distribution that corresponds to the data generating process and an appropriate link function. Since the outcome is a count, the Poisson distribution is a natural choice, along with the logarithm as link function. In this case, the data was even generated with the Poisson distribution, so the Poisson GLM is the perfect choice. The fitted Poisson GLM leads to the following distribution of predicted values:</p>
+<!--
+The linear model does not make sense, because it predicts negative number of coffees.
+This problem can be solved with Generalized Linear Models (GLMs).
+We can change the link function and the assumed distribution. 
+One possibility is to keep the Gaussian distribution and use a link function that always leads to positive predictions such as the log-link (the inverse is the exp-function) instead of the identity function.
+Even better: 
+We choose a distribution that corresponds to the data generating process and an appropriate link function. 
+Since the outcome is a count, the Poisson distribution is a natural choice, along with the logarithm as link function. 
+In this case, the data was even generated with the Poisson distribution, so the Poisson GLM is the perfect choice.
+The fitted Poisson GLM leads to the following distribution of predicted values:
+-->
+<p>線形モデルは負の値を予測するので、理にかなっていません。 リンク関数と仮定している分布を変更することによって GLM ではこの問題を解決できます。 1つの選択肢は、正規分布は引き続き使い、リンク関数としては、常に正の値しか取らないようにするため、恒等関数の代わりに log-link (expの逆関数) を使用するという方法です。 さらに良いのは、データが生成されたプロセスに従った分布を選び、適切なリンク関数を選ぶことです。 結果は数ですから、ポアソン分布とリンク関数として対数関数を選ぶことが自然です。 今回は、データはポアソン分布から生成されるので、Poisson GLM はベストチョイスです。 学習された Poisson GLM による予測値の分布は次のようになります。</p>
+<!--fig.cap = "Predicted number of coffees dependent on stress, sleep and work. The GLM with Poisson assumption and log link is an appropriate model for this dataset."-->
 <div class="figure"><span id="fig:linear-model-positive"></span>
-<img src="images/linear-model-positive-1.png" alt="Predicted number of coffees dependent on stress, sleep and work. The GLM with Poisson assumption and log link is an appropriate model for this dataset." width="1050" />
+<img src="images/linear-model-positive-1.png" alt="ストレス、睡眠、仕事に応じて予測されたコーヒーを飲む量の予測値。ポアソン分布とlog link に基づいた GLM はこのデータセットに対する適切なモデルです。" width="1050" />
 <p class="caption">
-FIGURE 4.11: Predicted number of coffees dependent on stress, sleep and work. The GLM with Poisson assumption and log link is an appropriate model for this dataset.
+FIGURE 4.11: ストレス、睡眠、仕事に応じて予測されたコーヒーを飲む量の予測値。ポアソン分布とlog link に基づいた GLM はこのデータセットに対する適切なモデルです。
 </p>
 </div>
-<p>No negative amounts of coffees, looks much better now.</p>
-<p><strong>Interpretation of GLM weights</strong></p>
-<p>The assumed distribution together with the link function determines how the estimated feature weights are interpreted. In the coffee count example, I used a GLM with Poisson distribution and log link, which implies the following relationship between the features and the expected outcome.</p>
+<!--
+No negative amounts of coffees, looks much better now.
+-->
+<p>負の値を取らないので、先ほどよりも良さそうです。</p>
+<!--**Interpretation of GLM weights**-->
+<p><strong>GLMの重みの解釈</strong></p>
+<!--The assumed distribution together with the link function determines how the estimated feature weights are interpreted.
+In the coffee count example, I used a GLM with Poisson distribution and log link, which implies the following relationship between the features and the expected outcome.-->
+<p>リンク関数と共に仮定した分布は推定される特徴量の重みがどのように解釈されるかを決めます。 コーヒーの例では、ポアソン分布とlogリンクに基づいたGLMを用いました。これによって、次のような特徴量と予測値の関係が示唆されます。</p>
 <p><span class="math display">\[ln(E(\text{coffees}|\text{stress},\text{sleep},\text{work}))=\beta_0+\beta_{\text{stress}}x_{\text{stress}}+\beta_{\text{sleep}}x_{\text{sleep}}+\beta_{\text{work}}x_{\text{work}}\]</span></p>
-<p>To interpret the weights we invert the link function so that we can interpret the effect of the features on the expected outcome and not on the logarithm of the expected outcome.</p>
+<!--To interpret the weights we invert the link function so that we can interpret the effect of the features on the expected outcome and not on the logarithm of the expected outcome. -->
+<p>重みを解釈するために、予測された結果の対数ではなく、リンク関数の逆関数をとり、特徴量の影響を理解しやすいように変形します。</p>
 <p><span class="math display">\[E(\text{coffees}|\text{stress},\text{sleep},\text{work})=exp(\beta_0+\beta_{\text{stress}}x_{\text{stress}}+\beta_{\text{sleep}}x_{\text{sleep}}+\beta_{\text{work}}x_{\text{work}})\]</span></p>
-<p>Since all the weights are in the exponential function, the effect interpretation is not additive, but multiplicative, because exp(a + b) is exp(a) times exp(b). The last ingredient for the interpretation is the actual weights of the toy example. The following table lists the estimated weights and exp(weights) together with the 95% confidence interval:</p>
+<!--Since all the weights are in the exponential function, the effect interpretation is not additive, but multiplicative, because exp(a + b) is exp(a) times exp(b).
+The last ingredient for the interpretation is the actual weights of the toy example.
+The following table lists the estimated weights and exp(weights) together with the 95% confidence interval:-->
+<p>すべての重みは、指数関数の中にはいっており、exp(a + b) は exp(a) と exp(b) の積になるので、効果の解釈は加法的ではなく乗法的となります。 解釈の最後の要素は、例の実際の重みです。 以下の表に予測される重みと exp(weight) を 95% 信頼区間とともに挙げています。</p>
 <table>
 <thead>
 <tr class="header">
@@ -446,13 +616,37 @@ FIGURE 4.11: Predicted number of coffees dependent on stress, sleep and work. Th
 </tr>
 </tbody>
 </table>
-<p>Increasing the stress level by one point multiplies the expected number of coffees by the factor 1.12. Increasing the sleep quality by one point multiplies the expected number of coffees by the factor 0.86. The predicted number of coffees on a work day is on average 2.23 times the number of coffees on a day off. In summary, the more stress, the less sleep and the more work, the more coffee is consumed.</p>
-<p>In this section you learned a little about Generalized Linear Models that are useful when the target does not follow a Gaussian distribution. Next, we look at how to integrate interactions between two features into the linear regression model.</p>
+<!--Increasing the stress level by one point multiplies the expected number of coffees by the factor 1.12. 
+Increasing the sleep quality by one point multiplies the expected number of coffees by the factor 0.86.
+The predicted number of coffees on a work day is on average 2.23 times the number of coffees on a day off.
+In summary, the more stress, the less sleep and the more work, the more coffee is consumed.
+
+In this section you learned a little about Generalized Linear Models that are useful when the target does not follow a Gaussian distribution. 
+Next, we look at how to integrate interactions between two features into the linear regression model.-->
+<p>ストレスレベルが1点上昇すると、予測されるコーヒーの量は 1.12 倍になります。 睡眠の質が1点上昇すると、予測されるコーヒーの量は 0.86 倍になります。 仕事のある日の予測値は仕事のない日と比べて、平均して2.23倍されます。 まとめると、ストレスが多い、睡眠が少ない、仕事がある日に、より多くのコーヒーが飲まれます。</p>
+<p>この章では正規分布にターゲットが従わない場合に有効なGLMについて少し学びました。 次は、2つの特徴量の相互作用をどのように線形回帰モデルに取り入れるかを見ていきましょう。</p>
+<!--
+### Interactions {#lm-interact}
+-->
 </div>
 <div id="lm-interact" class="section level3">
-<h3><span class="header-section-number">4.3.2</span> Interactions</h3>
-<p>The linear regression model assumes that the effect of one feature is the same regardless of the values of the other features (= no interactions). But often there are interactions in the data. To predict the <a href="bike-data.html#bike-data">number of bicycles</a> rented, there may be an interaction between temperature and whether it is a working day or not. Perhaps, when people have to work, the temperature does not influence the number of rented bikes much, because people will ride the rented bike to work no matter what happens. On days off, many people ride for pleasure, but only when it is warm enough. When it comes to rental bicycles, you might expect an interaction between temperature and working day.</p>
-<p>How can we get the linear model to include interactions? Before you fit the linear model, add a column to the feature matrix that represents the interaction between the features and fit the model as usual. The solution is elegant in a way, since it does not require any change of the linear model, only additional columns in the data. In the working day and temperature example, we would add a new feature that has zeros for no-work days, otherwise it has the value of the temperature feature, assuming that working day is the reference category. Suppose our data looks like this:</p>
+<h3><span class="header-section-number">4.3.2</span> 相互作用</h3>
+<!--
+The linear regression model assumes that the effect of one feature is the same regardless of the values of the other features (= no interactions).
+But often there are interactions in the data.
+To predict the [number of bicycles](#bike-data) rented, there may be an interaction between temperature and whether it is a working day or not.
+Perhaps, when people have to work, the temperature does not influence the number of rented bikes much, because people will ride the rented bike to work no matter what happens.
+On days off, many people ride for pleasure, but only when it is warm enough.
+When it comes to rental bicycles, you might expect an interaction between temperature and working day.
+
+How can we get the linear model to include interactions?
+Before you fit the linear model, add a column to the feature matrix that represents the interaction between the features and fit the model as usual.
+The solution is elegant in a way, since it does not require any change of the linear model, only additional columns in the data.
+In the working day and temperature example, we would add a new feature that has zeros for no-work days, otherwise it has the value of the temperature feature, assuming that working day is the reference category.
+Suppose our data looks like this:
+-->
+<p>線形回帰モデルでは、1つの特徴量がもたらす効果は他の特徴量の値とは関係がない (＝相互作用がない) ことを前提としています。 しかし、多くの場合、特徴量の間には相互作用があります。 例えば、<a href="bike-data.html#bike-data">自転車レンタルの数</a>を予測する際、気温と就業日であるかどうかの間に相互作用があるかもしれません。 おそらく、就業日であれば、何があろうとも仕事のために自転車に乗るので、気温はレンタルされる自転車の数に大して影響を与えないでしょう。 しかし休日の場合には、多くの人が娯楽目的に自転車に乗りますが、それは気温が十分に暖かいときだけでしょう。 したがって、レンタル自転車の予測では、気温と就業日の間の相互作用が期待されるかもしれません。</p>
+<p>線形モデルで相互作用を考慮するにはどうすれば良いでしょう。 線形モデルを学習する前に、特徴量に相互作用を表現する列を追加します。 この解決策は、線形モデル自体を変更することなく、ただ列をデータに追加するだけで良いという点で優れた手法といえます。 例えば、就業日と気温の例においては、休業日の場合は 0、それ以外は気温の値を持つような特徴量を追加します。 このとき、就業日が参照カテゴリであると仮定します。 データが次のようになっているとします。</p>
 <table>
 <thead>
 <tr class="header">
@@ -479,7 +673,12 @@ FIGURE 4.11: Predicted number of coffees dependent on stress, sleep and work. Th
 </tr>
 </tbody>
 </table>
-<p>The data matrix used by the linear model looks slightly different. The following table shows what the data prepared for the model looks like if we do not specify any interactions. Normally, this transformation is performed automatically by any statistical software.</p>
+<!--
+The data matrix used by the linear model looks slightly different.
+The following table shows what the data prepared for the model looks like if we do not specify any interactions.
+Normally, this transformation is performed automatically by any statistical software.
+-->
+<p>以下の表は、相互作用を考慮しない場合のデータ行列を表しており、先ほどのものと少し異なります。 通常、この変換は統計ソフトウェアによって自動的に行われます。</p>
 <table>
 <thead>
 <tr class="header">
@@ -511,8 +710,15 @@ FIGURE 4.11: Predicted number of coffees dependent on stress, sleep and work. Th
 </tr>
 </tbody>
 </table>
-<p>The first column is the intercept term. The second column encodes the categorical feature, with 0 for the reference category and 1 for the other. The third column contains the temperature.</p>
-<p>If we want the linear model to consider the interaction between temperature and the workingday feature, we have to add a column for the interaction:</p>
+<!--
+The first column is the intercept term.
+The second column encodes the categorical feature, with 0 for the reference category and 1 for the other.
+The third column contains the temperature.
+
+If we want the linear model to consider the interaction between temperature and the workingday feature, we have to add a column for the interaction:
+-->
+<p>1列目は切片の項です。 2列目は 0 を参照カテゴリ、1 をその他としたようなカテゴリカル特徴量となっています。 そして、3列目には気温が入っています。</p>
+<p>線形モデルで気温と就業日の相互作用を考慮したい場合、次のように相互作用の列を追加する必要があります。</p>
 <table>
 <thead>
 <tr class="header">
@@ -549,8 +755,20 @@ FIGURE 4.11: Predicted number of coffees dependent on stress, sleep and work. Th
 </tr>
 </tbody>
 </table>
-<p>The new column &quot;workY.temp&quot; captures the interaction between the features working day (work) and temperature (temp). This new feature column is zero for an instance if the work feature is at the reference category (&quot;N&quot; for no working day), otherwise it assumes the values of the instances temperature feature. With this type of encoding, the linear model can learn a different linear effect of temperature for both types of days. This is the interaction effect between the two features. Without an interaction term, the combined effect of a categorical and a numerical feature can be described by a line that is vertically shifted for the different categories. If we include the interaction, we allow the effect of the numerical features (the slope) to have a different value in each category.</p>
-<p>The interaction of two categorical features works similarly. We create additional features which represent combinations of categories. Here is some artificial data containing working day (work) and a categorical weather feature (wthr):</p>
+<!--
+The new column "workY.temp" captures the interaction between the features working day (work) and temperature (temp).
+This new feature column is zero for an instance if the work feature is at the reference category ("N" for no working day), otherwise it assumes the values of the instances temperature feature.
+With this type of encoding, the linear model can learn a different linear effect of temperature for both types of days.
+This is the interaction effect between the two features.
+Without an interaction term, the combined effect of a categorical and a numerical feature can be described by a line that is vertically shifted for the different categories.
+If we include the interaction, we allow the effect of the numerical features (the slope) to have a different value in each category.
+
+The interaction of two categorical features works similarly.
+We create additional features which represent combinations of categories. 
+Here is some artificial data containing working day (work) and a categorical weather feature (wthr): 
+-->
+<p>新しい列 'workY.temp' は就業日（work）と気温（temp）間の相互作用を表現します。 この列は work 特徴量が参照カテゴリ（Nである、つまり就業日でない）のときに 0 を、その他の場合には気温の値をとります。 このエンコーディングにより、線形モデルは就業日・休業日両方に対して異なる気温による線形効果を学習できます。 これが2つの特徴量間の相互作用です。 相互作用項がない場合、カテゴリカル特徴量と量的特徴量の複合効果は異なるカテゴリに対して垂直方向にシフトした直線で表現できます。 相互作用を考慮すると、量的特徴量の効果（傾き）が各カテゴリごとに異なる値を持つことができます。</p>
+<p>2つのカテゴリカル特徴量の相互作用についても同様です。 カテゴリの組み合わせを表現する特徴量を追加します。 次の表は就業日（work）とカテゴリカルな天候（wthr）を含んだ人工的なデータです。</p>
 <table>
 <thead>
 <tr class="header">
@@ -577,7 +795,10 @@ FIGURE 4.11: Predicted number of coffees dependent on stress, sleep and work. Th
 </tr>
 </tbody>
 </table>
-<p>Next, we include interaction terms:</p>
+<!--
+Next, we include interaction terms: 
+-->
+<p>次に相互作用項を追加します。</p>
 <table>
 <thead>
 <tr class="header">
@@ -624,11 +845,31 @@ FIGURE 4.11: Predicted number of coffees dependent on stress, sleep and work. Th
 </tr>
 </tbody>
 </table>
-<p>The first column serves to estimate the intercept. The second column is the encoded work feature. Columns three and four are for the weather feature, which requires two columns because you need two weights to capture the effect for three categories, one of which is the reference category. The rest of the columns capture the interactions. For each category of both features (except for the reference categories), we create a new feature column that is 1 if both features have a certain category, otherwise 0.</p>
-<p>For two numerical features, the interaction column is even easier to construct: We simply multiply both numerical features.</p>
-<p>There are approaches to automatically detect and add interaction terms. One of them can be found in the <a href="rulefit.html#rulefit">RuleFit chapter</a>. The RuleFit algorithm first mines interaction terms and then estimates a linear regression model including interactions.</p>
-<p><strong>Example</strong></p>
-<p>Let us return to the <a href="bike-data.html#bike-data">bike rental prediction task</a> which we have already modeled in the <a href="limo.html#limo">linear model chapter</a>. This time, we additionally consider an interaction between the temperature and the working day feature. This results in the following estimated weights and confidence intervals.</p>
+<!--
+The first column serves to estimate the intercept.
+The second column is the encoded work feature.
+Columns three and four are for the weather feature, which requires two columns because you need two weights to capture the effect for three categories, one of which is the reference category.
+The rest of the columns capture the interactions.
+For each category of both features (except for the reference categories), we create a new feature column that is 1 if both features have a certain category, otherwise 0.
+
+For two numerical features, the interaction column is even easier to construct: 
+We simply multiply both numerical features.
+
+There are approaches to automatically detect and add interaction terms. 
+One of them can be found in the [RuleFit chapter](#rulefit).
+The RuleFit algorithm first mines interaction terms and then estimates a linear regression model including interactions.
+-->
+<p>1列目は切片の計算に用いられます。 2列目はエンコードされた就業日の特徴量です。 3列目と4列目は、3つのカテゴリを持つ天候の特徴量であり、1つを参照カテゴリとして、効果を表現するためには2つの重みが必要なので、2つの列が用意されています。 残りの列は相互作用項です。 2つの特徴量の各カテゴリごと（参照カテゴリを除く）に、両方の特徴量が、あるカテゴリであれば 1 を、そうでなければ 0 を持つような列を作ります。</p>
+<p>2つの量的特徴量に対しては、相互作用項はさらに簡単に構築できます。単に両方の特徴量の値を掛け合わせれば良いのです。</p>
+<p>実は、自動で相互作用項を検出し追加するアプローチはいくつかあります。 そのうちの1つは、<a href="rulefit.html#rulefit">RuleFitの章</a>で紹介されています。 RuleFit アルゴリズムでは、最初に相互作用を探索し、これらの相互作用を含めた線形回帰モデルを学習します。</p>
+<!--**Example**-->
+<p><strong>例</strong></p>
+<!--
+Let us return to the [bike rental prediction task](#bike-data) which we have already modeled in the [linear model chapter](#limo).
+This time, we additionally consider an interaction between the temperature and the working day feature.
+This results in the following estimated weights and confidence intervals.
+-->
+<p><a href="limo.html#limo">線形モデルの章</a>でモデル化した<a href="bike-data.html#bike-data">自転車レンタル数の予測タスク</a>に戻りましょう。 今回は、気温と就業日の間の相互作用についても考慮します。 これにより、次の重みと信頼区間が得られます。</p>
 <table>
 <thead>
 <tr class="header">
@@ -733,41 +974,141 @@ FIGURE 4.11: Predicted number of coffees dependent on stress, sleep and work. Th
 </tr>
 </tbody>
 </table>
-<p>The additional interaction effect is negative (-21.8) and differs significantly from zero, as shown by the 95% confidence interval, which does not include zero. By the way, the data are not iid, because days that are close to each other are not independent from each other. Confidence intervals might be misleading, just take it with a grain of salt. The interaction term changes the interpretation of the weights of the involved features. Does the temperature have a negative effect given it is a working day? The answer is no, even if the table suggests it to an untrained user. We cannot interpret the &quot;workingdayWORKING DAY:temp&quot; interaction weight in isolation, since the interpretation would be: &quot;While leaving all other feature values unchanged, increasing the interaction effect of temperature for working day decreases the predicted number of bikes.&quot; But the interaction effect only adds to the main effect of the temperature. Suppose it is a working day and we want to know what would happen if the temperature were 1 degree warmer today. Then we need to sum both the weights for &quot;temp&quot; and &quot;workingdayWORKING DAY:temp&quot; to determine how much the estimate increases.</p>
-<p>It is easier to understand the interaction visually. By introducing an interaction term between a categorical and a numerical feature, we get two slopes for the temperature instead of one. The temperature slope for days on which people do not have to work ('NO WORKING DAY') can be read directly from the table (125.4). The temperature slope for days on which people have to work ('WORKING DAY') is the sum of both temperature weights (125.4 -21.8 = 103.6). The intercept of the 'NO WORKING DAY'-line at temperature = 0 is determined by the intercept term of the linear model (2185.8). The intercept of the 'WORKING DAY'-line at temperature = 0 is determined by the intercept term + the effect of working day (2185.8 + 451.9 = 2637.7).</p>
+<!--
+The additional interaction effect is negative (-21.8) and differs significantly from zero, as shown by the 95% confidence interval, which does not include zero.
+By the way, the data are not iid, because days that are close to each other are not independent from each other.
+Confidence intervals might be misleading, just take it with a grain of salt.
+The interaction term changes the interpretation of the weights of the involved features.
+Does the temperature have a negative effect given it is a working day?
+The answer is no, even if the table suggests it to an untrained user.
+We cannot interpret the "workingdayWORKING DAY:temp" interaction weight in isolation, since the interpretation would be:
+"While leaving all other feature values unchanged, increasing the interaction effect of temperature for working day decreases the predicted number of bikes."
+But the interaction effect only adds to the main effect of the temperature.
+Suppose it is a working day and we want to know what would happen if the temperature were 1 degree warmer today.
+Then we need to sum both the weights for "temp" and "workingdayWORKING DAY:temp" to determine how much the estimate increases.
+-->
+<p>追加した相互作用による影響は負 (-21.8) であり、95%信頼区間が 0 を含まないことからわかるように、0 から大きく離れています。 ちなみに、互いに近い日は独立でないため、データは独立同分布 (iid) ではありません。 信頼区間は誤解を招く恐れがあるため、話半分に見てください。 相互作用項は関連する特徴量の重みの解釈を変えます。 就業日であれば気温は負の効果をもたらしているでしょうか。 たとえ表が負の効果を示していたとしても、答えはノーです。 &quot;workingdayWORKING DAY:temp&quot; の相互作用項の重みは単独で解釈できません。 なぜなら、重みの解釈は「他のすべての特徴量を変化させずに、就業日の気温の相互作用効果を増加させると、予測される自転車の数は減少する。」となるからです。 しかし、相互作用の効果は気温による効果に追加されるだけです。 今日が就業日で、気温が1度高かったらどうなるか知りたいとします。 それなら、&quot;temp&quot; と &quot;workingdayWORKING DAY:temp&quot; の両方の重みを合計して、予測値がどれほど増加するかを判断する必要する必要があります。</p>
+<!--
+It is easier to understand the interaction visually. 
+By introducing an interaction term between a categorical and a numerical feature, we get two slopes for the temperature instead of one.
+The temperature slope for days on which people do not have to work ('NO WORKING DAY') can be read directly from the table (125.4).
+The temperature slope for days on which people have to work ('WORKING DAY') is the sum of both temperature weights (125.4  -21.8 = 103.6).
+The intercept of the 'NO WORKING DAY'-line at temperature = 0 is determined by the intercept term of the linear model (2185.8).
+The intercept of the 'WORKING DAY'-line at temperature = 0 is determined by the intercept term + the effect of working day (2185.8 + 451.9 = 2637.7).
+-->
+<p>相互作用は簡単に視覚化できます。 カテゴリカル特徴量と量的特徴量の間の相互作用を導入することにより、気温に対して1つではなく2つの勾配を得ることができます。 休業日（'NO WORKING DAY'）における気温の勾配は、表から直接読み取ることができます (125.4)。 就業日（'WORKING DAY'）における気温の勾配は、両方の気温の重みの合計から得られます (125.4 -21.8 = 103.6)。 'NO WORKING DAY'直線の 気温 = 0 における切片は、線形モデルの切片 (2185.8) で決定されます。 また、'WORKING DAY'直線の 気温 = 0 における切片は、線形モデルの切片 + 就業日の効果 (2185.8 + 451.9 = 2637.7) で決まります。</p>
+<!--fig.cap = "The effect (including interaction) of temperature and working day on the predicted number of bikes for a linear model. Effectively, we get two slopes for the temperature, one for each category of the working day feature."-->
 <div class="figure"><span id="fig:interaction-plot"></span>
-<img src="images/interaction-plot-1.png" alt="The effect (including interaction) of temperature and working day on the predicted number of bikes for a linear model. Effectively, we get two slopes for the temperature, one for each category of the working day feature." width="1050" />
+<img src="images/interaction-plot-1.png" alt="線形モデルのレンタル自転車数の予測に対する気温と就業日の影響 (相互作用を含む)。就業日の各カテゴリに対して2つの気温の勾配が得られている。" width="1050" />
 <p class="caption">
-FIGURE 4.12: The effect (including interaction) of temperature and working day on the predicted number of bikes for a linear model. Effectively, we get two slopes for the temperature, one for each category of the working day feature.
+FIGURE 4.12: 線形モデルのレンタル自転車数の予測に対する気温と就業日の影響 (相互作用を含む)。就業日の各カテゴリに対して2つの気温の勾配が得られている。
 </p>
 </div>
+<!--
+### Nonlinear Effects - GAMs {#gam}
+-->
 </div>
 <div id="gam" class="section level3">
-<h3><span class="header-section-number">4.3.3</span> Nonlinear Effects - GAMs</h3>
-<p><strong>The world is not linear.</strong> Linearity in linear models means that no matter what value an instance has in a particular feature, increasing the value by one unit always has the same effect on the predicted outcome. Is it reasonable to assume that increasing the temperature by one degree at 10 degrees Celsius has the same effect on the number of rental bikes as increasing the temperature when it already has 40 degrees? Intuitively, one expects that increasing the temperature from 10 to 11 degrees Celsius has a positive effect on bicycle rentals and from 40 to 41 a negative effect, which is also the case, as you will see, in many examples throughout the book. The temperature feature has a linear, positive effect on the number of rental bikes, but at some point it flattens out and even has a negative effect at high temperatures. The linear model does not care, it will dutifully find the best linear plane (by minimizing the Euclidean distance).</p>
-<p>You can model nonlinear relationships using one of the following techniques:</p>
+<h3><span class="header-section-number">4.3.3</span> 非線形効果 - GAM</h3>
+<!--
+**The world is not linear.**
+Linearity in linear models means that no matter what value an instance has in a particular feature, increasing the value by one unit always has the same effect on the predicted outcome.
+Is it reasonable to assume that increasing the temperature by one degree at 10 degrees Celsius has the same effect on the number of rental bikes as increasing the temperature when it already has 40 degrees?
+Intuitively, one expects that increasing the temperature from 10 to 11 degrees Celsius has a positive effect on bicycle rentals and from 40 to 41 a negative effect, which is also the case, as you will see, in many examples throughout the book.
+The temperature feature has a linear, positive effect on the number of rental bikes, but at some point it flattens out and even has a negative effect at high temperatures.
+The linear model does not care, it will dutifully find the best linear plane (by minimizing the Euclidean distance).
+
+You can model nonlinear relationships using one of the following techniques:
+
+- Simple transformation of the feature (e.g. logarithm)
+- Categorization of the feature
+- Generalized Additive Models (GAMs)
+
+Before I go into the details of each method, let us start with an example that illustrates all three of them.
+I took the [bike rental dataset](#bike-data) and trained a linear model with only the temperature feature to predict the number of rental bikes.
+The following figure shows the estimated slope with: the standard linear model, a linear model with transformed temperature (logarithm), a linear model with temperature treated as categorical feature and using regression splines (GAM).
+-->
+<p><strong>世界は線形ではありません。</strong> 線形モデルにおける線形性とは、インスタンスの特徴量の値がどのような時でも、値を 1 増やすと、常に同じ効果を予測結果に与えるということを意味します。 気温が10度から11度に上がった時と、40度から41度に上がった時とで、自転車のレンタル数に同じ影響があると考えるのは妥当でしょうか？ 直感的には、気温が10度から11度に上がるとレンタル自転車数は増え、40度から41度に上がるとレンタル自転車数は減ると予想されます。これは、この本に出てくる他の例も同様です。 温度という特徴量は、レンタル自転車数に線形なプラスの影響を及ぼしますが、ある時点で平坦になり、高い温度ではマイナスの影響を及ぼします。 線形モデルはこのような影響の変化に関わらず、（ユークリッド距離を最小化することによって）あくまで最適な線形の関係性を見つけようとします。</p>
+<p>非線形の関係は以下の手法を用いてモデル化できます。</p>
 <ul>
-<li>Simple transformation of the feature (e.g. logarithm)</li>
-<li>Categorization of the feature</li>
-<li>Generalized Additive Models (GAMs)</li>
+<li>特徴量の単純な変換（対数変換など）</li>
+<li>特徴量のカテゴリカル化</li>
+<li>一般化加法モデル（Generalized Additive Model, GAM）</li>
 </ul>
-<p>Before I go into the details of each method, let us start with an example that illustrates all three of them. I took the <a href="bike-data.html#bike-data">bike rental dataset</a> and trained a linear model with only the temperature feature to predict the number of rental bikes. The following figure shows the estimated slope with: the standard linear model, a linear model with transformed temperature (logarithm), a linear model with temperature treated as categorical feature and using regression splines (GAM).</p>
+<p>それぞれの手法の詳細に入る前に、これら3つについて例を見てみましょう。 <a href="bike-data.html#bike-data">レンタル自転車のデータセット</a>を使って、温度の特徴量のみを使用し線形モデルを学習することで、レンタル自転車数の予測をしました。 次の図はそれぞれ、標準的な線形モデル、対数変換した温度による線形モデル、温度をカテゴリカル特徴量として扱った場合の線形モデル、GAM (スプライン回帰) を使用したときの推定された勾配を示しています。</p>
+<!--fig.cap = "Predicting the number of rented bicycles using only the temperature feature. A linear model (top left) does not fit the data well. One solution is to transform the feature with e.g. the logarithm (top right), categorize it (bottom left), which is usually a bad decision, or use Generalized Additive Models that can automatically fit a smooth curve for temperature (bottom right)."-->
 <div class="figure"><span id="fig:nonlinear-effects"></span>
-<img src="images/nonlinear-effects-1.png" alt="Predicting the number of rented bicycles using only the temperature feature. A linear model (top left) does not fit the data well. One solution is to transform the feature with e.g. the logarithm (top right), categorize it (bottom left), which is usually a bad decision, or use Generalized Additive Models that can automatically fit a smooth curve for temperature (bottom right)." width="1050" />
+<img src="images/nonlinear-effects-1.png" alt="温度特徴量のみを用いたレンタル自転車数の予測。線形モデル（左上）はデータにあまり適合していません。1つの解決策は、例えば対数で特徴量を変換（右上）したり、カテゴリカル化する（左下）ことですが、これは通常は悪い判断です。GAMを使うと(右下)、気温に対して滑らかな曲線を自動的に適合できます。" width="1050" />
 <p class="caption">
-FIGURE 4.13: Predicting the number of rented bicycles using only the temperature feature. A linear model (top left) does not fit the data well. One solution is to transform the feature with e.g. the logarithm (top right), categorize it (bottom left), which is usually a bad decision, or use Generalized Additive Models that can automatically fit a smooth curve for temperature (bottom right).
+FIGURE 4.13: 温度特徴量のみを用いたレンタル自転車数の予測。線形モデル（左上）はデータにあまり適合していません。1つの解決策は、例えば対数で特徴量を変換（右上）したり、カテゴリカル化する（左下）ことですが、これは通常は悪い判断です。GAMを使うと(右下)、気温に対して滑らかな曲線を自動的に適合できます。
 </p>
 </div>
-<p><strong>Feature transformation</strong></p>
-<p>Often the logarithm of the feature is used as a transformation. Using the logarithm indicates that every 10-fold temperature increase has the same linear effect on the number of bikes, so changing from 1 degree Celsius to 10 degrees Celsius has the same effect as changing from 0.1 to 1 (sounds wrong). Other examples for feature transformations are the square root, the square function and the exponential function. Using a feature transformation means that you replace the column of this feature in the data with a function of the feature, such as the logarithm, and fit the linear model as usual. Some statistical programs also allow you to specify transformations in the call of the linear model. You can be creative when you transform the feature. The interpretation of the feature changes according to the selected transformation. If you use a log transformation, the interpretation in a linear model becomes: &quot;If the logarithm of the feature is increased by one, the prediction is increased by the corresponding weight.&quot; When you use a GLM with a link function that is not the identity function, then the interpretation gets more complicated, because you have to incorporate both transformations into the interpretation (except when they cancel each other out, like log and exp, then the interpretation gets easier).</p>
-<p><strong>Feature categorization</strong></p>
-<p>Another possibility to achieve a nonlinear effect is to discretize the feature; turn it into a categorical feature. For example, you could cut the temperature feature into 20 intervals with the levels [-10, -5), [-5, 0), ... and so on. When you use the categorized temperature instead of the continuous temperature, the linear model would estimate a step function because each level gets its own estimate. The problem with this approach is that it needs more data, it is more likely to overfit and it is unclear how to discretize the feature meaningfully (equidistant intervals or quantiles? how many intervals?). I would only use discretization if there is a very strong case for it. For example, to make the model comparable to another study.</p>
-<p><strong>Generalized Additive Models (GAMs)</strong></p>
-<p>Why not 'simply' allow the (generalized) linear model to learn nonlinear relationships? That is the motivation behind GAMs. GAMs relax the restriction that the relationship must be a simple weighted sum, and instead assume that the outcome can be modeled by a sum of arbitrary functions of each feature. Mathematically, the relationship in a GAM looks like this:</p>
+<!--
+**Feature transformation**
+-->
+<p><strong>特徴量変換</strong></p>
+<!--
+Often the logarithm of the feature is used as a transformation.
+Using the logarithm indicates that every 10-fold temperature increase has the same linear effect on the number of bikes, so changing from 1 degree Celsius to 10 degrees Celsius has the same effect as changing from 0.1 to 1 (sounds wrong).
+Other examples for feature transformations are the square root, the square function and the exponential function.
+Using a feature transformation means that you replace the column of this feature in the data with a function of the feature, such as the logarithm, and fit the linear model as usual.
+Some statistical programs also allow you to specify transformations in the call of the linear model.
+You can be creative when you transform the feature.
+The interpretation of the feature changes according to the selected transformation. 
+If you use a log transformation, the interpretation in a linear model becomes:
+"If the logarithm of the feature is increased by one, the prediction is increased by the corresponding weight."
+When you use a GLM with a link function that is not the identity function, then the interpretation gets more complicated, because you have to incorporate both transformations into the interpretation (except when they cancel each other out, like log and exp, then the interpretation gets easier).
+-->
+<p>多くの場合、特徴量の対数変換が使用されます。 対数を使用すると、10倍の温度上昇ごとに自転車の数に同じ線形効果があることが示されます。 したがって、気温が1度から10度に変化するときと、0.1度から1度に変化するときは同じ効果があります（これも間違っているように思われます）。 特徴量変換の他の例は、平方根、二乗関数、および指数関数です。 特徴量変換を使用するということは、データの特定の特徴量の列を対数などで変換したものに置き換えて、通常どおり線形モデルで学習することを意味します。 一部の統計プログラムでは、線形モデルを呼び出す時に変換方法も指定できます。 特徴量の変換は、クリエイティブな行為です。 特徴量の解釈は、選択した変換によって変わります。 対数変換を使用する場合、線形モデルにおける解釈は「特徴量の対数が1増加すると、対応する重みによって予測結果が増加する。」となります。 恒等関数ではないリンク関数でGLMを使用する場合、両方の変換を解釈に組み込む必要があるため、解釈はより複雑になります（logとexpのように互いに打ち消し合う場合は解釈は簡単なので除く）。</p>
+<!--**Feature categorization**-->
+<p><strong>特徴量のカテゴリカル化</strong></p>
+<!--
+Another possibility to achieve a nonlinear effect is to discretize the feature; turn it into a categorical feature.
+For example, you could cut the temperature feature into 20 intervals with the levels [-10, -5), [-5, 0), ... and so on.
+When you use the categorized temperature instead of the continuous temperature, the linear model would estimate a step function because each level gets its own estimate.
+The problem with this approach is that it needs more data, it is more likely to overfit and it is unclear how to discretize the feature meaningfully (equidistant intervals or quantiles? how many intervals?).
+I would only use discretization if there is a very strong case for it.
+For example, to make the model comparable to another study.
+-->
+<p>非線形効果を実現するもう1つの選択肢は、特徴量を離散化し、カテゴリカル特徴量とすることです。 たとえば、温度という特徴量をレベル[-10, -5), [-5, 0), ... の 20 の区間に分割できます。 連続値としての温度の代わりにカテゴリカル化された温度を使用する場合、各区間が独自の推定値をとるため、線形モデルはステップ関数を推定します。 このアプローチの問題は、より多くのデータが必要であり、過学習する可能性が高く、特徴量を意味のある形で離散化する方法が不明確であるということです（等距離区間または分位数？区間の数は？）。 非常に有効な場合にのみ、離散化を使用します。 たとえば、モデルを別の研究と比較できるようにするためなどです。</p>
+<!--**Generalized Additive Models (GAMs)**-->
+<p><strong>一般化加法モデル（Generalized Additive Models, GAM）</strong></p>
+<!--
+Why not 'simply' allow the (generalized) linear model to learn nonlinear relationships?
+That is the motivation behind GAMs. 
+GAMs relax the restriction that the relationship must be a simple weighted sum, and instead assume that the outcome can be modeled by  a sum of arbitrary functions of each feature.
+Mathematically, the relationship in a GAM looks like this:
+-->
+<p>なぜ非線形の関係を学習のために (一般化)線形モデルを 'そのまま' 使用してはいけないのでしょうか？ それがGAMの背後にある動機です。 GAMは、関係は単純な重み付き和でなければならないという制限を緩和し、各特徴量の任意の関数の総和によって結果をモデル化できると仮定します。 数学的には、GAMの関係は次のようになります。</p>
 <p><span class="math display">\[g(E_Y(y|x))=\beta_0+f_1(x_{1})+f_2(x_{2})+\ldots+f_p(x_{p})\]</span></p>
-<p>The formula is similar to the GLM formula with the difference that the linear term <span class="math inline">\(\beta_j{}x_{j}\)</span> is replaced by a more flexible function <span class="math inline">\(f_j(x_{j})\)</span>. The core of a GAM is still a sum of feature effects, but you have the option to allow nonlinear relationships between some features and the output. Linear effects are also covered by the framework, because for features to be handled linearly, you can limit their <span class="math inline">\(f_j(x_{j})\)</span> only to take the form of <span class="math inline">\(x_{j}\beta_j\)</span>.</p>
-<p>The big question is how to learn nonlinear functions. The answer is called &quot;splines&quot; or &quot;spline functions&quot;. Splines are functions that can be combined in order to approximate arbitrary functions. A bit like stacking Lego bricks to build something more complex. There is a confusing number of ways to define these spline functions. If you are interested in learning more about all the ways to define splines, I wish you good luck on your journey. I am not going to go into details here, I am just going to build an intuition. What personally helped me the most for understanding splines was to visualize the individual spline functions and to look into how the data matrix is modified. For example, to model the temperature with splines, we remove the temperature feature from the data and replace it with, say, 4 columns, each representing a spline function. Usually you would have more spline functions, I only reduced the number for illustration purposes. The value for each instance of these new spline features depends on the instances' temperature values. Together with all linear effects, the GAM then also estimates these spline weights. GAMs also introduce a penalty term for the weights to keep them close to zero. This effectively reduces the flexibility of the splines and reduces overfitting. A smoothness parameter that is commonly used to control the flexibility of the curve is then tuned via cross-validation. Ignoring the penalty term, nonlinear modeling with splines is fancy feature engineering.</p>
-<p>In the example where we are predicting the number of bicycles with a GAM using only the temperature, the model feature matrix looks like this:</p>
+<!--
+The formula is similar to the GLM formula with the difference that the linear term $\beta_j{}x_{j}$ is replaced by a more flexible function $f_j(x_{j})$.
+The core of a GAM is still a sum of feature effects, but you have the option to allow nonlinear relationships between some features and the output.
+Linear effects are also covered by the framework, because for features to be handled linearly, you can limit their $f_j(x_{j})$ only to take the form of $x_{j}\beta_j$.
+-->
+<p>この式は GLM の式に似ていますが、線形項 <span class="math inline">\(\beta_j{}x_{j}\)</span> がより柔軟な関数 <span class="math inline">\(f_j(x_{j})\)</span> に置き換えられている点が異なります。 GAM の核は依然として特徴量効果の合計ですが、特徴量と出力の間の非線形性を許す余地があります。 線形効果もこのフレームワークでカバーされており、特徴量に対する線形性は、<span class="math inline">\(f_j(x_{j})\)</span> を <span class="math inline">\(x_{j}\beta_j\)</span> の形に制限することで表現できます。</p>
+<!--
+The big question is how to learn nonlinear functions.
+The answer is called "splines" or "spline functions".
+Splines are functions that can be combined in order to approximate arbitrary functions.
+A bit like stacking Lego bricks to build something more complex.
+There is a confusing number of ways to define these spline functions.
+If you are interested in learning more about all the ways to define splines, I wish you good luck on your journey.
+I am not going to go into details here, I am just going to build an intuition.
+What personally helped me the most for understanding splines was to visualize the individual spline functions and to look into how the data matrix is modified.
+For example, to model the temperature with splines, we remove the temperature feature from the data and replace it with, say, 4 columns, each representing a spline function.
+Usually you would have more spline functions, I only reduced the number for illustration purposes.
+The value for each instance of these new spline features depends on the instances' temperature values.
+Together with all linear effects, the GAM then also estimates these spline weights.
+GAMs also introduce a penalty term for the weights to keep them close to zero. 
+This effectively reduces the flexibility of the splines and reduces overfitting. 
+A smoothness parameter that is commonly used to control the flexibility of the curve is then tuned via cross-validation.
+Ignoring the penalty term, nonlinear modeling with splines is fancy feature engineering.
+
+In the example where we are predicting the number of bicycles with a GAM using only the temperature, the model feature matrix looks like this:
+-->
+<p>大きな問題は、この非線形関数をどのように学習するかです。 その答えは「スプライン」または「スプライン関数」と呼ばれます。 スプラインは、任意の関数を近似するために組み合わせることができる関数です。 より複雑なものを構築するためにレゴブロックを積み重ねるのと少し似ています。 これらのスプライン関数を定義するには、おびただしい数の方法があります。 もしスプラインを定義するすべての方法についてもっと知りたいのなら、それは長旅になるでしょう。旅の幸運を祈っています。 ここでは詳細に立ち入らずに、直感的な説明のみに留めます。 スプラインを理解するために個人的に最も役立ったのは、個々のスプライン関数を視覚化し、データ行列がどのように変わったかを調べることでした。 たとえば、スプラインを使用して温度をモデル化するには、データから温度の特徴量を削除し、それぞれがスプライン関数を表す4つの列に置き換えます。 通常、スプライン関数はもっと多くなりますが、説明のために数を減らしました。 これらの新しいスプライン特徴量の各インスタンスでの値は、インスタンスの温度の値によって異なります。 すべての線形効果とともに、GAMはこれらのスプラインの重みも推定します。 GAMはまた、重みをゼロに近づけるためのペナルティ項も導入します。 これにより、スプラインの柔軟性が低下し、過学習が抑制されます。 曲線の柔軟性を制御するために一般的に使用される平滑化パラメータは、交差検定によって調整されます。 ペナルティ項を無視すると、スプラインを使用した非線形のモデリングは高度な特徴量エンジニアリングとなります。</p>
+<p>GAMを使用し、温度のみから自転車の数を予測する例では、モデルの特徴量の行列は次のようになります。</p>
 <table>
 <thead>
 <tr class="header">
@@ -823,14 +1164,21 @@ FIGURE 4.13: Predicting the number of rented bicycles using only the temperature
 </tr>
 </tbody>
 </table>
-<p>Each row represents an individual instance from the data (one day). Each spline column contains the value of the spline function at the particular temperature values. The following figure shows how these spline functions look like:</p>
+<!--
+Each row represents an individual instance from the data (one day).
+Each spline column contains the value of the spline function at the particular temperature values. 
+The following figure shows how these spline functions look like:
+-->
+<p>各行は、データからの個々のインスタンス (1日) を表します。 各スプラインの列には、特定の温度の値でのスプライン関数の値が含まれています。 以下に、これらのスプライン関数の様子を図示します。</p>
+<!--fig.cap = "To smoothly model the temperature effect, we use 4 spline functions. Each temperature value is mapped to (here) 4 spline values. If an instance has a temperature of 30 °C, the value for the first spline feature is -1, for the second 0.7, for the third -0.8 and for the 4th 1.7."-->
 <div class="figure"><span id="fig:splines"></span>
-<img src="images/splines-1.png" alt="To smoothly model the temperature effect, we use 4 spline functions. Each temperature value is mapped to (here) 4 spline values. If an instance has a temperature of 30 °C, the value for the first spline feature is -1, for the second 0.7, for the third -0.8 and for the 4th 1.7." width="1050" />
+<img src="images/splines-1.png" alt="温度効果を滑らかにモデル化するために、4つのスプライン関数を使用します。 各温度の値は、（ここでは）4つのスプライン値にマッピングされます。 インスタンスの温度が30度の場合、最初のスプライン特徴量の値は -1、2番目は 0.7、3番目は -0.8、および4番目は 1.7 です。" width="1050" />
 <p class="caption">
-FIGURE 4.14: To smoothly model the temperature effect, we use 4 spline functions. Each temperature value is mapped to (here) 4 spline values. If an instance has a temperature of 30 °C, the value for the first spline feature is -1, for the second 0.7, for the third -0.8 and for the 4th 1.7.
+FIGURE 4.14: 温度効果を滑らかにモデル化するために、4つのスプライン関数を使用します。 各温度の値は、（ここでは）4つのスプライン値にマッピングされます。 インスタンスの温度が30度の場合、最初のスプライン特徴量の値は -1、2番目は 0.7、3番目は -0.8、および4番目は 1.7 です。
 </p>
 </div>
-<p>The GAM assigns weights to each temperature spline feature:</p>
+<!--The GAM assigns weights to each temperature spline feature:-->
+<p>GAMは、各温度のスプライン特徴量に重みを割り当てます。</p>
 <table>
 <thead>
 <tr class="header">
@@ -861,68 +1209,171 @@ FIGURE 4.14: To smoothly model the temperature effect, we use 4 spline functions
 </tr>
 </tbody>
 </table>
-<p>And the actual curve, which results from the sum of the spline functions weighted with the estimated weights, looks like this:</p>
+<!--And the actual curve, which results from the sum of the spline functions weighted with the estimated weights, looks like this:-->
+<p>また、推定された重みで重み付けされたスプライン関数の合計から得られる実際の曲線は、次のようになります。</p>
+<!--fig.cap = "GAM feature effect of the temperature for predicting the number of rented bikes (temperature used as the only feature)."-->
 <div class="figure"><span id="fig:splines-curve"></span>
-<img src="images/splines-curve-1.png" alt="GAM feature effect of the temperature for predicting the number of rented bikes (temperature used as the only feature)." width="1050" />
+<img src="images/splines-curve-1.png" alt="レンタル自転車数を予測するための温度のGAM特徴量効果（温度のみを特徴量として使用）。" width="1050" />
 <p class="caption">
-FIGURE 4.15: GAM feature effect of the temperature for predicting the number of rented bikes (temperature used as the only feature).
+FIGURE 4.15: レンタル自転車数を予測するための温度のGAM特徴量効果（温度のみを特徴量として使用）。
 </p>
 </div>
-<p>The interpretation of smooth effects requires a visual check of the fitted curve. Splines are usually centered around the mean prediction, so a point on the curve is the difference to the mean prediction. For example, at 0 degrees Celsius, the predicted number of bicycles is 3000 lower than the average prediction.</p>
+<!--
+The interpretation of smooth effects requires a visual check of the fitted curve.
+Splines are usually centered around the mean prediction, so a point on the curve is the difference to the mean prediction.
+For example, at 0 degrees Celsius, the predicted number of bicycles is 3000 lower than the average prediction.
+-->
+<p>滑らかな効果の解釈には、学習した曲線の視覚的なチェックが必要です。 スプラインは通常、平均予測で中心化されているため、曲線上の点は平均予測との差になります。 たとえば 0度のとき、予測される自転車の数は平均予測よりも3000台少ないということです。</p>
+<!--
+### Advantages
+-->
 </div>
-<div id="advantages" class="section level3">
-<h3><span class="header-section-number">4.3.4</span> Advantages</h3>
-<p>All these extensions of the linear model are a bit of a universe in themselves. Whatever problems you face with linear models, <strong>you will probably find an extension that fixes it</strong>.</p>
-<p>Most methods have been used for decades. For example, GAMs are almost 30 years old. Many researchers and practitioners from industry are very <strong>experienced</strong> with linear models and the methods are <strong>accepted in many communities as status quo for modeling</strong>.</p>
-<p>In addition to making predictions, you can use the models to <strong>do inference</strong>, draw conclusions about the data -- given the model assumptions are not violated. You get confidence intervals for weights, significance tests, prediction intervals and much more.</p>
-<p>Statistical software usually has really good interfaces to fit GLMs, GAMs and more special linear models.</p>
-<p>The opacity of many machine learning models comes from 1) a lack of sparseness, which means that many features are used, 2) features that are treated in a nonlinear fashion, which means you need more than a single weight to describe the effect, and 3) the modeling of interactions between the features. Assuming that linear models are highly interpretable but often underfit reality, the extensions described in this chapter offer a good way to achieve a <strong>smooth transition to more flexible models</strong>, while preserving some of the interpretability.</p>
+<div id="長所-1" class="section level3">
+<h3><span class="header-section-number">4.3.4</span> 長所</h3>
+<!--
+All these extensions of the linear model are a bit of a universe in themselves. 
+Whatever problems you face with linear models, **you will probably find an extension that fixes it**.
+
+Most methods have been used for decades.
+For example, GAMs are almost 30 years old. 
+Many researchers and practitioners from industry are very **experienced** with linear models and the methods are **accepted in many communities as status quo for modeling**.
+
+In addition to making predictions, you can use the models to **do inference**, draw conclusions about the data -- given the model assumptions are not violated.
+You get confidence intervals for weights, significance tests, prediction intervals and much more.
+
+Statistical software usually has really good interfaces to fit GLMs, GAMs and more special linear models.
+
+The opacity of many machine learning models comes from 1) a lack of sparseness, which means that many features are used, 2) features that are treated in a nonlinear fashion, which means you need more than a single weight to describe the effect, and 3) the modeling of interactions between the features.
+Assuming that linear models are highly interpretable but often underfit reality, the extensions described in this chapter offer a good way to achieve a **smooth transition to more flexible models**, while preserving some of the interpretability.
+-->
+<p>線形モデルのこれらすべての拡張は、それら自身がそれぞれ小宇宙のようなものです。 線形モデルで直面する問題が何であれ、<strong>それを修正するための拡張方法が見つかるでしょう</strong>。</p>
+<p>ほとんどの手法は、何十年もの間使用されてきました。 たとえば、GAMはおおよそ30年前のものです。 多くの研究者や産業界の実務家は、線形モデルの<strong>経験</strong>がとても豊富であり、それらの手法は<strong>モデリング手法の現状として多くのコミュニティで受け入れられています</strong>。</p>
+<p>それに加えて、モデルの仮定に反していないのであれば、モデルを使用して<strong>予測</strong>を行い、データに関する結論を導き出すことも可能です。 また、重みの信頼区間、有意差検定、予測区間などを得ることができます。</p>
+<p>統計ソフトウェアは通常、GLM、GAM、およびより特別な線形モデルを学習するための非常に優れたインターフェースを備えています。</p>
+<p>多くの機械学習モデルの不透明度は、1）スパース性の欠如、つまり多くの特徴量が使用されていること、2）非線形に扱われる特徴量、つまり効果を記述するためには1つ以上の重みが必要、および、3）特徴量間の相互作用のモデリング、の３つに起因します。 線形モデルは高い解釈可能性をもっている一方で、しばしば現実に適合しないということを前提にすれば、この章で説明した拡張は、解釈可能性をある程度維持しながら、<strong>より柔軟なモデルへのスムーズな移行</strong>を実現する優れた方法を提供しているといえるでしょう。</p>
+<!--
+### Disadvantages
+-->
 </div>
-<div id="disadvantages" class="section level3">
-<h3><span class="header-section-number">4.3.5</span> Disadvantages</h3>
-<p>As advantage I have said that linear models live in their own universe. The sheer <strong>number of ways you can extend the simple linear model is overwhelming</strong>, not just for beginners. Actually, there are multiple parallel universes, because many communities of researchers and practitioners have their own names for methods that do more or less the same thing, which can be very confusing.</p>
-<p>Most modifications of the linear model make the model <strong>less interpretable</strong>. Any link function (in a GLM) that is not the identity function complicates the interpretation; interactions also complicate the interpretation; nonlinear feature effects are either less intuitive (like the log transformation) or can no longer be summarized by a single number (e.g. spline functions).</p>
-<p>GLMs, GAMs and so on <strong>rely on assumptions</strong> about the data generating process. If those are violated, the interpretation of the weights is no longer valid.</p>
-<p>The performance of tree-based ensembles like the random forest or gradient tree boosting is in many cases better than the most sophisticated linear models. This is partly my own experience and partly observations from the winning models on platforms like kaggle.com.</p>
+<div id="短所-1" class="section level3">
+<h3><span class="header-section-number">4.3.5</span> 短所</h3>
+<!--
+As advantage I have said that linear models live in their own universe.
+The sheer **number of ways you can extend the simple linear model is overwhelming**, not just for beginners.
+Actually, there are multiple parallel universes, because many communities of researchers and practitioners have their own names for methods that do more or less the same thing, which can be very confusing.
+
+Most modifications of the linear model make the model **less interpretable**.
+Any link function (in a GLM) that is not the identity function complicates the interpretation;
+interactions also complicate the interpretation;
+nonlinear feature effects are either less intuitive (like the log transformation) or can no longer be summarized by a single number (e.g. spline functions).
+
+GLMs, GAMs and so on **rely on assumptions** about the data generating process.
+If those are violated, the interpretation of the weights is no longer valid.
+
+The performance of tree-based ensembles like the random forest or gradient tree boosting is in many cases better than the most sophisticated linear models.
+This is partly my own experience and partly observations from the winning models on platforms like kaggle.com.
+-->
+<p>利点として、線形モデルはそれぞれ独自の宇宙が広がっていると言いました。 初学者でなくても、単純な線形モデルを拡張する方法は非常に多いため圧倒されてしまいます。 実際には、研究者や実務家の多くのコミュニティが、多かれ少なかれ同じことを行う手法に独自の名前を持っているため非常にややこしく、複数の並行宇宙があると言えます。</p>
+<p>線形モデルの修正により、そのほとんどのモデルは<strong>解釈性が低下します</strong>。 恒等関数以外の任意のリンク関数 (GLMにおいて) は、解釈を複雑にしますし、 相互作用も解釈を複雑にします。 また、非線形の特徴量の効果は、直感的ではないか（対数変換のように）、あるいは、もはや単一の数値で要約できなくなります（スプライン関数など）。</p>
+<p>GLM や GAM などは、データの生成プロセスに関する<strong>仮定</strong>に依存しています。 それらの仮定に反した場合、重みの解釈に妥当性はなくなります。</p>
+<p>ランダムフォレストや勾配ブースティングなどの決定木ベースのアンサンブル学習モデルは、多くの場合、最も洗練された線形モデルよりも優れたパフォーマンスを示します。 これは、私自身の経験からもいえますし、kaggle.com などのプラットフォームで優勝したモデルの結果からもいえます。</p>
+<!--
+### Software
+-->
 </div>
-<div id="software" class="section level3">
-<h3><span class="header-section-number">4.3.6</span> Software</h3>
-<p>All examples in this chapter were created using the R language. For GAMs, the <code>gam</code> package was used, but there are many others. R has an incredible number of packages to extend linear regression models. Unsurpassed by any other analytics language, R is home to every conceivable extension of the linear regression model extension. You will find implementations of e.g. GAMs in Python (such as <a href="https://github.com/dswah/pyGAM">pyGAM</a>), but theses implementation are not as mature.</p>
+<div id="ソフトウェア-1" class="section level3">
+<h3><span class="header-section-number">4.3.6</span> ソフトウェア</h3>
+<!--
+All examples in this chapter were created using the R language.
+For GAMs, the `gam` package was used, but there are many others.
+R has an incredible number of packages to extend linear regression models.
+Unsurpassed by any other analytics language, R is home to every conceivable extension of the linear regression model extension.
+You will find implementations of e.g. GAMs in Python (such as [pyGAM](https://github.com/dswah/pyGAM)), but theses implementation are not as mature.
+-->
+<p>この章のすべての例は R 言語を用いて作られています。 GAM には <code>gam</code> パッケージが使用されていますが、それ以外にも多くのパッケージがあります。 R には回帰モデルを拡張する驚くほど多くのパッケージがあります。 他の分析用の言語にも負けることはなく、R は、他の考えられる線形モデルの拡張の原点と言えます。 Python でも様々な実装を見つけることができ、<a href="https://github.com/dswah/pyGAM">pyGAM</a> は GAM の Python 実装ですが、これはまだ成熟していません。</p>
+<!--### Further Extensions {#more-lm-extension}-->
 </div>
 <div id="more-lm-extension" class="section level3">
-<h3><span class="header-section-number">4.3.7</span> Further Extensions</h3>
-<p>As promised, here is a list of problems you might encounter with linear models, along with the name of a solution for this problem that you can copy and paste into your favorite search engine.</p>
-<p>My data violates the assumption of being independent and identically distributed (iid).<br />
-For example, repeated measurements on the same patient.<br />
-Search for <strong>mixed models</strong> or <strong>generalized estimating equations</strong>.</p>
-<p>My model has heteroscedastic errors.<br />
-For example, when predicting the value of a house, the model errors are usually higher in expensive houses, which violates the homoscedasticity of the linear model.<br />
-Search for <strong>robust regression</strong>.</p>
-<p>I have outliers that strongly influence my model.<br />
-Search for <strong>robust regression</strong>.</p>
-<p>I want to predict the time until an event occurs.<br />
-Time-to-event data usually comes with censored measurements, which means that for some instances there was not enough time to observe the event. For example, a company wants to predict the failure of its ice machines, but only has data for two years. Some machines are still intact after two years, but might fail later.<br />
-Search for <strong>parametric survival models</strong>, <strong>cox regression</strong>, <strong>survival analysis</strong>.</p>
-<p>My outcome to predict is a category.<br />
-If the outcome has two categories use a <a href="logistic.html#logistic">logistic regression model</a>, which models the probability for the categories.<br />
-If you have more categories, search for <strong>multinomial regression</strong>.<br />
-Logistic regression and multinomial regression are both GLMs.</p>
-<p>I want to predict ordered categories.<br />
-For example school grades.<br />
-Search for <strong>proportional odds model</strong>.</p>
-<p>My outcome is a count (like number of children in a family).<br />
-Search for <strong>Poisson regression</strong>.<br />
-The Poisson model is also a GLM. You might also have the problem that the count value of 0 is very frequent.<br />
-Search for <strong>zero-inflated Poisson regression</strong>, <strong>hurdle model</strong>.</p>
-<p>I am not sure what features need to be included in the model to draw correct causal conclusions.<br />
-For example, I want to know the effect of a drug on the blood pressure. The drug has a direct effect on some blood value and this blood value affects the outcome. Should I include the blood value into the regression model?<br />
-Search for <strong>causal inference</strong>, <strong>mediation analysis</strong>.</p>
-<p>I have missing data.<br />
-Search for <strong>multiple imputation</strong>.</p>
-<p>I want to integrate prior knowledge into my models.<br />
-Search for <strong>Bayesian inference</strong>.</p>
-<p>I am feeling a bit down lately.<br />
-Search for <strong>&quot;Amazon Alexa Gone Wild!!! Full version from beginning to end&quot;</strong>.</p>
+<h3><span class="header-section-number">4.3.7</span> さらなる拡張</h3>
+<!--As promised, here is a list of problems you might encounter with linear models, along with the name of a solution for this problem that you can copy and paste into your favorite search engine.-->
+<p>約束通り、線形モデルを使う際に遭遇する可能性のある問題と、検索したら解決できるように解決方法の名前をリストで示します。</p>
+<!--My data violates the assumption of being independent and identically distributed (iid).  
+For example, repeated measurements on the same patient.  
+Search for **mixed models** or **generalized estimating equations**.-->
+<p>データが独立同分布 (iid) の仮定に反する場合。<br />
+例として、同じ患者の繰り返しの測定がこれに当たります。<br />
+このような場合は、<strong>混合モデル (mixed models)</strong>や<strong>一般化推定方程式 (generalized estimating equations)</strong>で検索してください。</p>
+<!--My model has heteroscedastic errors.  
+For example, when predicting the value of a house, the model errors are usually higher in expensive houses, which violates the homoscedasticity of the linear model.  
+Search for **robust regression**.-->
+<p>モデルが不均一な分散の誤差持つ場合。<br />
+例として、住宅価格を予想する時、高価な住宅であるほど、予測値の誤差は大きくなりますが、これは線形モデルの等分散性に反します。<br />
+<strong>ロバスト回帰 (robust regression)</strong>で検索してください。</p>
+<!--I have outliers that strongly influence my model.  
+Search for **robust regression**.-->
+<p>モデルに大きく影響する外れ値がある場合。<br />
+<strong>ロバスト回帰 (robust regression)</strong>で検索してください。</p>
+<!--
+I want to predict the time until an event occurs.  
+Time-to-event data usually comes with censored measurements, which means that for some instances there was not enough time to observe the event.
+For example, a company wants to predict the failure of its ice machines, but only has data for two years.
+Some machines are still intact after two years, but might fail later.  
+Search for **parametric survival models**, **cox regression**, **survival analysis**.
+-->
+<p>イベントが起きるまでの時間を予測したい場合。<br />
+イベントまでの時間のデータでは、大抵、打ち切られた測定値が含まれていますが、これはイベントが起きるまでに十分な時間が無かったことを意味しています。 例えば、ある会社が二年間のデータしか与られていない状態で、製氷機の故障を予測したい場合です。 二年経過しても故障しない機械もありますが、その後故障する可能性もあります。<br />
+<strong>パラメトリック生存モデル (parametric survival models)</strong>、<strong>コックス回帰 (cox regression)</strong>、 <strong>生存時間分析 (survival analysis)</strong>で検索してください。</p>
+<!--
+My outcome to predict is a category.   
+If the outcome has two categories use a [logistic regression model](#logistic), which models the probability for the categories.  
+If you have more categories, search for **multinomial regression**.  
+Logistic regression and multinomial regression are both GLMs.
+-->
+<p>予測の結果がカテゴリカルの場合。<br />
+もし、結果が2つのカテゴリの場合、<a href="logistic.html#logistic">ロジスティック回帰モデル</a>を使用してカテゴリの確率を求めることができます。 さらに多くのカテゴリがある場合、<strong>multinomial regression</strong>で検索してください。<br />
+ロジスティック回帰と multinomial regression はどちらも GLM です。</p>
+<!--
+I want to predict ordered categories.  
+For example school grades.  
+Search for **proportional odds model**.
+-->
+<p>順序付きのカテゴリを予測したい場合。<br />
+例えば学校の成績です。<br />
+<strong>比例オッズモデル (proportional odds model)</strong>で検索してください。</p>
+<!--My outcome is a count (like number of children in a family).  
+Search for **Poisson regression**.  
+The Poisson model is also a GLM.
+You might also have the problem that the count value of 0 is very frequent.  
+Search for **zero-inflated Poisson regression**, **hurdle model**.-->
+<p>結果が、家族の中の子供の数のようなカウントの場合。<br />
+<strong>ポアソン回帰 (Poisson regression)</strong>で検索してください。 ポアソンモデルもGLMです。<br />
+0 の値の頻度がとても多いという問題があるかもしれません。 そのときは、<strong>ゼロ過剰ポアソン回帰 (zero-inflated Poisson regression)</strong>や<em>Hurdleモデル (hurdle model)</em>で検索してください。</p>
+<!--
+I am not sure what features need to be included in the model to draw correct causal conclusions.  
+For example, I want to know the effect of a drug on the blood pressure.
+The drug has a direct effect on some blood value and this blood value affects the outcome. 
+Should I include the blood value into the regression model?  
+Search for **causal inference**, **mediation analysis**.
+-->
+<p>正しい因果関係を導き出すためにどの特徴量をモデルに含めればいいのかわかりません。<br />
+例えば、血圧に効果のある薬が知りたいときです。 薬はなんらかの血液量に直接影響を与え、この血液量が結果に影響を与えます。 血液量を回帰モデルに含めるべきでしょうか？<br />
+<strong>因果推論 (causal inference)</strong>や<strong>媒介分析 (mediation analysis)</strong>で検索してください。</p>
+<!--
+I have missing data.  
+Search for **multiple imputation**.
+-->
+<p>データに欠損値がある場合。<br />
+<strong>多重代入法 (multiple imputation)</strong>で検索してください。</p>
+<!--
+I want to integrate prior knowledge into my models.  
+Search for **Bayesian inference**.
+-->
+<p>事前知識をモデルに取り入れたい場合。<br />
+<strong>ベイズ推定 (Bayesian inference)</strong>で検索してください。</p>
+<!--I am feeling a bit down lately.  
+Search for **"Amazon Alexa Gone Wild!!! Full version from beginning to end"**.-->
+<p>最近少し元気がありません。<br />
+<strong>&quot;Amazon Alexa Gone Wild!!! Full version from beginning to end&quot;</strong>で検索してください。</p>
 
 <!--{pagebreak}-->
 </div>
