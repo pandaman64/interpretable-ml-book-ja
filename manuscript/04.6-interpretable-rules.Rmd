@@ -7,22 +7,42 @@ if(!require("sbrl")) install.packages("../pkg/sbrl_1.2.tar.gz", repos = NULL, ty
 
 <!--{pagebreak}-->
 
+## 決定規則 {#rules}
+<!--
 ## Decision Rules {#rules}
+-->
 
+<!--
 A decision rule is a simple IF-THEN statement consisting of a condition (also called antecedent) and a prediction.
 For example: 
 IF it rains today AND if it is April (condition), THEN it will rain tomorrow (prediction). 
 A single decision rule or a combination of several rules can be used to make predictions.
+-->
+決定規則は、条件(前提とも呼ばれる)と予測値からなる単純なIF-THEN文です。
+例えば、 もし、今日雨が降っていて4月であるなら(条件)、明日雨が降るだろう(予測)というものです。
+予測は、単一の決定規則、もしくは、いくつかの決定規則の組み合わせによって行われます。
 
-<!-- *Keywords: decision rules, decision sets, decision lists, association rules, IF-THEN rules* -->
+<!-- 元からコメントアウト -->
+<!-- *Keywords: decision rules, decision sets, decision lists, association rules, IF-THEN rules* →
 
+
+<!--
 Decision rules follow a general structure:
 IF the conditions are met THEN make a certain prediction.
 Decision rules are probably the most interpretable prediction models.
 Their IF-THEN structure semantically resembles natural language and the way we think, provided that the condition is built from intelligible features, the length of the condition is short (small number of `feature=value` pairs combined with an AND) and there are not too many rules.
 In programming, it is very natural to write IF-THEN rules.
 New in machine learning is that the decision rules are learned through an algorithm.
+-->
+決定規則は一般的な構造に従います。
+もし、条件を満たしているなら、特定の予測がされます。
+決定規則は、おそらく最も解釈しやすい予測モデルです。
+IF-THEN 構造は意味的には、自然言語や私たちの考え方に似ています。
+ただし、条件がわかりやすい特徴量から構成され、条件の長さは短く(少数のANDで結合されている場合)、規則の数が多すぎない必要があります。
+プログラミングでは IF-THEN のルールで書くことはとても自然です。
+機械学習の新しい点は、決定規則がアルゴリズムによって学習されることです。
 
+<!--
 Imagine using an algorithm to learn decision rules for predicting the value of a house (`low`, `medium` or `high`).
 One decision rule learned by this model could be:
 If a house is bigger than 100 square meters and has a garden, then its value is high.
@@ -36,29 +56,62 @@ Let us break down the decision rule:
 - The two conditions are connected with an 'AND' to create a new condition. 
 Both must be true for the rule to apply.
 - The predicted outcome (THEN-part) is `value=high`.
+-->
+家の価値 ('low', 'medium', 'high') を予測するための決定規則をアルゴリズムによって学習することを想像してください。
+このモデルから学習できた1つの決定規則として、もし家が 100 平方メートル以上の広さがあり、庭付きならば、価値は高い。
+より正確には、IF 'size>100 AND garden=1' THEN 'value=high' とかけます。
 
+決定規則を分解してみましょう。
 
+- 'size>100' は、IF部分の第一条件です。
+- 'garden=1' は、IF部分の第二条件です。
+- 2つの条件を 'AND' で合わせて新しい条件を作ります。2つの条件がともに真のときのみ、規則は適用されます。
+- 予測結果(THEN部分)は 'value=high' です。
+
+<!--
 A decision rule uses at least one `feature=value` statement in the condition, with no upper limit on how many more can be added with an 'AND'.
 An exception is the default rule that has no explicit IF-part and that applies when no other rule applies, but more about this later.
 
 The usefulness of a decision rule is usually summarized in two numbers: Support and accuracy.
+-->
+決定規則は条件の中で少なくとも1つの 'feature=value' のステートメントを使用しますが 'AND' で追加できる数に制限はありません。
+例外は、明示的なIF部分を持たないデフォルト規則で、他の規則が適用されない場合に適用されますが、これについては後で
+解説します。
+決定規則の有用性は通常、サポート (Support) と 正答率 (Accuracy) の2つの数字で表されます。
 
+<!-- **Support or coverage of a rule**: -->
+**サポート (Support, 規則の適用範囲)**
 
-**Support or coverage of a rule**:
+<!--
 The percentage of instances to which the condition of a rule applies is called the support.
 Take for example the rule `size=big AND location=good THEN value=high` for predicting house values.
 Suppose 100 of 1000 houses are big and in a good location, then the support of the rule is 10%.
 The prediction (THEN-part) is not important for the calculation of support.
+-->
+規則の条件が適用されるインスタンスの割合をサポートと呼びます。
+例えば、`size=big AND location=good THEN value=high` という家の価値を予測する規則を考えてみましょう。
+1000 軒中 100 軒が大きく、立地が良い場合、この規則のサポートは 10% となります。
+予測部分 (THEN部分) は、サポートの計算には必要ありません。
 
-**Accuracy or confidence of a rule**: 
+<!-- **Accuracy or confidence of a rule**: -->
+**正答率 (Accuracy, 規則の確信度)**
+
+<!--
 The accuracy of a rule is a measure of how accurate the rule is in predicting the correct class for the instances to which the condition of the rule applies. 
 For example: 
 Let us say of the 100 houses, where the rule `size=big AND location=good THEN value=high` applies, 85 have `value=high`, 14 have `value=medium` and 1 has `value=low`, then the accuracy of the rule is 85%.
+-->
+規則の正答率とは、規則の条件が適用されるインスタンスに対して、どの程度、正しいクラスと予測できるかを示す指標です。
+例えば、`size=big AND location=good THEN value=high` という規則が適用される 100 軒の中で、`value=high` が 85 軒、`value=medium` が 14 軒、`value=low` が 1 軒であったとすると、この規則の正答率は 85% となります。
 
-
+<!--
 Usually there is a trade-off between accuracy and support:
 By adding more features to the condition, we can achieve higher accuracy, but lose support.
+-->
+通常、正答率とサポートはトレードオフの関係にあります。
+条件に新しい特徴量を追加することで正答率を上げることができますが、サポートは低下します。
 
+<!--
 To create a good classifier for predicting the value of a house you might need to learn not only one rule, but maybe 10 or 20.
 Then things can get more complicated and you can run into one of the following problems:
 
@@ -66,7 +119,16 @@ Then things can get more complicated and you can run into one of the following p
 What if I want to predict the value of a house and two or more rules apply and they give me contradictory predictions?
 - No rule applies:
 What if I want to predict the value of a house and none of the rules apply?
+-->
+家の価値を予測するための良い分類器を作成するためには、1つの規則だけではなく、10 から 20 の規則を学習する必要があるかもしれません。
+その時、より複雑なものになり、以下のような問題にぶつかるかもしれません。
 
+- 規則の重複:  
+家の価値を予測したい時に、2つ以上の条件が適用され、それらが矛盾した予測結果であったとき、どうすればいいのでしょうか？
+- 規則の未適用:  
+家の価値を予測したい時に、どの規則も適用されないとき、どうしたらいいのでしょうか？
+
+<!--
 There are two main strategies for combining multiple rules:
 Decision lists (ordered) and decision sets (unordered). 
 Both strategies imply different solutions to the problem of overlapping rules. 
@@ -79,16 +141,35 @@ Decision lists solve the problem of overlapping rules by only returning the pred
 A **decision set** resembles a democracy of the rules, except that some rules might have a higher voting power.
 In a set, the rules are either mutually exclusive, or there is a strategy for resolving conflicts, such as majority voting, which may be weighted by the individual rule accuracies or other quality measures.
 Interpretability suffers potentially when several rules apply.
+-->
+複数の規則を組み合わせるとき、決定リスト(順序付き)、決定集合(順序無し)の2つの主な戦略があります。
+両方の戦略は、規則の重複問題に対して、異なる解決策を提示します。
 
+**決定リスト**は決定規則に順序付けを用います。
+あるインスタンスに対して、最初の規則が真であれば、予測に最初の規則を用います。
+偽であるならば、次の規則に進み、その規則を適用するかどうか確かめ、これを繰り返します。
+決定リストは、適用される最初の規則の予測のみを返すことで、規則の重複問題を解決します。
 
+**決定集合**は、いくつかの規則が高い投票権を持っているかもしれないということを除いては、民主主義の原理に似ています。
+集合の中では、規則が互いに排他的であるか、多数決のような重複を解決する戦略が存在し、個々の規則が正答率や他の評価指標によって重み付けされます。
+ただし、複数の規則が適用されると、解釈性が損なわれる可能性があるため注意が必要です。
+
+<!--
 Both decision lists and sets can suffer from the problem that no rule applies to an instance. 
 This can be resolved by introducing a default rule. 
 The default rule is the rule that applies when no other rule applies.
 The prediction of the default rule is often the most frequent class of the data points which are not covered by other rules.
 If a set or list of rules covers the entire feature space, we call it exhaustive. 
 By adding a default rule, a set or list automatically becomes exhaustive.
+-->
+決定リストも決定集合も、あるインスタンスに対して、どの規則も適用されないという問題が起こり得ます。
+これは、デフォルト規則 (default rule) を導入することによって解決できます。
+デフォルト規則は、どの規則も適用されない場合に適用される規則のことです。
+デフォルト規則の予測は、他の規則でカバーされていないデータ点の中で最も頻度の高いクラスとすることが多いです。
+規則の集合やリストが、特徴量空間全体をカバーしているとき、網羅的と呼びます。
+デフォルト規則を追加することで、決定集合や決定リストは自動的に網羅的になります。
 
-
+<!--
 There are many ways to learn rules from data and this book is far from covering them all.
 This chapter shows you three of them.
 The algorithms are chosen to cover a wide range of general ideas for learning rules, so all three of them represent very different approaches.
@@ -100,37 +181,80 @@ This procedure is used by many rule learning algorithms.
 1. **Bayesian Rule Lists** combine pre-mined frequent patterns into a decision list using Bayesian statistics. 
 Using pre-mined patterns is a common approach used by many rule learning algorithms.
 
-Let's start with the simplest approach: Using the single best feature to learn rules.
+Let's start with the simplest approach: Using the single best feature to learn rules
+-->
+データから規則を学習する方法はたくさん存在しますが、本書ではそれら全てをカバーしていません。
+この章では、それらのうちの3つを紹介します。
+これらのアルゴリズムは、規則を学習するための一般的な考え方を幅広くカバーするように選ばれたため、これら3つは非常に異なるアプローチとなっています。
 
-### Learn Rules from a Single Feature (OneR)
+1. **OneR** は、単一の特徴量から規則を学習します。
+OneR の特徴は、単純かつ理解しやすいことであり、ベンチマークとして用いられます。
+1. **Sequential covering** は、繰り返し規則を学習していき、新しい規則でカバーされるデータ点を削除するという一般的な手法です。
+この手法は、多くの規則を学習するアルゴリズムで用いられています。
+1. **Bayesian Rule Lists** は、ベイズ統計を用いて、あらかじめ発見された頻出パターンを決定リストに結合します。
+事前に発見されたパターンを使用することも、多くの規則を学習するアルゴリズムで使用されているアプローチです。
 
+規則を学習するために単一の最も良い特徴量を選ぶという、最も単純なアプローチから始めましょう。
+
+<!-- ### Learn Rules from a Single Feature (OneR) -->
+### 単一の特徴量による規則学習 (OneR)
+
+<!--
 The OneR algorithm suggested by Holte (1993)[^oner] is one of the simplest rule induction algorithms.
 From all the features, OneR selects the one that carries the most information about the outcome of interest and creates decision rules from this feature.
+-->
+Holte(1993)[^oner]によって提案された OneR アルゴリズムは、最も単純な規則を導出するアルゴリズムの1つです。
+全ての特徴量から，OneR は興味のある出力について最も情報量をもつ特徴量を選び、その特徴量から決定規則を作成します。
 
+<!--
 Despite the name OneR, which stands for "One Rule", the algorithm generates more than one rule:
 It is actually one rule per unique feature value of the selected best feature. 
 A better name would be OneFeatureRules.
+-->
+"One Rule" の略である OneR という名前にもかかわらず，このアルゴリズムは1つより多くのルールを生成します。
+実際には、選択された最良の特徴量の値ごとに1つの規則を作ります。
+したがって、OneFeatureRules のほうがふさわしい名前かもしれません。
 
-The algorithm is simple and fast:
+<!-- The algorithm is simple and fast: -->
+このアルゴリズムは単純かつ高速です。
 
+<!--
 1. Discretize the continuous features by choosing appropriate intervals.
 1. For each feature:
     - Create a cross table between the feature values and the (categorical) outcome. 
     - For each value of the feature, create a rule which predicts the most frequent class of the instances that have this particular feature value (can be read from the cross table).
     - Calculate the total error of the rules for the feature.
 1. Select the feature with the smallest total error.
+-->
+1. 適切な間隔 (intervals) を選ぶことで，連続的な特徴量を離散化
+1. 各特徴量に対して、次を実行
+    - 特徴量の値と (カテゴリカルな) 出力間でクロステーブルを作成
+    - 各特徴量の値ごとに、クロステーブルから読み取れる特定の特徴量を持つインスタンスの、最も頻度の高いクラスを予測するための規則を作成
+    - 特徴量に対して、規則の誤差の合計を計算
+1. 誤差の合計が最小となる特徴量を選択
 
+<!--
 OneR always covers all instances of the dataset, since it uses all levels of the selected feature.
 Missing values can be either treated as an additional feature value or be imputed beforehand.
+-->
+OneR は、選択された特徴量の全ての値を使用するため、常にデータセットにおける全インスタンスをカバーします。
+欠損値は、追加の特徴量の値として扱うか事前に代入されます。
 
-
+<!--
 A OneR model is a decision tree with only one split.
 The split is not necessarily binary as in CART, but depends on the number of unique feature values.
+-->
+OneR モデルは分割が1つしかない決定木です。
+その分割は、CART のように二分木である必要はなく、ユニークな特徴量の値の数に依存します。
 
-
+<!--
 Let us look at an example how the best feature is chosen by OneR.
 The following table shows an artificial dataset about houses with information about its value, location, size and whether pets are allowed. 
 We are interested in learning a simple model to predict the value of a house.
+-->
+OneR によってどのように最も良い特徴量が選ばれているか、例を見てみましょう。
+次の表は、家についての価格、ロケーション、サイズ、ペットの可否の情報を持つ人工的なデータセットを示しています。
+家の価格を予測するための単純なモデルを学習してみましょう。
 
 ```{r OneR-freq-table1}
 value = factor(c("high", "high", "high", "medium", "medium", "medium", "medium", "low", "low", "low"), levels = c("low", "medium", "high"))
@@ -145,8 +269,8 @@ value.f = factor(paste("value=", value, sep = ""), levels = c("value=low", "valu
 kable(df)
 ```
 
-
-OneR creates the cross tables between each feature and the outcome:
+<!-- OneR creates the cross tables between each feature and the outcome:-->
+OneR は各特徴と出力との間のクロステーブルを生成します。
 
 ```{r OneR-freq-table2}
 kable(table(paste0("location=", df[,"location"]), value.f))
@@ -154,37 +278,84 @@ kable(table(paste0("size=", df[,"size"]), value.f))
 kable(table(paste0("pets=", df[,"pets"]), value.f))
 ```
 
+<!--
 For each feature, we go through the table row by row: 
 Each feature value is the IF-part of a rule;
+-->
+各特徴に対して、1行ごとにクロステーブルを見ていき、各特徴量の値が、ルールにおける IF部分 に相当します。
+
+<!--
 the most common class for instances with this feature value is the prediction, the THEN-part of the rule.
 For example, the size feature with the levels `small`, `medium` and `big` results in three rules.
+-->
+この特徴量を持つインスタンスの最も一般的なクラスが予測値、つまり、規則の THEN部分 に相当します。
+例えば、サイズに対しては、`small`、`medium`、`big` の3つの規則が得られます。
+
+<!--
 For each feature we calculate the total error rate of the generated rules, which is the sum of the errors.
-The location feature has the possible values `bad` and `good`. 
+The location feature has the possible values `bad` and `good`.
+-->
+各特徴量に対して，生成された規則の全ての誤差率 (誤差の総和) を計算します。
+「ロケーション」の特徴量は、`bad` と `good` を取りうる特徴量です。
+
+<!--
 The most frequent value for houses in bad locations is `low` and when we use `low` as a prediction, we make two mistakes, because two houses have a `medium` value.
 The predicted value of houses in good locations is `high` and again we make two mistakes, because two houses have a `medium` value.
+-->
+ロケーションが `bad` の家の最も出現頻度が高い価格は `low` ですが、`low` を予測値としたとき、2つの誤りが生じます。
+なぜなら、ロケーションが `bad` かつ、価格が `medium` である家が2つ存在するからです。
+ロケーションが `good` の家の予測値を `high` としても、ロケーションが `good` かつ価格が `medium` の家が 2 軒あるため、ここでも2つの誤りが生じます。
+
+<!--
 The error we make by using the location feature is 4/10, for the size feature it is 3/10  and for the pet feature it is 4/10 . 
 The size feature produces the rules with the lowest error and will be used for the final OneR model:
+-->
+ロケーションを特徴量に用いると、その誤差は 4/10、大きさでは 3/10、ペットの可否では 4/10 です。
+大きさを特徴量とすると、最も低い誤差を持った規則が生成できるため、これが最終的に OneR モデルに用いられます。
 
 IF `size=small` THEN  `value=small`  
 IF `size=medium` THEN  `value=medium`  
 IF `size=big` THEN  `value=high`
 
+<!--
 OneR prefers features with many possible levels, because those features can overfit the target more easily.
 Imagine a dataset that contains only noise and no signal, which means that all features take on random values and have no predictive value for the target.
+-->
+OneR は、多くのレベルをもつ特徴量が選ばれる傾向にあります。なぜなら、それらの特徴量を用いると簡単に過学習してしまうためです。
+全ての特徴量がランダムな値をもち、目的値に対して有用な値を持たないようなノイズのみを含むデータセットを想定してください。
+
+<!--
 Some features have more levels than others. 
 The features with more levels can now more easily overfit. 
 A feature that has a separate level for each instance from the data would perfectly predict the entire training dataset.
 A solution would be to split the data into training and validation sets, learn the rules on the training data and evaluate the total error for choosing the feature on the validation set.
+-->
+いくつかの特徴量は他の特徴量より多くのレベルを持っています。
+そのような多くのレベルを持った特徴量は過学習が起きやすくなります。
+ある特徴量がインスタンスごとに異なるレベルを持っていたとすると、学習データ全体を完全に予測できてしまいます。
+この問題に対する解決策は、データを学習用 (training data) と評価用 (validation data)に分けて、学習用のデータを用いて規則を学習し、選ばれた特徴量の評価は評価用のデータを用いて行います。
 
+<!--
 Ties are another issue, i.e. when two features result in the same total error.
 OneR solves ties by either taking the first feature with the lowest error or the one with the lowest p-value of a chi-squared test.
+-->
+複数の特徴量が同じ誤差となるときが、もう1つの問題となります。
+OneR では、このような場合は、誤差が最小の最初の特徴量を選択する、もしくは、カイ2乗検定の p値 が最小の特徴量を選択するようにします。
 
-**Example**
+<!-- **Example** -->
+**例**
 
+<!--
 Let us try OneR with real data.
 We use the [cervical cancer classification task](#cervical) to test the OneR algorithm. 
 All continuous input features were discretized into their 5 quantiles.
 The following rules are created:
+-->
+OneR を実データに適用してみましょう。
+OneR アルゴリズムを[子宮頸がんの分類タスク](#cervical) に適用してみます。
+全ての連続な入力の特徴を5分位に離散化したところ、以下のような規則が作成されました。
+
+
 ```{r oner-cervical}
 library("OneR")
 data("cervical")
@@ -199,10 +370,20 @@ rule.to.table = function(rule){
 kable(rule.to.table(rule), row.names = FALSE)
 ```
 
+<!--
 The age feature was chosen by OneR as the best predictive feature. 
 Since cancer is rare, for each rule the majority class and therefore the predicted label is always Healthy, which is rather unhelpful.
+-->
+OneR によって年齢の特徴量が最良の特徴量として選択されました。
+がんは滅多に起こらないため、各規則はデータ数の多いクラスとなります。
+従って、予測されるラベルが常に Healthy となり、これはあまり役に立たない結果と言えます。
+
+<!--
 It does not make sense to use the label prediction in this unbalanced case.
 The cross table between the 'Age' intervals and Cancer/Healthy together with the percentage of women with cancer is more informative:
+-->
+このように、不均衡データに対するラベルの予測で使用しても意味がありません。
+`Age` の間隔と Cancer/Healthy の間のクロステーブルに、癌にかかった女性の割合を加味するとより有益です。
 
 ```{r oner-cervical-confusion}
 tt = table(paste0("Age=", bin(cervical$Age)), cervical$Biopsy)
@@ -213,14 +394,26 @@ tt$p.cancer = round(tt[,"Cancer"]/(tt[,"Cancer"] + tt[,"Healthy"]), 2)
 kable(tt[c("Cancer", "Healthy", "p.cancer")], col.names = c("# Cancer", "# Healthy", "P(Cancer)"))
 ```
 
+<!--
 But before you start interpreting anything:
 Since the prediction for every feature and every value is Healthy, the total error rate is the same for all features.
 The ties in the total error are, by default, resolved by using the first feature from the ones with the lowest error rates (here, all features have 55/858), which happens to be the Age feature.
+-->
+ただし、解釈を始める前に注意しなければいけないことがあります。
+全ての特徴量の全ての値に対する予測は Healthy だったため、全ての特徴量に対する合計の誤差率は同じです。
+複数の特徴量で合計の誤差率が等しい場合、基本的には、最も誤差率の低い特徴量の中で、最初のものが使用されます(全ての特徴量は誤差率 55/858)。これがたまたま「Age feature」だったのです。
 
+<!--
 OneR does not support regression tasks.
 But we can turn a regression task into a classification task by cutting the continuous outcome into intervals.
 We use this trick to predict the number of [rented bikes](#bike-data) with OneR by cutting the number of bikes into its four quartiles (0-25%, 25-50%, 50-75% and 75-100%).
 The following table shows the selected feature after fitting the OneR model:
+-->
+OneR は回帰問題では使用できません。
+しかし、出力をいくつかの区間に分割することで回帰問題を分類問題に落とし込むことができます。
+この手法を[自転車レンタル台数予測](#bike-data)に使ってみましょう。
+自転車の数を四分位数(0~25%, 25~50%, 50~75%, 75~100%)で分割することで、OneR を用いて予測します。
+OneR モデルで選択された特徴量の表は以下の通りです。
 
 ```{r oner-bike}
 data("bike")
@@ -232,15 +425,27 @@ rule = OneR::OneR(cnt ~ ., data = bike2)
 kable(rule.to.table(rule), row.names = FALSE)
 ```
 
+<!--
 The selected feature is the month.
 The month feature has (surprise!) 12 feature levels, which is more than most other features have.
 So there is a danger of overfitting. 
 On the more optimistic side: the month feature can handle the seasonal trend (e.g. less rented bikes in winter) and the predictions seem sensible.
 
 Now we move from the simple OneR algorithm to a more complex procedure using rules with more complex conditions consisting of several features: Sequential Covering.
+-->
+選択された特徴量は月 (month) でした。
+月の特徴量は（驚くべきことに！）12段階に分かれており、これは他のほとんどの特徴量よりも多いです。
+そのため、過学習の危険性があります。
+しかし、より楽観的な立場からすると、月の特徴量は季節のトレンド（例えば、冬はレンタル自転車の人気がなくなるなど）を捉えることができるため、その予測は賢明なのかもしれません。
 
+それでは、単純な OneR アルゴリズムから、より複雑な手順で、いくつかの特徴量からなる複雑な条件を持つ規則を学習するための Sequential Covering に移りましょう。
+
+<!--
+### Sequential Covering
+-->
 ### Sequential Covering
 
+<!--
 Sequential covering is a general procedure that repeatedly learns a single rule to create a decision list (or set) that covers the entire dataset rule by rule.
 Many rule-learning algorithms are variants of the sequential covering algorithm.
 This chapter introduces the main recipe and uses RIPPER, a variant of the sequential covering algorithm for the examples.
@@ -252,8 +457,20 @@ A data point is covered when the conditions apply, regardless of whether the poi
 Repeat the rule-learning and removal of covered points with the remaining points until no more points are left or another stop condition is met.
 The result is a decision list. 
 This approach of repeated rule-learning and removal of covered data points is called "separate-and-conquer".
+-->
+Sequential Covering とは、1つの規則を繰り返し学習し、ルールごとにデータセット全体をカバーする決定リスト（または決定集合）を作成する一般的な手続きです。
+多くの規則を学習するアルゴリズムは、Sequential Covering の一種です。
+この章では、手法の概要を紹介し、例として、Sequential Covering の応用形である RIPPER を使用します。
 
+アイデアはシンプルです。
+まずはいくつかのデータに当てはまる良い規則を見つけます。
+そして、その規則でカバーされる全てのデータ点を削除します。
+データ点がカバーされるのは、条件が適用されたときであり、その点が正しく分類されたかどうかとは関係がないことに注意してください。
+この規則を学習し、カバーされた点を削除することを、残りのデータ点がなくなるか、他の停止条件が満たされるまで繰り返します。
+その結果、決定リストが得られます。
+この、規則の学習とカバーされたデータ点の削除を繰り返す手法を 「separate-and-conquer」と呼びます。
 
+<!--
 Suppose we already have an algorithm that can create a single rule that covers part of the data. 
 The sequential covering algorithm for two classes (one positive, one negative) works like this:
 
@@ -264,8 +481,24 @@ The sequential covering algorithm for two classes (one positive, one negative) w
     - Remove all data points covered by rule r.
     - Learn another rule on the remaining data.
 - Return the decision list.
+-->
+データの一部をカバーする単一のルールを作成できるアルゴリズムをすでに我々は持っているとします。
+2つのクラス（positiveとnegative）に対する、sequential covering アルゴリズムは
+以下のように動作します。
 
-```{r covering-algo, fig.cap = "The covering algorithm works by sequentially covering the feature space with single rules and removing the data points that are already covered by those rules. For visualization purposes, the features x1 and x2 are continuous, but most rule learning algorithms require categorical features."}
+- 空の規則のリストから始める（rlist）
+- 規則 r を学習
+- 規則のリストがある閾値を下回っている間（もしくは positive な例がまだカバーされていない間）：
+    - 規則 r を rlist に追加
+    - 規則 r によってカバーされるデータ点を全て削除
+    - 残ったデータに対して、他の規則を学習
+- 決定リストを返す
+
+
+<!--
+fig.cap = "The covering algorithm works by sequentially covering the feature space with single rules and removing the data points that are already covered by those rules. For visualization purposes, the features x1 and x2 are continuous, but most rule learning algorithms require categorical features."
+-->
+```{r covering-algo, fig.cap = "アルゴリズムは単一の規則で特徴空間を順次カバーし、それらのルールで既にカバーされているデータ点を削除していくことで動作します。可視化のために、特徴量 x1 と x2 は連続量ですが、ほとんどの規則学習アルゴリズムはカテゴリカル特徴量を必要とします。"}
 set.seed(42)
 n = 100
 dat = data.frame(x1 = rnorm(n), x2 = rnorm(n))
@@ -302,9 +535,9 @@ p4 = p3 +
   ggtitle("Step 3: Find next rule")
 
 gridExtra::grid.arrange(p1, p2, p3, p4, ncol = 2)
-
 ```
 
+<!--
 For example: 
 We have a task and dataset for predicting the values of houses from size, location and whether pets are allowed.
 We learn the first rule, which turns out to be: 
@@ -313,46 +546,96 @@ Then we remove all big houses in good locations from the dataset.
 With the remaining data we learn the next rule.
 Maybe: If `location=good`, then `value=medium`.
 Note that this rule is learned on data without big houses in good locations, leaving only medium and small houses in good locations.
+-->
+例として、家のサイズ、ロケーション、およびペットの可否から家の価値を予測するタスクおよびデータセットがあるとします。
+初めに学習する規則は、もし、`size=big` かつ `location=good` ならば、`value=high` となります。
+そして、データセットから全てのよいロケーションにある大きな家を削除します。
+残ったデータで、我々は次の規則を学習すると、`location=good` ならば、`value=medium` となります。
+注意すべき点としては、この規則は、ロケーションがよく大きな家を除いたデータで学習されており、ロケーションのいい家は medium か small しか残されていないということです。
 
+<!--
 For multi-class settings, the approach must be modified.
 First, the classes are ordered by increasing prevalence.
 The sequential covering algorithm starts with the least common class, learns a rule for it, removes all covered instances, then moves on to the second least common class and so on. 
 The current class is always treated as the positive class and all classes with a higher prevalence are combined in the negative class.
 The last class is the default rule.
 This is also referred to as one-versus-all strategy in classification.
+-->
+多クラスの設定の場合は、アプローチを変える必要があります。
+初めに、クラスは普及率を昇順に並べます。
+sequential covering アルゴリズムは、最も一般的でないクラスから始まり、それのための規則を学習し、カバーされたインスタンスを全て削除し、次に一般的でないクラスに移動していきます。
+現在のクラスは常にポジティブクラスとして扱われ、より高い普及率を持つ全てのクラスはネガティブクラスとしてまとめられます。
+最後のクラスはデフォルト規則となります。
+これは分類問題における one-versus-all 戦略とも呼ばれます。
 
-
+<!--
 How do we learn a single rule? 
 The OneR algorithm would be useless here, since it would always cover the whole feature space.
 But there are many other possibilities. 
 One possibility is to learn a single rule from a decision tree with beam search:
+-->
+どうやって1つのルールを学習するのでしょうか。
+OneR アルゴリズムは、全ての特徴空間をカバーするので、役に立たないでしょう。
+しかし、他にも多くのいろいろな可能性があります。
+1つの可能性としては、ビームサーチを用いて決定木から単一の規則を学習することです。
 
+<!--
 - Learn a decision tree (with CART or another tree learning algorithm).
 - Start at the root node and recursively select the purest node (e.g. with the lowest misclassification rate).
 - The majority class of the terminal node is used as the rule prediction; 
 the path leading to that node is used as the rule condition.
+-->
+- 決定木を（CARTや他の木学習アルゴリズムを用いて）学習します。
+- ルートノードから出発し、再帰的に最も不純度の低いノード（例：誤分類率が最も低いノード）を選択していきます。
+- 規則の予測には、終端ノードにおける多数派のクラスが使用されます。つまり、そのノードに到達までのパスがルールの条件として使われます。
 
+<!--
 The following figure illustrates the beam search in a tree:
+-->
+以下の図は、木をビームサーチした様子です。
 
-```{r learn-one-rule, fig.cap = "Learning a rule by searching a path through a decision tree. A decision tree is grown to predict the target of interest. We start at the root node, greedily and iteratively follow the path which locally produces the purest subset (e.g. highest accuracy) and add all the split values to the rule condition. We end up with: If `location=good` and `size=big`, then `value=high`.", out.width=700}
+<!--
+fig.cap = "Learning a rule by searching a path through a decision tree. A decision tree is grown to predict the target of interest. We start at the root node, greedily and iteratively follow the path which locally produces the purest subset (e.g. highest accuracy) and add all the split values to the rule condition. We end up with: If `location=good` and `size=big`, then `value=high`."
+-->
+```{r learn-one-rule, fig.cap = "決定木のパスを探索することで規則を学習する。決定木は興味のある目的値を予測するために成長する。ルートノードから出発し、純度の高い(例: 正答率の高い)部分集合のパスへ貪欲的に遷移し、全ての分割の値を規則の条件に加える。最終的に、もし、`location=good` かつ `size=big` ならば `value=high`を得る。", out.width=700}
 knitr::include_graphics("images/learn-one-rule.png")
 ```
 
+<!--
 Learning a single rule is a search problem, where the search space is the space of all possible rules. 
 The goal of the search is to find the best rule according to some criteria.
 There are many different search strategies: 
 hill-climbing, beam search, exhaustive search, best-first search, ordered search, stochastic search, top-down search, bottom-up search, ...
+-->
+単一の規則を学習することは、全ての可能な規則からなる空間が探索空間であるような探索問題です。
+探索のゴールは、何らかの基準によって最適な規則を見つけることです。
+いくつかの異なる探索の方策があります。
+山登り法 (hill-climbing)、ビームサーチ (beam search)、全探索 (exhaustive search)、最良優先探索 (best-first search)、順序探索 (ordered search), 確率的探索 (stochastic search), トップダウン探索 (top-down search)、ボトムアップ探索 (bottom-up search)、など。
 
-
+<!--
 RIPPER (Repeated Incremental Pruning to Produce Error Reduction) by Cohen (1995)[^ripper] is a variant of the Sequential Covering algorithm.
 RIPPER is a bit more sophisticated and uses a post-processing phase (rule pruning) to optimize the decision list (or set).
 RIPPER can run in ordered or unordered mode and generate either a decision list or decision set.
+-->
+Cohen (1995)[^ripper] による RIPPER (Repeated Incremental Pruning to Produce Error Reduction) は Sequential Covering アルゴリズムの一種です。
+RIPPER はより洗練されており、後処理 (rule pruning) を使って決定リスト (または、決定集合)を最適化します。
+RIPPER は順序付き、順序なしモードで実行することができ、決定リストまたは決定集合のいずれかを生成できます。
 
+<!--
 **Examples**
+-->
+**例**
 
+<!--
 We will use RIPPER for the examples.
+-->
+例として、RIPPER を使用してみましょう。
 
+<!--
 The RIPPER algorithm does not find any rule in the classification task for [cervical cancer](#cervical).
+-->
+RIPPER アルゴリズムは、[子宮頸癌](#cervical)の分類問題において、規則を発見しません。
+
 ```{r jrip-cervical, include = FALSE}
 library("RWeka")
 library(rJava)
@@ -375,11 +658,18 @@ rule = JRip(Biopsy ~ ., data = cervical)
 extract.rules.jrip(rule)
 ```
 
+<!--
 When we use RIPPER on the regression task to predict [bike counts](#bike-data) some rules are found. 
 Since RIPPER only works for classification, the bike counts must be turned into a categorical outcome. 
 I achieved this by cutting the bike counts into the quartiles.
 For example (4548, 5956) is the interval covering predicted bike counts between 4548 and 5956.
 The following table shows the decision list of learned rules. 
+-->
+RIPPER を[自転車レンタル](#bike-data)台数の予測の回帰問題に適用したとき、いくつかの規則が見つかります。
+RIPPER は分類問題に対して動作するため、自転車の数はカテゴリカルな出力に変換しなければいけません。
+そのため、自転車の数は四分位数に変換しています。
+例えば、(4548, 5956) は予測された自転車の数が 4548 台から 5956 台の間の区間を示しています。
+次の表は、学習された規則の決定リストを示しています。
 
 ```{r jrip-bike}
 bike2 = bike
@@ -393,16 +683,27 @@ rule = JRip(cnt  ~ ., data = bike2)
 extract.rules.jrip(rule)
 ```
 
+<!--
 The interpretation is simple:
 If the conditions apply, we predict the interval on the right hand side for the number of bikes.
 The last rule is the default rule that applies when none of the other rules apply to an instance. 
 To predict a new instance, start at the top of the list and check whether a rule applies.
 When a condition matches, then the right hand side of the rule is the prediction for this instance. 
 The default rule ensures that there is always a prediction.
+-->
+解釈は単純明快です。
+もし、条件が適用されたら、右側の区間の自転車の台数であると予測します。
+最後の規則はデフォルト規則で、インスタンスに対してどの規則も適用されなかったときに適用されます。
+新しいインスタンスに対して予測するためには、リストの上から出発し、規則が適用されるかチェックします。
+条件がマッチしたとき、規則の右側の値がこのインスタンスに対する予測となります。
+デフォルト規則は、常に予測値が存在することを保証します。
 
+<!--
+### Bayesian Rule Lists
+-->
 ### Bayesian Rule Lists
 
-In this section, I will show you another approach to learning a decision list, which follows this rough recipe:
+<!-- In this section, I will show you another approach to learning a decision list, which follows this rough recipe:
 
 1. Pre-mine frequent patterns from the data that can be used as conditions for the decision rules.
 1. Learn a decision list from a selection of the pre-mined rules.
@@ -410,29 +711,61 @@ In this section, I will show you another approach to learning a decision list, w
 A specific approach using this recipe is called Bayesian Rule Lists (Letham et. al, 2015)[^brl] or BRL for short.
 BRL uses Bayesian statistics to learn decision lists from frequent patterns which are pre-mined with the FP-tree algorithm (Borgelt 2005)[^fp-tree]
 
-But let us start slowly with the first step of BRL.
+But let us start slowly with the first step of BRL. -->
+この章では、次の大まかな手順に従って、決定リストを学習する別のアプローチを紹介します。
 
+1. 決定規則の条件として使える頻出パターンをデータから事前にマイニングしておきます。
+1. マイニングされた規則からいくつかを選択し、決定リストを学習します。
+
+このようなアプローチを Bayesian Rule Lists (Lethan et. al, 2015)[^brl]または、略して BRL と呼びます。
+BRL はベイズ統計を用いて、FP-tree アルゴリズム (Borgelt 2005)[^fp-tree] でマイニングされた頻出パターンから決定リストを学習しますが、まずは BRL の最初のステップからゆっくり始めましょう。
+
+<!-- 
 **Pre-mining of frequent patterns**
+-->
+**頻出パターンの事前マイニング**
 
+<!--
 A frequent pattern is the frequent (co-)occurrence of feature values.
 As a pre-processing step for the BRL algorithm, we use the features (we do not need the target outcome in this step) and extract frequently occurring patterns from them.
 A pattern can be a single feature value such as `size=medium` or a combination of feature values such as `size=medium AND location=bad`.
+-->
+頻出パターンとは、特徴量の頻繁な共起のことを言います。
+BRL アルゴリズムの前処理ステップとして、特徴量を使って頻出パターンを抽出します（この段階では目的値は不必要です）。
+パターンには、`size=medium` のような単一の特徴量のものや、`size=medium AND location=bad` のような特徴量の組み合わせのものがあります。
 
+<!--
 The frequency of a pattern is measured with its support in the dataset:
+-->
+パターンの頻度は次のように、データセット内のサポートで定量化されます。
 
 $$Support(x_j=A)=\frac{1}n{}\sum_{i=1}^nI(x^{(i)}_{j}=A)$$
 
+<!--
 where A is the feature value, n the number of data points in the dataset and I the indicator function that returns 1 if the feature $x_j$ of the instance i has level A otherwise 0.
 In a dataset of house values, if 20% of houses have no balcony and 80% have one or more, then the support for the pattern `balcony=0` is 20%.
 Support can also be measured for combinations of feature values, for example for `balcony=0 AND pets=allowed`.
+-->
+ただし、A は特徴量の値、n はデータセット内のデータの数、I はデータ i の特徴 $x_j$ のレベルが A の場合は 1、そうでない場合は 0 を返す指示関数です。
+家の価値のデータセットで、もし家の20%にベランダがなく、80%で一個以上のベランダがあった場合、パターン `balcony=0` に対するサポートは20%になります。
+サポートは、`balcony=0 AND pets=allowed` のような、特徴量の組み合わせについても同様に測定できます。
 
+<!--
 There are many algorithms to find such frequent patterns, for example Apriori or FP-Growth. 
 Which you use does not matter much, only the speed at which the patterns are found is different, but the resulting patterns are always the same.
 
 I will give you a rough idea of how the Apriori algorithm works to find frequent patterns.
 Actually the Apriori algorithm consists of two parts, where the first part finds frequent patterns and the second part builds association rules from them.
 For the BRL algorithm, we are only interested in the frequent patterns that are generated in the first part of Apriori.
+-->
+AprioriやFP-Growth のような、頻出パターンを発見するためのアルゴリズムはたくさんあります。
+結果のパターンは常に同じなので、計算速度だけが異なるため、どれを用いるかはそれほど重要ではありません。
 
+Aprioriアルゴリズムがどのように頻繁なパターンを見つけるかについて大まかに説明します。
+実は、Aprioriアルゴリズムは2つの部分で構成されており、まず最初に頻出パターンを見つけ、その次に、それらから相関規則を構築します。
+BRL アルゴリズムにおいては、Aprioriアルゴリズムの最初の部分で生成される頻出パターンにのみ関心があります。
+
+<!--
 In the first step, the Apriori algorithm starts with all feature values that have a support greater than the minimum support defined by the user. 
 If the user says that the minimum support should be 10% and only 5% of the houses have `size=big`, we would remove that feature value and keep only `size=medium` and `size=small` as patterns. 
 This does not mean that the houses are removed from the data, it just means that `size=big` is not returned as frequent pattern.
@@ -446,29 +779,69 @@ By removing a condition from a pattern, the reduced pattern can only cover more 
 For example, if 20% of the houses are `size=medium and location=good`, then the support of houses that are only `size=medium` is 20% or greater.
 The Apriori property is used to reduce the number of patterns to be inspected.
 Only in the case of frequent patterns we have to check patterns of higher order.
+-->
+最初のステップでは、ユーザが定義した閾値より大きいサポートを持つすべての特徴量から始まります。
+ユーザが最小のサポートを10%に設定しており、家の5%のみが `size=big` になっている場合、その特徴量の値は削除され、 `size=medium` と `size=small` のみがパターンとして保持されます。
+これは、 `size=big` を持つ家がデータから削除されるということではなく、 `size=big` が頻出パターンとして返されなくなるという意味です。
+Aprioriアルゴリズムは、単一の特徴量を持つ頻出パターンに基づいて、より高次の特徴量の組み合わせを繰り返し発見します。
+パターンは、 `feature=value` ステートメントを論理 AND と組み合わせて構築されます。（例： `size=medium AND location=bad` ）
+生成されたパターンのうち、閾値未満のサポートを持つものは削除されます。
+最後には、すべての頻繁なパターンを持つことになります。
+頻出パターンの部分集合もまた、頻出パターンになります。これはApriori propertyと呼ばれます。
+これは、直感的にも成り立ちます。
+パターンからある条件を外すと、削減された後のパターンは、より広い（または同じ）範囲のデータをカバーできるようになり、範囲が狭くなることはありえません。
+例えば、家の20%が `size=medium AND location=good` ならば、 `size=medium` のみの家のサポートは20%以上になります。
+このApriori propertyは、検査すべきパターンの数を減らすために使われます。
+頻出パターンに対してのみ、高次のパターンをチェックする必要があります。
 
+<!--
 Now we are done with pre-mining conditions for the Bayesian Rule List algorithm.
 But before we move on to the second step of BRL, I would like to hint at another way for rule-learning based on pre-mined patterns. 
 Other approaches suggest including the outcome of interest into the frequent pattern mining process and also executing the second part of the Apriori algorithm that builds IF-THEN rules. 
 Since the algorithm is unsupervised, the THEN-part also contains feature values we are not interested in. 
 But we can filter by rules that have only the outcome of interest in the THEN-part.
 These rules already form a decision set, but it would also be possible to arrange, prune, delete or recombine the rules.
+-->
+これで BRL アルゴリズムのための条件の事前マイニングが完了しました。
+BRL の次のステップに進む前に、パターンの事前マイニングに基づく規則学習の別の方法を紹介します。
+他のアプローチでは、関心のある出力結果を頻出パターンのマイニングプロセスに含め、Apriori アルゴリズムの2番目のステップである IF-THEN ルールを構築する部分でも使用することが提案されています。
+教師なし学習アルゴリズムなので、THEN 部分に関心のない特徴量も含まれてしまいます。
+ただし、THEN 部分に関心のある出力結果のみを持つ規則でフィルタリングできます。
+これらの規則はすでに決定集合を形成していますが、規則の再配列、削除、再結合もできます。
 
+
+<!--
 In the BRL approach however, we work with the frequent patterns and learn the THEN-part and how to arrange the patterns into a decision list using Bayesian statistics.
+-->
+しかしながら、BRL アルゴリズムでは、ベイズ統計を用いて頻出パターンから THEN 部分と決定リストに配置する方法を学習します。
 
+<!-- **Learning Bayesian Rule Lists** -->
+**Bayesian Rule Lists による学習**
 
-**Learning Bayesian Rule Lists**
-
+<!--
 The goal of the BRL algorithm is to learn an accurate decision list using a selection of the pre-mined conditions, while prioritizing lists with few rules and short conditions.
-BRL addresses this goal by defining a distribution of decision lists with prior distributions for the length of conditions (preferably shorter rules) and the number of rules (preferably a shorter list). 
+BRL addresses this goal by defining a distribution of decision lists with prior distributions for the length of conditions (preferably shorter rules) and the number of rules (preferably a shorter list).
+-->
+BRL アルゴリズムのゴールは、事前にマイニングされた条件から選択して、なるべく少ない規則、短い条件のリストとなることを優先させながら、正確な決定リストを学習することです。
+BRL は、条件の長さ（短いルールで）と規則の数（短いリストで）に関する事前分布を用いて決定リストの分布を定義することにより、この目標を達成します。
 
+<!--
 The posteriori probability distribution of lists makes it possible to say how likely a decision list is, given assumptions of shortness and how well the list fits the data.
 Our goal is to find the list that maximizes this posterior probability.
 Since it is not possible to find the exact best list directly from the distributions of lists, BRL suggests the following recipe:  
 1) Generate an initial decision list, which is randomly drawn from the priori distribution.  
 2) Iteratively modify the list by adding, switching or removing rules, ensuring that the resulting lists follow the posterior distribution of lists.  
 3) Select the decision list from the sampled lists with the highest probability according to the posteriori distribution.
+-->
+リストの事後確率分布により、短さの仮定とどの程度データに適合しているかに基づいて、決定リストがどの程度尤もらしいかを言うことができます。
+私たちの目標は、この事後確率を最大化するリストを見つけることです。
+リストの分布から直接、最良のリストを見つけることはできないため、BRL は次のような手順に従います。
 
+1) 事前分布からランダムに最初の決定リストを生成します。  
+2) 規則の追加、切り替え、または削除を繰り返し行い、結果のリストが、リストの事後分布に従うようにします。  
+3) 事後分布に従ってサンプリングされたリストから最も確率の高い決定リストを選択します。
+
+<!--
 Let us go over the algorithm more closely:
 The algorithm starts with pre-mining feature value patterns with the FP-Growth algorithm.
 BRL makes a number of assumptions about the distribution of the target and the distribution of the parameters that define the distribution of the target.
@@ -476,40 +849,79 @@ BRL makes a number of assumptions about the distribution of the target and the d
 If you are unfamiliar with Bayesian statistics, do not get too caught up in the following explanations. 
 It is important to know that the Bayesian approach is a way to combine existing knowledge or requirements (so-called priori distributions) while also fitting to the data.
 In the case of decision lists, the Bayesian approach makes sense, since the prior assumptions nudges the decision lists to be short with short rules.
+-->
+アルゴリズムをさらに詳しく見ていきましょう。
+このアルゴリズムは、FP-Growth アルゴリズムを用いた特徴量のパターンを事前マイニングすることから始まります。
+BRL は目的値の分布と、目的値の分布を定義するパラメータの分布について、いくつかの仮定をします。
+（これがベイズ統計です。）
+ベイズ統計に慣れていない方は、以下の説明にとらわれすぎないようにしてください。
+ベイズ統計のアプローチは、モデルをデータにフィットさせる一方で、既存の知識や必要条件（いわゆる事前分布）を組み合わせる方法であることを知っておくことが重要です。
+決定リストの場合、決定リストの規則が短くなるように事前分布によって調整されるため、ベイズ統計のアプローチは理にかなっています。
 
-The goal is to sample decision lists d from the posteriori distribution: 
+<!--
+The goal is to sample decision lists d from the posteriori distribution:
+-->
+ゴールは、事後分布から決定リスト d をサンプリングすることです。
 
 $$\underbrace{p(d|x,y,A,\alpha,\lambda,\eta)}_{posteriori}\propto\underbrace{p(y|x,d,\alpha)}_{likelihood}\cdot\underbrace{p(d|A,\lambda,\eta)}_{priori}$$
 
+<!--
 where d is a decision list, x are the features, y is the target, A the set of pre-mined conditions, $\lambda$ the prior expected length of the decision lists, $\eta$ the prior expected number of conditions in a rule, $\alpha$ the prior pseudo-count for the positive and negative classes which is best fixed at (1,1).
-
+-->
+ただし、d は決定リスト、x は特徴量、y は目的値、A は事前にマイニングされた条件の集合、$\lambda$ は事前に予想される決定リストの長さ、$\eta$ は事前に予想される規則の中の条件の数、$\alpha$ は正と負クラスに対する事前の擬似的なカウントで、 (1,1) に固定する方が良いです。
 
 $$p(d|x,y,A,\alpha,\lambda,\eta)$$
 
+<!--
 quantifies how probable a decision list is, given the observed data and the priori assumptions. 
 This is proportional to the likelihood of the outcome y given the decision list and the data times the probability of the list given prior assumptions and the pre-mined conditions.
+-->
+この式は観測されたデータと事前の仮定に基づいて、決定リストの可能性を定量化します。
+これは、決定リストとデータが与えられたときの出力 y の尤度と、与えられた事前情報と事前にマイニングされた条件に対するリストの確率をかけたものに比例します。
 
 $$p(y|x,d,\alpha)$$
 
+<!--
 is the likelihood of the observed y, given the decision list and the data. 
 BRL assumes that y is generated by a Dirichlet-Multinomial distribution.
 The better the decision list d explains the data, the higher the likelihood.
+-->
+この式は、決定リストとデータが与えられたときに観測された y の尤度です。
+BRL では y はディリクレ多項分布 (Dirichlet-Multinomial distribution) によって生成されることを仮定しています。
+決定リスト d がデータをうまく説明できるほど、尤度は高くなります。
 
 $$p(d|A,\lambda,\eta)$$
 
+<!--
 is the prior distribution of the decision lists. 
 It multiplicatively combines a truncated Poisson distribution (parameter $\lambda$) for the number of rules in the list and a truncated Poisson distribution (parameter $\eta$) for the number of feature values in the conditions of the rules.
-
 A decision list has a high posterior probability if it explains the outcome y well and is also likely according to the prior assumptions.
+--> 
+この式は、決定リストの事前分布です。
+これは、リスト内の規則の数に対するパラメータ $\lambda$ の truncated Poisson distribution と 規則の条件の特徴量の値の数に対するパラメータ $\eta$ の truncated Poisson distribution を掛け合わせます。
+決定リストは、出力 y をうまく説明し、事前の仮定に従っている可能性が高いほど、事後確率が高くなります。
 
-
+<!--
 Estimations in Bayesian statistics are always a bit tricky, because we usually cannot directly calculate the correct answer, but we have to draw candidates, evaluate them and update our posteriori estimates using the Markov chain Monte Carlo method.
-For decision lists, this is even more tricky, because we have to draw from the distribution of decision lists. 
+For decision lists, this is even more tricky, because we have to draw from the distribution of decision lists.
+-->
+ベイズ統計の推定には少しトリッキーです。なぜなら、直接正解を計算できるとは限らず、通常は、候補を選んで評価し、マルコフ連鎖モンテカルロ法 (MCMC) を用いて事後推定を更新する必要があるからです。
+決定リストの場合、決定リストの分布から引き出す必要があるため、さらに複雑になります。
+
+<!--
 The BRL authors propose to first draw an initial decision list and then iteratively modify it to generate samples of decision lists from the posterior distribution of the lists (a Markov chain of decision lists).
 The results are potentially dependent on the initial decision list, so it is advisable to repeat this procedure to ensure a great variety of lists.
 The default in the software implementation is 10 times.
-The following recipe tells us how to draw an initial decision list:
+-->
+BRL の著者は、まず最初の決定リストを作成し、次にそれを繰り返し変更して、リストの事後分布（決定リストのマルコフ連鎖）から決定リストのサンプルを生成することを提案しています。
+これによって得られる結果は最初の決定リストに依存する、この手順を繰り返し実行し、多様なリストを確保することが望ましいです。ソフトウェアの実装の中では、基本的に10回繰り返します。
 
+<!--
+The following recipe tells us how to draw an initial decision list:
+-->
+以下の手順は、最初の決定リストの作り方を示しています。
+
+<!--
 - Pre-mine patterns with FP-Growth.
 - Sample the list length parameter m from a truncated Poisson distribution.
 - For the default rule: Sample the Dirichlet-Multinomial distribution parameter $\theta_0$ of the target value (i.e. the rule that applies when nothing else applies).
@@ -520,7 +932,20 @@ The following recipe tells us how to draw an initial decision list:
 - For each observation in the dataset:
     - Find the rule from the decision list that applies first (top to bottom).
     - Draw the predicted outcome from the probability distribution (Binomial) suggested by the rule that applies.
+-->
+- FP-Growthでパターンを事前にマイニング
+- truncated Poisson distribution から、リストの長さのパラメータ m をサンプリング
+- デフォルト規則の場合 (他に何も適用しない場合に用いられるルール)は以下を実行
+  - 目的値に関するディリクレ多項分布のパラメータ $\theta_0$ をサンプリング
+- 決定リストの規則 j = 1,...,m に対して、以下を実行
+  - 規則 j に対して、規則の長さのパラメータ l (条件の数) をサンプリング
+  - 事前にマイニングした条件から、長さが $l_j$ の条件をサンプリング
+  - THEN部分(規則によって与えられた出力結果の分布)に対して、ディリクレ多項分布のパラメータをサンプリング
+- データセットのそれぞれの観測値に対して以下を実行
+  - 決定リストを上から下に探索し、最初に適用する規則を見つける
+  - 適合するルールによって提案された確率分布 (二項分布) から予測結果を引き出す
 
+<!--
 The next step is to generate many new lists starting from this initial sample to obtain many samples from the posterior distribution of decision lists.
 
 The new decision lists are sampled by starting from the initial list and then randomly either moving a rule to a different position in the list or adding a rule to the current decision list from the pre-mined conditions or removing a rule from the decision list. 
@@ -529,10 +954,23 @@ At each step, the algorithm evaluates the posteriori probability of the decision
 The Metropolis Hastings algorithm ensures that we sample decision lists that have a high posterior probability.
 This procedure provides us with many samples from the distribution of decision lists.
 The BRL algorithm selects the decision list of the samples with the highest posterior probability.
+-->
+次のステップは、決定リストの事後分布から多くのサンプルを取得するために、この最初のサンプルからスタートし、たくさんの新しいリストを生成することです。
+
+新しい決定リストは最初のリストから開始し、規則をリスト内の別の場所に移動するか、事前にマイニングされた条件から現在の決定リストに規則を追加するか、もしくは決定リストから規則を削除することによってサンプリングされます。
+これらの規則の切り替え、追加、削除は無作為に選ばれて適用されます。
+それぞれのステップにおいて、アルゴリズムは決定リストの（正答率と短さの組み合わさった）事後確率を評価します。
+Metropolis Hastings アルゴリズムは、事後確率が高い決定リストをサンプリングすることを保証します。
+この手順によって、決定リストの分布から多くのサンプルを得ることができます。
+BRL アルゴリズムは最も高い事後確率を持つサンプルの決定リストを選択します。
 
 
+<!--
 **Examples**
+-->
+**例**
 
+<!--
 That is it with the theory, now let's see the BRL method in action.
 The examples use a faster variant of BRL called Scalable Bayesian Rule Lists (SBRL) by Yang et. al (2017) [^sbrl].
 We use the SBRL algorithm to predict the [risk for cervical cancer](#cervical).
@@ -540,6 +978,13 @@ I first had to discretize all input features for the SBRL algorithm to work.
 For this purpose I binned the continuous features based on the frequency of the values by quantiles.
 
 We get the following rules:
+-->
+理論はこれぐらいにして、BRL 法の動作を見てみましょう。
+例では、Yang らによる BRL をより高速化した Scalable Bayesian Rule List (SBRL, 2017) [^sbrl]を使用します。
+SBRL アルゴリズムを[子宮頸がんのリスク](#cervical)の予測に適用します。
+まずはじめに、全ての入力特徴量を SBRL アルゴリズムで使用可能なように離散化する必要があります。
+この目的のために、連続特徴量は分位数の頻度に基づいてビン化しています。
+すると、以下のようなルールを得ることができます。
 
 <!-- Set eval = TRUE to recompute the rules -->
 ```{r sbrl-cervical, results = "hide", eval = FALSE}
@@ -585,12 +1030,21 @@ rules = readRDS("../data/cached-sbrl-cervical.RDS")
 kable(rules$rules)
 ```
 
+<!--
 Note that we get sensible rules, since the prediction on the THEN-part is not the class outcome, but the predicted probability for cancer.
+-->
+予測の THEN 部分がクラスの結果ではなく、がんの予測確率であるため、実用的なルールを得ることができていることに注意してください。
 
+<!--
 The conditions were selected from patterns that were pre-mined with the FP-Growth algorithm. 
 The following table displays the pool of conditions the SBRL algorithm could choose from for building a decision list.
 The maximum number of feature values in a condition I allowed as a user was two.
 Here is a sample of ten patterns:
+-->
+条件は、あらかじめ探索された FP-Growth アルゴリズムを使って得られたパターンから選択されました。
+次の表は、SBRL アルゴリズムが決定リストを作成するために選択できる条件の候補を示しています。
+ユーザが設定した、条件に含まれる最大の特徴量の数は 2 としています。
+以下が 10 パターンの例です。
 
 ```{r sbrl-cervical-premined}
 set.seed(1)
@@ -598,11 +1052,16 @@ conditions = sample(rules$rulenames, size = 10)
 kable(gsub("\\{|\\}", "", conditions), col.names = "pre-mined conditions")
 ```
 
+<!--
 Next, we apply the SBRL algorithm to the [bike rental prediction task](#bike-data).
 This only works if the regression problem of predicting bike counts is converted into a binary classification task. 
 I have arbitrarily created a classification task by creating a label that is 1 if the number of bikes exceeds 4000 bikes on a day, else 0.
 
 The following list was learned by SBRL:
+-->
+次に、[自転車レンタル予測のタスク](#bike-data)にも、SBRL アルゴリズムを適用してみましょう。
+これは、自転車の数を予測する問題が、二値分類の問題に変換できたときのみ使用可能です。
+そのため、ここでは恣意的に 1 日の自転車レンタル数が 4000 を超えるとき 1 , そうでないときは0とラベルを付与することで、分類問題に変換しています。
 
 <!-- Set eval = TRUE to recompute the rules -->
 ```{r sbrl-bike, results = "hide", eval = FALSE}
@@ -631,13 +1090,23 @@ rules = readRDS("../data/cached-sbrl-bike.RDS")
 kable(rules)
 ```
 
+<!--
 Let us predict the probability that the number of bikes will exceed 4000 for a day in 2012 with a temperature of 17 degrees Celsius. 
 The first rule does not apply, since it only applies for days in 2011. 
 The second rule applies, because the day is in 2012 and 17 degrees lies in the interval `[7.35,19.9)`. 
 Our prediction for the probability is that more than 4000 bikes are rented is 88%.
+-->
+気温が摂氏 17 度で、2012 年の 1日で自転車の数が 4000 を超える確率を予測してみましょう。
+最初のルールは、2011 年の時のみ適用されるため、今回は適用されません。
+2012 年で 17 度のときは、区間 `[7.35,19.9)` に入っているので、 2つ目のルールは適用されます。
+予測の結果、4000 台を超える確率は 88% となりました。
 
+<!--
 ### Advantages
+-->
+### 長所
 
+<!--
 This section discusses the benefits of IF-THEN rules in general.
 
 IF-THEN rules are **easy to interpret**.
@@ -646,7 +1115,17 @@ This statement only applies if the number of rules is small, the conditions of t
 
 Decision rules can be **as expressive as decision trees, while being more compact**. 
 Decision trees often also suffer from replicated sub-trees, that is, when the splits in a left and a right child node have the same structure.
+-->
+この章では一般的な IF-THEN ルールの長所について議論します。
 
+IF-THEN ルールは**解釈することが簡単**です。
+これはおそらく最も解釈しやすい解釈可能モデルと言えます。
+ただし、このように言えるのは、ルールの数が少ないときに限られ、ある規則の条件が少なく(多くとも3が好ましい)、規則が決定リストか重複のない決定集合で管理される場合です。
+
+決定規則は**決定木のように表現力がありながら、よりコンパクト**です。
+決定木は複製された部分技に苦しむことが多く、これは、分岐点の左右の子ノードが同じ構造を持つときに起こります。
+
+<!--
 The **prediction with IF-THEN rules is fast**, since only a few binary statements need to be checked to determine which rules apply.
 
 Decision rules are **robust** against monotonic transformations of the input features, because only the threshold in the conditions changes.
@@ -658,51 +1137,102 @@ For example, a linear model assigns a weight to every input feature by default.
 Features that are irrelevant can simply be ignored by IF-THEN rules.
 
 Simple rules like from OneR **can be used as baseline** for more complex algorithms.
+-->
+どのルールに決めるのかの少数のバイナリステートメントを確認するだけなので、IF-THEN ルールの予測は高速です。
 
-### Disadvantages 
+決定規則は、入力特徴量の単調変換に対しては、条件に関する閾値が変わるだけなので、**頑健**です。 条件が適用されるかどうかの問題なので、外れ値に対しても頑健です。
 
+IF-THEN ルールは通常、少数な特徴量だけを含むスパースなモデルを生成します。
+モデルに**関連する特徴量だけを選択する**のです。
+例えば、線形モデルは基本的にはすべての入力特徴量に重みを割り当てます。
+無関係な特徴量は IF-THEN ルールでは、単に無視されるでしょう。
+
+OneR のような単純な規則は、より複雑なアルゴリズムに対する**ベースラインとして使えるでしょう**。
+
+<!-- ### Disadvantages -->
+### 短所
+
+<!--
 This section deals with the disadvantages of IF-THEN rules in general.
 
 The research and literature for IF-THEN rules focuses on classification and almost **completely neglects regression**.
 While you can always divide a continuous target into intervals and turn it into a classification problem, you always lose information.
 In general, approaches are more attractive if they can be used for both regression and classification.
+-->
+この章では一般的な IF-THEN ルールの欠点について扱います。
 
+IF-THEN ルールに関する研究や書物では分類に焦点を当ていて、**完全に回帰を無視しています。**
+ほとんどの場合、連続値をある区間に分割することで分類問題に変形できますが、それによって必ず情報を失います。
+一般的に、回帰と分類の両方に使える方法はより魅力的です。
+
+<!--
 Often the **features also have to be categorical**.
 That means numeric features  must be categorized if you want to use them. 
 There are many ways to cut a continuous feature into intervals, but this is not trivial and comes with many questions without clear answers.
 How many intervals should the feature be divided into? 
 What is the splitting criteria: Fixed interval lengths, quantiles or something else?
 Categorizing continuous features is a non-trivial issue that is often neglected and people just use the next best method (like I did in the examples).
+-->
+また、特徴量はカテゴリカルでなければいけません。
+つまり、量的特徴量を使いたいときは、カテゴリカル化しなければいけません。
+連続値の特徴量をある区間に切る方法は沢山ありますが、これは自明なことではなく、明確な答えのない多くの疑問が付随します。
+いくつの区間で特徴量を分けるべきか、分割の基準はなにか、固定長の区間か、分位点か、その他のなにかか。
+連続値の特徴量をカテゴリカル化するのは重大な問題であるのに、無視されがちで、多くの人はここで例示したように、単に次の最も良い方法を使います。
 
+<!--
 Many of the older rule-learning algorithms are prone to overfitting. 
 The algorithms presented here all have at least some safeguards to prevent overfitting:
 OneR is limited because it can only use one feature (only problematic if the feature has too many levels or if there are many features, which equates to the multiple testing problem), RIPPER does pruning and Bayesian Rule Lists impose a prior distribution on the decision lists.
+-->
+多くの古いルール学習アルゴリズムは過学習する傾向があります。
+ここで紹介したすべてのアルゴリズムは、過学習を防ぐために少なくともいくつかの安全策を講じています。
+OneR は1つの特徴量しか使わないように制限されており (ただし、特徴量が多すぎるレベルを持っていたり、多重検定問題に相当するような特徴量が多すぎる場合には問題になります)、RIPPER ではプルーニングを行い、Bayesian Rule Lists では決定リストの事前分布として制約を課しています。
 
+<!--
 Decision rules are **bad in describing linear relationships** between features and output.
 That is a problem they share with the decision trees. 
 Decision trees and rules can only produce step-like prediction functions, where changes in the prediction are always discrete steps and never smooth curves.
 This is related to the issue that the inputs have to be categorical.
 In decision trees, they are implicitly categorized by splitting them.
+-->
+決定規則は、特徴量と出力との**線形な関係を表現することには向いていません**。
+これは、決定木と共通する問題です。
+決定木や決定規則はステップ状の予測関数しか生成できないため、常に予測の変化は離散的な階段状となり滑らかなカーブにはなりません。
+これは、入力がカテゴリカルでなければいけないことに関連した問題です。
+決定木では、分割によって暗黙的にカテゴリカル化が行われています。
 
-
-
+<!--
 ### Software and Alternatives
+-->
+### ソフトウェアと代替手法
 
-
-
+<!--
 OneR is implemented in the [R package OneR](https://cran.r-project.org/web/packages/OneR/), which was used for the examples in this book. 
 OneR is also implemented in the [Weka machine learning library](https://www.eecs.yorku.ca/tdb/_doc.php/userg/sw/weka/doc/weka/classifiers/rules/package-summary.html) and as such available in Java, R and Python.
 RIPPER is also implemented in Weka. For the examples, I used the R implementation of JRIP in the [RWeka package](https://cran.r-project.org/web/packages/RWeka/index.html). 
 SBRL is available as [R package](https://cran.r-project.org/web/packages/sbrl/index.html) (which I used for the examples), in [Python](https://github.com/datascienceinc/Skater) or as [C implementation](https://github.com/Hongyuy/sbrlmod).
+-->
+OneR は [R パッケージ OneR](https://cran.r-project.org/web/packages/OneR/)に実装されており、この本の例でも使用されています。
+OneR は[機械学習ライブラリのWeka](https://www.eecs.yorku.ca/tdb/_doc.php/userg/sw/weka/doc/weka/classifiers/rules/package-summary.html)にも実装されており、Java や R 、そしてPythonで利用できます。
+RIPPER も Weka で実装されています。例えば、私は [RWekaパッケージ](https://cran.r-project.org/web/packages/RWeka/index.html)内の JRIP の R 実装を使いました。
+SBRL も、この本の例で実行しているように、[Rパッケージ](https://cran.r-project.org/web/packages/sbrl/index.html)で利用できます。
+他にも、[Python](https://github.com/datascienceinc/Skater) や [C言語](https://github.com/Hongyuy/sbrlmod) でも使えます。
 
+<!--
 I will not even try to list all alternatives for learning decision rule sets and lists, but will point to some summarizing work.
 I recommend the book "Foundations of Rule Learning" by Fuernkranz et. al (2012)[^fuernkranz]. 
 It is an extensive work on learning rules, for those who want to delve deeper into the topic.
 It provides a holistic framework for thinking about learning rules and presents many rule learning algorithms.
 I also recommend to checkout the [Weka rule learners](http://weka.sourceforge.net/doc.dev/weka/classifiers/rules/package-summary.html), which implement RIPPER, M5Rules, OneR, PART and many more.
 IF-THEN rules can be used in linear models as described in this book in the chapter about the [RuleFit algorithm](#rulefit).
-
-
+-->
+決定集合や決定リストを学習する方法の全ての代替手法をリスト化することはしていませんが、ここでは、それらの要約を紹介します。
+Fuernkranz らによる "Foundations of Rule Learning" (2012)[^fuernkranz] の
+本をおすすめします。
+これは、決定規則に関して、より深い知識を身に付けたい人にとって役立つでしょう。
+この本では、学習規則を考えるための全体的なフレームワークや、多くの規則を学習させるアルゴリズムを紹介しています。
+また、こちらの資料([Weka rule learners](http://weka.sourceforge.net/doc.dev/weka/classifiers/rules/package-summary.html)) もおすすめで、RIPPER、 M5Rules、 OneR、 PART、その他諸々の実装があります。
+IF-THEN ルールは、この本の[RuleFit algorithm](#rulefit)の章で述べられている通り、線形モデルで使用できます。
 
 [^fuernkranz]: Fürnkranz, Johannes, Dragan Gamberger, and Nada Lavrač. "Foundations of rule learning." Springer Science & Business Media, (2012).
 
@@ -715,3 +1245,4 @@ IF-THEN rules can be used in linear models as described in this book in the chap
 [^sbrl]: Yang, Hongyu, Cynthia Rudin, and Margo Seltzer. "Scalable Bayesian rule lists." Proceedings of the 34th International Conference on Machine Learning-Volume 70. JMLR. org, 2017.
 
 [^fp-tree]: Borgelt, C. "An implementation of the FP-growth algorithm." Proceedings of the 1st International Workshop on Open Source Data Mining Frequent Pattern Mining Implementations - OSDM ’05, 1–5. http://doi.org/10.1145/1133905.1133907 (2005).
+

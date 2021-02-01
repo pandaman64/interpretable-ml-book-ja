@@ -1,22 +1,40 @@
-
 <!--{pagebreak}-->
 
+<!--
 ## Other Interpretable Models {#other-interpretable}
+-->
+## その他の解釈可能なモデル {#other-interpretable}
 
+<!--
 The list of interpretable models is constantly growing and of unknown size.
 It includes simple models such as linear models, decision trees and naive Bayes, but also more complex ones that combine or modify non-interpretable machine learning models to make them more interpretable.
 Especially publications on the latter type of models are currently being produced at high frequency and it is hard to keep up with developments.
 The book teases only the Naive Bayes classifier and k-nearest neighbors in this chapter.
+-->
+解釈可能なモデルの種類は増加し続けており、どれぐらいの数があるかわかりません。
+線形回帰や決定木、単純ベイズ分類器のようなシンプルなモデルもあれば、解釈性の低いモデルを組み合わせたり変更することでより解釈性を高めたような複雑なものもあります。
+特に後者のタイプのモデルは現在、高頻度で開発・発表されており、それらについていくのは大変です。
+この章では単純ベイズ分類器とk近傍法について軽く紹介します。
 
+<!--
 ### Naive Bayes Classifier
+-->
+### 単純ベイズ分類器 (Naive Bayes Classifier)
 
+<!--
 The Naive Bayes classifier uses the Bayes' theorem of conditional probabilities.
 For each feature, it calculates the probability for a class depending on the value of the feature.
 The Naive Bayes classifier calculates the class probabilities for each feature independently, which is equivalent to a strong (= naive) assumption of independence of the features.
 Naive Bayes is a conditional probability model and models the probability of a class $C_k$ as follows:
+-->
+単純ベイズ分類器は条件付き確率のベイズの定理を用います。
+特徴量ごとに、クラスに属する確率を特徴量の値に基づいて計算します。
+単純ベイズ分類器は各特徴量が互いに独立しているという強い(=単純な)仮定を置いていることになります。
+単純ベイズは条件付き確率モデルであり、クラス $C_k$ の予測確率を次のようにモデル化します。
 
 $$P(C_k|x)=\frac{1}{Z}P(C_k)\prod_{i=1}^n{}P(x_i|C_k)$$
 
+<!--
 The term Z is a scaling parameter that ensures that the sum of probabilities for all classes is 1 (otherwise they would not be probabilities).
 The conditional probability of a class is the class probability times the probability of each feature given the class, normalized by Z.
 This formula can be derived by using the Bayes' theorem.
@@ -24,15 +42,30 @@ This formula can be derived by using the Bayes' theorem.
 Naive Bayes is an interpretable model because of the independence assumption.
 It can be interpreted on the modular level.
 It is very clear for each feature how much it contributes towards a certain class prediction, since we can interpret the conditional probability.
+-->
+Z はすべてのクラスの確率の合計が 1 になるようにするための規格化定数です(そうしなければ確率として扱えなくなります)。
+クラスの条件付き確率は、クラスの確率とクラスが与えられたときのそれぞれの特徴量の確率の積を Z で正規化したものです。
+この式はベイズの定理を用いて導出できます。
 
+単純ベイズ分類器は特徴量同士の独立性を仮定しているため解釈可能なモデルであり、モジュールレベルで解釈が可能です。
+条件付き確率を用いているため、各特徴量がクラスの分類にどれぐらい寄与しているかが非常に明確です。
+
+<!--
 ### K-Nearest Neighbors
+-->
+### k近傍法
 
+<!--
 The k-nearest neighbor method can be used for regression and classification and uses the nearest neighbors of a data point for prediction.
 For classification, the k-nearest neighbor method assigns the most common class of the nearest neighbors of an instance.
 For regression, it takes the average of the outcome of the neighbors.
 The tricky parts are finding the right k and deciding how to measure the distance between instances, which ultimately defines the neighborhood.
+-->
+k近傍法はデータ点の近傍を推論に使用する回帰や分類の手法です。
+分類の場合、k近傍法はインスタンスの近傍の中で最も多くのものが属するクラスに割り当て、回帰では近傍の出力の平均をとります。
+正しい k の値を見つけたり、近傍を定義するために使用される距離の算出方法を決定するには、工夫が必要です。
 
-
+<!--
 The k-nearest neighbor model differs from the other interpretable models presented in this book because it is an instance-based learning algorithm.
 How can k-nearest neighbors be interpreted?
 First of all, there are no parameters to learn, so there is no interpretability on a modular level.
@@ -42,3 +75,12 @@ To explain a prediction, you can always retrieve the k neighbors that were used 
 Whether the model is interpretable depends solely on the question whether you can 'interpret' a single instance in the dataset.
 If an instance consists of hundreds or thousands of features, then it is not interpretable, I would argue.
 But if you have few features or a way to reduce your instance to the most important features, presenting the k-nearest neighbors can give you good explanations.
+-->
+k近傍法は観測データに基づく学習アルゴリズムであるため、この本で紹介されている他の解釈可能なモデルとは異なるモデルと言えます。
+k近傍法はどのようにすれば解釈できるのでしょうか。
+まず、k近傍法には学習すべきパラメータが存在しないため、モジュールレベルでの解釈はできません。
+さらに、k近傍法は局所的なモデルであり、明確に学習すべき大域的なパラメータや構造が存在しないため、大域的なモデルの解釈は困難です。
+それでは、局所的には解釈が可能でしょうか。
+推論について説明するには、使用された k 個の近傍を見つける必要があります。
+モデルが解釈可能かどうかは、単純に、データセットの中の単一のインスタンスを解釈できるかどうかによります。
+インスタンスが数百、数千の特徴量を持つ場合、それは解釈できないでしょう。しかし、少数の特徴量しかない、あるいはインスタンスの特徴量をいくつかの重要なもののみに削減できるのであれば、k近傍法は良い説明を与えることができます。
