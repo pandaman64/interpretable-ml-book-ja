@@ -2,20 +2,36 @@
 devtools::load_all()
 ```
 
+# モデル非依存(Model-Agnostic)な手法 {#agnostic}
+<!--
 # Model-Agnostic Methods {#agnostic}
+-->
 
+<!--
 Separating the explanations from the machine learning model (= model-agnostic interpretation methods) has some advantages (Ribeiro, Singh, and Guestrin 2016[^Ribeiro2016]).
 The great advantage of model-agnostic interpretation methods over model-specific ones is their flexibility.
 Machine learning developers are free to use any machine learning model they like when the interpretation methods can be applied to any model.
 Anything that builds on an interpretation of a machine learning model, such as a graphic or user interface, also becomes independent of the underlying machine learning model.
 Typically, not just one, but many types of machine learning models are evaluated to solve a task, and when comparing models in terms of interpretability, it is easier to work with model-agnostic explanations, because the same method can be used for any type of model.
+-->
+機械学習モデルから説明性を分離すること（=モデル非依存な解釈手法）には、いくつかの利点があります (Ribeiro, Singh, and Guestrin 2016[^Ribeiro2016])。
+モデル固有の解釈手法と比べて、モデルに非依存な解釈手法の大きな利点は柔軟性があることです。
+解釈手法がどのようなモデルにも適用できるならば、機械学習の開発者は好きな機械学習モデルに対して思いのまま使うことができます。
+また、可視化の結果やユーザーインタフェースのような機械学習モデルの解釈を基に構築されるものは、根底にある機械学習モデルから独立したものになります。
+通常、ある課題を解決するために機械学習モデルは1種類ではなく、多くの種類のモデルを評価します。
+そして解釈性という観点でモデルを比較する際には、どのような種類のモデルに対しても同じ手法を用いることができるため、モデル非依存な手法を用いると簡単になります。
 
+<!--
 An alternative to model-agnostic interpretation methods is to use only [interpretable models](#simple), which often has the big disadvantage that predictive performance is lost compared to other machine learning models and you limit yourself to one type of model.
 The other alternative is to use model-specific interpretation methods.
 The disadvantage of this is that it also binds you to one model type and it will be difficult to switch to something else.
+--> 
+モデル非依存な解釈手法の代わりに[解釈性のあるモデル](#simple)のみを使用する方法がありますが、その場合は他の機械学習モデルと比較して予測性能が低い傾向があるという大きな欠点があり、使用するモデルが1種類に限定されることになります。
+他の代替案は、モデル固有の解釈方法をつかうことです。
+これの欠点は、やはり1種類のモデルに制限されてしまうことと、後から他のモデルに切り替えることが難しくなることです。
 
+<!--
 Desirable aspects of a model-agnostic explanation system are (Ribeiro, Singh, and Guestrin 2016):
-
 - **Model flexibility:**
 The interpretation method can work with any machine learning model, such as random forests and deep neural networks.
 - **Explanation flexibility:**
@@ -24,38 +40,83 @@ In some cases it might be useful to have a linear formula, in other cases a grap
 - **Representation flexibility:**
 The explanation system should be able to use a different feature representation as the model being explained.
 For a text classifier that uses abstract word embedding vectors, it might be preferable to use the presence of individual words for the explanation.
+-->
+モデル非依存な解釈手法には、次のような性質が望まれます (Ribeiro, Singh, and Guestrin 2016)。
 
+- **モデルの柔軟性 (Model flexibility)**
+モデルの解釈手法がランダムフォレストやディープニューラルネットワークといったあらゆる機械学習モデルに対して使用できること。
+- **説明の柔軟性 (Explanation flexibility)**
+モデルの説明が特定の形式に制限されることがないこと。線形の関係を持つことが役に立つかもしれませんし、特徴量の重要度を可視化することが有用な場合もあるでしょう。
+- **表現の柔軟性 (Representation flexibility)**
+説明のシステムは、説明対象のモデルとは異なる特徴量を使用できるべきです。抽象的な単語埋め込みベクトルを使用したテキスト分類に対しては、個々の単語を用いて説明することが好ましいかもしれません。
 
+<!--
 **The bigger picture**
+-->
+**全体像**
 
+<!--
 Let us take a high level look at model-agnostic interpretability.
 We capture the world by collecting data, and abstract it further by learning to predict the data (for the task) with a machine learning model.
 Interpretability is just another layer on top that helps humans understand.
+-->
+モデル非依存な解釈性を高い視点で見てみましょう。
+私たちはデータを集めることで現実世界を捉え、（課題のために）機械学習モデルを用いてデータを予測するために学習し、さらに抽象化します。
+解釈性は、人間の理解の助けとなる頂上のもう1つの層です。
 
-```{r bigpicture, fig.cap="The big picture of explainable machine learning. The real world goes through many layers before it reaches the human in the form of explanations.", out.width=700}
+<!--
+fig.cap="The big picture of explainable machine learning. The real world goes through many layers before it reaches the human in the form of explanations."
+-->
+```{r bigpicture, fig.cap="説明可能な機械学習の全体像。説明が人間に届く前に、現実世界はいくつかの層を通過します。", out.width=700}
 knitr::include_graphics("images/big-picture.png")
 ```
 
+<!--
 The lowest layer is the **World**.
 This could literally be nature itself, like the biology of the human body and how it reacts to medication, but also more abstract things like the real estate market.
 The World layer contains everything that can be observed and is of interest.
 Ultimately, we want to learn something about the World and interact with it.
+-->
+最も下に位置する層は**現実世界**です。
+これは文字通り人体の生物学や薬に対する反応といった自然そのものを指すこともありますが、不動産市場といったより抽象的なことを指すこともあります。
+現実世界の層には観察対象や興味の対象となりうるものすべてが含まれます。
+最終的に私たちは現実世界に関する何かを学び、そして世界と対話することを目標としています。
 
+<!--
 The second layer is the **Data** layer.
 We have to digitize the World in order to make it processable for computers and also to store information.
 The Data layer contains anything from images, texts, tabular data and so on.
+-->
+2番目に位置する層は**データ**の層です。
+コンピュータで情報を処理し保存するためには、現実世界はデジタル情報へと変換される必要があります。
+データ層には画像やテキスト、表データなどが含まれています。
 
+<!--
 By fitting machine learning models based on the Data layer, we get the **Black Box Model** layer.
 Machine learning algorithms learn with data from the real world to make predictions or find structures.
+-->
+機械学習モデルをデータ層から学習させることで、**ブラックボックスモデル**の層が生まれます。
+機械学習アルゴリズムは現実世界のデータから学習し、予測を出力したり何らかの構造を見つけ出したりします。
 
+<!--
 Above the Black Box Model layer is the **Interpretability Methods** layer, which helps us deal with the opacity of machine learning models.
 What were the most important features for a particular diagnosis?
 Why was a financial transaction classified as fraud?
+-->
+ブラックボックスモデルの層の上には**解釈手法**の層があり、機械学習モデルの不透明性に対処する助けとなります。
+ある診断結果において最も重要な特徴量は何でしょうか。
+なぜ金融取引が詐欺と分類されたのでしょうか。
 
+<!--
 The last layer is occupied by a **Human**.
 Look! This one waves to you because you are reading this book and helping to provide better explanations for black box models!
 Humans are ultimately the consumers of the explanations.
+-->
+最後の層は**人間**によって構成されています。
+見てください！ここに描かれた人物はあなたに手を振っています！
+あなたがこの本を読むことがブラックボックスモデルに対してより良い説明を与える手助けとなっているからです！
 
+<!--
 This multi-layered abstraction also helps to understand the differences in approaches between statisticians and machine learning practitioners.
 Statisticians deal with the Data layer, such as planning clinical trials or designing surveys.
 They skip the Black Box Model layer and go right to the Interpretability Methods layer.
@@ -63,11 +124,24 @@ Machine learning specialists also deal with the Data layer, such as collecting l
 Then they train a black box machine learning model.
 The Interpretability Methods layer is skipped and humans directly deal with the black box model predictions.
 It's great that interpretable machine learning fuses the work of statisticians and machine learning specialists.
+-->
+この多層から成る抽象化は統計学者と機械学習を実践している人のアプローチの違いを理解することにも役立ちます。
+統計学者は臨床試験の計画や調査の設計などデータ層を扱っています。
+彼らはブラックボックスモデルの層を飛ばし、直接解釈手法の層へと進みます。
+機械学習のスペシャリストも同様にラベリングされた皮膚がんの画像を収集したり、ウィキペディアから情報を集めるなど、データ層を扱っています。
+その後、彼らはブラックボックスな機械学習モデルを学習させます。
+解釈手法の層は飛ばされ、人間が直接ブラックボックスモデルの予測と向き合います。
+機械学習モデルを解釈可能とすることは統計学者と機械学習のスペシャリストの成果を融合させる素晴らしいことなのです。
 
+<!--
 Of course this graphic does not capture everything:
 Data could come from simulations.
 Black box models also output predictions that might not even reach humans, but only supply other machines, and so on.
 But overall it is a useful abstraction to understand how interpretability becomes this new layer on top of machine learning models.
-
+-->
+もちろんこの図が全てを捉えているわけではありません。
+データはシミュレーションから得られることもあります。
+またブラックボックスモデルの出力する予測が他の機械へと与えられるのみで人間に届かないこともあります。
+しかし全体として見るならば、この抽象化は解釈可能性が機械学習モデルの上に位置する新しい層となることを上手く表現しています。
 
 [^Ribeiro2016]: Ribeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin. "Model-agnostic interpretability of machine learning." ICML Workshop on Human Interpretability in Machine Learning. (2016).
