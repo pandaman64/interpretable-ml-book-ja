@@ -1,6 +1,6 @@
-
 <!--{pagebreak}-->
 
+<!-- ## Influential Instances {#influential} -->
 ## Influential Instances {#influential}
 
 ```{r, message = FALSE, warning = FALSE, echo = FALSE}
@@ -12,40 +12,89 @@ data("cervical")
 ```
 
 <!-- Intro text -->
+<!--
 Machine learning models are ultimately a product of training data and deleting one of the training instances can affect the resulting model.
 We call a training instance "influential" when its deletion from the training data considerably changes the parameters or predictions of the model.
 By identifying influential training instances, we can "debug" machine learning models and better explain their behaviors and predictions.
-
+-->
+機械学習モデルは、学習データから生み出されたものであり、学習のインスタンス を1つ削除するとモデルの結果に影響が生じます。
+学習データから削除するとモデルのパラメータや予測値を大幅に変化させるようなインスタンスのことを"影響力がある (influential)"と言います。
+影響力のある学習インスタンスを特定することによって、機械学習モデルを"デバッグ"でき、モデルの振る舞いや予測をうまく説明できます。
 
 <!-- *Keywords: Influential instances, influence function, leave-one-out analysis, Cook's distance, deletion diagnostics, robust statistics* -->
 
-
+<!--
 This chapter shows you two approaches for identifying influential instances, namely deletion diagnostics and influence functions.
-Both approaches are based on robust statistics, which provides statistical methods that are less affected by outliers or violations of model assumptions.
-Robust statistics also provides methods to measure how robust estimates from data are (such as a mean estimate or the weights of a prediction model).
+Both approaches are based on robust statistics, which provides statistical methods that are less affected by outliers or violations of model assumptions. 
+-->
+この章では、影響力のあるインスタンスを特定するための2つのアプローチ、deletion diagnostics と影響関数 (influence functions)について説明します。
+どちらのアプローチもロバスト統計に基づいており、外れ値やモデルの仮定のずれに頑健な推定方法です。
 
+<!--
+Robust statistics also provides methods to measure how robust estimates from data are (such as a mean estimate or the weights of a prediction model).
 Imagine you want to estimate the average income of the people in your city and ask ten random people on the street how much they earn.
+-->
+ロバスト統計は、データから予測モデルの重みや平均推定値のような、ロバストな推定量を得るための方法でもあります。
+あなたの街にいる人々の平均収入を推定するため、通りすがりの10人にいくら稼いでいるか尋ねたい場合を考えてみましょう。
+
+<!--
 Apart from the fact that your sample is probably really bad, how much can your average income estimate be influenced by a single person?
-To answer this question, you can recalculate the mean value by omitting individual answers or derive mathematically via "influence functions" how the mean value can be influenced. 
-With the deletion approach, we recalculate the mean value ten times, omitting one of the income statements each time, and measure how much the mean estimate changes. 
+To answer this question, you can recalculate the mean value by omitting individual answers or derive mathematically via "influence functions" how the mean value can be influenced.
+-->
+あなたが持つ標本が推定に全く適さない場合を除いて、あなたが平均収入を推定する際に1人から受ける影響はどの程度なのでしょうか。
+この疑問に答えるには、個々の回答を省略することによって平均値を再計算する方法や、
+どの程度平均値が影響を受けるかを、"影響関数"を用いて数学的に導出する方法が考えられます。
+
+<!--
+With the deletion approach, we recalculate the mean value ten times, omitting one of the income statements each time, and measure how much the mean estimate changes.
 A big change means that an instance was very influential.
+
 The second approach upweights one of the persons by an infinitesimally small weight, which corresponds to the calculation of the first derivative of a statistic or model.
 This approach is also known as "infinitesimal approach" or "influence function".
 The answer is, by the way, that your mean estimate can be very strongly influenced by a single answer, since the mean scales linearly with single values.
-A more robust choice is the median (the value at which one half of people earn more and the other half less), because even if the person with the highest income in your sample would earn ten times more, the resulting median would not change.
+-->
+1つ目の手法である削除の方法(deletion approach)では、平均値を10回計算し直します。各回において 収入のデータの1つを省き、平均推定値がどの程度変化するかを測定します。
+大きな変化は影響力の大きなインスタンスであることを意味します。
 
+2つ目の手法は、統計量もしくはモデルの1次導関数の計算に対応した非常に小さな重みによって、ある人の収入を重み付けします。
+この手法は"無限小解析 (infinitesimal approach)"や"影響関数 (influence function)"としても知られています。
+ちなみに、平均値は単一の値に直線的にスケールするため、平均推定値は1つの回答に強く影響を受ける可能性があります。
+
+<!--
+A more robust choice is the median (the value at which one half of people earn more and the other half less), because even if the person with the highest income in your sample would earn ten times more, the resulting median would not change.
+-->
+よりロバストな選択肢は中央値です。なぜなら標本の中で1人だけ他の人の10倍稼いでいるような場合であっても、中央値は変化しないからです。
+
+<!--
 Deletion diagnostics and influence functions can also be applied to the parameters or predictions of machine learning models to understand their behavior better or to explain individual predictions.
 Before we look at these two approaches for finding influential instances, we will examine the difference between an outlier and an influential instance.
+-->
+deletion diagnostics と影響関数は、機械学習モデルのパラメータや予測値に対して適用することで、それらの振る舞いをより良く理解したり、個々の予測値を説明することも出来ます。
+影響力のあるインスタンスを見つけるための2つのアプローチを見る前に、外れ値と影響力のあるインスタンスとの違いについて説明します。
 
+<!--
 **Outlier**
+-->
+**外れ値**
 
+<!--
 An outlier is an instance that is far away from the other instances in the dataset.
 "Far away" means that the distance, for example the Euclidean distance, to all the other instances is very large.
 In a dataset of newborns, a newborn weighting 6 kg would be considered an outlier.
 In a dataset of bank accounts with mostly checking accounts, a dedicated loan account (large negative balance, few transactions) would be considered an outlier.
 The following figure shows an outlier for a 1-dimensional distribution.
+-->
+外れ値とは、データセットの内の他のインスタンスから離れたインスタンスです。
+"離れた"とは、他のすべてのインスタンスとの距離、ユークリッド距離などが非常に大きいことを意味します。
+例えば、新生児のデータセットでは、体重が 6kg の新生児は外れ値とみなされます。
+預金が多い銀行口座のデータセットでは、ローン専用口座（マイナス残高が大きく、取引が少ない）は外れ値と考えられます。
+次の図は、1次元分布の外れ値を示しています。
 
-```{r outlier, fig.cap = "Feature x follows a Gaussian distribution with an outlier at x=8."}
+<!--
+fig.cap = "Feature x follows a Gaussian distribution with an outlier at x=8.
+-->
+
+```{r outlier, fig.cap = "特徴量 x は x=8 において外れ値を持つガウス分布に従う"}
 set.seed(42)
 n = 50
 x = rnorm(mean = 1, n = n)
@@ -58,18 +107,31 @@ ggplot(df) + geom_histogram(aes(x = x)) + my_theme() +
   scale_y_continuous("count")
 ```
 
-
+<!--
 Outliers can be interesting data points (e.g. [criticisms](#proto)).
 When an outlier influences the model it is also an influential instance.
+-->
+外れ値は、興味深いデータ点になり得ます(例えば、[criticism](#proto))。
+外れ値がモデルに影響するとき、それは影響力のあるインスタンスとなります。
 
+<!--
 **Influential instance**
+-->
+**影響力のあるインスタンス (Influential instance)**
 
+<!--
 An influential instance is a data instance whose removal has a strong effect on the trained model.
 The more the model parameters or predictions change when the model is retrained with a particular instance removed from the training data, the more influential that instance is. Whether an instance is influential for a trained model also depends on its value for the target y.
 The following figure shows an influential instance for a linear regression model.
+-->
+影響力のあるインスタンスとは、削除すると学習されたモデルに強い影響を与えるインスタンスのことです。
+学習データから特定のインスタンスを削除してモデルを再学習したときに、モデルのパラメータや予測値が変化するほど、そのインスタンスの影響力が大きくなります。
+学習されたモデルにとってインスタンスが影響力を持つかどうかは、ターゲット y の値にも依存します。
+次の図は、線形回帰モデルの影響力のあるインスタンスを示しています。
 
+<!--fig.cap = "A linear model with one feature. Trained once on the full data and once without the influential instance. Removing the influential instance changes the fitted slope (weight/coefficient) drastically."-->
 
-```{r influential-point, fig.cap = "A linear model with one feature. Trained once on the full data and once without the influential instance. Removing the influential instance changes the fitted slope (weight/coefficient) drastically."}
+```{r influential-point, fig.cap = "特徴量が1つの線形モデル。一度は全てのデータで、もう一度は影響力のあるインスタンスを除いて学習されている。影響力のあるインスタンスを除くと、学習された傾き (重み、係数) が劇的に変化します。"}
 
 df2 = df[-nrow(df),]
 df3 = rbind(df2, data.frame(x = 8, y = 0))
@@ -93,18 +155,28 @@ ggplot(df.all, mapping = aes(x = x, y = y, group = regression_model, linetype = 
 
 ```
 
+<!--
 **Why do influential instances help to understand the model?**
 
 The key idea behind influential instances for interpretability is to trace model parameters and predictions back to where it all began: the training data.
 A learner, that is, the algorithm that generates the machine learning model, is a function that takes training data consisting of features X and target y and generates a machine learning model.
 For example, the learner of a decision tree is an algorithm that selects the split features and the values at which to split. 
 A learner for a neural network uses backpropagation to find the best weights.
+-->
+**影響力のあるインスタンスがモデルの理解に役立つ理由**
 
+解釈可能性において影響力のあるインスタンスの背後にある重要なアイデアは、モデルのパラメーターと予測を、学習データにまでさかのぼって追跡することです。学習器、つまり、機械学習モデルを生成するアルゴリズムは、特徴量 X とターゲット y からなる学習データを受け取って機械学習モデルを生成して返す関数です。例えば、決定木の学習器は、分割する特徴量と値を選択するアルゴリズムです。
+ニューラルネットワークの学習器はバックプロパゲーションを用いて最適な重みを見つけます。
 
-```{r learner, fig.cap = "A learner learns a model from training data (features plus target). The model makes predictions for new data.", out.width=600}
+<!--
+fig.cap = "A learner learns a model from training data (features plus target). The model makes predictions for new data."
+-->
+
+```{r learner, fig.cap = "学習器は学習データ（特徴量とターゲット）からモデルを学習する。学習されたモデルは新たなデータに対して予測を行う。", out.width=600}
 knitr::include_graphics("images/learner.png")
 ```
 
+<!--
 We ask how the model parameters or the predictions would change if we removed instances from the training data in the training process.
 This is in contrast to other interpretability approaches that analyze how the prediction changes when we manipulate the features of the instances to be predicted, such as [partial dependence plots](#pdp) or [feature importance](#feature-importance).
 With influential instances, we do not treat the model as fixed, but as a function of the training data.
@@ -114,69 +186,133 @@ Which were the most influential instances for a particular prediction?
 Influential instances tell us for which instances the model could have problems, which training instances should be checked for errors and give an impression of the robustness of the model.
 We might not trust a model if a single instance has a strong influence on the model predictions and parameters.
 At least that would make us investigate further.
+-->
+学習時にインスタンスを学習データから除いたら、モデルパラメータや予測はどの様に変化するのかを考えます。
+これは、 [部分依存プロット](#pdp) や [特徴量重要度](#feature-importance) といった予測に用いるインスタンスの特徴量を操作したときに予測がどう変わるかを分析する他の解釈性へのアプローチとは対照的です。
+影響力のあるインスタンスについては、モデルを固定されたものとして扱うのではなく、学習データの関数として扱います。
+影響力のあるインスタンスは、大域的なモデルの振る舞いや、予測全般についての疑問に答える手助けをしてくれます。
 
+<!--
 How can we find influential instances?
 We have two ways of measuring influence:
 Our first option is to delete the instance from the training data, retrain the model on the reduced training dataset and observe the difference in the model parameters or predictions (either individually or over the complete dataset).
 The second option is to upweight a data instance by approximating the parameter changes based on the gradients of the model parameters.
 The deletion approach is easier to understand and motivates the upweighting approach, so we start with the former.
+-->
+どのように影響力のあるインスタンスを見つけるのでしょうか。
+影響力を測るには2つの方法があります。
+1つ目は、学習データからインスタンスを削除し、削減されたデータセットでモデルを再学習してモデルパラメータや (個別あるいはデータセット全体に対する) 予測の違いを観察することです。
+2つ目は、モデルパラメータの勾配に基づいたパラメータの変化を近似することで、インスタンスの重みづけする方法です。
+削除アプローチは理解が容易で、重みづけアプローチへの意欲を起こさせるため、前者から始めていきましょう。
 
+<!--### Deletion Diagnostics-->
 ### Deletion Diagnostics
 
+<!--
 Statisticians have already done a lot of research in the area of influential instances, especially for (generalized) linear regression models.
 When you search for "influential observations", the first search results are about measures like DFBETA and Cook's distance.
 **DFBETA** measures the effect of deleting an instance on the model parameters.
 **Cook's distance**  (Cook, 1977[^cook]) measures the effect of deleting an instance on model predictions.
 For both measures we have to retrain the model repeatedly, omitting individual instances each time.
 The parameters or predictions of the model with all instances is compared with the parameters or predictions of the model with one of the instances deleted from the training data.
+-->
+統計学者は影響力のあるインスタンスの領域、特に (一般化された) 線形回帰モデルでは多くの研究を既に行ってきました。
+"影響力測定 (influential observations)"と調べると、最初の検索結果は DFBETA やクック距離 (Cook's distance) といった測定方法についてになるでしょう。
+**DFBETA** は、インスタンスを削除した際のモデルパラメータへの影響を測ります。
+**クック距離 (Cook, 1977[^cook])** はインスタンスを削除した際の予測への影響を測ります。
+それぞれの測定のためには、毎回個別のインスタンスを除外しながらモデルを繰り返し再学習する必要があります。
+全インスタンスでのモデルのパラメータや予測は、学習データからインスタンスを削除して得られたパラメータや予測と比較されます。
 
+<!--
 DFBETA is defined as:
+-->
+DFBETA は以下のように定義されます。
 
 $$DFBETA_{i}=\beta-\beta^{(-i)}$$
 
+<!--
 where $\beta$ is the weight vector when the model is trained on all data instances, and $\beta^{(-i)}$ the weight vector when the model is trained without instance i.
 Quite intuitive I would say.
 DFBETA works only for models with weight parameters, such as logistic regression or neural networks, but not for models such as decision trees, tree ensembles, some support vector machines and so on.
 
 Cook's distance was invented for linear regression models and approximations for generalized linear regression models exist.
 Cook's distance for a training instance is defined as the (scaled) sum of the squared differences in the predicted outcome when the i-th instance is removed from the model training.
+-->
+ここで $\beta$ はモデルが全データで学習された場合の重みベクトル、$\beta^{(-i)}$ はインスタンス i を除いて学習された場合の重みベクトルです。
+全く直感的と言っていいでしょう。
+DFBETA は、ロジスティック回帰やニューラルネットワークのように重みパラメータを持つモデルにのみ有効で、決定木、アンサンブル、サポートベクタマシンなどには適用できません。
+クック距離は線形回帰モデルのために考案され、一般化線形回帰モデルのための近似法が存在します。
+学習インスタンスにおけるクック距離は、i 番目のインスタンスが学習時に除外されたときの、予測結果の差を2乗して(正規化された)総和をとったものとして定義されます。
 
 $$D_i=\frac{\sum_{j=1}^n(\hat{y}_j-\hat{y}_{j}^{(-i)})^2}{p\cdot{}MSE}$$
 
+<!--
 where the numerator is the squared difference between prediction of the model with and without the i-th instance, summed over the dataset.
 The denominator is the number of features p times the mean squared error.
 The denominator is the same for all instances no matter which instance i is removed.
 Cook's distance tells us how much the predicted output of a linear model changes when we remove the i-th instance from the training.
+-->
+ここで、分子は i 番目のインスタンスの有無によるモデルの予測結果の差の2乗をデータセット全体について総和したものです。
+分母は特徴量の数 p に平均二乗誤差をかけたものです。
+分母は全インスタンスにおいて同じであり、どのインスタンス i が除外されたかは問題ではありません。
+クック距離は、学習時に i 番目のインスタンスを除外すると線形モデルの予測結果がどの程度変化するかを教えてくれます。
 
-
+<!--
 Can we use Cook's distance and DFBETA for any machine learning model?
 DFBETA requires model parameters, so this measure works only for parameterized models.
 Cook's distance does not require any model parameters.
 Interestingly, Cook's distance is usually not seen outside the context of linear models and generalized linear models, but the idea of taking the difference between model predictions before and after removal of a particular instance is very general.
 A problem with the definition of Cook's distance is the MSE, which is not meaningful for all types of prediction models (e.g. classification).
+-->
+クック距離と DFBETA は、あらゆる機械学習モデルに適用できるのでしょうか。
+DFBETA はモデルパラメータを要求するため、この測定方法はパラメータをもつモデルにしか使えません。
+クック距離はモデルパラメータを要求しません。
+面白いことにクック距離は線形モデルと一般化線形モデルの文脈外では普段見かけませんが、特定のインスタンスを除く前後でモデルの予測の差をとるというアイデアは非常に普遍的なものです。
+クック距離の定義における問題点は MSE (平均二乗誤差)であることで、これは全てのタイプの予測モデルで意味があるとは限りません(例: 分類器)。
 
+<!--
 The simplest influence measure for the effect on the model predictions can be written as follows: 
+-->
+モデルの予測への影響における最も単純な影響力測定は、次のように書けます。
 
 $$\text{Influence}^{(-i)}=\frac{1}{n}\sum_{j=1}^{n}\left|\hat{y}_j-\hat{y}_{j}^{(-i)}\right|$$
 
+<!--
 This expression is basically the numerator of Cook's distance, with the difference that the absolute difference is added up instead of the squared differences.
 This was a choice I made, because it makes sense for the examples later.
 The general form of deletion diagnostic measures consists of choosing a measure (such as the predicted outcome) and calculating the difference of the measure for the model trained on all instances and when the instance is deleted.
+-->
+この表現は基本的にクック距離の分子ですが、違いは差の2乗の代わりに差の絶対値を使っていることです。
+後の例で役立つため、私がそのように選択しました。
+deletion diagnostic の一般形は、(予測結果のような)基準を選ぶことと、学習時にインスタンスを除いた場合と含む場合での基準の差を計算することで構成されます。
 
-
+<!--
 We can easily break the influence down to explain for the prediction of instance j what the influence of the i-th training instance was:
+-->
+インスタンス j の予測について i 番目の学習インスタンスが与えた影響が何であったのかを説明するため、我々は簡単に影響を分解できます。
 
 $$\text{Influence}_{j}^{(-i)}=\left|\hat{y}_j-\hat{y}_{j}^{(-i)}\right|$$
 
+<!--
 This would also work for the difference in model parameters or the difference in the loss.
 In the following example we will use these simple influence measures.
+-->
+これはモデルのパラメータの差や損失の差に対しても有効でしょう。
+次の例では、これらの単純な影響力測定を利用します。
 
-**Deletion diagnostics example**
+<!--**Deletion diagnostics example**
 
 In the following example, we train a support vector machine to predict [cervical cancer](#cervical) given risk factors and measure which training instances were most influential overall and for a particular prediction.
 Since the prediction of cancer is a classification problem, we measure the influence as the difference in predicted probability for cancer.
 An instance is influential if the predicted probability strongly increases or decreases on average in the dataset when the instance is removed from model training.
 The measurement of the influence for all `r nrow(cervical)` training instances requires to train the model once on all data and retrain it `r nrow(cervical)` times (= size of training data) with one of the instances removed each time.
+-->
+**Deletion diagnostics の例**
+
+以下の例では、[子宮頸がん](#cervical)を与えられた危険因子から予測するためにサポートベクトルマシンを学習させ、どの学習インスタンスが最も全体に対して影響力を与えているのか、また、ある予測に対してどのインスタンスが最も影響を与えるのかについて測定しています。
+がんの予測は分類問題であるため、がんの予測確率の違いを影響力として測定しています。
+あるインスタンスをモデルの学習から取り除いた時、もし予測確率がそのデータセットの平均値から大きく増加（減少）する場合、そのインスタンスは影響力が強いインスタンスと言えます。
+`r nrow(cervical)` 件の学習インスタンス全ての影響力を測定するためには、一度すべてのデータでモデルの学習し、インスタンスのうちの1つを取り除き再学習することを `r nrow(cervical)` 回（＝学習データの数）繰り返す必要があります。
 
 ```{r influence, eval = !file.exists(influence.matrix.filename)}
 #'@param predicted The predicted outcome of a model
@@ -210,6 +346,7 @@ df = data.frame(influence = colMeans(abs(influence.df), na.rm = TRUE), id = 1:nr
 df = df[order(df$influence, decreasing = TRUE),]
 ```
 
+<!--
 The most influential instance has an influence measure of about `r sprintf("%.2f", abs(df[1,"influence"]))`.
 An influence of `r sprintf('%.2f', abs(df[1,"influence"]))` means that if we remove the `r df$id[1]`-th instance, the predicted probability changes by `r sprintf('%.0f', 100 * df[1,"influence"])` percentage point on average.
 This is quite substantial considering the average predicted probability for cancer is `r sprintf('%.1f', 100 *mean(predicted.orig))`%.
@@ -219,7 +356,18 @@ This is already useful to know for debugging the data.
 Is there a problematic instance?
 Are there measurement errors?
 The influential instances are the first ones that should be checked for errors, because each error in them strongly influences the model predictions.
+-->
+最も影響力のあるインスタンスは約 `r sprintf("%.2f", abs(df[1,"influence"]))` の影響度を持っています。
+`r sprintf('%.2f', abs(df[1,"influence"]))` の影響度は、もし `r df$id[1]` 番目のインスタンスを取り除いた場合には予測確率が `r sprintf('%.0f', 100 * df[1,"influence"])` %だけ平均値から変化することを意味しています。
+この値は、癌の平均予測確率が `r sprintf('%.1f', 100 *mean(predicted.orig))` %であることを考慮するとかなり重要なものです。
+可能な限りの全ての削除によって測定された影響度の平均値は `r sprintf('%.1f', 100 * mean(abs(df$influence)))` %です。
+これでどの学習インスタンスがモデルに対して最も影響を与えたのかどうかが分かりました。
+問題のあるインスタンスはないでしょうか。
+測定に誤りはありませんか。
+影響力のあるインスタンスは、それらに内包されるエラーがモデルの予測に対して強く影響を与えるため、エラーがないかどうか最初にチェックされるべきです。
 
+
+<!--
 Apart from model debugging, can we learn something to better understand the model?
 Just printing out the top 10 most influential instances is not very useful, because it is just a table of instances with many features.
 All methods that return instances as output only make sense if we have a good way of representing them.
@@ -233,8 +381,25 @@ In the chapter on [Partial Dependence Plots](#pdp) we have seen that after 40 th
 The influence analysis tells us that the model becomes increasingly unstable when predicting cancer for higher ages.
 This in itself is valuable information. 
 This means that errors in these instances can have a strong effect on the model.
+-->
+モデルのデバッグとは別に、モデルをより良く理解するために何か知見を得ることは出来ないでしょうか。
+ただ単に、最も影響力のある上位10個のインスタンスを表示するだけではあまり意味がありません。なぜなら、それらは多くの特徴量から構成されるインスタンスのただの表に過ぎないからです。
+インスタンスを戻り値として返すメソッドは、それらをうまく表現する方法があるときにのみ有効です。
+しかし、「影響力の無いインスタンスと影響力のあるインスタンスを差別化しているものはなにか」という問いを持つことで、どのような種類のインスタンスが影響力があるのかということをより良く理解できます。
+この問いを回帰問題に落とし込み、インスタンスの影響度を、特徴量を入力とする関数としてモデリング出来ます。
+"[Interpretable Machine Learning Models](#simple)" の章からどのようなモデルを自由に選択できます。
+この例では、私は決定木（以下の図）を選びました。決定木によると、35歳以上の女性のデータがサポートベクトルマシンにとって最も影響力が有ることが示されています。
+データセット中の、`r sum(cervical$Age >= 35)` のうちの `r nrow(cervical)` の女性が 35 歳以上でした。
+[Partial Dependence Plots](#pdp) の章で、40歳を超えると急激にがんの予測確率が上昇する傾向が見られ、[Feature Importance](#feature-importance) の章で、特徴量重要度として年齢が検出されていました。
+影響力分析の結果、このモデルは年齢が高い部分でがんの予測が不安定になることを明らかにしています。
+これは、それ自体が有益な情報です。
+そして、これらのインスタンスに対する誤差がモデルに強い影響を持っていることを意味します。
 
-```{r cooks-analyzed, eval=TRUE, fig.cap = "A decision tree that models the relationship between the influence of the instances and their features. The maximum depth of the tree is set to 2.", eval = FALSE}
+<!--
+fig.cap = "A decision tree that models the relationship between the influence of the instances and their features. The maximum depth of the tree is set to 2."
+-->
+
+```{r cooks-analyzed, eval=TRUE, fig.cap = "インスタンスの特徴量と影響力の関係の決定木モデル。木の最大深さは 2 に設定されている。", eval = FALSE}
 # This code snippet causes problems on TravisCI.
 # Hack: save resulting figure locally, set eval to FALSE and load img in different chunk
 df.cervical  = cbind(df, cervical)
@@ -245,7 +410,11 @@ partykit:::plot.constparty(ct,
      terminal_panel = partykit::node_boxplot(ct, id = FALSE))
 ```
 
-```{r cooks-analyzed-include, eval=TRUE, fig.cap = "A decision tree that models the relationship between the influence of the instances and their features. The maximum depth of the tree is set to 2."}
+<!--
+fig.cap = "A decision tree that models the relationship between the influence of the instances and their features. The maximum depth of the tree is set to 2."
+-->
+
+```{r cooks-analyzed-include, eval=TRUE, fig.cap = "インスタンスの特徴量と影響力の関係の決定木モデル。木の最大深さは 2 に設定されている。"}
 knitr::include_graphics("images/cooks-analyzed-1.png")
 ```
 
@@ -257,25 +426,58 @@ cervical.200 = cervical
 cervical.200$influence = unlist(obs)
 #cervical.200 = na.omit(cervical.200)
 worst.case.index = which(abs(cervical.200$influence) == max(abs(cervical.200$influence), na.rm = TRUE))
-
 ```
 
-
+<!--
 This first influence analysis revealed the *overall* most influential instance.
 Now we select one of the instances, namely the `r i`-th instance, for which we want to explain the prediction by finding the most influential training data instances.
+-->
+この最初の影響分析によって、全体で一番大きな影響力のあるインスタンスが明らかになりました。
+ここでインスタンスの1つ、つまり `r i` 番目のインスタンスを選びます。
+選んだインスタンスに対して、最も影響力のある学習データのインスタンスを見つけることで予測値を説明します。
+
+<!--
 It is like a counterfactual question:
 How would the prediction for instance `r i` change if we omit instance i from the training process?
 We repeat this removal for all instances.
+-->
+これは、反事実的な質問です。
+インスタンス i を学習のプロセスから除いた場合、`r i` 番目のインスタンスに対する予測値はどのように変化するでしょうか。
+全てのインスタンスに対してこの削除の処理を繰り返したとします。
+
+<!--
 Then we select the training instances that result in the biggest change in the prediction of instance `r i` when they are omitted from the training and use them to explain the prediction of the model for that instance.
+-->
+次に `r i` 番目のインスタンスの予測値の中で最も大きな変化が生じた学習インスタンスを選びます。
+この時選んだインスタンスは学習から削除し、インスタンスに対するモデルの予測値を説明するために用います。
+
+<!--
 I chose to explain the prediction for instance `r i` because it is the instance with the highest predicted probability of cancer (`r sprintf('%.2f', 100 * predicted.orig[i])`%), which I thought was an interesting case to analyze more deeply.
+-->
+`r i` 番目のインスタンスは、がんの予測確率が最も高いインスタンス(`r sprintf('%.2f', 100 * predicted.orig[i])`%) だったため、より深く分析するための面白い事例であると考え説明の対象として選びました。
+
+<!--
 We could return the, say, top 10 most influential instances for predicting the `r i`-th instance printed as a table.
 Not very useful, because we could not see much.
+-->
+例えば、 `r i` 番目のインスタンスを予測するために影響力の最も強い上位 10 件を表形式で出力できます。
+しかし、把握できない事もあるため、非常に便利というわけではありません。
+
+<!--
 Again, it makes more sense to find out what distinguishes the influential instances from the non-influential instances by analyzing their features.
 We use a decision tree trained to predict the influence given the features, but in reality we misuse it only to find a structure and not to actually predict something.
 The following decision tree shows which kind of training instances were most influential for predicting the `r i`-th instance. 
+-->
+繰り返しになりますが、影響力のあるインスタンスとそうでないインスタンスの特徴量を分析し、両者を区別するものを見つける方が、理にかなっています。
+与えられた特徴量から影響度を予測するために決定木を学習しましたが、実際には、予測のためではなく、構造を発見するために使用されています。
+次の決定木は、どの種類の学習インスタンスが `r i` 番目のインスタンスの予測に最も影響を与えたかを示しています。
 
 
-```{r influence-single, fig.cap = sprintf("Decision tree that explains which instances were most influential for predicting the %i-th instance. Data from women who smoked for 18.5 years or longer had a large influence on the prediction of the %i-th instance, with an average change in absolute prediction by 11.7 percentage points of cancer probability.", i, i), eval = FALSE}
+<!--
+fig.cap = sprintf("Decision tree that explains which instances were most influential for predicting the %i-th instance. Data from women who smoked for 18.5 years or longer had a large influence on the prediction of the %i-th instance, with an average change in absolute prediction by 11.7 percentage points of cancer probability.", i, i)
+-->
+
+```{r influence-single, fig.cap = sprintf("%i 番目のインスタンスの予測に最も影響を与えたインスタンスを説明する決定木。18.5年以上喫煙をする女性のデータは、%i 番目のインスタンスの予測に対して大きな影響力を持ち、がんの確率を絶対値として平均 11.7 パーセント変化させる。", i, i), eval = FALSE}
 # Also here TravisCI has a problem
 # Using same hack as in chunk above
 ct = rpart(abs(influence) ~ ., data = cervical.200, control = rpart.control(maxdepth = 2))
@@ -283,35 +485,67 @@ ct = as.party(ct)
 plot(ct, inner_panel = node_inner(ct, pval = FALSE, id=FALSE), terminal_panel=node_boxplot(ct,id=FALSE))
 ```
 
-```{r influence-single-include, eval=TRUE, fig.cap = sprintf("Decision tree that explains which instances were most influential for predicting the %i-th instance. Data from women who smoked for 18.5 years or longer had a large influence on the prediction of the %i-th instance, with an average change in absolute prediction by 11.7 percentage points of cancer probability.", i, i)}
+
+<!--
+fig.cap = sprintf("Decision tree that explains which instances were most influential for predicting the %i-th instance. Data from women who smoked for 18.5 years or longer had a large influence on the prediction of the %i-th instance, with an average change in absolute prediction by 11.7 percentage points of cancer probability.", i, i)
+-->
+
+```{r influence-single-include, eval=TRUE, fig.cap = sprintf("%i 番目のインスタンスの予測に最も影響を与えたインスタンスを説明する決定木。18.5年以上喫煙をする女性のデータは、%i 番目のインスタンスの予測に対して大きな影響力を持ち、がんの確率を絶対値として平均 11.7 パーセント変化させる。", i, i)}
 knitr::include_graphics("images/influence-single-1.png")
 ```
 
 
+<!--
 Data instances of women who smoked or have been smoking for 18.5 years or longer have a high influence on the prediction of the `r i`-th instance.
 The woman behind the `r i`-th instance smoked for `r cervical$Smokes..years.[i]` years.
 In the data, `r sum(cervical$Smokes..years >= 18.5)` women (`r sprintf('%.2f', 100 * mean(cervical$Smokes..years >= 18.5))`%) smoked 18.5 years or longer.
 Any mistake made in collecting the number of years of smoking of one of these women will have a huge impact on the predicted outcome for the `r i`-th instance.
+-->
+18.5年以上に渡って喫煙をしたことのある女性のインスタンスは，`r i` 番目のインスタンスの予測に大きな影響を与えています。
+`r i` 番目のインスタンスに相当する女性は、`r cervical$Smokes..years.[i]` 年間の喫煙期間がありました。
+データによると、`r sum(cervical$Smokes..years >= 18.5)` 人の女性 (`r sprintf('%.2f', 100 * mean(cervical$Smokes..years >= 18.5))`%) は、18.5年以上の喫煙期間がありました。
+これらの女性の内1人でも喫煙期間に誤りがあった場合、`r i` 番目のインスタンスに対する予測結果に大きな影響があります。
 
+
+<!--
 The most extreme change in the prediction happens when we remove instance number `r worst.case.index`.
 The patient allegedly smoked for `r cervical$Smokes..years.[worst.case.index]` years, aligned with the results from the decision tree.
 The predicted probability for the `r i`-th instance changes from `r sprintf('%.2f', 100 * predicted.orig[i])`% to `r sprintf('%.2f', 100 * (predicted.orig[i]  - cervical.200$influence[worst.case.index]))`% if we remove the instance `r worst.case.index`!
+-->
+予測する上で最も極端な変化は、インスタンス `r worst.case.index` を削除した時に発生します。
+患者が既に `r cervical$Smokes..years.[worst.case.index]` 年間喫煙していて、決定木による結果と一致していたとします。
+インスタンス `r worst.case.index` を削除すると、`r i` 番目のインスタンスに対する予測確率は、`r sprintf('%.2f', 100 * predicted.orig[i])`% から `r sprintf('%.2f', 100 * (predicted.orig[i]  - cervical.200$influence[worst.case.index]))`% に変化します．。
 
 
+<!--
 If we take a closer look at the features of the most influential instance, we can see another possible problem.
 The data say that the woman is 28 years old and has been smoking for 22 years. 
 Either it is a really extreme case and she really started smoking at 6, or this is a data error. 
 I tend to believe the latter.
 This is certainly a situation in which we must question the accuracy of the data.
+-->
+最も影響力のあるインスタンスの特徴量を詳しく見ると、別の問題が見えてきます。
+データによると、28才で22年間の喫煙経験を持つ女性がいるようです。
+これは極端なケースであり、本当に6才で喫煙を始めたか、このデータが間違っているかのどちらかです。
+私なら後者の可能性が高いと考えるでしょう。
+まさにこれはデータの正確性について、疑問を持つべき状況です。
 
+<!--
 These examples showed how useful it is to identify influential instances to debug models.
 One problem with the proposed approach is that the model needs to be retrained for each training instance.
 The whole retraining can be quite slow, because if you have thousands of training instances, you will have to retrain your model thousands of times.
 Assuming the model takes one day to train and you have 1000 training instances, then the computation of influential instances -- without parallelization -- will take almost 3 years.
 Nobody has time for this.
 In the rest of this chapter, I will show you a method that does not require retraining the model.
+-->
+これらの例はモデルをデバッグするために、影響力のあるインスタンスを特定することがいかに有用であるかを示しています。
+提案されたアプローチの問題点の1つは、学習インスタンスごとにモデルを再学習する必要があることです。
+何千もの学習インスタンスがある場合、何千回と再学習しなければならないため、再学習全体が非常に遅くなる可能性があります。
+モデルの学習に1日かかるとして、インスタンスが1000個あれば、影響力のあるインスタンスの計算には、並列計算なしなら約3年かかるでしょう。
+誰もこんなことをする時間はありません。
+この章の残りの部分では，再学習を必要としない方法を紹介します。
 
-
+<!--
 ### Influence Functions
 
 *You*: I want to know the influence a training instance has on a particular prediction.  
@@ -325,15 +559,40 @@ Instead of deleting the instance, the method upweights the instance in the loss 
 This method involves approximating the loss around the current model parameters using the gradient and Hessian matrix.
 Loss upweighting is similar to deleting the instance.  
 *You*: Great, that's what I'm looking for!  
+-->
+### 影響関数 (Influence Functions)
 
+*あなた*: 学習インスタンスが特定の推論結果に与える影響を知りたいです。  
+*研究者*: その学習インスタンスを削除した上で、モデルを再学習し、推論結果の差を確認すればいいですよ。  
+*あなた*: いいですね！でも、再学習せずに測る方法は無いのですか？時間がかかりすぎちゃいますよ。  
+*研究者*: パラメータに対して二階微分可能な損失関数付きのモデルはありますか？  
+*あなた*: 私は logistic loss のニューラルネットワークを学習しました。つまり、答えは「はい」です。  
+*研究者*: とすると、インスタンスがモデルパラメータと予測値に与える影響を **影響関数** で測ることができます。
+影響関数は、モデルパラメータまたは推論結果が学習インスタンスにどれだけ強く依存しているかを示す尺度です。
+インスタンスを削除する代わりに、損失の中のインスタンスに非常に小さいステップで重み付けする方法です。
+この方法では、勾配行列と Hessian 行列を用いて、現在のモデルパラメータ周辺の損失を近似します。
+損失の重みを変える事は、インスタンスを削除することに似ています。  
+*あなた*: いいですね、これこそがまさに私が探していたものですよ！
+
+<!--
 Koh and Liang (2017)[^koh] suggested using influence functions, a method of robust statistics, to measure how an instance influences model parameters or predictions.
-As with deletion diagnostics, the influence functions trace the model parameters and predictions back to the responsible training instance.
+As with Deletion diagnostics, the influence functions trace the model parameters and predictions back to the responsible training instance.
 However, instead of deleting training instances, the method approximates how much the model changes when the instance is upweighted in the empirical risk (sum of the loss over the training data).
+-->
+Koh と Liang (2017)[^koh] はインスタンスがモデルのパラメータや推論結果にどの程度影響するか測定するため、ロバスト統計学の手法の1つである影響関数を使うことを提案しました。
+Delition diagnostics と同様に、影響関数は、モデル・パラメータと予測値から、影響のある学習インスタンスに遡ってトレースします。
+ただし、学習インスタンスを削除するのに代わって、この方法では、インスタンスを経験的リスク（学習データに対する損失の合計）で重み付けしたときに、モデルがどの程度変化するかを近似しています。
 
+<!--
 The method of influence functions requires access to the loss gradient with respect to the model parameters, which only works for a subset of machine learning models.
 Logistic regression, neural networks and support vector machines qualify, tree-based methods like random forests do not.
 Influence functions help to understand the model behavior, debug the model and detect errors in the dataset.
+-->
+影響関数の方法は、モデルパラメータに関する損失勾配を取得することを必要としますが、これは機械学習モデルの一部に対してのみ使用可能です。
+ロジスティック回帰、ニューラルネットワーク、SVMでは使用可能ですが、ランダムフォレストのような決定木ベースの手法では使用できません。
+また、影響関数は、モデルの動作の理解、モデルのデバッグ、データセットのエラー検出にも役立ちます。
 
+<!--
 The following section explains the intuition and math behind influence functions.
 
 **Math behind influence functions**
@@ -341,7 +600,17 @@ The following section explains the intuition and math behind influence functions
 The key idea behind influence functions is to upweight the loss of a training instance by an infinitesimally small step $\epsilon$, which results in new model parameters:
 
 $$\hat{\theta}_{\epsilon,z}=\arg\min_{\theta{}\in\Theta}(1-\epsilon)\frac{1}{n}\sum_{i=1}^n{}L(z_i,\theta)+\epsilon{}L(z,\theta)$$
+-->
 
+ここでは、影響関数の直感的理解と数学的背景について説明します。
+
+**影響関数の数学的視点**
+
+影響関数の背後にある重要なアイデアは、学習インスタンスの損失を無限に小さいステップ $\epsilon$ で重み付けすることであり、結果として新しいモデルパラメータが得られます。
+
+$$\hat{\theta}_{\epsilon,z}=\arg\min_{\theta{}\in\Theta}(1-\epsilon)\frac{1}{n}\sum_{i=1}^n{}L(z_i,\theta)+\epsilon{}L(z,\theta)$$
+
+<!--
 where $\theta$ is the model parameter vector and $\hat{\theta}_{\epsilon,z}$ is the parameter vector after upweighting z by a very small number $\epsilon$.
 L is the loss function with which the model was trained, $z_i$ is the training data and z is the training instance which we want to upweight to simulate its removal.
 The intuition behind this formula is:
@@ -350,41 +619,87 @@ What would the parameter vector look like to optimize this new combined loss?
 The influence function of the parameters, i.e. the influence of upweighting training instance z on the parameters, can be calculated as follows.
 
 $$I_{\text{up,params}}(z)=\left.\frac{d{}\hat{\theta}_{\epsilon,z}}{d\epsilon}\right|_{\epsilon=0}=-H_{\hat{\theta}}^{-1}\nabla_{\theta}L(z,\hat{\theta})$$
+-->
+ここで、$\theta$ はモデルパラメータに関するベクトルであり、$\hat{\theta}_{\epsilon,z}$ は非常に小さい数字である $\epsilon$ で z を重み付けした後のパラメータベクトルです。
+L はモデルで使用する損失関数、$z_i$ は学習データ、 z は削除をシミュレートするために重み付けしたい学習インスタンスです。
+学習データの、あるインスタンス $z_i$ を少し($\epsilon$)アップウェイトして、他のインスタンスをダウンウェイトした場合、損失はどのくらい変わるのでしょうか。
+この新しい2つが組み合わさった損失を最適化するために、パラメータベクトルはどのようになるでしょうか。
+パラメータの影響関数、すなわち、学習インスタンス z をアップウェイトしたことによるパラメータへの影響は、以下のように計算できます。
 
+$$I_{\text{up,params}}(z)=\left.\frac{d{}\hat{\theta}_{\epsilon,z}}{d\epsilon}\right|_{\epsilon=0}=-H_{\hat{\theta}}^{-1}\nabla_{\theta}L(z,\hat{\theta})$$
+
+<!--
 The last expression $\nabla_{\theta}L(z,\hat{\theta})$ is the loss gradient with respect to the parameters for the upweighted training instance.
 The gradient is the rate of change of the loss of the training instance.
 It tells us how much the loss changes when we change the model parameters $\hat{\theta}$ by a bit.
+-->
+最後の式 $\nabla_{\theta}L(z,\hat{\theta})$ は、アップウェイトされた学習インスタンスのパラメータに対する損失勾配であり、勾配は学習インスタンスの損失の変化率です。
+これは、モデルのパラメータ $\hat{\theta}$ を少し変えると、損失がどれくらい変わるかを教えてくれます。
+
+<!--
 A positive entry in the gradient vector means that a small increase in the corresponding model parameter increases the loss, a negative entry means that the increase of the parameter reduces the loss.
 The first part $H^{-1}_{\hat{\theta}}$ is the inverse Hessian matrix (second derivative of the loss with respect to the model parameters).
 The Hessian matrix is the rate of change of the gradient, or expressed as loss, it is the rate of change of the rate of change of the loss.
 It can be estimated using: 
+-->
+勾配ベクトルの正の項は、対応するモデルパラメータの小さな増加が損失を増加させることを意味し、負の項はパラメータの増加が損失を減少させることを意味します。
+最初の部分 $H^{-1}_{\hat{theta}}$ はヘシアン行列（モデルパラメータに対する損失の2次微分）の逆行列です。
+ヘシアン行列は、勾配の変化率、すなわち損失と表現され、これは次のように計算されます。
 
 $$H_{\theta}=\frac{1}{n}\sum_{i=1}^n\nabla^2_{\hat{\theta}}L(z_i,\hat{\theta})$$
 
+<!--
 More informally: 
 The Hessian matrix records how curved the loss is at a certain point. 
 The Hessian is a matrix and not just a vector, because it describes the curvature of the loss and the curvature depends on the direction in which we look.
 The actual calculation of the Hessian matrix is time-consuming if you have many parameters.
 Koh and Liang suggested some tricks to calculate it efficiently, which goes beyond the scope of this chapter.
 Updating the model parameters, as described by the above formula, is equivalent to taking a single Newton step after forming a quadratic expansion around the estimated model parameters.
+-->
+くだけていうと、ヘシアン行列は、ある点で損失がどれだけ曲がっているかを記述しています。
+ヘシアンは、"損失の曲率" を記述しており、曲率は見る方向に依存するため、単なるベクトルではなく行列です。
+ヘシアン行列の実際の計算は、パラメータが多いと時間がかかります。
+Koh と Liang は、効率的に計算するためのトリックを提案しています (この章ではサポートしていません)。
+上式で説明したように、モデルパラメータを更新することは、推定されたモデルパラメータの周りで二次展開をした後に、ニュートン法を1回行うことと等価です。
 
+<!--
 What intuition is behind this influence function formula?
 The formula comes from forming a quadratic expansion around the parameters $\hat{\theta}$.
 That means we do not actually know, or it is too complex to calculate how exactly the loss of instance z will change when it is removed/upweighted.
 We approximate the function locally by using information about the steepness (= gradient) and the curvature (= Hessian matrix) at the current model parameter setting.
 With this loss approximation, we can calculate what the new parameters would approximately look like if we upweighted instance z:
+-->
+この影響関数を直感的に理解するにはどうすればいいでしょうか。
+この式は、パラメータ $\hat{\theta}$ の周りに二次展開を形成することから来ています。
+つまり、実際にはわからない、あるいは、インスタンス z の損失が削除、アップウェイトされたときにどのように変化するかを正確に計算することは複雑すぎるということです。
+現在のモデルパラメータ設定における急峻度（＝勾配）と曲率（＝ヘシアン行列）の情報を用いて、関数を局所的に近似します。
+この損失近似を使用して、インスタンス z をアップウェイトした場合の新しいパラメータがおおよそどのように見えるかを計算できます。
 
 $$\hat{\theta}_{-z}\approx\hat{\theta}-\frac{1}{n}I_{\text{up,params}}(z)$$
 
+<!--
 The approximate parameter vector is basically the original parameter minus the gradient of the loss of z (because we want to decrease the loss) scaled by the curvature (= multiplied by the inverse Hessian matrix) and scaled by 1 over n, because that is the weight of a single training instance.
+-->
+近似されたパラメータベクトルは、基本的に元のパラメータから z の損失の勾配を引いたもの（損失を減らしたいので）を曲率（＝逆ヘシアン行列を掛けたもの）でスケーリングされ、さらに 1/n でスケーリングされます。なぜなら、これは単一の学習インスタンスの重みであるためです。
 
+<!--
 The following figure shows how the upweighting works.
 The x-axis shows the value of the $\theta$ parameter and the y-axis the corresponding value of the loss with upweighted instance z.
 The model parameter here is 1-dimensional for demonstration purposes, but in reality it is usually high-dimensional.
 We move only 1 over n into the direction of improvement of the loss for instance z.
 We do not know how the loss would really change when we delete z, but with the first and second derivative of the loss, we create this quadratic approximation around our current model parameter and pretend that this is how the real loss would behave.
+-->
+次の図は、アップウエイトの仕組みを示しています。
+x 軸は、$\theta$ パラメータの値、y 軸は、アップウエイトされたインスタンス z の損失に対応する値を示しています。
+ここでのモデルパラメータは簡単のために1次元としていますが、実際には高次元であることが多いです。
+1/ｎ だけ、インスタンス ｚ の損失が改善される方向に移動します。
+z を削除したときに損失が実際にどのように変化するかはわかりませんが、損失の1次微分と2次微分を用いて、現在のモデルパラメータの周りに、この2次近似を作成し、実際の損失がどのように振る舞うかを近似します。
 
-```{r quadratic-expansion, fig.cap="Updating the model parameter (x-axis) by forming a quadratic expansion of the loss around the current model parameter, and moving 1/n into the direction in which the loss with upweighted instance z (y-axis) improves most. This upweighting of instance z in the loss approximates the parameter changes if we delete z and train the model on the reduced data."}
+<!--
+fig.cap="Updating the model parameter (x-axis) by forming a quadratic expansion of the loss around the current model parameter, and moving 1/n into the direction in which the loss with upweighted instance z (y-axis) improves most. This upweighting of instance z in the loss approximates the parameter changes if we delete z and train the model on the reduced data."
+-->
+
+```{r quadratic-expansion, fig.cap="現在のモデル・パラメータを中心とした損失の二次展開を形成してモデル・パラメータ（x軸）を更新し、1/n をアップウェイトされたインスタンス z での損失（y軸）が最も改善される方向に移動させます。この損失におけるインスタンスzに対してアップウェイトを行うことは、z を削除し、縮小されたデータでモデルを学習した場合のパラメータの変化を近似しています。"}
 x = seq(from = -1.2, to = 1.2, length.out = 100)
 y.fun = function(x) {
   -x - 2*x^2 - x^3 + 2 * x^4
@@ -421,22 +736,40 @@ ggplot(dat3) +
 
 ```
 
-
+<!--
 We do not actually need to calculate the new parameters, but we can use the influence function as a measure of the influence of z on the parameters.
 
 How do the *predictions* change when we upweight training instance z?
 We can either calculate the new parameters and then make predictions using the newly parameterized model, or we can also calculate the influence  of instance z on the predictions directly, since we can calculate the influence by using the chain rule:
+-->
+実際には新しいパラメータを計算する必要はありませんが、パラメータに対する z の影響度の指標として影響関数を使用できます。
+
+学習インスタンス z をアップウェイトしたとき、 予測値はどのように変化するのでしょうか。
+新しいパラメータを計算して、新たにパラメトライズモデルを用いて予測するか、あるいは、連鎖律を用いて影響度を計算できるので、予測に対するインスタンス z の影響度を直接計算できます。
 
 $$\begin{align*}I_{up,loss}(z,z_{test})&=\left.\frac{d{}L(z_{test},\hat{\theta}_{\epsilon,z})}{d\epsilon}\right|_{\epsilon=0}\\&=\left.\nabla_{\theta}L(z_{test},\hat{\theta})^T\frac{d\hat{\theta}_{\epsilon,z}}{d\epsilon}\right|_{\epsilon=0}\\&=-\nabla_{\theta}L(z_{test},\hat{\theta})^T{}H^{-1}_{\theta}\nabla_{\theta}L(z,\hat{\theta})\end{align*}$$
 
+<!--
 The first line of this equation means that we measure the influence of a training instance on a certain prediction $z_{test}$ as a change in loss of the test instance when we upweight the instance z and get new parameters $\hat{\theta}_{\epsilon,z}$.
 For the second line of the equation, we have applied the chain rule of derivatives and get the derivative of the loss of the test instance with respect to the parameters times the influence of z on the parameters.
 In the third line, we replace the expression with the influence function for the parameters.
 The first term in the third line $\nabla_{\theta}L(z_{test},\hat{\theta})^T{}$ is the gradient of the test instance with respect to the model parameters.
+-->
+この式の1行目は、ある予測 $z_{test}$ に対する学習インスタンスの影響を、インスタンス z をアップウェイトして新しいパラメータを得たときのテストインスタンスの損失の変化として測定することを意味しています。
+式の2行目については、導関数の連鎖率を適用して、パラメータに対するテストインスタンスの損失の導関数とパラメータに対する z の影響力の積を求めています。
+3行目では、パラメータに対する影響関数に置き換えます。
+3行目の第１項 $\nabla_{\theta}L(z_{test},\hat{\theta})^T{}$ は、モデルパラメータに関するテストインスタンスの勾配です。
 
+<!--
 Having a formula is great and the scientific and accurate way of showing things.
 But I think it is very important to get some intuition about what the formula means.
 The formula for $I_{\text{up,loss}}$ states that the influence function of the training instance z on the prediction of an instance $z_{test}$ is "how strongly the instance reacts to a change of the model parameters" multiplied by "how much the parameters change when we upweight the instance z".
+-->
+式を展開することは素晴らしいことであり、科学的かつ正確な方法で物事を示すことができます。
+しかし、式の意味をある程度直感的に理解することはとても大切なことだと思います。
+$I_{\text{up,loss}}$ に対する式は、インスタンス $z_{test}$ の予測に対する学習インスタンス z の影響関数は、"インスタンスがモデルパラメータの変化にどれだけ強く反応するか" に "インスタンス z をアップウェイトしたときにパラメータがどれだけ変化するか" を掛け合わせたものです。
+
+<!--
 Another way to read the formula:
 The influence is proportional to how large the gradients for the training and test loss are.
 The higher the gradient of the training loss, the higher its influence on the parameters and the higher the influence on the test prediction.
@@ -445,17 +778,38 @@ The entire construct can also be seen as a measure of the similarity (as learned
 
 That is it with theory and intuition.
 The next section explains how influence functions can be applied.
+-->
+この式のもう1つの見方として、影響力は、学習とテストの損失の勾配の大きさに比例します。
+学習の損失の勾配が大きいほどパラメータへの影響が大きく、テストの予測への影響が大きいということになります。
+テストの予測の勾配が大きいほど、テストインスタンスの影響力が大きくなります。
+全体としては、学習インスタンスとテストインスタンスの間の類似性（モデルによって学習されたもの）の尺度としても見ることができます。
 
+これが理論と直感的な解釈です。
+次のセクションで、影響関数の適用方法について説明します。
+
+<!--
 **Application of Influence Functions**
 
 Influence functions have many applications, some of which have already been presented in this chapter.
+-->
+**影響関数の応用**
 
+影響関数には多くの応用例があり、いくつかは、この章で既に説明されています。
+
+<!--
 **Understanding model behavior**
 
 Different machine learning models have different ways of making predictions.
 Even if two models have the same performance, the way they make predictions from the features can be very different and therefore fail in different scenarios.
 Understanding the particular weaknesses of a model by identifying influential instances helps to form a "mental model" of the machine learning model behavior in your mind.
+-->
+**モデルの挙動の理解**
 
+異なる機械学習のモデルは、異なる手法で予測します。
+もし、2つのモデルが同じ性能を持っていたとしても、それぞれのモデルが特徴量から予測する方法が異なっていると、別の場面では失敗する可能性があります。
+影響力のあるインスタンスを明らかにし、モデルの特定の弱点を理解することは、機械学習モデルの動作の「メンタルモデル」を形成するのに役立ちます。
+
+<!--
 **Handling domain mismatches / Debugging model errors**
 
 Handling domain mismatch is closely related to better understand the model behavior.
@@ -470,7 +824,22 @@ Here too, influential instances are a good way to answer this question.
 You take one of the new patients, for whom the model has made a false prediction, find and analyze the most influential instances.
 For example, this could show that the second hospital has older patients on average and the most influential instances from the training data are the few older patients from the first hospital and the model simply lacked the data to learn to predict this subgroup well.
 The conclusion would be that the model needs to be trained on more patients who are older in order to work well in the second hospital.
+-->
+**ドメイン不一致の対処 / モデルのデバック**
 
+ドメインの不一致を対処することは、モデルの挙動をより理解することと密接に関わっています。ドメインの不一致は学習データとテストデータの分布が異なっていることを意味し、これは、テストデータにおいて、モデルの精度低下を引き起こします。
+影響関数は、エラーを引き起こした学習インスタンスを明らかにできます。
+手術を受けた患者の結果を予測するモデルを学習したとします。
+このとき、全ての患者は同じ病院の患者でした。
+この学習されたモデルを、違う病院で試すと多くの患者に対してうまく動かないことが確認されました。
+当然、2つの病院が異なる患者を持っていると考え、それぞれの病院のデータを見比べたとき、多くの特徴量が異なっていることがわかります。
+しかし、モデルを壊した特徴量またはインスタンスは何なのでしょうか。
+ここでもまた、影響関数が、問題に対する良い回答になります。
+モデルが間違った予測を出した新しい患者の内の一人を取り出し、最も影響力の高いインスタンスを探し、分析します。
+例えば、2番目の病院には平均的に高齢の患者が多く、学習データの中で最も影響力のあるインスタンスが最初の病院の少数の高齢患者であったとすると、単純に、モデルがこのサブグループを適切に予測するための学習データが不足していることがわかります。
+モデルを2番目の病院でもうまく動かすためには、より多くの高齢の患者のデータで学習する必要があるという結論が得られるでしょう。
+
+<!--
 **Fixing training data**
 
 If you have a limit on how many training instances you can check for correctness, how do you make an efficient selection?
@@ -484,56 +853,127 @@ Checking data for a patient could take an hour or more.
 In view of theses costs, it makes sense to check only a few important data instances.
 The best way is to select patients who have had a high influence on the prediction model.
 Koh and Liang (2017) showed that this type of selection works much better than random selection or the selection of those with the highest loss or wrong classification.
+-->
+**学習データを修正する**
+
+正しさを確認できる学習データの数に限りがある場合、どのように効果的な選択すると良いでしょうか。
+最前の方法は、最も影響力のあるインスタンスを選択することです。なぜなら、定義より、それらが最もモデルに影響を与えるからです。
+もし、明らかに間違った値を持つインスタンスがあったとしても、インスタンスに影響力がなく、予測モデルのためのデータだけを欲している場合、影響力のあるインスタンスを確認することがより良い方法です。
+例えば、患者が病院に残るべきか、それとも早期退院してもよいかを予測するモデルを学習します。
+患者を間違った時期に退院させることは、悪い結果を招く恐れがあるため、モデルが頑健で正しい予測をすることを確認する必要があります。
+患者の記録はまとまりのない物になることもあり、データの質に完全な自信はありません。
+しかし、患者のデータを確認し直すことは、とても時間がかかります。なぜなら、ある患者を再確認するには、病院は保管庫に眠る手書きの記録を調べるために、実際に誰かを派遣する必要があるからです。
+患者のデータを確認するには1時間か、それ以上の時間がかかることがあります。
+これらの費用を抑えるために、少数の重要なインスタンスを確認する方が合理的です。
+最良の方法は、予測モデルに高い影響を与えた患者を選ぶことです。
+Koh と Liang (2017)らは、この種類の選択が、ランダムな選択、損失が最も大きい患者、または間違った分類をされた患者を選ぶより遥かにうまく機能することを示しました。
 
 
+<!--
 ### Advantages of Identifying Influential Instances
+-->
+### 長所
 
+<!--
 The approaches of deletion diagnostics and influence functions are very different from the mostly feature-perturbation based approaches presented in the [Model-Agnostic chapter](#agnostic). 
 A look at influential instances emphasizes the role of training data in the learning process.
 This makes influence functions and deletion diagnostics **one of the best debugging tools for machine learning models**.
 Of the techniques presented in this book, they are the only ones that directly help to identify the instances which should be checked for errors.
+-->
+Deletion diagnostics と影響関数のアプローチは、 [モデル非依存の章](#agnostic) で紹介されているほとんどの特徴量を摂動させるアプローチとは大きく異なります。影響力のあるインスタンスに注目すると、学習フェーズにおける学習データの役割が強調されます。
+これによって、影響関数と deletion diagnostics は**機械学習モデルに最適なデバッグツールの1つ**になります。
+この本に紹介されている手法の中で、エラーに対してチェックすべきインスタンスはどれかを特定するのに直接役立つ唯一の方法です。
 
+<!--
 **Deletion diagnostics are model-agnostic**, meaning the approach can be applied to any model. 
 Also influence functions based on the derivatives can be applied to a broad class of models. 
 
 We can use these methods to **compare different machine learning models** and better understand their different behaviors, going beyond comparing only the predictive performance.
+-->
+**Deletion diagnostics はモデル非依存です**。つまり、あらゆるモデルに対して適用可能です。
+また、導関数に基づく影響関数は幅広いクラスのモデルに適用できます。
 
+これらを使って**様々な機械学習モデルを比較**し、予測パフォーマンスを比較するだけでなく、モデルの様々な挙動をより深く理解できます。
+
+<!--
 We have not talked about this topic in this chapter, but **influence functions via derivatives can also be used to create adversarial training data**. 
 These are instances that are manipulated in such a way that the model cannot predict certain test instances correctly when the model is trained on those manipulated instances.
 The difference to the methods in the [Adversarial Examples chapter](#adversarial) is that the attack takes place during training time, also known as poisoning attacks.
 If you are interested, read the paper by Koh and Liang (2017).
+-->
+この章ではこのトピックについては説明していませんが、**導関数による影響関数は敵対的学習データを作るためにも使うことができます**。
+学習されたモデルが特定のテストインスタンスに対して正しく予測できないように操作されたインスタンスのことです。
+[敵対的な例の章](#adversarial) の方法との違いは、これらは学習時に行われるということです。これは poisoning attack として知られています。
+興味のある方は、Koh and Liang (2017) の論文を読んでください。
 
+<!--
 For deletion diagnostics and influence functions, we considered the difference in the prediction and for the influence function the increase of the loss. 
 But, really, **the approach is generalizable** to any question of the form:
 "What happens to ... when we delete or upweight instance z?", where you can fill "..." with any function of your model of your desire. 
 You can analyze how much a training instance influences the overall loss of the model.
 You can analyze how much a training instance influences the feature importance.
 You can analyze how much a training instance influences which feature is selected for the first split when training a [decision tree](#tree).
+-->
+Deletion diagnostics と影響関数については予測の差を、影響関数については損失の増加を考慮しました。
+実際には、**このアプローチは一般化可能であり**、"インスタンス z を削除または重み付けを変えたときに、...はどうなりますか" というあらゆる質問に対応できます。
+ここで、 "..." はモデルの任意の関数に入れ替えることができます。
+例えば、ある学習インスタンスがモデルの全体的な損失にどれだけ影響するか、
+ある学習インスタンスが特徴量重要度にどれだけ影響するか、または、ある学習インスタンスが[決定木](#tree)の学習時に最初の分割で選ばれる特徴量にどれだけ影響するかを分析できます。
 
+<!-- 
 ### Disadvantages of Identifying Influential Instances
+-->
+### 短所
 
+<!--
 Deletion diagnostics are very **expensive to calculate** because they require retraining.
 But history has shown that computer resources are constantly increasing.
 A calculation that 20 years ago was unthinkable in terms of resources can easily be performed with your smartphone.
 You can train models with thousands of training instances and hundreds of parameters on a laptop in seconds/minutes. 
 It is therefore not a big leap to assume that deletion diagnostics will work without problems even with large neural networks in 10 years.
+-->
+Deletion diagnostics は再学習が必要なため、非常に **計算コストがかかる方法** です。
+ただ、歴史的にはコンピュータリソースは絶えず増加しています。
+20年前には考えられたなかったような計算が、今ではスマートフォンで簡単に計算できます。
+また、ノートパソコン上では数千の学習データを使って数百のパラメータを持ったモデルを数秒、もしくは数分で学習可能です。
+従って deletion diagnostics が10年以内に大規模なニューラルネットワークでも機能すると想定することは、飛躍があるとは言い切れません。
 
+<!--
 **Influence functions are a good alternative to deletion diagnostics, but only for models with differentiable parameters**, such as neural networks.
 They do not work for tree-based methods like random forests, boosted trees or decision trees.
 Even if you have models with parameters and a loss function, the loss may not be differentiable.
 But for the last problem, there is a trick:
 Use a differentiable loss as substitute for calculating the influence when, for example, the underlying model uses the Hinge loss instead of some differentiable loss.
 The loss is replaced by a smoothed version of the problematic loss for the influence functions, but the model can still be trained with the non-smooth loss.
+-->
+**影響関数は deletion diagnostics に代わる良い方法ですが、ニューラルネットワークのような微分可能なパラメータを持ったモデルにのみ適用可能です**。
+これらは、ランダムフォレスト、ブースティングツリー (boosted trees)、決定木のような決定木ベースの方法では使えません。
+パラメータと損失関数を持つモデルであっても、損失を微分できない場合があります。
+しかし、最後の問題にはトリックがあります。
+たとえば、モデルが微分可能な損失の代わりに、例えば Hinge ロス を使用する場合、影響を計算するときに微分可能損失を代わりに使用します。
+損失は、影響関数に対して問題のある損失を平滑化したものに置き換えられていますが、モデルは平滑化されていない損失で学習できます。
 
-**Influence functions are only approximate**, because the approach forms a quadratic expansion around the parameters.
+
+<!--**Influence functions are only approximate**, because the approach forms a quadratic expansion around the parameters.
 The approximation can be wrong and the influence of an instance is actually higher or lower when removed.
 Koh and Liang (2017) showed for some examples that the influence calculated by the influence function was close to the influence measure obtained when the model was actually retrained after the instance was deleted.
-But there is no guarantee that the approximation will always be so close.
+But there is no guarantee that the approximation will always be so close.-->
 
+このアプローチはパラメータに対する二次展開を使用しているため、**影響関数は近似にすぎません**。
+この近似は間違うかも知れず、実際に取り除いても、インスタンスへの影響が大きくなったり小さくなったりします。
+Koh と Liang (2017) は影響関数によって計算された影響度が、実際にインスタンスを消去した後、再学習されたモデルから得た影響度と近い値だった例がいくつか示されています。
+しかし、この近似が常に近いという保証はありません。
+
+<!--
 There is **no clear cutoff of the influence measure at which we call an instance influential or non-influential**.
 It is useful to sort the instances by influence, but it would be great to have the means not only to sort the instances, but actually to distinguish between influential and non-influential.
 For example, if you identify the top 10 most influential training instances for a test instance, some of them may not be influential because, for example, only the top 3 were really influential.
+-->
+**あるインスタンスが影響力があるかないか、判断するためのはっきりとした影響度の閾値は存在しません**。
+インスタンスを影響度でソートするのは便利ですが、単にソートするだけでなく、実際に影響力のあるインスタンスと影響力のないインスタンスを区別する手段があればもっと良いでしょう。
+例えば、最も影響力のある10個のインスタンスを特定しても、例えばそのうちの上位3つだけが本当に影響力を持っているとすると、影響力がないものも含まれてしまいます。
 
+<!--
 The influence measures **only take into account the deletion of individual instances** and not the deletion of several instances at once.
 Larger groups of data instances may have some interactions  that strongly influence model training and prediction.
 But the problem lies in combinatorics:
@@ -541,9 +981,21 @@ There are n possibilities to delete an individual instance from the data.
 There are n times (n-1) possibilities to delete two instances from the training data. 
 There are n times (n-1) times (n-2) possibilities to delete three ...
 I guess you can see where this is going, there are just too many combinations.
+-->
+影響度の測定は**個々のインスタンスの削除のみを考慮し**、複数のインスタンスの削除は考慮しません。
+インスタンスのグループの効果によって、モデルの学習と予測に強く影響することがありえます。
+しかし、問題は組み合わせ論にあります。
+データから1つのインスタンスを削除するには $n$ 通りの可能性があります。
+データから2つのインスタンスを削除するには $n(n-1)$ 通りの可能性があります。
+データから3つのインスタンスを削除するには $n(n-1)(n-2)$ 通りの可能性があります。
+ここまで来たらもう分かると思いますが、組み合わせが多すぎます。
 
+<!--
 ### Software and Alternatives
+-->
+### ソフトウェアと代替手法
 
+<!--
 Deletion diagnostics are very simple to implement. 
 Take a look at [the code](https://github.com/christophM/interpretable-ml-book/blob/master/manuscript/06.5-example-based-influence-fct.Rmd) I wrote for the examples in this chapter.
 
@@ -556,7 +1008,18 @@ The code is focused on the Tensorflow library, so you cannot use it directly for
 
 Keita Kurita wrote a [great blog post for influence functions](http://mlexplained.com/2018/06/01/paper-dissected-understanding-black-box-predictions-via-influence-functions/#more-641) that helped me understand Koh and Liang's paper better. 
 The blog post goes a little deeper into the mathematics behind influence functions for black box models and also talks about some of the mathematical 'tricks' with which the method is efficiently implemented.
+-->
+Deletion diagnostics は非常に簡単に実装できます。
+この章の例題のために書いたコードを見てください。(https://github.com/christophM/interpretable-ml-book/blob/master/manuscript/06.5-example-based-influence-fct.Rmd)
 
+線形モデルや一般線形モデルでは、クック距離のような多くの influence 尺度が R パッケージの `stats` に実装されています。
+
+Koh と Liang が論文から 影響関数の [python コード](https://github.com/kohpangwei/influence-release)を公開しています。
+しかし残念ながら、それは論文のコードだけであり、保守性やドキュメントがない python モジュールです。
+これは Tensorflow ライブラリ向けのコードであり、scikit learn などの他のフレームワークのブラックボックスモデルに直接使用できません。
+
+Keita Kurita による [影響関数のブログ記事](http://mlexplained.com/2018/06/01/paper-dissected-understanding-black-box-predictions-via-influence-functions/#more-641)のおかげで、Koh と Liang の論文の理解が深まりました。
+このブログ中では、ブラックボックスモデルの影響関数の背後にある数学的背景についてさらに深く掘り下げており、この手法を効率的に実装するための数学的な 'トリック' についても紹介されています。
 
 [^cook]: Cook, R. Dennis. "Detection of influential observation in linear regression." Technometrics 19.1 (1977): 15-18.
 
