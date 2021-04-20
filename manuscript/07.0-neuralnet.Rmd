@@ -2,39 +2,78 @@
 devtools::load_all()
 ```
 
-# Neural Network Interpretation {#neural-networks}
+<!--# Neural Network Interpretation {#neural-networks}-->
+
+# ニューラルネットワークの解釈 {#neural-networks}
 
 `r if(is.html){only.in.html}`
 
 <!-- General Intro -->
+<!--
 The following chapters focus on interpretation methods for neural networks.
 The methods visualize features and concepts learned by a neural network, explain individual predictions and simplify neural networks.
+-->
 
+この章は、ニューラルネットワークの解釈方法に重点を当てていきます。
+この方法によって、ニューラルネットワークによって学習された特徴や概念が可視化され、個々の予測が説明され、ニューラルネットワークが単純化されます。
+
+<!--
 Deep learning has been very successful, especially in tasks that involve images and texts such as image classification and language translation. 
 The success story of deep neural networks began in 2012, when the ImageNet image classification challenge [^imagenet] was won by a deep learning approach.
 Since then, we have witnessed a Cambrian explosion of deep neural network architectures, with a trend towards deeper networks with more and more weight parameters.
+-->
+
+深層学習は様々な領域、特に、画像分類や言語翻訳といった画像やテキストに関連する領域で成功してきました。
+この深層学習のサクセスストーリーは2012年、the ImageNet image classification challenge [^imagenet]において深層学習によるアプローチが勝利を収めた時から始まっています。
+それから、深層学習の構造のカンブリアン爆発が起こり、トレンドはより深い構造、より多くのハイパーパラメーターを持つものへと向かって行っています。
 
 <!-- Why not interpretable -->
+<!--
 To make predictions with a neural network, the data input is passed through many layers of multiplication with the learned weights and through non-linear transformations.
 A single prediction can involve millions of mathematical operations depending on the architecture of the neural network.
 There is no chance that we humans can follow the exact mapping from data input to prediction.
 We would have to consider millions of weights that interact in a complex way to understand a prediction by a neural network.
 To interpret the behavior and predictions of neural networks, we need specific interpretation methods.
 The chapters assume that you are  familiar with deep learning, including convolutional neural networks.
+-->
+
+ニューラルネットワークで予測をするために、入力データは学習された重みによる何層もの乗算と非線形変換を通ります。
+ニューラルネットワークの構造によっては、1つの予測に何百万もの数学的演算を必要とすることがあります。
+われわれ人間が入力データから予測への正確なマッピングをたどることは不可能です。
+ニューラルネットワークによる予測を理解するためには、複雑な方法で相互作用する何百万もの重みについて考慮する必要があるでしょう。
+ニューラルネットワークの挙動や予測を理解するためには、それ相応の解釈方法が必要です。
+この章は、読者が convolutional neural network 含む深層学習についての知識を有していることを前提としています。
 
 <!-- Why specific interpretation -->
+<!--
 We can certainly use [model-agnostic methods](#agnostic), such as [local models](#lime) or [partial dependence plots](#pdp), but there are two reasons why it makes sense to consider interpretation methods developed specifically for neural networks:
 First, neural networks learn features and concepts in their hidden layers and we need special tools to uncover them.
 Second, the gradient can be utilized to implement interpretation methods that are more computationally efficient than model-agnostic methods that look at the model "from the outside".
 Also most other methods in this book are intended for the interpretation of models for tabular data.
 Image and text data require different methods.
+-->
 
-The next chapters cover the following topics:
+確かに [local models](#lime) や [partial dependence plots](#pdp) といった[モデル非依存の手法](#agnostic)を用いることは可能ですが、ニューラルネットワークに対して特別な解釈方法を考えるのが合理的である理由が2つあります。
+1つ目は、ニューラルネットワークは隠れ層で特徴や概念を学習するので、それらを明らかにするツールが必要になるためです。
+2つ目は、モデルを"外側から"見るモデル非依存の手法 よりも効率的な解釈方法を実装するために、勾配が利用できるためです。
+また、この本のほとんどの方法が表形式のデータに対するモデルの解釈を意図しています。
+画像やテキストデータには違った方法が必要となるでしょう。
 
+<!--The next chapters cover the following topics:-->
+
+次の章では、以下のトピックについて取り上げます。
+
+<!--
 - [Feature Visualization](#feature-visualization): What features has the neural network learned?
   [Adversarial Examples](#adversarial) from the [Example-Based Explanations chapter](#example-based) are closely related to feature visualization : How can we manipulate the inputs to get a wrong classification?
 - [Concepts](#neural-concepts) (IN PROGRESS): Which more abstract concepts has the neural network learned?
 - [Feature Attribution](#feature-attribution) (IN PROGRESS): How did each input contribute to a particular prediction?
 - [Modell Distillation](#neural-distillation) (IN PROGRESS): How can we explain a neural network with a simpler model?
+-->
 
+- [特徴量の可視化 (Feature Visualization)](#feature-visualization): ニューラルネットワークはどのような特徴を学習したのか。
+  [例示に基づいた解釈手法](#example-based)の[敵対的サンプル (Adversarial Examples)](#adversarial)は特徴量の可視化と密接な関連があります。入力を操作して間違った分類をさせるにはどうしたらよいでしょうか。
+- [概念 (Concepts)](#neural-concepts) (執筆中): ニューラルネットワークが学習したより抽象的な概念は何か。
+- [特徴量の帰属 (Feature Attribution)](#feature-attribution) (執筆中): 各入力はどのようにして特定の予測に貢献したのか。
+- [モデル蒸留 (Modell Distillation)](#neural-distillation) (執筆中): ニューラルネットワークをよりシンプルなモデルで説明するには。
 
