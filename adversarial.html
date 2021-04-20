@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6.2 Adversarial Examples | Interpretable Machine Learning</title>
+  <title>6.2 敵対的サンプル (Adversarial Examples) | Interpretable Machine Learning</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6.2 Adversarial Examples | Interpretable Machine Learning" />
+  <meta property="og:title" content="6.2 敵対的サンプル (Adversarial Examples) | Interpretable Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="christophM/interpretable-ml-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.2 Adversarial Examples | Interpretable Machine Learning" />
+  <meta name="twitter:title" content="6.2 敵対的サンプル (Adversarial Examples) | Interpretable Machine Learning" />
   
   <meta name="twitter:description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="Christoph Molnar" />
 
 
-<meta name="date" content="2021-02-16" />
+<meta name="date" content="2021-04-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="counterfactual.html"/>
+<link rel="prev" href="反事実的.html"/>
 <link rel="next" href="proto.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -208,109 +208,109 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="5.2.4" data-path="ice.html"><a href="ice.html#ソフトウェアと代替手法-3"><i class="fa fa-check"></i><b>5.2.4</b> ソフトウェアと代替手法</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="ale.html"><a href="ale.html"><i class="fa fa-check"></i><b>5.3</b> Accumulated Local Effects (ALE) Plot</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="ale.html"><a href="ale.html#motivation-and-intuition"><i class="fa fa-check"></i><b>5.3.1</b> Motivation and Intuition</a></li>
-<li class="chapter" data-level="5.3.2" data-path="ale.html"><a href="ale.html#theory"><i class="fa fa-check"></i><b>5.3.2</b> Theory</a></li>
-<li class="chapter" data-level="5.3.3" data-path="ale.html"><a href="ale.html#estimation"><i class="fa fa-check"></i><b>5.3.3</b> Estimation</a></li>
-<li class="chapter" data-level="5.3.4" data-path="ale.html"><a href="ale.html#examples"><i class="fa fa-check"></i><b>5.3.4</b> Examples</a></li>
-<li class="chapter" data-level="5.3.5" data-path="ale.html"><a href="ale.html#advantages"><i class="fa fa-check"></i><b>5.3.5</b> Advantages</a></li>
-<li class="chapter" data-level="5.3.6" data-path="ale.html"><a href="ale.html#disadvantages"><i class="fa fa-check"></i><b>5.3.6</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.3.7" data-path="ale.html"><a href="ale.html#implementation-and-alternatives"><i class="fa fa-check"></i><b>5.3.7</b> Implementation and Alternatives</a></li>
+<li class="chapter" data-level="5.3.1" data-path="ale.html"><a href="ale.html#モチベーションと直感"><i class="fa fa-check"></i><b>5.3.1</b> モチベーションと直感</a></li>
+<li class="chapter" data-level="5.3.2" data-path="ale.html"><a href="ale.html#理論-2"><i class="fa fa-check"></i><b>5.3.2</b> 理論</a></li>
+<li class="chapter" data-level="5.3.3" data-path="ale.html"><a href="ale.html#予測"><i class="fa fa-check"></i><b>5.3.3</b> 予測</a></li>
+<li class="chapter" data-level="5.3.4" data-path="ale.html"><a href="ale.html#例-6"><i class="fa fa-check"></i><b>5.3.4</b> 例</a></li>
+<li class="chapter" data-level="5.3.5" data-path="ale.html"><a href="ale.html#利点"><i class="fa fa-check"></i><b>5.3.5</b> 利点</a></li>
+<li class="chapter" data-level="5.3.6" data-path="ale.html"><a href="ale.html#欠点"><i class="fa fa-check"></i><b>5.3.6</b> 欠点</a></li>
+<li class="chapter" data-level="5.3.7" data-path="ale.html"><a href="ale.html#実装と代替手法"><i class="fa fa-check"></i><b>5.3.7</b> 実装と代替手法</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="interaction.html"><a href="interaction.html"><i class="fa fa-check"></i><b>5.4</b> Feature Interaction</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="interaction.html"><a href="interaction.html#feature-interaction"><i class="fa fa-check"></i><b>5.4.1</b> Feature Interaction?</a></li>
-<li class="chapter" data-level="5.4.2" data-path="interaction.html"><a href="interaction.html#theory-friedmans-h-statistic"><i class="fa fa-check"></i><b>5.4.2</b> Theory: Friedman's H-statistic</a></li>
-<li class="chapter" data-level="5.4.3" data-path="interaction.html"><a href="interaction.html#examples-1"><i class="fa fa-check"></i><b>5.4.3</b> Examples</a></li>
-<li class="chapter" data-level="5.4.4" data-path="interaction.html"><a href="interaction.html#advantages-1"><i class="fa fa-check"></i><b>5.4.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.4.5" data-path="interaction.html"><a href="interaction.html#disadvantages-1"><i class="fa fa-check"></i><b>5.4.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.4.6" data-path="interaction.html"><a href="interaction.html#implementations"><i class="fa fa-check"></i><b>5.4.6</b> Implementations</a></li>
-<li class="chapter" data-level="5.4.7" data-path="interaction.html"><a href="interaction.html#alternatives"><i class="fa fa-check"></i><b>5.4.7</b> Alternatives</a></li>
+<li class="chapter" data-level="5.4" data-path="interaction.html"><a href="interaction.html"><i class="fa fa-check"></i><b>5.4</b> 特徴量の相互作用</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="interaction.html"><a href="interaction.html#特徴量の相互作用とは"><i class="fa fa-check"></i><b>5.4.1</b> 特徴量の相互作用とは</a></li>
+<li class="chapter" data-level="5.4.2" data-path="interaction.html"><a href="interaction.html#friedman-の-h統計量の理論"><i class="fa fa-check"></i><b>5.4.2</b> Friedman の H統計量の理論</a></li>
+<li class="chapter" data-level="5.4.3" data-path="interaction.html"><a href="interaction.html#例-7"><i class="fa fa-check"></i><b>5.4.3</b> 例</a></li>
+<li class="chapter" data-level="5.4.4" data-path="interaction.html"><a href="interaction.html#利点-1"><i class="fa fa-check"></i><b>5.4.4</b> 利点</a></li>
+<li class="chapter" data-level="5.4.5" data-path="interaction.html"><a href="interaction.html#欠点-1"><i class="fa fa-check"></i><b>5.4.5</b> 欠点</a></li>
+<li class="chapter" data-level="5.4.6" data-path="interaction.html"><a href="interaction.html#実装"><i class="fa fa-check"></i><b>5.4.6</b> 実装</a></li>
+<li class="chapter" data-level="5.4.7" data-path="interaction.html"><a href="interaction.html#代替手法"><i class="fa fa-check"></i><b>5.4.7</b> 代替手法</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="feature-importance.html"><a href="feature-importance.html"><i class="fa fa-check"></i><b>5.5</b> Permutation Feature Importance</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="feature-importance.html"><a href="feature-importance.html#theory-1"><i class="fa fa-check"></i><b>5.5.1</b> Theory</a></li>
-<li class="chapter" data-level="5.5.2" data-path="feature-importance.html"><a href="feature-importance.html#feature-importance-data"><i class="fa fa-check"></i><b>5.5.2</b> Should I Compute Importance on Training or Test Data?</a></li>
-<li class="chapter" data-level="5.5.3" data-path="feature-importance.html"><a href="feature-importance.html#example-and-interpretation"><i class="fa fa-check"></i><b>5.5.3</b> Example and Interpretation</a></li>
-<li class="chapter" data-level="5.5.4" data-path="feature-importance.html"><a href="feature-importance.html#advantages-2"><i class="fa fa-check"></i><b>5.5.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.5.5" data-path="feature-importance.html"><a href="feature-importance.html#disadvantages-2"><i class="fa fa-check"></i><b>5.5.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.5.6" data-path="feature-importance.html"><a href="feature-importance.html#software-and-alternatives"><i class="fa fa-check"></i><b>5.5.6</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="5.5.1" data-path="feature-importance.html"><a href="feature-importance.html#理論-3"><i class="fa fa-check"></i><b>5.5.1</b> 理論</a></li>
+<li class="chapter" data-level="5.5.2" data-path="feature-importance.html"><a href="feature-importance.html#feature-importance-data"><i class="fa fa-check"></i><b>5.5.2</b> 特徴量の重要度は、学習データとテストデータのどちらで計算するべきか</a></li>
+<li class="chapter" data-level="5.5.3" data-path="feature-importance.html"><a href="feature-importance.html#例と解釈"><i class="fa fa-check"></i><b>5.5.3</b> 例と解釈</a></li>
+<li class="chapter" data-level="5.5.4" data-path="feature-importance.html"><a href="feature-importance.html#利点-2"><i class="fa fa-check"></i><b>5.5.4</b> 利点</a></li>
+<li class="chapter" data-level="5.5.5" data-path="feature-importance.html"><a href="feature-importance.html#欠点-2"><i class="fa fa-check"></i><b>5.5.5</b> 欠点</a></li>
+<li class="chapter" data-level="5.5.6" data-path="feature-importance.html"><a href="feature-importance.html#ソフトウェアと代替手法-4"><i class="fa fa-check"></i><b>5.5.6</b> ソフトウェアと代替手法</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="global.html"><a href="global.html"><i class="fa fa-check"></i><b>5.6</b> Global Surrogate</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="global.html"><a href="global.html#theory-2"><i class="fa fa-check"></i><b>5.6.1</b> Theory</a></li>
-<li class="chapter" data-level="5.6.2" data-path="global.html"><a href="global.html#example"><i class="fa fa-check"></i><b>5.6.2</b> Example</a></li>
-<li class="chapter" data-level="5.6.3" data-path="global.html"><a href="global.html#advantages-3"><i class="fa fa-check"></i><b>5.6.3</b> Advantages</a></li>
-<li class="chapter" data-level="5.6.4" data-path="global.html"><a href="global.html#disadvantages-3"><i class="fa fa-check"></i><b>5.6.4</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.6.5" data-path="global.html"><a href="global.html#software"><i class="fa fa-check"></i><b>5.6.5</b> Software</a></li>
+<li class="chapter" data-level="5.6" data-path="global.html"><a href="global.html"><i class="fa fa-check"></i><b>5.6</b> グローバルサロゲート (Global Surrogate)</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="global.html"><a href="global.html#理論-4"><i class="fa fa-check"></i><b>5.6.1</b> 理論</a></li>
+<li class="chapter" data-level="5.6.2" data-path="global.html"><a href="global.html#例-8"><i class="fa fa-check"></i><b>5.6.2</b> 例</a></li>
+<li class="chapter" data-level="5.6.3" data-path="global.html"><a href="global.html#長所-7"><i class="fa fa-check"></i><b>5.6.3</b> 長所</a></li>
+<li class="chapter" data-level="5.6.4" data-path="global.html"><a href="global.html#短所-7"><i class="fa fa-check"></i><b>5.6.4</b> 短所</a></li>
+<li class="chapter" data-level="5.6.5" data-path="global.html"><a href="global.html#ソフトウェア-3"><i class="fa fa-check"></i><b>5.6.5</b> ソフトウェア</a></li>
 </ul></li>
 <li class="chapter" data-level="5.7" data-path="lime.html"><a href="lime.html"><i class="fa fa-check"></i><b>5.7</b> Local Surrogate (LIME)</a><ul>
-<li class="chapter" data-level="5.7.1" data-path="lime.html"><a href="lime.html#lime-for-tabular-data"><i class="fa fa-check"></i><b>5.7.1</b> LIME for Tabular Data</a></li>
-<li class="chapter" data-level="5.7.2" data-path="lime.html"><a href="lime.html#lime-for-text"><i class="fa fa-check"></i><b>5.7.2</b> LIME for Text</a></li>
-<li class="chapter" data-level="5.7.3" data-path="lime.html"><a href="lime.html#images-lime"><i class="fa fa-check"></i><b>5.7.3</b> LIME for Images</a></li>
-<li class="chapter" data-level="5.7.4" data-path="lime.html"><a href="lime.html#advantages-4"><i class="fa fa-check"></i><b>5.7.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.7.5" data-path="lime.html"><a href="lime.html#disadvantages-4"><i class="fa fa-check"></i><b>5.7.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.7.1" data-path="lime.html"><a href="lime.html#表形式データにおける-lime"><i class="fa fa-check"></i><b>5.7.1</b> 表形式データにおける LIME</a></li>
+<li class="chapter" data-level="5.7.2" data-path="lime.html"><a href="lime.html#テキストデータに対するlime"><i class="fa fa-check"></i><b>5.7.2</b> テキストデータに対するLIME</a></li>
+<li class="chapter" data-level="5.7.3" data-path="lime.html"><a href="lime.html#images-lime"><i class="fa fa-check"></i><b>5.7.3</b> 画像データに対するLIME</a></li>
+<li class="chapter" data-level="5.7.4" data-path="lime.html"><a href="lime.html#長所-8"><i class="fa fa-check"></i><b>5.7.4</b> 長所</a></li>
+<li class="chapter" data-level="5.7.5" data-path="lime.html"><a href="lime.html#短所-8"><i class="fa fa-check"></i><b>5.7.5</b> 短所</a></li>
 </ul></li>
 <li class="chapter" data-level="5.8" data-path="anchors.html"><a href="anchors.html"><i class="fa fa-check"></i><b>5.8</b> Scoped Rules (Anchors)</a><ul>
-<li class="chapter" data-level="5.8.1" data-path="anchors.html"><a href="anchors.html#finding-anchors"><i class="fa fa-check"></i><b>5.8.1</b> Finding Anchors</a></li>
-<li class="chapter" data-level="5.8.2" data-path="anchors.html"><a href="anchors.html#complexity-and-runtime"><i class="fa fa-check"></i><b>5.8.2</b> Complexity and Runtime</a></li>
-<li class="chapter" data-level="5.8.3" data-path="anchors.html"><a href="anchors.html#tabular-data-example"><i class="fa fa-check"></i><b>5.8.3</b> Tabular Data Example</a></li>
-<li class="chapter" data-level="5.8.4" data-path="anchors.html"><a href="anchors.html#advantages-5"><i class="fa fa-check"></i><b>5.8.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.8.5" data-path="anchors.html"><a href="anchors.html#disadvantages-5"><i class="fa fa-check"></i><b>5.8.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.8.6" data-path="anchors.html"><a href="anchors.html#software-and-alternatives-1"><i class="fa fa-check"></i><b>5.8.6</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="5.8.1" data-path="anchors.html"><a href="anchors.html#anchor-の発見"><i class="fa fa-check"></i><b>5.8.1</b> Anchor の発見</a></li>
+<li class="chapter" data-level="5.8.2" data-path="anchors.html"><a href="anchors.html#複雑性と実行時間"><i class="fa fa-check"></i><b>5.8.2</b> 複雑性と実行時間</a></li>
+<li class="chapter" data-level="5.8.3" data-path="anchors.html"><a href="anchors.html#表形式データの例"><i class="fa fa-check"></i><b>5.8.3</b> 表形式データの例</a></li>
+<li class="chapter" data-level="5.8.4" data-path="anchors.html"><a href="anchors.html#長所-9"><i class="fa fa-check"></i><b>5.8.4</b> 長所</a></li>
+<li class="chapter" data-level="5.8.5" data-path="anchors.html"><a href="anchors.html#短所-9"><i class="fa fa-check"></i><b>5.8.5</b> 短所</a></li>
+<li class="chapter" data-level="5.8.6" data-path="anchors.html"><a href="anchors.html#ソフトウェアと代替手法-5"><i class="fa fa-check"></i><b>5.8.6</b> ソフトウェアと代替手法</a></li>
 </ul></li>
-<li class="chapter" data-level="5.9" data-path="shapley.html"><a href="shapley.html"><i class="fa fa-check"></i><b>5.9</b> Shapley Values</a><ul>
-<li class="chapter" data-level="5.9.1" data-path="shapley.html"><a href="shapley.html#general-idea"><i class="fa fa-check"></i><b>5.9.1</b> General Idea</a></li>
-<li class="chapter" data-level="5.9.2" data-path="shapley.html"><a href="shapley.html#examples-and-interpretation"><i class="fa fa-check"></i><b>5.9.2</b> Examples and Interpretation</a></li>
-<li class="chapter" data-level="5.9.3" data-path="shapley.html"><a href="shapley.html#the-shapley-value-in-detail"><i class="fa fa-check"></i><b>5.9.3</b> The Shapley Value in Detail</a></li>
-<li class="chapter" data-level="5.9.4" data-path="shapley.html"><a href="shapley.html#advantages-6"><i class="fa fa-check"></i><b>5.9.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.9.5" data-path="shapley.html"><a href="shapley.html#disadvantages-6"><i class="fa fa-check"></i><b>5.9.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.9.6" data-path="shapley.html"><a href="shapley.html#software-and-alternatives-2"><i class="fa fa-check"></i><b>5.9.6</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="5.9" data-path="shapley.html"><a href="shapley.html"><i class="fa fa-check"></i><b>5.9</b> シャープレイ値 (Shapley Values)</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="shapley.html"><a href="shapley.html#一般的なアイデア"><i class="fa fa-check"></i><b>5.9.1</b> 一般的なアイデア</a></li>
+<li class="chapter" data-level="5.9.2" data-path="shapley.html"><a href="shapley.html#例と解釈-1"><i class="fa fa-check"></i><b>5.9.2</b> 例と解釈</a></li>
+<li class="chapter" data-level="5.9.3" data-path="shapley.html"><a href="shapley.html#シャープレイ値の詳細"><i class="fa fa-check"></i><b>5.9.3</b> シャープレイ値の詳細</a></li>
+<li class="chapter" data-level="5.9.4" data-path="shapley.html"><a href="shapley.html#長所-10"><i class="fa fa-check"></i><b>5.9.4</b> 長所</a></li>
+<li class="chapter" data-level="5.9.5" data-path="shapley.html"><a href="shapley.html#短所-10"><i class="fa fa-check"></i><b>5.9.5</b> 短所</a></li>
+<li class="chapter" data-level="5.9.6" data-path="shapley.html"><a href="shapley.html#ソフトウェアと代替手法-6"><i class="fa fa-check"></i><b>5.9.6</b> ソフトウェアと代替手法</a></li>
 </ul></li>
 <li class="chapter" data-level="5.10" data-path="shap.html"><a href="shap.html"><i class="fa fa-check"></i><b>5.10</b> SHAP (SHapley Additive exPlanations)</a><ul>
-<li class="chapter" data-level="5.10.1" data-path="shap.html"><a href="shap.html#definition"><i class="fa fa-check"></i><b>5.10.1</b> Definition</a></li>
+<li class="chapter" data-level="5.10.1" data-path="shap.html"><a href="shap.html#定義"><i class="fa fa-check"></i><b>5.10.1</b> 定義</a></li>
 <li class="chapter" data-level="5.10.2" data-path="shap.html"><a href="shap.html#kernelshap"><i class="fa fa-check"></i><b>5.10.2</b> KernelSHAP</a></li>
 <li class="chapter" data-level="5.10.3" data-path="shap.html"><a href="shap.html#treeshap"><i class="fa fa-check"></i><b>5.10.3</b> TreeSHAP</a></li>
-<li class="chapter" data-level="5.10.4" data-path="shap.html"><a href="shap.html#examples-2"><i class="fa fa-check"></i><b>5.10.4</b> Examples</a></li>
-<li class="chapter" data-level="5.10.5" data-path="shap.html"><a href="shap.html#shap-feature-importance"><i class="fa fa-check"></i><b>5.10.5</b> SHAP Feature Importance</a></li>
+<li class="chapter" data-level="5.10.4" data-path="shap.html"><a href="shap.html#例-12"><i class="fa fa-check"></i><b>5.10.4</b> 例</a></li>
+<li class="chapter" data-level="5.10.5" data-path="shap.html"><a href="shap.html#shap-特徴量重要度-shap-feature-importance"><i class="fa fa-check"></i><b>5.10.5</b> SHAP 特徴量重要度 (SHAP Feature Importance)</a></li>
 <li class="chapter" data-level="5.10.6" data-path="shap.html"><a href="shap.html#shap-summary-plot"><i class="fa fa-check"></i><b>5.10.6</b> SHAP Summary Plot</a></li>
 <li class="chapter" data-level="5.10.7" data-path="shap.html"><a href="shap.html#shap-dependence-plot"><i class="fa fa-check"></i><b>5.10.7</b> SHAP Dependence Plot</a></li>
-<li class="chapter" data-level="5.10.8" data-path="shap.html"><a href="shap.html#shap-interaction-values"><i class="fa fa-check"></i><b>5.10.8</b> SHAP Interaction Values</a></li>
+<li class="chapter" data-level="5.10.8" data-path="shap.html"><a href="shap.html#shap-相互作用値-shap-interaction-values"><i class="fa fa-check"></i><b>5.10.8</b> SHAP 相互作用値 (SHAP Interaction Values)</a></li>
 <li class="chapter" data-level="5.10.9" data-path="shap.html"><a href="shap.html#clustering-shap-values"><i class="fa fa-check"></i><b>5.10.9</b> Clustering SHAP values</a></li>
-<li class="chapter" data-level="5.10.10" data-path="shap.html"><a href="shap.html#advantages-7"><i class="fa fa-check"></i><b>5.10.10</b> Advantages</a></li>
-<li class="chapter" data-level="5.10.11" data-path="shap.html"><a href="shap.html#disadvantages-7"><i class="fa fa-check"></i><b>5.10.11</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.10.12" data-path="shap.html"><a href="shap.html#software-1"><i class="fa fa-check"></i><b>5.10.12</b> Software</a></li>
+<li class="chapter" data-level="5.10.10" data-path="shap.html"><a href="shap.html#長所-11"><i class="fa fa-check"></i><b>5.10.10</b> 長所</a></li>
+<li class="chapter" data-level="5.10.11" data-path="shap.html"><a href="shap.html#短所-11"><i class="fa fa-check"></i><b>5.10.11</b> 短所</a></li>
+<li class="chapter" data-level="5.10.12" data-path="shap.html"><a href="shap.html#ソフトウェア-4"><i class="fa fa-check"></i><b>5.10.12</b> ソフトウェア</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>6</b> Example-Based Explanations</a><ul>
-<li class="chapter" data-level="6.1" data-path="counterfactual.html"><a href="counterfactual.html"><i class="fa fa-check"></i><b>6.1</b> Counterfactual Explanations</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="counterfactual.html"><a href="counterfactual.html#generating-counterfactual-explanations"><i class="fa fa-check"></i><b>6.1.1</b> Generating Counterfactual Explanations</a></li>
-<li class="chapter" data-level="6.1.2" data-path="counterfactual.html"><a href="counterfactual.html#examples-3"><i class="fa fa-check"></i><b>6.1.2</b> Examples</a></li>
-<li class="chapter" data-level="6.1.3" data-path="counterfactual.html"><a href="counterfactual.html#advantages-8"><i class="fa fa-check"></i><b>6.1.3</b> Advantages</a></li>
-<li class="chapter" data-level="6.1.4" data-path="counterfactual.html"><a href="counterfactual.html#disadvantages-8"><i class="fa fa-check"></i><b>6.1.4</b> Disadvantages</a></li>
-<li class="chapter" data-level="6.1.5" data-path="counterfactual.html"><a href="counterfactual.html#example-software"><i class="fa fa-check"></i><b>6.1.5</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="6" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>6</b> 例示に基づいた説明手法</a><ul>
+<li class="chapter" data-level="6.1" data-path="反事実的.html"><a href="反事実的.html"><i class="fa fa-check"></i><b>6.1</b> 反事実的説明 (Counterfactual Explanations)</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="反事実的.html"><a href="反事実的.html#反事実的説明の生成"><i class="fa fa-check"></i><b>6.1.1</b> 反事実的説明の生成</a></li>
+<li class="chapter" data-level="6.1.2" data-path="反事実的.html"><a href="反事実的.html#例-13"><i class="fa fa-check"></i><b>6.1.2</b> 例</a></li>
+<li class="chapter" data-level="6.1.3" data-path="反事実的.html"><a href="反事実的.html#長所-12"><i class="fa fa-check"></i><b>6.1.3</b> 長所</a></li>
+<li class="chapter" data-level="6.1.4" data-path="反事実的.html"><a href="反事実的.html#短所-12"><i class="fa fa-check"></i><b>6.1.4</b> 短所</a></li>
+<li class="chapter" data-level="6.1.5" data-path="反事実的.html"><a href="反事実的.html#ソフトウェアと代替手法-7"><i class="fa fa-check"></i><b>6.1.5</b> ソフトウェアと代替手法</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="adversarial.html"><a href="adversarial.html"><i class="fa fa-check"></i><b>6.2</b> Adversarial Examples</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="adversarial.html"><a href="adversarial.html#methods-and-examples"><i class="fa fa-check"></i><b>6.2.1</b> Methods and Examples</a></li>
-<li class="chapter" data-level="6.2.2" data-path="adversarial.html"><a href="adversarial.html#the-cybersecurity-perspective"><i class="fa fa-check"></i><b>6.2.2</b> The Cybersecurity Perspective</a></li>
+<li class="chapter" data-level="6.2" data-path="adversarial.html"><a href="adversarial.html"><i class="fa fa-check"></i><b>6.2</b> 敵対的サンプル (Adversarial Examples)</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="adversarial.html"><a href="adversarial.html#手法及び例"><i class="fa fa-check"></i><b>6.2.1</b> 手法及び例</a></li>
+<li class="chapter" data-level="6.2.2" data-path="adversarial.html"><a href="adversarial.html#サイバーセキュリティーの観点"><i class="fa fa-check"></i><b>6.2.2</b> サイバーセキュリティーの観点</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="proto.html"><a href="proto.html"><i class="fa fa-check"></i><b>6.3</b> Prototypes and Criticisms</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="proto.html"><a href="proto.html#theory-3"><i class="fa fa-check"></i><b>6.3.1</b> Theory</a></li>
-<li class="chapter" data-level="6.3.2" data-path="proto.html"><a href="proto.html#examples-4"><i class="fa fa-check"></i><b>6.3.2</b> Examples</a></li>
-<li class="chapter" data-level="6.3.3" data-path="proto.html"><a href="proto.html#advantages-9"><i class="fa fa-check"></i><b>6.3.3</b> Advantages</a></li>
-<li class="chapter" data-level="6.3.4" data-path="proto.html"><a href="proto.html#disadvantages-9"><i class="fa fa-check"></i><b>6.3.4</b> Disadvantages</a></li>
-<li class="chapter" data-level="6.3.5" data-path="proto.html"><a href="proto.html#code-and-alternatives"><i class="fa fa-check"></i><b>6.3.5</b> Code and Alternatives</a></li>
+<li class="chapter" data-level="6.3" data-path="proto.html"><a href="proto.html"><i class="fa fa-check"></i><b>6.3</b> prototype と criticism</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="proto.html"><a href="proto.html#理論-5"><i class="fa fa-check"></i><b>6.3.1</b> 理論</a></li>
+<li class="chapter" data-level="6.3.2" data-path="proto.html"><a href="proto.html#例-14"><i class="fa fa-check"></i><b>6.3.2</b> 例</a></li>
+<li class="chapter" data-level="6.3.3" data-path="proto.html"><a href="proto.html#長所-13"><i class="fa fa-check"></i><b>6.3.3</b> 長所</a></li>
+<li class="chapter" data-level="6.3.4" data-path="proto.html"><a href="proto.html#短所-13"><i class="fa fa-check"></i><b>6.3.4</b> 短所</a></li>
+<li class="chapter" data-level="6.3.5" data-path="proto.html"><a href="proto.html#コードと代替手法"><i class="fa fa-check"></i><b>6.3.5</b> コードと代替手法</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="influential.html"><a href="influential.html"><i class="fa fa-check"></i><b>6.4</b> Influential Instances</a><ul>
 <li class="chapter" data-level="6.4.1" data-path="influential.html"><a href="influential.html#deletion-diagnostics"><i class="fa fa-check"></i><b>6.4.1</b> Deletion Diagnostics</a></li>
-<li class="chapter" data-level="6.4.2" data-path="influential.html"><a href="influential.html#influence-functions"><i class="fa fa-check"></i><b>6.4.2</b> Influence Functions</a></li>
-<li class="chapter" data-level="6.4.3" data-path="influential.html"><a href="influential.html#advantages-of-identifying-influential-instances"><i class="fa fa-check"></i><b>6.4.3</b> Advantages of Identifying Influential Instances</a></li>
-<li class="chapter" data-level="6.4.4" data-path="influential.html"><a href="influential.html#disadvantages-of-identifying-influential-instances"><i class="fa fa-check"></i><b>6.4.4</b> Disadvantages of Identifying Influential Instances</a></li>
-<li class="chapter" data-level="6.4.5" data-path="influential.html"><a href="influential.html#software-and-alternatives-3"><i class="fa fa-check"></i><b>6.4.5</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="6.4.2" data-path="influential.html"><a href="influential.html#影響関数-influence-functions"><i class="fa fa-check"></i><b>6.4.2</b> 影響関数 (Influence Functions)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="influential.html"><a href="influential.html#長所-14"><i class="fa fa-check"></i><b>6.4.3</b> 長所</a></li>
+<li class="chapter" data-level="6.4.4" data-path="influential.html"><a href="influential.html#短所-14"><i class="fa fa-check"></i><b>6.4.4</b> 短所</a></li>
+<li class="chapter" data-level="6.4.5" data-path="influential.html"><a href="influential.html#ソフトウェアと代替手法-8"><i class="fa fa-check"></i><b>6.4.5</b> ソフトウェアと代替手法</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="neural-networks.html"><a href="neural-networks.html"><i class="fa fa-check"></i><b>7</b> Neural Network Interpretation</a><ul>
 <li class="chapter" data-level="7.1" data-path="cnn-features.html"><a href="cnn-features.html"><i class="fa fa-check"></i><b>7.1</b> Learned Features</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="cnn-features.html"><a href="cnn-features.html#feature-visualization"><i class="fa fa-check"></i><b>7.1.1</b> Feature Visualization</a></li>
 <li class="chapter" data-level="7.1.2" data-path="cnn-features.html"><a href="cnn-features.html#network-dissection"><i class="fa fa-check"></i><b>7.1.2</b> Network Dissection</a></li>
-<li class="chapter" data-level="7.1.3" data-path="cnn-features.html"><a href="cnn-features.html#advantages-10"><i class="fa fa-check"></i><b>7.1.3</b> Advantages</a></li>
-<li class="chapter" data-level="7.1.4" data-path="cnn-features.html"><a href="cnn-features.html#disadvantages-10"><i class="fa fa-check"></i><b>7.1.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="7.1.3" data-path="cnn-features.html"><a href="cnn-features.html#advantages"><i class="fa fa-check"></i><b>7.1.3</b> Advantages</a></li>
+<li class="chapter" data-level="7.1.4" data-path="cnn-features.html"><a href="cnn-features.html#disadvantages"><i class="fa fa-check"></i><b>7.1.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="7.1.5" data-path="cnn-features.html"><a href="cnn-features.html#software-and-further-material"><i class="fa fa-check"></i><b>7.1.5</b> Software and Further Material</a></li>
 </ul></li>
 </ul></li>
@@ -346,110 +346,384 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="adversarial" class="section level2">
-<h2><span class="header-section-number">6.2</span> Adversarial Examples</h2>
-<p>An adversarial example is an instance with small, intentional feature perturbations that cause a machine learning model to make a false prediction. I recommend reading the chapter about <a href="counterfactual.html#counterfactual">Counterfactual Explanations</a> first, as the concepts are very similar. Adversarial examples are counterfactual examples with the aim to deceive the model, not interpret it.</p>
-<!-- *Keywords: adversarial examples, adversarial machine learning, counterfactuals, evasion attacks, machine learning security* -->
-<p>Why are we interested in adversarial examples? Are they not just curious by-products of machine learning models without practical relevance? The answer is a clear &quot;no&quot;. Adversarial examples make machine learning models vulnerable to attacks, as in the following scenarios.</p>
-<p>A self-driving car crashes into another car because it ignores a stop sign. Someone had placed a picture over the sign, which looks like a stop sign with a little dirt for humans, but was designed to look like a parking prohibition sign for the sign recognition software of the car.</p>
-<p>A spam detector fails to classify an email as spam. The spam mail has been designed to resemble a normal email, but with the intention of cheating the recipient.</p>
-<p>A machine-learning powered scanner scans suitcases for weapons at the airport. A knife was developed to avoid detection by making the system think it is an umbrella.</p>
-<p>Let us take a look at some ways to create adversarial examples.</p>
-<div id="methods-and-examples" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Methods and Examples</h3>
-<p>There are many techniques to create adversarial examples. Most approaches suggest minimizing the distance between the adversarial example and the instance to be manipulated, while shifting the prediction to the desired (adversarial) outcome. Some methods require access to the gradients of the model, which of course only works with gradient based models such as neural networks, other methods only require access to the prediction function, which makes these methods model-agnostic. The methods in this section focus on image classifiers with deep neural networks, as a lot of research is done in this area and the visualization of adversarial images is very educational. Adversarial examples for images are images with intentionally perturbed pixels with the aim to deceive the model during application time. The examples impressively demonstrate how easily deep neural networks for object recognition can be deceived by images that appear harmless to humans. If you have not yet seen these examples, you might be surprised, because the changes in predictions are incomprehensible for a human observer. Adversarial examples are like optical illusions but for machines.</p>
-<p><strong>Something is Wrong With My Dog</strong></p>
-<p>Szegedy et. al (2013)<a href="#fn57" class="footnoteRef" id="fnref57"><sup>57</sup></a> used a gradient based optimization approach in their work &quot;Intriguing Properties of Neural Networks&quot; to find adversarial examples for deep neural networks.</p>
+<h2><span class="header-section-number">6.2</span> 敵対的サンプル (Adversarial Examples)</h2>
+<!--
+## Adversarial Examples {#adversarial}
+-->
+<!--
+An adversarial example is an instance with small, intentional feature perturbations that cause a machine learning model to make a false prediction.
+I recommend reading the chapter about [Counterfactual Explanations](#counterfactual) first, as the concepts are very similar.
+Adversarial examples are counterfactual examples with the aim to deceive the model, not interpret it.
+-->
+<p>敵対的サンプルとは、機械学習モデルに間違った予測をさせる、意図的に小さな摂動を持たせたサンプルのことをいいます。 これは概念的にとても似ているため、<a href="#counterfactual">反事実的説明</a>についてを先に読むことをおすすめします。 敵対的サンプルは、モデルを解釈するためのものではなく、モデルを騙すことを目的とした反事実的説明だといえます。</p>
+<!--
+*Keywords: adversarial examples, adversarial machine learning, counterfactuals, evasion attacks, machine learning security* →
+
+<!--
+Why are we interested in adversarial examples?
+Are they not just curious by-products of machine learning models without practical relevance?
+The answer is a clear "no".
+Adversarial examples make machine learning models vulnerable to attacks, as in the following scenarios.
+-->
+<p>なぜ私たちは敵対的サンプルについて学ぶ必要があるのでしょうか。これらは実用性のない、機械学習のおもしろい副産物なのでしょうか。答えは「NO」です。以下のような場合、機械学習のモデルは敵対的サンプルにより脆弱性を持つことになってしまいます。</p>
+<!--
+A self-driving car crashes into another car because it ignores a stop sign.
+Someone had placed a picture over the sign, which looks like a stop sign with a little dirt for humans, but was designed to look like a parking prohibition sign for the sign recognition software of the car.
+-->
+<p>自動運転の車が「止まれ」の標識を無視したために他の車にぶつかってしまいました。この前、誰かが標識の上に、人間には標識が少し汚れていると感じさせる程度の写真を置いていきました。しかし、車に搭載されていた標識を識別するシステムに対しては「駐車禁止」の標識と判断させるよう作られたものでした。</p>
+<!--
+A spam detector fails to classify an email as spam.
+The spam mail has been designed to resemble a normal email, but with the intention of cheating the recipient.
+-->
+<p>迷惑メールの検出器が、迷惑メールを分類することに失敗しました。迷惑メールはあたかも普通のメールに見えるよう書かれていましたが、受け取った人を騙すような内容が含まれていました。</p>
+<!--
+A machine-learning powered scanner scans suitcases for weapons at the airport.
+A knife was developed to avoid detection by making the system think it is an umbrella.
+-->
+<p>機械学習の機能を搭載したスキャナが空港でスーツケースに入った武器の検出に用いられていました。このシステムに傘だと思わせることで検知を防ぐナイフが開発されてしまいました。</p>
+<!--
+Let us take a look at some ways to create adversarial examples.
+-->
+<p>それでは敵対的サンプルを生成するいくつかの方法を見ていきましょう。</p>
+<div id="手法及び例" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> 手法及び例</h3>
+<!--
+### Methods and Examples
+-->
+<!--
+There are many techniques to create adversarial examples.
+Most approaches suggest minimizing the distance between the adversarial example and the instance to be manipulated, while shifting the prediction to the desired (adversarial) outcome.
+Some methods require access to the gradients of the model, which of course only works with gradient based models such as neural networks, other methods only require access to the prediction function, which makes these methods model-agnostic.
+The methods in this section focus on image classifiers with deep neural networks, as  a lot of research is done in this area and the visualization of adversarial images is very educational.
+Adversarial examples for images are images with intentionally perturbed pixels with the aim to deceive the model during application time.
+The examples impressively demonstrate how easily deep neural networks for object recognition can be deceived by images that appear harmless to humans.
+If you have not yet seen these examples, you might be surprised, because the changes in predictions are incomprehensible for a human observer.
+Adversarial examples are like optical illusions but for machines.
+-->
+<p>敵対的サンプルを生成する手法はいくつか存在します。 多くの手法では、予測が（敵対的な）求める値となり、かつ敵対的サンプルと元のサンプルの距離が最小化されるよう操作します。 手法には、ニューラルネットなど勾配を用いるモデルに対しこの勾配にアクセスする必要があるものや、また、予測関数にアクセスできればよく、モデルに依存せず用いることができるものなどが存在します。 この章では既に研究が多くされており、敵対画像を可視化することで多くの情報が得られる、ニューラルネットワークによる画像分類における手法に焦点を当てて説明します。 画像の敵対的サンプルでは画像の画素に意図的に特定の値を加えることで、実用段階のモデルを騙すことを目的とします。 これらの例からは、物体検知する深層ニューラルネットが人間には何の変哲もないように見える画像からいかに簡単に騙されてしまうかを見てとることができます。 これらの例を見たことがない人は、予測の変化があまりに理解できないものであることに驚くかもしれません。 敵対的サンプルは、機械にとっての目の錯覚のようなものなのです。</p>
+<!--
+**Something is Wrong With My Dog**
+-->
+<p><strong>私の犬の何かがおかしい</strong></p>
+<!--
+Szegedy et. al (2013)[^szegedy] used a gradient based optimization approach in their work "Intriguing Properties of Neural Networks" to find adversarial examples for deep neural networks.
+-->
+<p>Szegedyら（2013）<a href="#fn55" class="footnoteRef" id="fnref55"><sup>55</sup></a>は &quot;Intriguing Properties of Neural Networks&quot; という論文の中で、勾配ベースの最適化手法を用いて深層ニューラルネットの敵対的サンプルを見つけようとしました。</p>
+<!--
+fig.cap = 'Adversarial examples for AlexNet by Szegedy et. al (2013). All images in the left column are correctly classified. The middle column shows the (magnified) error added to the images to produce the images in the right column all categorized (incorrectly) as "Ostrich". "Intriguing properties of neural networks", Figure 5 by Szegedy et. al. CC-BY 3.0.'
+-->
 <div class="figure"><span id="fig:adversarial-ostrich"></span>
-<img src="images/adversarial-ostrich.jpg" alt="Adversarial examples for AlexNet by Szegedy et. al (2013). All images in the left column are correctly classified. The middle column shows the (magnified) error added to the images to produce the images in the right column all categorized (incorrectly) as &quot;Ostrich&quot;. &quot;Intriguing properties of neural networks&quot;, Figure 5 by Szegedy et. al. CC-BY 3.0." width="600" />
+<img src="images/adversarial-ostrich.jpg" alt="Szegedyらの生成したAlexNetにおける敵対的サンプル（2013）。左側の列の画像は全て正しく分類される。真ん中の列は、右側の画像を生成するために画像に加えられた誤差を拡大したものを示しており、右側の画像はすべて「ダチョウ」として間違って分類されてしまう。 （&quot;Intriguing properties of neural networks&quot;, Figure 5 by Szegedy et. al. CC-BY 3.0.）" width="600" />
 <p class="caption">
-FIGURE 6.2: Adversarial examples for AlexNet by Szegedy et. al (2013). All images in the left column are correctly classified. The middle column shows the (magnified) error added to the images to produce the images in the right column all categorized (incorrectly) as &quot;Ostrich&quot;. &quot;Intriguing properties of neural networks&quot;, Figure 5 by Szegedy et. al. CC-BY 3.0.
+FIGURE 6.2: Szegedyらの生成したAlexNetにおける敵対的サンプル（2013）。左側の列の画像は全て正しく分類される。真ん中の列は、右側の画像を生成するために画像に加えられた誤差を拡大したものを示しており、右側の画像はすべて「ダチョウ」として間違って分類されてしまう。 （&quot;Intriguing properties of neural networks&quot;, Figure 5 by Szegedy et. al. CC-BY 3.0.）
 </p>
 </div>
-<p>These adversarial examples were generated by minimizing the following function with respect to r:</p>
+<!--
+These adversarial examples were generated by minimizing the following function with respect to r:
+-->
+<p>これらの敵対的サンプルは次の関数を変数 r に関して最小化することで生成されます。</p>
 <p><span class="math display">\[loss(\hat{f}(x+r),l)+c\cdot|r|\]</span></p>
-<p>In this formula, x is an image (represented as a vector of pixels), r is the changes to the pixels to create an adversarial image (x+r produces a new image), l is the desired outcome class, and the parameter c is used to balance the distance between images and the distance between predictions. The first term is the distance between the predicted outcome of the adversarial example and the desired class l, the second term measures the distance between the adversarial example and the original image. This formulation is almost identical to the loss function to generate <a href="counterfactual.html#counterfactual">counterfactual explanations</a>. There are additional constraints for r so that the pixel values remain between 0 and 1. The authors suggest to solve this optimization problem with a box-constrained L-BFGS, an optimization algorithm that works with gradients.</p>
-<p><strong>Disturbed panda: Fast gradient sign method</strong></p>
-<p>Goodfellow et. al (2014)<a href="#fn58" class="footnoteRef" id="fnref58"><sup>58</sup></a> invented the fast gradient sign method for generating adversarial images. The gradient sign method uses the gradient of the underlying model to find adversarial examples. The original image x is manipulated by adding or subtracting a small error <span class="math inline">\(\epsilon\)</span> to each pixel. Whether we add or subtract <span class="math inline">\(\epsilon\)</span> depends on whether the sign of the gradient for a pixel is positive or negative. Adding errors in the direction of the gradient means that the image is intentionally altered so that the model classification fails.</p>
-<p>The following formula describes the core of the fast gradient sign method:</p>
+<!--
+In this formula, x is an image (represented as a vector of pixels), r is the changes to the pixels to create an adversarial image (x+r produces a new image), l is the desired outcome class, and the parameter c is used to balance the distance between images and the distance between predictions.
+The first term is the distance between the predicted outcome of the adversarial example and the desired class l, the second term measures the distance between the adversarial example and the original image.
+This formulation is almost identical to the loss function to generate [counterfactual explanations](#counterfactual).
+There are additional constraints for r so that the pixel values remain between 0 and 1.
+The authors suggest to solve this optimization problem with a box-constrained L-BFGS, an optimization algorithm that works with gradients.
+-->
+<p>この式では、x は画像を表す画素値のベクトル、r は敵対画像を生成するための画素値の差分（x+r が新しい画像となる）、l は求める結果のクラス、c は画像間及び予測結果間の距離のバランスをとるためのパラメータを表します。 1項目は敵対的サンプルの予測結果と望ましいクラス l との距離であり、2項目は元の画像と敵対的サンプルの画像の距離を示しています。 この定式化は <a href="#counterfactual">反事実的説明</a> を生成するため用いられた損失関数とほぼ同じです。 ただし、こちらでは画素値が0から1の値であるための制約が加えられます。 著者らは、矩形拘束条件を持つ L-BFGS 法という、勾配ベースの最適化アルゴリズムを用いてこの最適化問題を解くことを提案しています。</p>
+<!--
+**Disturbed panda: Fast gradient sign method**
+-->
+<p><strong>Disturbed panda: Fast gradient sign method</strong>。</p>
+<!--
+Goodfellow et. al (2014)[^goodfellow] invented the fast gradient sign method for generating adversarial images.
+The gradient sign method uses the gradient of the underlying model to find adversarial examples.
+The original image x is manipulated by adding or subtracting a small error $\epsilon$ to each pixel.
+Whether we add or subtract $\epsilon$ depends on whether the sign of the gradient for a pixel is positive or negative.
+Adding errors in the direction of the gradient means that the image is intentionally altered so that the model classification fails.
+-->
+<p>Goodfellowら（2014<a href="#fn56" class="footnoteRef" id="fnref56"><sup>56</sup></a>は gradient sign method と呼ばれる敵対的画像を生成するアルゴリズムを開発しました。 この手法は元となるモデルの勾配を用いることで敵対的サンプルを作成します。 元の画像 x は各ピクセルに微小な誤差 <span class="math inline">\(\epsilon\)</span> を加えることで操作され、この誤差 <span class="math inline">\(\epsilon\)</span> の符号は対応するピクセルの勾配の符号により決定されます。 勾配方向に対して誤差を加えることで、モデルが画像を誤認識するよう画像を意図的に変更を加えているのです。</p>
+<!--
+The following formula describes the core of the fast gradient sign method:
+-->
+<p>fast gradient sign method の主な考え方は以下の式のように表されます。</p>
 <p><span class="math display">\[x^\prime=x+\epsilon\cdot{}sign(\bigtriangledown_x{}J(\theta,x,y))\]</span></p>
-<p>where <span class="math inline">\(\bigtriangledown_x{}J\)</span> is the gradient of the models loss function with respect to the original input pixel vector x, y is the true label vector for x and <span class="math inline">\(\theta\)</span> is the model parameter vector. From the gradient vector (which is as long as the vector of the input pixels) we only need the sign: The sign of the gradient is positive (+1) if an increase in pixel intensity increases the loss (the error the model makes) and negative (-1) if a decrease in pixel intensity increases the loss. This vulnerability occurs when a neural network treats a relationship between an input pixel intensity and the class score linearly. In particular, neural network architectures that favor linearity, such as LSTMs, maxout networks, networks with ReLU activation units or other linear machine learning algorithms such as logistic regression are vulnerable to the gradient sign method. The attack is carried out by extrapolation. The linearity between the input pixel intensity and the class scores leads to vulnerability to outliers, i.e. the model can be deceived by moving pixel values into areas outside the data distribution. I expected these adversarial examples to be quite specific to a given neural network architecture. But it turns out that you can reuse adversarial examples to deceive networks with a different architecture trained on the same task.</p>
-<p>Goodfellow et. al (2014) suggested adding adversarial examples to the training data to learn robust models.</p>
-<p><strong>A jellyfish ... No, wait. A bathtub: 1-pixel attacks</strong></p>
-<p>The approach presented by Goodfellow and colleagues (2014) requires many pixels to be changed, if only by a little. But what if you can only change a single pixel? Would you be able to deceive a machine learning model? Su et. al (2019) <a href="#fn59" class="footnoteRef" id="fnref59"><sup>59</sup></a> showed that it is actually possible to deceive image classifiers by changing a single pixel.</p>
+<!--
+where $\bigtriangledown_x{}J$ is the gradient of the models loss function with respect to the original input pixel vector x, y is the true label vector for x and $\theta$ is the model parameter vector.
+From the gradient vector (which is as long as the vector of the input pixels) we only need the sign:
+The sign of the gradient is positive (+1) if an increase in pixel intensity increases the loss (the error the model makes) and negative (-1) if a decrease in pixel intensity increases the loss.
+This vulnerability occurs when a neural network treats a relationship between an input pixel intensity and the class score linearly.
+In particular, neural network architectures that favor linearity, such as LSTMs, maxout networks, networks with ReLU activation units or other linear machine learning algorithms such as logistic regression are vulnerable to the gradient sign method.
+The attack is carried out by extrapolation.
+The linearity between the input pixel intensity and the class scores leads to vulnerability to outliers, i.e. the model can be deceived by moving pixel values into areas outside the data distribution.
+I expected these adversarial examples to be quite specific to a given neural network architecture.
+But it turns out that you can reuse adversarial examples to deceive networks with a different architecture trained on the same task.
+-->
+<p>ここで、<span class="math inline">\(\bigtriangledown_x{}\)</span> は元の入力ベクトル x に対するモデルの損失関数の勾配、y は x のラベルを表すベクトル、<span class="math inline">\(\theta\)</span> はモデルのパラメータのベクトルを表します。 勾配ベクトルは入力画像のベクトルと同じ長さであり、ここではこの符号のみを扱います。 勾配の符号が正ならば、ピクセル値を増加させることでモデルの損失も増加し、負ならばピクセル値を下げることでモデルの損失は増加します。 この脆弱性はニューラルネットワークが入力のピクセル値とクラススコアの関係性を線形に扱う際に起こります。特に、LSTM や maxout network、ReLU を活性化関数とするネットワーク、ロジスティック回帰など、線形性を含む構造はこの手法に対して脆弱性を持ちます。 この攻撃は外挿法により実行されます。 入力画像のピクセル値とクラススコア間の線形性は外れ値に対して脆弱であり、ピクセル値をデータの分布の領域外の値とすることでモデルは騙される場合があります。 これらの敵対的サンプルはニューラルネットワークの構造に対し極めて特異的だと考えられてきましたが、この手法により同じタスクに対し訓練されたネットワークならば敵対的サンプルを使い回すことができることが明らかになりました。</p>
+<!--
+Goodfellow et. al (2014) suggested adding adversarial examples to the training data to learn robust models.
+-->
+<p>Goodfellowら（2014）は敵対的サンプルを学習データに加えることでモデルをより頑健なものとすることを提案しました。</p>
+<!--
+**A jellyfish ... No, wait. A bathtub: 1-pixel attacks**
+-->
+<p><strong>くらげ？バスタブ？: 1-pixel attack</strong>。</p>
+<!--
+The approach presented by Goodfellow and colleagues (2014) requires many pixels to be changed, if only by a little.
+But what if you can only change a single pixel?
+Would you be able to deceive a machine learning model?
+Su et. al (2019) [^1pixel] showed that it is actually possible to deceive image classifiers by changing a single pixel.
+-->
+<p>2014年にGoodfellowとその同僚らにより提案された手法では多くのピクセルの値を僅かに変更する必要がありました。しかし1つのピクセル値しか変えられないとしたらどうでしょうか。モデルを欺くことができるでしょうか。 Suら(2019)<a href="#fn57" class="footnoteRef" id="fnref57"><sup>57</sup></a> は、1つの画素値を変更するだけで画像分類モデルを欺くことが可能であることを示しました。</p>
+<!--
+fig.cap = "By intentionally changing a single pixel a neural network trained on ImageNet can be deceived to predict the wrong class instead of the original class."
+-->
 <div class="figure"><span id="fig:adversarial-1pixel"></span>
-<img src="images/adversarial-1pixel.png" alt="By intentionally changing a single pixel a neural network trained on ImageNet can be deceived to predict the wrong class instead of the original class." width="600" />
+<img src="images/adversarial-1pixel.png" alt="故意に1つのピクセル値を変更することで ImageNet データセットに対して訓練されたニューラルネットは元のクラスではなく誤ったクラスを予測するようになってしまう。" width="600" />
 <p class="caption">
-FIGURE 6.3: By intentionally changing a single pixel a neural network trained on ImageNet can be deceived to predict the wrong class instead of the original class.
+FIGURE 6.3: 故意に1つのピクセル値を変更することで ImageNet データセットに対して訓練されたニューラルネットは元のクラスではなく誤ったクラスを予測するようになってしまう。
 </p>
 </div>
-<p>Similar to counterfactuals, the 1-pixel attack looks for a modified example x' which comes close to the original image x, but changes the prediction to an adversarial outcome. However, the definition of closeness differs: Only a single pixel may change. The 1-pixel attack uses differential evolution to find out which pixel is to be changed and how. Differential evolution is loosely inspired by biological evolution of species. A population of individuals called candidate solutions recombines generation by generation until a solution is found. Each candidate solution encodes a pixel modification and is represented by a vector of five elements: the x- and y-coordinates and the red, green and blue (RGB) values. The search starts with, for example, 400 candidate solutions (= pixel modification suggestions) and creates a new generation of candidate solutions (children) from the parent generation using the following formula:</p>
+<!--
+Similar to counterfactuals, the 1-pixel attack looks for a modified example x' which comes close to the original image x, but changes the prediction to an adversarial outcome.
+However, the definition of closeness differs: Only a single pixel may change.
+The 1-pixel attack uses differential evolution to find out which pixel is to be changed and how.
+Differential evolution is loosely inspired by biological evolution of species.
+A population of individuals called candidate solutions recombines generation by generation until a solution is found.
+Each candidate solution encodes a pixel modification and is represented by a vector of five elements: the x- and y-coordinates and the red, green and blue (RGB) values.
+The search starts with, for example, 400 candidate solutions (= pixel modification suggestions) and creates a new generation of candidate solutions (children) from the parent generation using the following formula:
+-->
+<p>反事実的説明と同様に、1-pixel attack は元画像 x に近いサンプル x’ を探し変更を加えますが、予測を敵対的な結果へと導きます。ただし、距離の近さの定義は異なり、1ピクセルのみ変えることが許可されます。1-pixel attack は差分進化を用いることで、どのピクセルをどのように変更すべきかを探索します。差分進化は生物学における種の進化を元に作られた手法で、候補解と呼ばれる個体群を反復的に組み替えて行くことで解を探索します。それぞれの候補解はピクセル値の変更を表現したものであり、xy座標及び赤、青、緑のrgb値の5つの要素により表されます。探索は、例として400の候補解（ピクセル値の変更案）から始まり、次の式を用いて新しい世代の候補解が作成されます。</p>
 <p><span class="math display">\[x_{i}(g+1)=x_{r1}(g)+F\cdot(x_{r2}(g)-x_{r3}(g))\]</span></p>
-<p>where each <span class="math inline">\(x_i\)</span> is an element of a candidate solution (either x-coordinate, y-coordinate, red, green or blue), g is the current generation, F is a scaling parameter (set to 0.5) and r1, r2 and r3 are different random numbers. Each new child candidate solution is in turn a pixel with the five attributes for location and color and each of those attributes is a mixture of three random parent pixels.</p>
-<p>The creation of children is stopped if one of the candidate solutions is an adversarial example, meaning it is classified as an incorrect class, or if the number of maximum iterations specified by the user is reached.</p>
-<p><strong>Everything is a toaster: Adversarial patch</strong></p>
-<p>One of my favorite methods brings adversarial examples into physical reality. Brown et. al (2017)<a href="#fn60" class="footnoteRef" id="fnref60"><sup>60</sup></a> designed a printable label that can be stuck next to objects to make them look like toasters for an image classifier. Brilliant work!</p>
+<!--
+where each $x_i$ is an element of a candidate solution (either x-coordinate, y-coordinate, red, green or blue), g is the current generation, F is a scaling parameter (set to 0.5) and r1, r2 and r3 are different random numbers.
+Each new child candidate solution is in turn a pixel with the five attributes for location and color and each of those attributes is a mixture of three random parent pixels.
+-->
+<p>ここで、それぞれの <span class="math inline">\(x_i\)</span> は候補解の要素（x座標、y座標、赤、緑、青）、g は現在の世代、F はスケーリング用パラメータ（0.5に設定）、r1、r2、r3 は異なる乱数を表します。 それぞれの新しい子の候補解は順に位置及び色の5つの特性をもつ1つのピクセルであり、これらの特性はランダムに選ばれた3つ親ピクセルの特性を混ぜ合わせたものとなります。</p>
+<!--
+The creation of children is stopped if one of the candidate solutions is an adversarial example, meaning it is classified as an incorrect class, or if the number of maximum iterations specified by the user is reached.
+-->
+<p>1つの候補解が敵対的サンプルとして、すなわち誤ったクラスに分類された場合、もしくは反復回数がユーザが指定する最大値に達した場合、子の生成は終了します。</p>
+<!--
+**Everything is a toaster: Adversarial patch**
+-->
+<p><strong>全部トースター: 敵対的パッチ</strong>。</p>
+<!--
+One of my favorite methods brings adversarial examples into physical reality.
+Brown et. al (2017)[^toaster] designed a printable label that can be stuck next to objects to make them look like toasters for an image classifier.
+Brilliant work!
+-->
+<p>私が最も好きな手法の１つに、敵対的サンプルを現実世界へと拡張させるものがあります。ブラウンらは2017年、物体の横に貼り付けることで画像分類器にトースターと認識させる、印刷可能なラベルを開発しました。</p>
+<!--
+fig.cap = "A sticker that makes a VGG16 classifier trained on ImageNet categorize an image of a banana as a toaster. Work by Brown et. al (2017)."
+-->
 <div class="figure"><span id="fig:adversarial-toaster"></span>
-<img src="images/adversarial-toaster.png" alt="A sticker that makes a VGG16 classifier trained on ImageNet categorize an image of a banana as a toaster. Work by Brown et. al (2017)." width="600" />
+<img src="images/adversarial-toaster.png" alt="ImageNet 上で訓練された VGG16 分類器にバナナの画像をトースターと分類させるステッカー。Brown et. al (2017)" width="600" />
 <p class="caption">
-FIGURE 6.4: A sticker that makes a VGG16 classifier trained on ImageNet categorize an image of a banana as a toaster. Work by Brown et. al (2017).
+FIGURE 6.4: ImageNet 上で訓練された VGG16 分類器にバナナの画像をトースターと分類させるステッカー。Brown et. al (2017)
 </p>
 </div>
-<p>This method differs from the methods presented so far for adversarial examples, since the restriction that the adversarial image must be very close to the original image is removed. Instead, the method completely replaces a part of the image with a patch that can take on any shape. The image of the patch is optimized over different background images, with different positions of the patch on the images, sometimes moved, sometimes larger or smaller and rotated, so that the patch works in many situations. In the end, this optimized image can be printed and used to deceive image classifiers in the wild.</p>
-<p><strong>Never bring a 3D-printed turtle to a gunfight -- even if your computer thinks it is a good idea: Robust adversarial examples</strong></p>
-<p>The next method is literally adding another dimension to the toaster: Athalye et. al (2017)<a href="#fn61" class="footnoteRef" id="fnref61"><sup>61</sup></a> 3D-printed a turtle that was designed to look like a rifle to a deep neural network from almost all possible angles. Yeah, you read that right. A physical object that looks like a turtle to humans looks like a rifle to the computer!</p>
+<!--
+This method differs from the methods presented so far for adversarial examples, since the restriction that the adversarial image must be very close to the original image is removed.
+Instead, the method completely replaces a part of the image with a patch that can take on any shape.
+The image of the patch is optimized over different background images, with different positions of the patch on the images, sometimes moved, sometimes larger or smaller and rotated, so that the patch works in many situations.
+In the end, this optimized image can be printed and used to deceive image classifiers in the wild.
+-->
+<p>この手法では、敵対的サンプルは元の画像とほぼ同じものである必要があるという制約が取り除かれている点で、これまでに紹介した敵対的サンプルの例とは異なっています。その代わり、この手法では画像の一部が任意の形を取ることのできるパッチによって完全に置き換えられます。パッチは多くの状況で機能するよう、画像に対するパッチの位置を変えながら、また時には大きさを変えたり回転させながら、異なる背景画像に対し最適化されます。最終的には最適化された画像は印刷され、様々な画像分類器を誤認識させるのに用いることができるようになります。</p>
+<!--
+**Never bring a 3D-printed turtle to a gunfight -- even if your computer thinks it is a good idea: Robust adversarial examples**
+-->
+<p><strong>3Dプリンタで作った亀を銃撃戦に持ち込むな。たとえコンピュータがそれを良いアイディアだと思ったとしても: 頑健な敵対的サンプル</strong></p>
+<!--
+The next method is literally adding another dimension to the toaster:
+Athalye et. al (2017)[^turtle] 3D-printed a turtle that was designed to look like a rifle to a deep neural network from almost all possible angles.
+Yeah, you read that right.
+A physical object that looks like a turtle to humans looks like a rifle to the computer!
+-->
+<p>次の方法は文字通り、トースターに別の次元を足すものです。 Athalye ら(2017)<a href="#fn58" class="footnoteRef" id="fnref58"><sup>58</sup></a>はディープニューラルネットワークにとってどう見てもライフルとしか認識できない亀を3Dプリンタを用いて作成しました。 人にとって亀に見える物質がコンピューターにとってはライフルに見えてしまうのです。</p>
+<!--
+fig.cap = "Athalye et. al (2017) created a 3D-printed that is recognized as a rifle by TensorFlow’s standard pre-trained InceptionV3 classifier."
+-->
 <div class="figure"><span id="fig:adversarial-turtle"></span>
-<img src="images/adversarial-turtle.png" alt="Athalye et. al (2017) created a 3D-printed that is recognized as a rifle by TensorFlow’s standard pre-trained InceptionV3 classifier." width="600" />
+<img src="images/adversarial-turtle.png" alt="Athalye ら(2017)は、TensorFlow の標準的な訓練済み InceptionV3 分類器にとってはライフルにしか見えない亀を3Dプリンタで作成した。" width="600" />
 <p class="caption">
-FIGURE 6.5: Athalye et. al (2017) created a 3D-printed that is recognized as a rifle by TensorFlow’s standard pre-trained InceptionV3 classifier.
+FIGURE 6.5: Athalye ら(2017)は、TensorFlow の標準的な訓練済み InceptionV3 分類器にとってはライフルにしか見えない亀を3Dプリンタで作成した。
 </p>
 </div>
-<p>The authors have found a way to create an adversarial example in 3D for a 2D classifier that is adversarial over transformations, such as all possibilities to rotate the turtle, zoom in and so on. Other approaches such as the fast gradient method no longer work when the image is rotated or viewing angle changes. Athalye et. al (2017) propose the Expectation Over Transformation (EOT) algorithm, which is a method for generating adversarial examples that even work when the image is transformed. The main idea behind EOT is to optimize adversarial examples across many possible transformations. Instead of minimizing the distance between the adversarial example and the original image, EOT keeps the expected distance between the two below a certain threshold, given a selected distribution of possible transformations. The expected distance under transformation can be written as:</p>
+<!--
+The authors have found a way to create an adversarial example in 3D for a 2D classifier that is adversarial over transformations, such as all possibilities to rotate the turtle, zoom in and so on.
+Other approaches such as the fast gradient method no longer work when the image is rotated or viewing angle changes.
+Athalye et. al (2017) propose the Expectation Over Transformation (EOT) algorithm, which is a method for generating adversarial examples that even work when the image is transformed.
+The main idea behind EOT is to optimize adversarial examples across many possible transformations.
+Instead of minimizing the distance between the adversarial example and the original image, EOT keeps the expected distance between the two below a certain threshold, given a selected distribution of possible transformations.
+The expected distance under transformation can be written as:
+-->
+<p>著者らが用意した3次元的な敵対的サンプルは、画像に回転や拡大など、どんな変形を加えても、2次元画像の分類器を欺くことに成功しました。 Fast gradient法など、他の方法は画像の回転や角度の変更に対応できません。 Athalye et. al (2017)は画像の変形に頑健な Expectation Over Transformation (EOT)アルゴリズムを提案しました。 EOTはさまざまな変形に対して敵対的サンプルを最適化するというアイディアに基いています。 オリジナル画像と敵対的サンプルの距離を最小化する代わりに、EOTは様々な方法でオリジナル画像を変形した時に距離の期待値が閾値以下になるよう調整します。 変形に伴う距離の期待値は以下のように記述できます。</p>
 <p><span class="math display">\[\mathbb{E}_{t\sim{}T}[d(t(x^\prime),t(x))]\]</span></p>
-<p>where x is the original image, t(x) the transformed image (e.g. rotated), x' the adversarial example and t(x') its transformed version. Apart from working with a distribution of transformations, the EOT method follows the familiar pattern of framing the search for adversarial examples as an optimization problem. We try to find an adversarial example x' that maximizes the probability for the selected class <span class="math inline">\(y_t\)</span> (e.g. &quot;rifle&quot;) across the distribution of possible transformations T:</p>
+<!--
+where x is the original image, t(x) the transformed image (e.g. rotated), x' the adversarial example and t(x') its transformed version.
+Apart from working with a distribution of transformations, the EOT method follows the familiar pattern of framing the search for adversarial examples as an optimization problem.
+We try to find an adversarial example x' that maximizes the probability for the selected class $y_t$ (e.g. "rifle") across the distribution of possible transformations T:
+-->
+<p>ここで、<span class="math inline">\(x\)</span> はオリジナル画像、<span class="math inline">\(t(x)\)</span> は変形した画像（たとえば回転）、<span class="math inline">\(x&#39;\)</span> は敵対的サンプル、<span class="math inline">\(t(x&#39;)\)</span> は変形した敵対的サンプルです。 様々な変形に加えて、EOT 法は敵対的サンプルの探索を最適化問題として扱うために、familiar pattern of framing the search を用います。 次の確率を最大化することで、変形に対して、 例えばライフルなどの選択したクラス <span class="math inline">\(y_t\)</span> と見なす敵対的サンプル <span class="math inline">\(x&#39;\)</span> を見つけます。</p>
 <p><span class="math display">\[\arg\max_{x^\prime}\mathbb{E}_{t\sim{}T}[log{}P(y_t|t(x^\prime))]\]</span></p>
-<p>With the constraint that the expected distance over all possible transformations between adversarial example x' and original image x remains below a certain threshold:</p>
+<!--
+With the constraint that the expected distance over all possible transformations between adversarial example x' and original image x remains below a certain threshold:
+-->
+<p>さらに、オリジナル画像 x と敵対的サンプル x' の距離の期待値が次のようにある閾値以下になるよう制約をつけます。</p>
 <p><span class="math display">\[\mathbb{E}_{t\sim{}T}[d(t(x^\prime),t(x))]&lt;\epsilon\quad\text{and}\quad{}x\in[0,1]^d\]</span></p>
-<p>I think we should be concerned about the possibilities this method enables. The other methods are based on the manipulation of digital images. However, these 3D-printed, robust adversarial examples can be inserted into any real scene and deceive a computer to wrongly classify an object. Let us turn it around: What if someone creates a rifle which looks like a turtle?</p>
-<p><strong>The blindfolded adversary: Black box attack</strong></p>
-<p>Imagine the following scenario: I give you access to my great image classifier via Web API. You can get predictions from the model, but you do not have access to the model parameters. From the convenience of your couch, you can send data and my service answers with the corresponding classifications. Most adversarial attacks are not designed to work in this scenario because they require access to the gradient of the underlying deep neural network to find adversarial examples. Papernot and colleagues (2017)<a href="#fn62" class="footnoteRef" id="fnref62"><sup>62</sup></a> showed that it is possible to create adversarial examples without internal model information and without access to the training data. This type of (almost) zero-knowledge attack is called black box attack.</p>
-<p>How it works:</p>
+<!--
+I think we should be concerned about the possibilities this method enables.
+The other methods are based on the manipulation of digital images.
+However, these 3D-printed, robust adversarial examples can be inserted into any real  scene and deceive a computer to wrongly classify an object.
+Let us turn it around: What if someone creates a rifle which looks like a turtle?
+-->
+<p>この方法の実現可能性について少し考えておきましょう。 他の手法はデジタル画像を操作します。 一方で、3次元に出力した頑健な敵対的サンプルは現実に登場し、コンピューターによる物体認識を阻害します。 言い方を変えてみましょう。 誰かが亀にしか見えないライフルを作ったらどうしますか。</p>
+<!--
+**The blindfolded adversary: Black box attack**
+-->
+<p><strong>目隠しされた敵：ブラックボックスアタック</strong>。</p>
+<!--
+Imagine the following scenario:
+I give you access to my great image classifier via Web API.
+You can get predictions from the model, but you do not have access to the model parameters.
+From the convenience of your couch, you can send data and my service answers with the corresponding classifications.
+Most adversarial attacks are not designed to work in this scenario because they require access to the gradient of the underlying deep neural network to find adversarial examples.
+Papernot and colleagues (2017)[^papernot] showed that it is possible to create adversarial examples without internal model information and without access to the training data.
+This type of (almost) zero-knowledge attack is called black box attack.
+-->
+<p>以下のような状況を考えてみましょう。 あなたは Web API を通して優れた画像分類器に対してアクセスできるようになりました。 ただしモデルからの予測を得ることはできますが、モデルのパラメータに対してはアクセスできません。 ソファに寝そべっていても、データを送信すればこのサービスはそのデータに対応する分類結果を送り返してくれます。 多くの敵対的手法では、敵対的サンプルの生成に元となる深層ニューラルネットワークの勾配を用いるため、このような状況には用いることができません。 Papernot と彼の同僚<a href="#fn59" class="footnoteRef" id="fnref59"><sup>59</sup></a>は2017年、モデルに関する情報や学習データを用いることなく敵対的サンプルを生成できることを示しました。この種の、（ほぼ）前提知識を必要としない攻撃手法はブラックボックスアタックと呼ばれます。</p>
+<!--
+How it works:
+-->
+<p>どのように動くかを以下に示します。</p>
+<!--
+1. Start with a few images that come from the same domain as the training data, e.g. if the classifier to be attacked is a digit classifier, use images of digits. The knowledge of the domain is required, but not the access to the training data.
+1. Get predictions for the current set of images from the black box.
+1. Train a surrogate model on the current set of images (for example a neural network).
+1. Create a new set of synthetic images using a heuristic that examines for the current set of images in which direction to manipulate the pixels to make the model output have more variance.
+1. Repeat steps 2 to 4 for a predefined number of epochs.
+1. Create adversarial examples for the surrogate model using the fast gradient method (or similar).
+1. Attack the original model with adversarial examples.
+-->
 <ol style="list-style-type: decimal">
-<li>Start with a few images that come from the same domain as the training data, e.g. if the classifier to be attacked is a digit classifier, use images of digits. The knowledge of the domain is required, but not the access to the training data.</li>
-<li>Get predictions for the current set of images from the black box.</li>
-<li>Train a surrogate model on the current set of images (for example a neural network).</li>
-<li>Create a new set of synthetic images using a heuristic that examines for the current set of images in which direction to manipulate the pixels to make the model output have more variance.</li>
-<li>Repeat steps 2 to 4 for a predefined number of epochs.</li>
-<li>Create adversarial examples for the surrogate model using the fast gradient method (or similar).</li>
-<li>Attack the original model with adversarial examples.</li>
+<li>学習データと同じ分野に属する画像を何枚か用意します。例として攻撃する分類器が数字の分類するものである場合、数字の画像を用います。その分野への知識は必要ですが、学習データへアクセスする必要はありません。</li>
+<li>ブラックボックスから準備した画像に対する予測結果を取得します。</li>
+<li>これらの画像に対するサロゲートモデル（ニューラルネットワークなど）を訓練します。</li>
+<li>現在の画像セットについて、モデルの出力の分散が大きくなるようなピクセル値の操作を探索するヒューリスティックを用い、新しく合成画像のデータセットを作成します。</li>
+<li>事前に定めたエポック数だけ2から4のステップを繰り返します。</li>
+<li>Fast Gradient Method などを用いてサロゲートモデルに対して敵対的サンプルを生成します。</li>
+<li>これらの敵対的サンプルを用いて元のモデルを攻撃します。</li>
 </ol>
-<p>The aim of the surrogate model is to approximate the decision boundaries of the black box model, but not necessarily to achieve the same accuracy.</p>
-<p>The authors tested this approach by attacking image classifiers trained on various cloud machine learning services. These services train image classifiers on user uploaded images and labels. The software trains the model automatically -- sometimes with an algorithm unknown to the user -- and deploys it. The classifier then gives predictions for uploaded images, but the model itself cannot be inspected or downloaded. The authors were able to find adversarial examples for various providers, with up to 84% of the adversarial examples being misclassified.</p>
-<p>The method even works if the black box model to be deceived is not a neural network. This includes machine learning models without gradients such as a decision trees.</p>
+<!--
+The aim of the surrogate model is to approximate the decision boundaries of the black box model, but not necessarily to achieve the same accuracy.
+-->
+<p>サロゲートモデルの目的はブラックボックスモデルの決定境界を推定することであり、同等の精度を求める必要はありません。</p>
+<!--
+The authors tested this approach by attacking image classifiers trained on various cloud machine learning services.
+These services train image classifiers on user uploaded images and labels.
+The software trains the model automatically -- sometimes with an algorithm unknown to the user -- and deploys it.
+The classifier then gives predictions for uploaded images, but the model itself cannot be inspected or downloaded.
+The authors were able to find adversarial examples for various providers, with up to 84% of the adversarial examples being misclassified.
+-->
+<p>著者はクラウド上の機械学習サービス上で学習させた画像分類器に対し攻撃を仕掛けることでこの手法をテストしました。これらの画像分類器はユーザがアップロードした画像とラベルを用いて学習をします。ソフトウェアは、時にはユーザの知らないアルゴリズムを用いてモデルを自動的に学習させ、デプロイします。その後分類器はアップロードされる画像に対し予測を出力しますが、モデル自体は中身を見たりダウンロードできません。著者らは多くのプロバイダに対して敵対的サンプルを生成することに成功し、最大 84% もの敵対的サンプルが誤認識されました。</p>
+<!--
+The method even works if the black box model to be deceived is not a neural network.
+This includes machine learning models without gradients such as a decision trees.
+-->
+<p>この手法は攻撃するモデルがニューラルネットワーク出ない場合でも動作します。これには決定木のような勾配を用いない学習モデルも含まれます。</p>
+<!--
+### The Cybersecurity Perspective
+-->
 </div>
-<div id="the-cybersecurity-perspective" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> The Cybersecurity Perspective</h3>
-<p>Machine learning deals with known unknowns: predicting unknown data points from a known distribution. The defense against attacks deals with unknown unknowns: robustly predicting unknown data points from an unknown distribution of adversarial inputs. As machine learning is integrated into more and more systems, such as autonomous vehicles or medical devices, they are also becoming entry points for attacks. Even if the predictions of a machine learning model on a test dataset are 100% correct, adversarial examples can be found to deceive the model. The defense of machine learning models against cyber attacks is a new part of the field of cybersecurity.</p>
-<p>Biggio et. al (2018)<a href="#fn63" class="footnoteRef" id="fnref63"><sup>63</sup></a> give a nice review of ten years of research on adversarial machine learning, on which this section is based. Cybersecurity is an arms-race in which attackers and defenders outwit each other time and again.</p>
-<p><strong>There are three golden rules in cybersecurity: 1) know your adversary 2) be proactive and 3) protect yourself.</strong></p>
-<p>Different applications have different adversaries. People who try to defraud other people via email for their money are adversary agents of users and providers of email services. The providers want to protect their users, so that they can continue using their mail program, the attackers want to get people to give them money. Knowing your adversaries means knowing their goals. Assuming you do not know that these spammers exist and the only abuse of the email service is sending pirated copies of music, then the defense would be different (e.g. scanning the attachments for copyrighted material instead of analyzing the text for spam indicators).</p>
-<p>Being proactive means actively testing and identifying weak points of the system. You are proactive when you actively try to deceive the model with adversarial examples and then defend against them. Using interpretation methods to understand which features are important and how features affect the prediction is also a proactive step in understanding the weaknesses of a machine learning model. As the data scientist, do you trust your model in this dangerous world without ever having looked beyond the predictive power on a test dataset? Have you analyzed how the model behaves in different scenarios, identified the most important inputs, checked the prediction explanations for some examples? Have you tried to find adversarial inputs? The interpretability of machine learning models plays a major role in cybersecurity. Being reactive, the opposite of proactive, means waiting until the system has been attacked and only then understanding the problem and installing some defensive measures.</p>
-<p>How can we protect our machine learning systems against adversarial examples? A proactive approach is the iterative retraining of the classifier with adversarial examples, also called adversarial training. Other approaches are based on game theory, such as learning invariant transformations of the features or robust optimization (regularization). Another proposed method is to use multiple classifiers instead of just one and have them vote the prediction (ensemble), but that has no guarantee to work, since they could all suffer from similar adversarial examples. Another approach that does not work well either is gradient masking, which constructs a model without useful gradients by using a nearest neighbor classifier instead of the original model.</p>
-<p>We can distinguish types of attacks by how much an attacker knows about the system. The attackers may have perfect knowledge (white box attack), meaning they know everything about the model like the type of model, the parameters and the training data; the attackers may have partial knowledge (gray box attack), meaning they might only know the feature representation and the type of model that was used, but have no access to the training data or the parameters; the attackers may have zero knowledge (black box attack), meaning they can only query the model in a black box manner but have no access to the training data or information about the model parameters. Depending on the level of information, the attackers can use different techniques to attack the model. As we have seen in the examples, even in the black box case adversarial examples can be created, so that hiding information about data and model is not sufficient to protect against attacks.</p>
-<p>Given the nature of the cat-and-mouse game between attackers and defenders, we will see a lot of development and innovation in this area. Just think of the many different types of spam emails that are constantly evolving. New methods of attacks against machine learning models are invented and new defensive measures are proposed against these new attacks. More powerful attacks are developed to evade the latest defenses and so on, ad infinitum. With this chapter I hope to sensitize you to the problem of adversarial examples and that only by proactively studying the machine learning models are we able to discover and remedy weaknesses.</p>
+<div id="サイバーセキュリティーの観点" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> サイバーセキュリティーの観点</h3>
+<!--
+Machine learning deals with known unknowns: predicting unknown data points from a known distribution.
+The defense against attacks deals with unknown unknowns: robustly predicting unknown data points from an unknown distribution of adversarial inputs.
+As machine learning is integrated into more and more systems, such as autonomous vehicles or medical devices, they are also becoming entry points for attacks.
+Even if the predictions of a machine learning model on a test dataset are 100% correct,  adversarial examples can be found to deceive the model.
+The defense of machine learning models against cyber attacks is a new part of the field of cybersecurity.
+-->
+<p>機械学習は既知の分布から未知のデータ点を予測するという既知の未知を扱うものです。 攻撃に対する防御は未知の未知を扱います。敵対的な入力の未知の分布からの未知のデータを頑健に予測します。 機械学習が自動運転車や医療機器などの多くのシステムに適用されるにつれて、それらはサイバー攻撃の入り口にもなりつつあります。 テストデータセットでの機械学習モデルの予測が 100% 正しい場合でさえ、モデルを騙すための敵対的な例を見つけることができます。 サイバー攻撃から機械学習モデルを守ることは、新しいサイバーセキュリティーの一分野となっています。</p>
+<!--
+Biggio et. al (2018)[^adversarial] give a nice review of ten years of research on adversarial machine learning, on which this section is based.
+Cybersecurity is an arms-race in which attackers and defenders outwit each other time and again.
+-->
+<p>Biggio ら(2018)<a href="#fn60" class="footnoteRef" id="fnref60"><sup>60</sup></a>は、この10年の敵対的機械学習に関する研究の優れたレビューをしています。 サイバーセキュリティーは攻撃者と防御者が何度も互いを出し抜く軍拡競争です。</p>
+<!--
+**There are three golden rules in cybersecurity: 1) know your adversary 2) be proactive and 3) protect yourself.**
+-->
+<p><strong>サイバーセキュリティーには3つの黄金則があります。1)敵を知れ 2)プロアクティブであれ 3)自分自身を守れ　です</strong>。</p>
+<!--
+Different applications have different adversaries.
+People who try to defraud other people via email for their money are adversary agents of users and providers of email services.
+The providers want to protect their users, so that they can continue using their mail program, the attackers want to get people to give them money.
+-->
+<p>分野が違えば、敵も異なります。 お金目当てに電子メールを使って詐欺する人々は、メールサービス利用者と電子メールサービスのプロバイダの敵です。 ユーザがメールシステムを使い続けてくれるように、プロバイダはユーザを保護したいと考える一方で、攻撃者はユーザーからお金を奪いたいと考えます。</p>
+<!--
+Knowing your adversaries means knowing their goals.
+Assuming you do not know that these spammers exist and the only abuse of the email service is sending pirated copies of music, then the defense would be different (e.g. scanning the attachments for copyrighted material instead of analyzing the text for spam indicators).
+-->
+<p>敵を知ることは、その人たちの目標を知ることを意味します。 これらのスパマー (spammers) がいることが知らず、電子メールサービスの悪用法が音楽の海賊版の送信だけであると仮定すると、防御は異なったものになります。（例えば、スパムを判定するために文章を分析する代わりに、著作権で保護された添付ファイルをスキャンします。)</p>
+<!--
+Being proactive means actively testing and identifying weak points of the system.
+You are proactive when you actively try to deceive the model with adversarial examples and then defend against them.
+Using interpretation methods to understand which features are important and how features affect the prediction is also a proactive step in understanding the weaknesses of a machine learning model.
+-->
+<p>プロアクティブであるということは、システムの弱点を進んでテストして特定することを意味します。 敵対的な例を用いて、積極的にモデルを騙し、さらにそれらを防ごうと試みる時、プロアクティブだと言えるでしょう。 解釈可能なモデルを用いてどの特徴量が重要であるかや、どのように予測に影響しているかを理解しようとすることもまた、機械学習モデルの弱点を知るためのプロアクティブなステップです。</p>
+<!--
+As the data scientist, do you trust your model in this dangerous world without ever having looked beyond the predictive power on a test dataset?
+Have you analyzed how the model behaves in different scenarios, identified the most important inputs, checked the prediction explanations for some examples?
+Have you tried to find adversarial inputs?
+The interpretability of machine learning models plays a major role in cybersecurity.
+Being reactive, the opposite of proactive, means waiting until the system has been attacked and only then understanding the problem and installing some defensive measures.
+-->
+<p>データサイエンティストとして、この危険な世界においてテストデータセットにおけるモデルの予測能力を超えて試すこと無しにモデルを信用できますか。 異なったシナリオ下でモデルがどのように振る舞うか分析し、最も重要な入力を特定し、複数の例で予測の説明性を試しましたか。 敵対的な入力を見つけようとしたことがありますか。 機械学習モデルの解釈可能性はサイバーセキュリティーにおいて大きな役割を果たします。 プロアクティブと反対に、リアクティブであるということは、システムが攻撃されるまで何も策を講じず、攻撃されて初めて問題点を認識し守るための指標を取り入れることを意味します。</p>
+<!--
+How can we protect our machine learning systems against adversarial examples?
+A proactive approach is the iterative retraining of the classifier with adversarial examples, also called adversarial training.
+Other approaches are based on game theory, such as learning invariant transformations of the features or robust optimization (regularization).
+-->
+<p>どうすれば敵対的サンプルから自分の機械学習モデルのシステムを守ることができるでしょうか。 プロアクティブなアプローチとしては敵対的サンプルを用いたクラス分類の反復学習が挙げられます。これは敵対的学習とも呼ばれます。 他のアプローチとしては、ゲーム理論に基づいた方法で、特徴量の不変変換学習やロバスト最適化（正則化）なども存在します。</p>
+<!--
+Another proposed method is to use multiple classifiers instead of just one and have them vote the prediction (ensemble), but that has no guarantee to work, since they could all suffer from similar adversarial examples.
+Another approach that does not work well either is gradient masking, which constructs a model without useful gradients by using a nearest neighbor classifier instead of the original model.
+-->
+<p>他には、単一ではなく複数の分類器を用いて予測を投票（アンサンブル）で決定する手法も挙げられますが、全ての分類器が同様な敵対的サンプルに苦しむ可能性があるため、正しく機能する保証はありません。 さらに別のアプローチとしては、元のモデルの代わりに最も近い分類器を使うことで有用な勾配を用いないモデルを構成する、勾配マスキングもありますが、これもまた上手く機能しません。</p>
+<!--
+We can distinguish types of attacks by how much an attacker knows about the system.
+The attackers may have perfect knowledge (white box attack), meaning they know everything about the model like the type of model, the parameters and the training data;
+the attackers may have partial knowledge (gray box attack), meaning they might only know the feature representation and the type of model that was used, but have no access to the training data or the parameters;
+the attackers may have zero knowledge (black box attack), meaning they can only query the model in a black box manner but have no access to the training data or information about the model parameters.
+-->
+<p>攻撃者のシステムに対する理解度に応じて、攻撃の種類を区別できます。 まず、攻撃者が完璧な知識、つまりモデルの種類、パラメータ、学習データの情報を持っているパターン(white box attack)があります。 次に、攻撃者が部分的な情報しか持っていないパターン(gray box attack)があります。攻撃者が使用された特徴量の代表的なものと、モデルの種類しか知らず、学習データやパラメータにはアクセスできない場合がそれにあたります。 最後に、攻撃者が何の知識も持っていないパターン(black box attack)があります。この場合、攻撃者はブラックボックスなモデルから結果を取り出すことだけが出来て、学習データやモデルパラメータについての情報にはアクセス出来ません。</p>
+<!--
+Depending on the level of information, the attackers can use different techniques to attack the model.
+As we have seen in the examples, even in the black box case adversarial examples can  be created, so that hiding information about data and model is not sufficient to protect against attacks.
+-->
+<p>モデルを攻撃するため、敵は情報の程度に応じて異なるテクニックを用います。 例で見たように、ブラックボックスの場合でさえ敵対的サンプルを生成できるため、データやモデルの情報を隠すことは攻撃から身を守るために効果的ではありません。</p>
+<!--
+Given the nature of the cat-and-mouse game between attackers and defenders, we will see a lot of development and innovation in this area.
+Just think of the many different types of spam emails that are constantly evolving.
+New methods of attacks against machine learning models are invented and new defensive measures are proposed  against these new attacks.
+More powerful attacks are developed to evade the latest defenses and so on, ad infinitum.
+With this chapter I hope to sensitize you to the problem of adversarial examples and that only by proactively studying the machine learning models are we able to discover and remedy weaknesses.
+-->
+<p>攻撃者と防御者の関係はいたちごっこになるため、この分野では多くの開発とイノベーションが見られます。 スパムメール1つ取っても、そこには多くの種類が生じており、絶え間なく進化しています。 機械学習モデルに対する新しい攻撃手法が発明されては、それらに対する新しい防御策が提案されています。 最新の防御手法を回避するために、より強力な攻撃が開発され、それが永遠に続きます。 この章を通して、読者が敵対的サンプルの問題に対し敏感になることを願っています。 そしてその問題は機械学習モデルをプロアクティブに研究することによってのみ、弱点を発見し修正できます。</p>
 
 <!--{pagebreak}-->
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="57">
-<li id="fn57"><p>Szegedy, Christian, et al. &quot;Intriguing properties of neural networks.&quot; arXiv preprint arXiv:1312.6199 (2013).<a href="adversarial.html#fnref57">↩</a></p></li>
-<li id="fn58"><p>Goodfellow, Ian J., Jonathon Shlens, and Christian Szegedy. &quot;Explaining and harnessing adversarial examples.&quot; arXiv preprint arXiv:1412.6572 (2014).<a href="adversarial.html#fnref58">↩</a></p></li>
-<li id="fn59"><p>Su, Jiawei, Danilo Vasconcellos Vargas, and Kouichi Sakurai. &quot;One pixel attack for fooling deep neural networks.&quot; IEEE Transactions on Evolutionary Computation (2019).<a href="adversarial.html#fnref59">↩</a></p></li>
-<li id="fn60"><p>Brown, Tom B., et al. &quot;Adversarial patch.&quot; arXiv preprint arXiv:1712.09665 (2017).<a href="adversarial.html#fnref60">↩</a></p></li>
-<li id="fn61"><p>Athalye, Anish, and Ilya Sutskever. &quot;Synthesizing robust adversarial examples.&quot; arXiv preprint arXiv:1707.07397 (2017).<a href="adversarial.html#fnref61">↩</a></p></li>
-<li id="fn62"><p>Papernot, Nicolas, et al. &quot;Practical black-box attacks against machine learning.&quot; Proceedings of the 2017 ACM on Asia Conference on Computer and Communications Security. ACM (2017).<a href="adversarial.html#fnref62">↩</a></p></li>
-<li id="fn63"><p>Biggio, Battista, and Fabio Roli. &quot;Wild Patterns: Ten years after the rise of adversarial machine learning.&quot; Pattern Recognition 84 (2018): 317-331.<a href="adversarial.html#fnref63">↩</a></p></li>
+<ol start="55">
+<li id="fn55"><p>Szegedy, Christian, et al. &quot;Intriguing properties of neural networks.&quot; arXiv preprint arXiv:1312.6199 (2013).<a href="adversarial.html#fnref55">↩</a></p></li>
+<li id="fn56"><p>Goodfellow, Ian J., Jonathon Shlens, and Christian Szegedy. &quot;Explaining and harnessing adversarial examples.&quot; arXiv preprint arXiv:1412.6572 (2014).<a href="adversarial.html#fnref56">↩</a></p></li>
+<li id="fn57"><p>Su, Jiawei, Danilo Vasconcellos Vargas, and Kouichi Sakurai. &quot;One pixel attack for fooling deep neural networks.&quot; IEEE Transactions on Evolutionary Computation (2019).<a href="adversarial.html#fnref57">↩</a></p></li>
+<li id="fn58"><p>Athalye, Anish, and Ilya Sutskever. &quot;Synthesizing robust adversarial examples.&quot; arXiv preprint arXiv:1707.07397 (2017).<a href="adversarial.html#fnref58">↩</a></p></li>
+<li id="fn59"><p>Papernot, Nicolas, et al. &quot;Practical black-box attacks against machine learning.&quot; Proceedings of the 2017 ACM on Asia Conference on Computer and Communications Security. ACM (2017).<a href="adversarial.html#fnref59">↩</a></p></li>
+<li id="fn60"><p>Biggio, Battista, and Fabio Roli. &quot;Wild Patterns: Ten years after the rise of adversarial machine learning.&quot; Pattern Recognition 84 (2018): 317-331.<a href="adversarial.html#fnref60">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -457,7 +731,7 @@ FIGURE 6.5: Athalye et. al (2017) created a 3D-printed that is recognized as a r
           </div>
         </div>
       </div>
-<a href="counterfactual.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="反事実的.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="proto.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

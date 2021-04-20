@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.1 反事実的説明 (Counterfactual Explanations) | Interpretable Machine Learning</title>
+  <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.1 反事実的説明 (Counterfactual Explanations) | Interpretable Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
+  <meta name="github-repo" content="christophM/interpretable-ml-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.1 反事実的説明 (Counterfactual Explanations) | Interpretable Machine Learning" />
+  
+  <meta name="twitter:description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
+  
+
+<meta name="author" content="Christoph Molnar" />
+
+
+<meta name="date" content="2021-04-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="example-based.html"/>
+<link rel="next" href="adversarial.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-110543840-1', 'https://christophm.github.io/interpretable-ml-book/', {
+  'anonymizeIp': true
+  , 'storage': 'none'
+  , 'clientId': window.localStorage.getItem('ga_clientId')
+});
+ga(function(tracker) {
+  window.localStorage.setItem('ga_clientId', tracker.get('clientId'));
+});
+ga('send', 'pageview');
+</script>
+
+<link rel="stylesheet" type="text/css" href="css/cookieconsent.min.css" />
+<script src="javascript/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+  "position": "bottom-right",
+  "content": {
+    "message": "This website uses cookies for Google Analytics so that I know how many people are reading the book and which chapters are the most popular. The book website doesn't collect any personal data."
+  }
+})});
+</script>
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Interpretable machine learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>要約</a></li>
+<li class="chapter" data-level="" data-path="著者による序文.html"><a href="著者による序文.html"><i class="fa fa-check"></i>著者による序文</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> イントロダクション</a><ul>
+<li class="chapter" data-level="1.1" data-path="storytime.html"><a href="storytime.html"><i class="fa fa-check"></i><b>1.1</b> 物語の時間</a><ul>
+<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#稲妻は二度と打たない"><i class="fa fa-check"></i>稲妻は二度と打たない</a></li>
+<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#信用失墜"><i class="fa fa-check"></i>信用失墜</a></li>
+<li class="chapter" data-level="" data-path="storytime.html"><a href="storytime.html#フェルミのペーパークリップ"><i class="fa fa-check"></i>フェルミのペーパー・クリップ</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="機械学習とは何か.html"><a href="機械学習とは何か.html"><i class="fa fa-check"></i><b>1.2</b> 機械学習とは何か？</a></li>
+<li class="chapter" data-level="1.3" data-path="terminology.html"><a href="terminology.html"><i class="fa fa-check"></i><b>1.3</b> 専門用語</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="interpretability.html"><a href="interpretability.html"><i class="fa fa-check"></i><b>2</b> 解釈可能性</a><ul>
+<li class="chapter" data-level="2.1" data-path="interpretability-importance.html"><a href="interpretability-importance.html"><i class="fa fa-check"></i><b>2.1</b> 解釈可能性の重要性</a></li>
+<li class="chapter" data-level="2.2" data-path="解釈可能な手法の分類.html"><a href="解釈可能な手法の分類.html"><i class="fa fa-check"></i><b>2.2</b> 解釈可能な手法の分類</a></li>
+<li class="chapter" data-level="2.3" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html"><i class="fa fa-check"></i><b>2.3</b> 解釈可能性の範囲</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#アルゴリズムの透明性"><i class="fa fa-check"></i><b>2.3.1</b> アルゴリズムの透明性</a></li>
+<li class="chapter" data-level="2.3.2" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#全体的なモデルの解釈可能性"><i class="fa fa-check"></i><b>2.3.2</b> 全体的なモデルの解釈可能性</a></li>
+<li class="chapter" data-level="2.3.3" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#モジュールレベルのモデルの全体的な解釈可能性"><i class="fa fa-check"></i><b>2.3.3</b> モジュールレベルのモデルの全体的な解釈可能性</a></li>
+<li class="chapter" data-level="2.3.4" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#単一の予測に対する局所的な解釈"><i class="fa fa-check"></i><b>2.3.4</b> 単一の予測に対する局所的な解釈</a></li>
+<li class="chapter" data-level="2.3.5" data-path="解釈可能性の範囲.html"><a href="解釈可能性の範囲.html#予測のグループに対する局所的な解釈"><i class="fa fa-check"></i><b>2.3.5</b> 予測のグループに対する局所的な解釈</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="解釈可能性の評価.html"><a href="解釈可能性の評価.html"><i class="fa fa-check"></i><b>2.4</b> 解釈可能性の評価</a></li>
+<li class="chapter" data-level="2.5" data-path="properties.html"><a href="properties.html"><i class="fa fa-check"></i><b>2.5</b> 説明に関する性質</a></li>
+<li class="chapter" data-level="2.6" data-path="explanation.html"><a href="explanation.html"><i class="fa fa-check"></i><b>2.6</b> 人間に優しい説明</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="explanation.html"><a href="explanation.html#説明とはなにか"><i class="fa fa-check"></i><b>2.6.1</b> 説明とはなにか</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> データセット</a><ul>
+<li class="chapter" data-level="3.1" data-path="bike-data.html"><a href="bike-data.html"><i class="fa fa-check"></i><b>3.1</b> 自転車レンタル (回帰)</a></li>
+<li class="chapter" data-level="3.2" data-path="spam-data.html"><a href="spam-data.html"><i class="fa fa-check"></i><b>3.2</b> YouTube スパムコメント (テキスト分類)</a></li>
+<li class="chapter" data-level="3.3" data-path="cervical.html"><a href="cervical.html"><i class="fa fa-check"></i><b>3.3</b> 子宮頸がんのリスク要因(クラス分類)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="simple.html"><a href="simple.html"><i class="fa fa-check"></i><b>4</b> 解釈可能なモデル</a><ul>
+<li class="chapter" data-level="4.1" data-path="limo.html"><a href="limo.html"><i class="fa fa-check"></i><b>4.1</b> 線形回帰</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="limo.html"><a href="limo.html#解釈"><i class="fa fa-check"></i><b>4.1.1</b> 解釈</a></li>
+<li class="chapter" data-level="4.1.2" data-path="limo.html"><a href="limo.html#例"><i class="fa fa-check"></i><b>4.1.2</b> 例</a></li>
+<li class="chapter" data-level="4.1.3" data-path="limo.html"><a href="limo.html#可視化による解釈"><i class="fa fa-check"></i><b>4.1.3</b> 可視化による解釈</a></li>
+<li class="chapter" data-level="4.1.4" data-path="limo.html"><a href="limo.html#個々の予測に対する説明"><i class="fa fa-check"></i><b>4.1.4</b> 個々の予測に対する説明</a></li>
+<li class="chapter" data-level="4.1.5" data-path="limo.html"><a href="limo.html#カテゴリカル特徴量のエンコーディング"><i class="fa fa-check"></i><b>4.1.5</b> カテゴリカル特徴量のエンコーディング</a></li>
+<li class="chapter" data-level="4.1.6" data-path="limo.html"><a href="limo.html#線形モデルは良い説明を与えるか"><i class="fa fa-check"></i><b>4.1.6</b> 線形モデルは良い説明を与えるか?</a></li>
+<li class="chapter" data-level="4.1.7" data-path="limo.html"><a href="limo.html#sparse-linear"><i class="fa fa-check"></i><b>4.1.7</b> スパースな線形モデル</a></li>
+<li class="chapter" data-level="4.1.8" data-path="limo.html"><a href="limo.html#長所"><i class="fa fa-check"></i><b>4.1.8</b> 長所</a></li>
+<li class="chapter" data-level="4.1.9" data-path="limo.html"><a href="limo.html#短所"><i class="fa fa-check"></i><b>4.1.9</b> 短所</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>4.2</b> ロジスティック回帰</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="logistic.html"><a href="logistic.html#線形回帰モデルを分類のために使うと何がいけないか"><i class="fa fa-check"></i><b>4.2.1</b> 線形回帰モデルを分類のために使うと何がいけないか。</a></li>
+<li class="chapter" data-level="4.2.2" data-path="logistic.html"><a href="logistic.html#理論"><i class="fa fa-check"></i><b>4.2.2</b> 理論</a></li>
+<li class="chapter" data-level="4.2.3" data-path="logistic.html"><a href="logistic.html#解釈性"><i class="fa fa-check"></i><b>4.2.3</b> 解釈性</a></li>
+<li class="chapter" data-level="4.2.4" data-path="logistic.html"><a href="logistic.html#例-1"><i class="fa fa-check"></i><b>4.2.4</b> 例</a></li>
+<li class="chapter" data-level="4.2.5" data-path="logistic.html"><a href="logistic.html#長所と短所"><i class="fa fa-check"></i><b>4.2.5</b> 長所と短所</a></li>
+<li class="chapter" data-level="4.2.6" data-path="logistic.html"><a href="logistic.html#ソフトウェア"><i class="fa fa-check"></i><b>4.2.6</b> ソフトウェア</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="extend-lm.html"><a href="extend-lm.html"><i class="fa fa-check"></i><b>4.3</b> GLM、GAM、その他</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="extend-lm.html"><a href="extend-lm.html#glm"><i class="fa fa-check"></i><b>4.3.1</b> 結果が正規分布に従わない場合 - GLMs</a></li>
+<li class="chapter" data-level="4.3.2" data-path="extend-lm.html"><a href="extend-lm.html#lm-interact"><i class="fa fa-check"></i><b>4.3.2</b> 相互作用</a></li>
+<li class="chapter" data-level="4.3.3" data-path="extend-lm.html"><a href="extend-lm.html#gam"><i class="fa fa-check"></i><b>4.3.3</b> 非線形効果 - GAM</a></li>
+<li class="chapter" data-level="4.3.4" data-path="extend-lm.html"><a href="extend-lm.html#長所-1"><i class="fa fa-check"></i><b>4.3.4</b> 長所</a></li>
+<li class="chapter" data-level="4.3.5" data-path="extend-lm.html"><a href="extend-lm.html#短所-1"><i class="fa fa-check"></i><b>4.3.5</b> 短所</a></li>
+<li class="chapter" data-level="4.3.6" data-path="extend-lm.html"><a href="extend-lm.html#ソフトウェア-1"><i class="fa fa-check"></i><b>4.3.6</b> ソフトウェア</a></li>
+<li class="chapter" data-level="4.3.7" data-path="extend-lm.html"><a href="extend-lm.html#more-lm-extension"><i class="fa fa-check"></i><b>4.3.7</b> さらなる拡張</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="tree.html"><a href="tree.html"><i class="fa fa-check"></i><b>4.4</b> 決定木</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="tree.html"><a href="tree.html#決定木の解釈"><i class="fa fa-check"></i><b>4.4.1</b> 決定木の解釈</a></li>
+<li class="chapter" data-level="4.4.2" data-path="tree.html"><a href="tree.html#例-2"><i class="fa fa-check"></i><b>4.4.2</b> 例</a></li>
+<li class="chapter" data-level="4.4.3" data-path="tree.html"><a href="tree.html#長所-2"><i class="fa fa-check"></i><b>4.4.3</b> 長所</a></li>
+<li class="chapter" data-level="4.4.4" data-path="tree.html"><a href="tree.html#短所-2"><i class="fa fa-check"></i><b>4.4.4</b> 短所</a></li>
+<li class="chapter" data-level="4.4.5" data-path="tree.html"><a href="tree.html#ソフトウェア-2"><i class="fa fa-check"></i><b>4.4.5</b> ソフトウェア</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="rules.html"><a href="rules.html"><i class="fa fa-check"></i><b>4.5</b> 決定規則</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="rules.html"><a href="rules.html#単一の特徴量による規則学習-oner"><i class="fa fa-check"></i><b>4.5.1</b> 単一の特徴量による規則学習 (OneR)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="rules.html"><a href="rules.html#sequential-covering"><i class="fa fa-check"></i><b>4.5.2</b> Sequential Covering</a></li>
+<li class="chapter" data-level="4.5.3" data-path="rules.html"><a href="rules.html#bayesian-rule-lists"><i class="fa fa-check"></i><b>4.5.3</b> Bayesian Rule Lists</a></li>
+<li class="chapter" data-level="4.5.4" data-path="rules.html"><a href="rules.html#長所-3"><i class="fa fa-check"></i><b>4.5.4</b> 長所</a></li>
+<li class="chapter" data-level="4.5.5" data-path="rules.html"><a href="rules.html#短所-3"><i class="fa fa-check"></i><b>4.5.5</b> 短所</a></li>
+<li class="chapter" data-level="4.5.6" data-path="rules.html"><a href="rules.html#ソフトウェアと代替手法"><i class="fa fa-check"></i><b>4.5.6</b> ソフトウェアと代替手法</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="rulefit.html"><a href="rulefit.html"><i class="fa fa-check"></i><b>4.6</b> RuleFit</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="rulefit.html"><a href="rulefit.html#解釈と例"><i class="fa fa-check"></i><b>4.6.1</b> 解釈と例</a></li>
+<li class="chapter" data-level="4.6.2" data-path="rulefit.html"><a href="rulefit.html#理論-1"><i class="fa fa-check"></i><b>4.6.2</b> 理論</a></li>
+<li class="chapter" data-level="4.6.3" data-path="rulefit.html"><a href="rulefit.html#長所-4"><i class="fa fa-check"></i><b>4.6.3</b> 長所</a></li>
+<li class="chapter" data-level="4.6.4" data-path="rulefit.html"><a href="rulefit.html#短所-4"><i class="fa fa-check"></i><b>4.6.4</b> 短所</a></li>
+<li class="chapter" data-level="4.6.5" data-path="rulefit.html"><a href="rulefit.html#ソフトウェアと代替手法-1"><i class="fa fa-check"></i><b>4.6.5</b> ソフトウェアと代替手法</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="other-interpretable.html"><a href="other-interpretable.html"><i class="fa fa-check"></i><b>4.7</b> その他の解釈可能なモデル</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="other-interpretable.html"><a href="other-interpretable.html#単純ベイズ分類器-naive-bayes-classifier"><i class="fa fa-check"></i><b>4.7.1</b> 単純ベイズ分類器 (Naive Bayes Classifier)</a></li>
+<li class="chapter" data-level="4.7.2" data-path="other-interpretable.html"><a href="other-interpretable.html#k近傍法"><i class="fa fa-check"></i><b>4.7.2</b> k近傍法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="agnostic.html"><a href="agnostic.html"><i class="fa fa-check"></i><b>5</b> モデル非依存(Model-Agnostic)な手法</a><ul>
+<li class="chapter" data-level="5.1" data-path="pdp.html"><a href="pdp.html"><i class="fa fa-check"></i><b>5.1</b> Partial Dependence Plot (PDP)</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="pdp.html"><a href="pdp.html#例-3"><i class="fa fa-check"></i><b>5.1.1</b> 例</a></li>
+<li class="chapter" data-level="5.1.2" data-path="pdp.html"><a href="pdp.html#長所-5"><i class="fa fa-check"></i><b>5.1.2</b> 長所</a></li>
+<li class="chapter" data-level="5.1.3" data-path="pdp.html"><a href="pdp.html#短所-5"><i class="fa fa-check"></i><b>5.1.3</b> 短所</a></li>
+<li class="chapter" data-level="5.1.4" data-path="pdp.html"><a href="pdp.html#ソフトウェアと代替手法-2"><i class="fa fa-check"></i><b>5.1.4</b> ソフトウェアと代替手法</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="ice.html"><a href="ice.html"><i class="fa fa-check"></i><b>5.2</b> Individual Conditional Expectation (ICE)</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="ice.html"><a href="ice.html#例-4"><i class="fa fa-check"></i><b>5.2.1</b> 例</a></li>
+<li class="chapter" data-level="5.2.2" data-path="ice.html"><a href="ice.html#長所-6"><i class="fa fa-check"></i><b>5.2.2</b> 長所</a></li>
+<li class="chapter" data-level="5.2.3" data-path="ice.html"><a href="ice.html#短所-6"><i class="fa fa-check"></i><b>5.2.3</b> 短所</a></li>
+<li class="chapter" data-level="5.2.4" data-path="ice.html"><a href="ice.html#ソフトウェアと代替手法-3"><i class="fa fa-check"></i><b>5.2.4</b> ソフトウェアと代替手法</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ale.html"><a href="ale.html"><i class="fa fa-check"></i><b>5.3</b> Accumulated Local Effects (ALE) Plot</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="ale.html"><a href="ale.html#モチベーションと直感"><i class="fa fa-check"></i><b>5.3.1</b> モチベーションと直感</a></li>
+<li class="chapter" data-level="5.3.2" data-path="ale.html"><a href="ale.html#理論-2"><i class="fa fa-check"></i><b>5.3.2</b> 理論</a></li>
+<li class="chapter" data-level="5.3.3" data-path="ale.html"><a href="ale.html#予測"><i class="fa fa-check"></i><b>5.3.3</b> 予測</a></li>
+<li class="chapter" data-level="5.3.4" data-path="ale.html"><a href="ale.html#例-6"><i class="fa fa-check"></i><b>5.3.4</b> 例</a></li>
+<li class="chapter" data-level="5.3.5" data-path="ale.html"><a href="ale.html#利点"><i class="fa fa-check"></i><b>5.3.5</b> 利点</a></li>
+<li class="chapter" data-level="5.3.6" data-path="ale.html"><a href="ale.html#欠点"><i class="fa fa-check"></i><b>5.3.6</b> 欠点</a></li>
+<li class="chapter" data-level="5.3.7" data-path="ale.html"><a href="ale.html#実装と代替手法"><i class="fa fa-check"></i><b>5.3.7</b> 実装と代替手法</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="interaction.html"><a href="interaction.html"><i class="fa fa-check"></i><b>5.4</b> 特徴量の相互作用</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="interaction.html"><a href="interaction.html#特徴量の相互作用とは"><i class="fa fa-check"></i><b>5.4.1</b> 特徴量の相互作用とは</a></li>
+<li class="chapter" data-level="5.4.2" data-path="interaction.html"><a href="interaction.html#friedman-の-h統計量の理論"><i class="fa fa-check"></i><b>5.4.2</b> Friedman の H統計量の理論</a></li>
+<li class="chapter" data-level="5.4.3" data-path="interaction.html"><a href="interaction.html#例-7"><i class="fa fa-check"></i><b>5.4.3</b> 例</a></li>
+<li class="chapter" data-level="5.4.4" data-path="interaction.html"><a href="interaction.html#利点-1"><i class="fa fa-check"></i><b>5.4.4</b> 利点</a></li>
+<li class="chapter" data-level="5.4.5" data-path="interaction.html"><a href="interaction.html#欠点-1"><i class="fa fa-check"></i><b>5.4.5</b> 欠点</a></li>
+<li class="chapter" data-level="5.4.6" data-path="interaction.html"><a href="interaction.html#実装"><i class="fa fa-check"></i><b>5.4.6</b> 実装</a></li>
+<li class="chapter" data-level="5.4.7" data-path="interaction.html"><a href="interaction.html#代替手法"><i class="fa fa-check"></i><b>5.4.7</b> 代替手法</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="feature-importance.html"><a href="feature-importance.html"><i class="fa fa-check"></i><b>5.5</b> Permutation Feature Importance</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="feature-importance.html"><a href="feature-importance.html#理論-3"><i class="fa fa-check"></i><b>5.5.1</b> 理論</a></li>
+<li class="chapter" data-level="5.5.2" data-path="feature-importance.html"><a href="feature-importance.html#feature-importance-data"><i class="fa fa-check"></i><b>5.5.2</b> 特徴量の重要度は、学習データとテストデータのどちらで計算するべきか</a></li>
+<li class="chapter" data-level="5.5.3" data-path="feature-importance.html"><a href="feature-importance.html#例と解釈"><i class="fa fa-check"></i><b>5.5.3</b> 例と解釈</a></li>
+<li class="chapter" data-level="5.5.4" data-path="feature-importance.html"><a href="feature-importance.html#利点-2"><i class="fa fa-check"></i><b>5.5.4</b> 利点</a></li>
+<li class="chapter" data-level="5.5.5" data-path="feature-importance.html"><a href="feature-importance.html#欠点-2"><i class="fa fa-check"></i><b>5.5.5</b> 欠点</a></li>
+<li class="chapter" data-level="5.5.6" data-path="feature-importance.html"><a href="feature-importance.html#ソフトウェアと代替手法-4"><i class="fa fa-check"></i><b>5.5.6</b> ソフトウェアと代替手法</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="global.html"><a href="global.html"><i class="fa fa-check"></i><b>5.6</b> グローバルサロゲート (Global Surrogate)</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="global.html"><a href="global.html#理論-4"><i class="fa fa-check"></i><b>5.6.1</b> 理論</a></li>
+<li class="chapter" data-level="5.6.2" data-path="global.html"><a href="global.html#例-8"><i class="fa fa-check"></i><b>5.6.2</b> 例</a></li>
+<li class="chapter" data-level="5.6.3" data-path="global.html"><a href="global.html#長所-7"><i class="fa fa-check"></i><b>5.6.3</b> 長所</a></li>
+<li class="chapter" data-level="5.6.4" data-path="global.html"><a href="global.html#短所-7"><i class="fa fa-check"></i><b>5.6.4</b> 短所</a></li>
+<li class="chapter" data-level="5.6.5" data-path="global.html"><a href="global.html#ソフトウェア-3"><i class="fa fa-check"></i><b>5.6.5</b> ソフトウェア</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="lime.html"><a href="lime.html"><i class="fa fa-check"></i><b>5.7</b> Local Surrogate (LIME)</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="lime.html"><a href="lime.html#表形式データにおける-lime"><i class="fa fa-check"></i><b>5.7.1</b> 表形式データにおける LIME</a></li>
+<li class="chapter" data-level="5.7.2" data-path="lime.html"><a href="lime.html#テキストデータに対するlime"><i class="fa fa-check"></i><b>5.7.2</b> テキストデータに対するLIME</a></li>
+<li class="chapter" data-level="5.7.3" data-path="lime.html"><a href="lime.html#images-lime"><i class="fa fa-check"></i><b>5.7.3</b> 画像データに対するLIME</a></li>
+<li class="chapter" data-level="5.7.4" data-path="lime.html"><a href="lime.html#長所-8"><i class="fa fa-check"></i><b>5.7.4</b> 長所</a></li>
+<li class="chapter" data-level="5.7.5" data-path="lime.html"><a href="lime.html#短所-8"><i class="fa fa-check"></i><b>5.7.5</b> 短所</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="anchors.html"><a href="anchors.html"><i class="fa fa-check"></i><b>5.8</b> Scoped Rules (Anchors)</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="anchors.html"><a href="anchors.html#anchor-の発見"><i class="fa fa-check"></i><b>5.8.1</b> Anchor の発見</a></li>
+<li class="chapter" data-level="5.8.2" data-path="anchors.html"><a href="anchors.html#複雑性と実行時間"><i class="fa fa-check"></i><b>5.8.2</b> 複雑性と実行時間</a></li>
+<li class="chapter" data-level="5.8.3" data-path="anchors.html"><a href="anchors.html#表形式データの例"><i class="fa fa-check"></i><b>5.8.3</b> 表形式データの例</a></li>
+<li class="chapter" data-level="5.8.4" data-path="anchors.html"><a href="anchors.html#長所-9"><i class="fa fa-check"></i><b>5.8.4</b> 長所</a></li>
+<li class="chapter" data-level="5.8.5" data-path="anchors.html"><a href="anchors.html#短所-9"><i class="fa fa-check"></i><b>5.8.5</b> 短所</a></li>
+<li class="chapter" data-level="5.8.6" data-path="anchors.html"><a href="anchors.html#ソフトウェアと代替手法-5"><i class="fa fa-check"></i><b>5.8.6</b> ソフトウェアと代替手法</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="shapley.html"><a href="shapley.html"><i class="fa fa-check"></i><b>5.9</b> シャープレイ値 (Shapley Values)</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="shapley.html"><a href="shapley.html#一般的なアイデア"><i class="fa fa-check"></i><b>5.9.1</b> 一般的なアイデア</a></li>
+<li class="chapter" data-level="5.9.2" data-path="shapley.html"><a href="shapley.html#例と解釈-1"><i class="fa fa-check"></i><b>5.9.2</b> 例と解釈</a></li>
+<li class="chapter" data-level="5.9.3" data-path="shapley.html"><a href="shapley.html#シャープレイ値の詳細"><i class="fa fa-check"></i><b>5.9.3</b> シャープレイ値の詳細</a></li>
+<li class="chapter" data-level="5.9.4" data-path="shapley.html"><a href="shapley.html#長所-10"><i class="fa fa-check"></i><b>5.9.4</b> 長所</a></li>
+<li class="chapter" data-level="5.9.5" data-path="shapley.html"><a href="shapley.html#短所-10"><i class="fa fa-check"></i><b>5.9.5</b> 短所</a></li>
+<li class="chapter" data-level="5.9.6" data-path="shapley.html"><a href="shapley.html#ソフトウェアと代替手法-6"><i class="fa fa-check"></i><b>5.9.6</b> ソフトウェアと代替手法</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="shap.html"><a href="shap.html"><i class="fa fa-check"></i><b>5.10</b> SHAP (SHapley Additive exPlanations)</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="shap.html"><a href="shap.html#定義"><i class="fa fa-check"></i><b>5.10.1</b> 定義</a></li>
+<li class="chapter" data-level="5.10.2" data-path="shap.html"><a href="shap.html#kernelshap"><i class="fa fa-check"></i><b>5.10.2</b> KernelSHAP</a></li>
+<li class="chapter" data-level="5.10.3" data-path="shap.html"><a href="shap.html#treeshap"><i class="fa fa-check"></i><b>5.10.3</b> TreeSHAP</a></li>
+<li class="chapter" data-level="5.10.4" data-path="shap.html"><a href="shap.html#例-12"><i class="fa fa-check"></i><b>5.10.4</b> 例</a></li>
+<li class="chapter" data-level="5.10.5" data-path="shap.html"><a href="shap.html#shap-特徴量重要度-shap-feature-importance"><i class="fa fa-check"></i><b>5.10.5</b> SHAP 特徴量重要度 (SHAP Feature Importance)</a></li>
+<li class="chapter" data-level="5.10.6" data-path="shap.html"><a href="shap.html#shap-summary-plot"><i class="fa fa-check"></i><b>5.10.6</b> SHAP Summary Plot</a></li>
+<li class="chapter" data-level="5.10.7" data-path="shap.html"><a href="shap.html#shap-dependence-plot"><i class="fa fa-check"></i><b>5.10.7</b> SHAP Dependence Plot</a></li>
+<li class="chapter" data-level="5.10.8" data-path="shap.html"><a href="shap.html#shap-相互作用値-shap-interaction-values"><i class="fa fa-check"></i><b>5.10.8</b> SHAP 相互作用値 (SHAP Interaction Values)</a></li>
+<li class="chapter" data-level="5.10.9" data-path="shap.html"><a href="shap.html#clustering-shap-values"><i class="fa fa-check"></i><b>5.10.9</b> Clustering SHAP values</a></li>
+<li class="chapter" data-level="5.10.10" data-path="shap.html"><a href="shap.html#長所-11"><i class="fa fa-check"></i><b>5.10.10</b> 長所</a></li>
+<li class="chapter" data-level="5.10.11" data-path="shap.html"><a href="shap.html#短所-11"><i class="fa fa-check"></i><b>5.10.11</b> 短所</a></li>
+<li class="chapter" data-level="5.10.12" data-path="shap.html"><a href="shap.html#ソフトウェア-4"><i class="fa fa-check"></i><b>5.10.12</b> ソフトウェア</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>6</b> 例示に基づいた説明手法</a><ul>
+<li class="chapter" data-level="6.1" data-path="反事実的.html"><a href="反事実的.html"><i class="fa fa-check"></i><b>6.1</b> 反事実的説明 (Counterfactual Explanations)</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="反事実的.html"><a href="反事実的.html#反事実的説明の生成"><i class="fa fa-check"></i><b>6.1.1</b> 反事実的説明の生成</a></li>
+<li class="chapter" data-level="6.1.2" data-path="反事実的.html"><a href="反事実的.html#例-13"><i class="fa fa-check"></i><b>6.1.2</b> 例</a></li>
+<li class="chapter" data-level="6.1.3" data-path="反事実的.html"><a href="反事実的.html#長所-12"><i class="fa fa-check"></i><b>6.1.3</b> 長所</a></li>
+<li class="chapter" data-level="6.1.4" data-path="反事実的.html"><a href="反事実的.html#短所-12"><i class="fa fa-check"></i><b>6.1.4</b> 短所</a></li>
+<li class="chapter" data-level="6.1.5" data-path="反事実的.html"><a href="反事実的.html#ソフトウェアと代替手法-7"><i class="fa fa-check"></i><b>6.1.5</b> ソフトウェアと代替手法</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="adversarial.html"><a href="adversarial.html"><i class="fa fa-check"></i><b>6.2</b> 敵対的サンプル (Adversarial Examples)</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="adversarial.html"><a href="adversarial.html#手法及び例"><i class="fa fa-check"></i><b>6.2.1</b> 手法及び例</a></li>
+<li class="chapter" data-level="6.2.2" data-path="adversarial.html"><a href="adversarial.html#サイバーセキュリティーの観点"><i class="fa fa-check"></i><b>6.2.2</b> サイバーセキュリティーの観点</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="proto.html"><a href="proto.html"><i class="fa fa-check"></i><b>6.3</b> prototype と criticism</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="proto.html"><a href="proto.html#理論-5"><i class="fa fa-check"></i><b>6.3.1</b> 理論</a></li>
+<li class="chapter" data-level="6.3.2" data-path="proto.html"><a href="proto.html#例-14"><i class="fa fa-check"></i><b>6.3.2</b> 例</a></li>
+<li class="chapter" data-level="6.3.3" data-path="proto.html"><a href="proto.html#長所-13"><i class="fa fa-check"></i><b>6.3.3</b> 長所</a></li>
+<li class="chapter" data-level="6.3.4" data-path="proto.html"><a href="proto.html#短所-13"><i class="fa fa-check"></i><b>6.3.4</b> 短所</a></li>
+<li class="chapter" data-level="6.3.5" data-path="proto.html"><a href="proto.html#コードと代替手法"><i class="fa fa-check"></i><b>6.3.5</b> コードと代替手法</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="influential.html"><a href="influential.html"><i class="fa fa-check"></i><b>6.4</b> Influential Instances</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="influential.html"><a href="influential.html#deletion-diagnostics"><i class="fa fa-check"></i><b>6.4.1</b> Deletion Diagnostics</a></li>
+<li class="chapter" data-level="6.4.2" data-path="influential.html"><a href="influential.html#影響関数-influence-functions"><i class="fa fa-check"></i><b>6.4.2</b> 影響関数 (Influence Functions)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="influential.html"><a href="influential.html#長所-14"><i class="fa fa-check"></i><b>6.4.3</b> 長所</a></li>
+<li class="chapter" data-level="6.4.4" data-path="influential.html"><a href="influential.html#短所-14"><i class="fa fa-check"></i><b>6.4.4</b> 短所</a></li>
+<li class="chapter" data-level="6.4.5" data-path="influential.html"><a href="influential.html#ソフトウェアと代替手法-8"><i class="fa fa-check"></i><b>6.4.5</b> ソフトウェアと代替手法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="neural-networks.html"><a href="neural-networks.html"><i class="fa fa-check"></i><b>7</b> Neural Network Interpretation</a><ul>
+<li class="chapter" data-level="7.1" data-path="cnn-features.html"><a href="cnn-features.html"><i class="fa fa-check"></i><b>7.1</b> Learned Features</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="cnn-features.html"><a href="cnn-features.html#feature-visualization"><i class="fa fa-check"></i><b>7.1.1</b> Feature Visualization</a></li>
+<li class="chapter" data-level="7.1.2" data-path="cnn-features.html"><a href="cnn-features.html#network-dissection"><i class="fa fa-check"></i><b>7.1.2</b> Network Dissection</a></li>
+<li class="chapter" data-level="7.1.3" data-path="cnn-features.html"><a href="cnn-features.html#advantages"><i class="fa fa-check"></i><b>7.1.3</b> Advantages</a></li>
+<li class="chapter" data-level="7.1.4" data-path="cnn-features.html"><a href="cnn-features.html#disadvantages"><i class="fa fa-check"></i><b>7.1.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="7.1.5" data-path="cnn-features.html"><a href="cnn-features.html#software-and-further-material"><i class="fa fa-check"></i><b>7.1.5</b> Software and Further Material</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="future.html"><a href="future.html"><i class="fa fa-check"></i><b>8</b> A Look into the Crystal Ball</a><ul>
+<li class="chapter" data-level="8.1" data-path="the-future-of-machine-learning.html"><a href="the-future-of-machine-learning.html"><i class="fa fa-check"></i><b>8.1</b> The Future of Machine Learning</a></li>
+<li class="chapter" data-level="8.2" data-path="the-future-of-interpretability.html"><a href="the-future-of-interpretability.html"><i class="fa fa-check"></i><b>8.2</b> The Future of Interpretability</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="contribute.html"><a href="contribute.html"><i class="fa fa-check"></i><b>9</b> Contribute to the Book</a></li>
+<li class="chapter" data-level="10" data-path="cite.html"><a href="cite.html"><i class="fa fa-check"></i><b>10</b> Citing this Book</a></li>
+<li class="chapter" data-level="11" data-path="translations.html"><a href="translations.html"><i class="fa fa-check"></i><b>11</b> Translations</a></li>
+<li class="chapter" data-level="12" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>12</b> Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="r-packages-used-for-examples.html"><a href="r-packages-used-for-examples.html"><i class="fa fa-check"></i>R Packages Used for Examples</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Interpretable Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="反事実的" class="section level2">
+<h2><span class="header-section-number">6.1</span> 反事実的説明 (Counterfactual Explanations)</h2>
+<!--
+A counterfactual explanation describes a causal situation in the form: "If X had not occurred, Y would not have occurred".
+For example: "If I hadn't taken a sip of this hot coffee, I wouldn't have burned my tongue".
+Event Y is that I burned my tongue;
+cause X is that I had a hot coffee.
+Thinking in counterfactuals requires imagining a hypothetical reality that contradicts the observed facts (e.g. a world in which I have not drunk the hot coffee), hence the name "counterfactual".
+The ability to think in counterfactuals makes us humans so smart compared to other animals.
+-->
+<p>反事実的説明は、「もしXが起こらなかったら、Yも起こらなかっただろう」のような因果的状況で述べられます。 「このホットコーヒーを一口飲まなければ、舌を火傷しなかっただろう」という例では、 イベント Y は舌を火傷したことであり、原因 X はホットコーヒーを飲んだこととなります。 反事実を考えることは、観察された事実と矛盾する（例えば、ホットコーヒーを飲まなかったという世界のような）仮説的な現実を想像する必要があります。それ故に、「反事実的」という名称がつけられているのです。 反事実を考える能力によって、我々人類は他の動物と比較してとても賢くなりました。</p>
+<!--
+In interpretable machine learning, counterfactual explanations can be used to explain predictions of individual instances.
+The "event" is the predicted outcome of an instance, the "causes" are the particular feature values of this instance that were input to the model and "caused" a certain prediction.
+Displayed as a graph, the relationship between the inputs and the prediction is very simple:
+The feature values cause the prediction.
+-->
+<p>解釈可能な機械学習において、反事実的説明は個々の事象に対する予測を説明する際に使用されます。 「出来事」はあるインスタンスの予測結果であり、「原因」は、モデルに入力されたモデルに入力された予測の要因となるインスタンスのある特徴量の値です。 グラフが示すように、入力と予測の関係性はとても単純で、特徴量の値が予測の原因となっています。</p>
+<!--
+fig.cap = "The causal relationships between inputs of a machine learning model and the predictions, when the model is merely seen as a black box. The inputs cause the prediction (not necessarily reflecting the real causal relation of the data)."
+-->
+<div class="figure"><span id="fig:ml-graph-cf"></span>
+<img src="images/graph.jpg" alt="機械学習モデルの入力と予測の因果関係。モデルは単にブラックボックスモデルとみなされる。入力が予測の原因となっている（ただし、データの現実の因果を反映している必要はない）" width="500" />
+<p class="caption">
+FIGURE 6.1: 機械学習モデルの入力と予測の因果関係。モデルは単にブラックボックスモデルとみなされる。入力が予測の原因となっている（ただし、データの現実の因果を反映している必要はない）
+</p>
+</div>
+<!--
+Even if in reality the relationship between the inputs and the outcome to be predicted might not be causal, we can see the inputs of a model as the cause of the prediction.
+-->
+<p>たとえ入力と予測される結果の関係性が現実には因果関係でなかったとしても、モデルの入力を予測の原因みなすことができます。</p>
+<!--
+Given this simple graph, it is easy to see how we can simulate counterfactuals for predictions of machine learning models:
+We simply change the feature values of an instance before making the predictions and we analyze how the prediction changes.
+We are interested in scenarios in which the prediction changes in a relevant way, like a flip in predicted class (e.g. credit application accepted or rejected) or in which the prediction reaches a certain threshold (e.g. the probability for cancer reaches 10%).
+**A counterfactual explanation of a prediction describes the smallest change to the feature values that changes the prediction to a predefined output.**
+-->
+<p>この単純なグラフが与えられたとき、機械学習モデルの予測に対して、反事実を想定する方法は簡単です。 予測をする前にインスタンスの特徴量の値を変化させ、どのように予測が変化するかを分析します。 予測されたクラスの反転 (例: クレジットカード申請の可否の反転) や、予測がある閾値に到達する (例: がんの確率が 10% に到達する) など、関連する方法で予測が変化するシナリオに関心があります。 <strong>予測の反事実的な説明は、最初に定義された出力に予測を変化させるような特徴量の最小の変更方法を示します</strong>。</p>
+<!--
+The counterfactual explanation method is model-agnostic, since it only works with the model inputs and output.
+This method would also feel at home in the [model-agnostic chapter](#agnostic), since the interpretation can be expressed as a summary of the differences in feature values ("change features A and B to change the prediction").
+But a counterfactual explanation is itself a new instance, so it lives in this chapter ("starting from instance X, change A and B to get a counterfactual instance").
+Unlike [prototypes](#proto), counterfactuals do not have to be actual instances from the training data, but can be a new combination of feature values.
+-->
+<p>反事実的説明はモデルの入力と出力のみを用いるため、モデル非依存の手法です。 この手法が生み出す解釈は特徴量の違いを要約したもの（特徴量 A と特徴量 B を変更することで予測を変えることができる）とも捉えることができるため、この手法は<a href="agnostic.html#agnostic">モデル非依存の手法（model-agnostic methods）の章</a>で取り上げることもできたでしょう。 しかし、反事実的説明はそれ自体が新しいインスタンスであるため、この章で取り上げています（インスタンス X から始め、A と B を変更することで反事実的説明を得る）。 <a href="proto.html#proto">プロトタイプ（prototypes)</a>とは異なり、反事実は学習データに実際に含まれるインスタンスである必要はありませんが、特徴量の新しい組み合わせである可能性はあります。</p>
+<!--
+Before discussing how to create counterfactuals, I would like to discuss some use cases for counterfactuals and how a good counterfactual explanation looks like.
+-->
+<p>反事実の作成方法を紹介する前に、いくつかの反事実の使用例と良い反事実的説明がどのようなものなのかということについて説明します。</p>
+<!--
+In this first example, Peter applies for a loan and gets rejected by the (machine learning powered) banking software.
+He wonders why his application was rejected and how he might improve his chances to get a loan.
+The question of "why" can be formulated as a counterfactual:
+What is the smallest change to the features (income, number of credit cards, age, ...) that would change the prediction from rejected to approved?
+One possible answer could be:
+If Peter would earn 10,000 Euro more per year, he would get the loan.
+Or if Peter had fewer credit cards and had not defaulted on a loan 5 years ago, he would get the loan.
+Peter will never know the reasons for the rejection, as the bank has no interest in transparency, but that is another story.
+-->
+<p>まず最初の例では、ある男性が、申請した融資を（機械学習を利用している）銀行のソフトウェアに却下された、という状況を考えます。 彼はなぜ自分の申請が却下され、またどのようにしたら融資を得られる見込みが高くなるかということについて不思議に思いました。 この「なぜ」という疑問は、反事実を用いることによって明確にできます。 予測を却下から承認に変えるための特徴量（収入、クレジットカードの枚数、年齢など）の最小の変化はなんでしょうか。 この問いに対する答えには例えば次のようなものが考えられます。 この男性が年間 10,000 ユーロ以上を稼ぐならば、彼は融資を受けられたでしょう。 もしくは、この男性の持つクレジットカードがより少なく、5年前に不履行に陥っていなかったならば、融資を受けられたでしょう。 この銀行は透明性に関して全く関心を持っていなかったため男性が融資を断られた理由を知ることはありませんでしたが、それはまた別の話です。</p>
+<!--
+In our second example we want to explain a model that predicts a continuous outcome with counterfactual explanations.
+Anna wants to rent out her apartment, but she is not sure how much to charge for it, so she decides to train a machine learning model to predict the rent.
+Of course, since Anna is a data scientist, that is how she solves her problems.
+After entering all the details about size, location, whether pets are allowed and so on, the model tells her that she can charge 900 Euro.
+She expected 1000 Euro or more, but she trusts her model and decides to play with the feature values of the apartment to see how she can improve the value of the apartment.
+She finds out that the apartment could be rented out for over 1000 Euro, if it were 15 m^2^ larger.
+Interesting, but non-actionable knowledge, because she cannot enlarge her apartment.
+Finally, by tweaking only the feature values under her control (built-in kitchen yes/no, pets allowed yes/no, type of floor, etc.), she finds out that if she allows pets and installs windows with better insulation, she can charge 1000 Euro.
+Anna had intuitively worked with counterfactuals to change the outcome.
+-->
+<p>次の例では、連続的な結果を予測するモデルを反事実を用いて説明しようと思います。 ある女性が所有するアパートを貸し出したいと考えているが、家賃をどの程度にすればわからないため、家賃を予測するために機械学習モデルを学習することにした、という状況を考えます。 もちろん、この女性はデータサイエンティストであるため、これこそが彼女が問題を解決する手段です。 家の大きさ、立地、ペット可かどうかなどの詳細を全て入力すると、モデルは家賃を 900 ユーロと予測しました。 彼女は家賃は 1000 ユーロ以上になると考えていましたが、自分のモデルを信頼し、アパートの価値をどのようにしたら高めることができるかを見るために特徴量を変化させてみることにしました。 そして彼女は部屋が 15m<sup>2</sup> よりも大きかった場合、1000 ユーロ以上で貸し出せる可能性があることを見つけました。 興味深い結果ですが、アパートを大きくできないため、これは実現不可能な知識です。 最終的には、彼女は自分でも改善できる特徴量の値（ビルトインキッチンがあるか、ペット可かどうか、床のタイプなど）を微調整することによって、ペットを許可し、より良い断熱窓を設置すれば家賃を1000ユーロ以上にできることを突き止めます。 彼女は直感的に反事実を利用することにより結果を変えたのです。</p>
+<!--
+Counterfactuals are [human-friendly explanations](#good-explanation), because they are contrastive to the current instance and because they are selective, meaning they usually focus on a small number of feature changes.
+But counterfactuals suffer from the 'Rashomon effect'.
+Rashomon is a Japanese movie in which the murder of a Samurai is told by different people.
+Each of the stories explains the outcome equally well, but the stories contradict each other.
+The same can also happen with counterfactuals, since there are usually multiple different counterfactual explanations.
+Each counterfactual tells a different "story" of how a certain outcome was reached.
+One counterfactual might say to change feature A, the other counterfactual might say to leave A the same but change feature B, which is a contradiction.
+This issue of multiple truths can be addressed either by reporting all counterfactual explanations or by having a criterion to evaluate counterfactuals and select the best one.
+-->
+<p>反事実は現在のインスタンスとは対照的であり、また選択的である、すなわち通常は少ない特徴量の変化に焦点をあてるため、<a href="#good-explanation">人間に優しい説明</a>です。 しかし反事実は「羅生門効果」の影響を大きく受けます。 羅生門とは侍の殺人事件が複数人の視点から語られる日本の映画のことです。 それぞれの話は結果を等しく説明しますが、それらは互いには全く異なっているのです。 たいていは、複数の異なった反事実的説明が存在するため、同じことが反事実的説明にも言えます。 それぞれの反事実は、どのように特定の結果に到達するかの異なる「ストーリー」を語っています。 ある反事実は特徴量 A を変化させると言い、一方で、他の反事実は特徴量 A はそのままで、特徴量 B を変化させると言うかもしれませんが、これは矛盾しています。 この複数の真実が存在する問題は、全ての反事実を報告するか、反事実を評価する基準を持ち最良のものを選ぶかによって解決できます。</p>
+<!--
+Speaking of criteria, how do we define a good counterfactual explanation?
+First, the user of a counterfactual explanation defines a relevant change in the prediction of an instance (= the alternative reality), so an obvious first requirement is that **a counterfactual instance produces the predefined prediction as closely as possible**.
+It is not always possible to match the predefined output exactly.
+In a classification setting with two classes, a rare class and a frequent class, the model could always classify an instance as the frequent class.
+Changing the feature values so that the predicted label would flip from the common class to the rare class might be impossible.
+We therefore want to relax the requirement that the predicted output of the counterfactual must correspond exactly to the defined outcome.
+In the classification example, we could look for a counterfactual where the predicted probability of the rare class is increased to 10% instead of the current 2%.
+The question then is, what are the minimum changes to the features so that the predicted probability changes from 2% to 10% (or close to 10%)?
+Another quality criterion is that **a counterfactual should be as similar as possible to the instance regarding feature values**.
+This requires a distance measure between two instances.
+The counterfactual should not only be close to the original instance, but should also **change as few features as possible**.
+This can be achieved by selecting an appropriate  distance measure like the Manhattan distance.
+The last requirement is that **a counterfactual instance should have feature values that are likely**.
+It would not make sense to generate a counterfactual explanation for the rent example where the size of an apartment is negative or the number of rooms is set to 200.
+It is even better when the counterfactual is likely according to the joint distribution of the data, e.g. an apartment with 10 rooms and 20 m^2^ should not be regarded as counterfactual explanation.
+-->
+<p>では、反事実的説明の良し悪しはどのように定めれば良いのでしょうか。 まず、反事実的説明ではユーザーがインスタンス（現実の代替）の予測の変化を定義することから、第一に<strong>反事実的なインスタンスの予測が、事前に定義された予測を可能な限り忠実に再現している</strong>ことが必要です。 定義通りの予測を正確に出力することは常に可能であるとは限りません。 滅多に発生しないクラスと発生する頻度の高いクラスを持つような分類問題では、モデルは常にインスタンスを頻繁に起こるクラスに分類してしまうかもしれません。 このような場合、特徴量を変更することで予測されるラベルを普遍的なクラスから希少なクラスに変えることは不可能かもしれません。 このため、反事実に対する予測は定義された結果に正確に一致していなければならないという条件をもう少し緩めてみましょう。 先の分類問題を例に取ると、希少なクラスが予測される確率を現在の 2% から 10% に増加するような反事実をあげることができます。 このときの質問は、予測される確率を 2% から 10% （もしくは 10% に近い値）に変えるような特徴量に対する最小限の変更は何か、となります。 もう1つの品質に対する基準は<strong>反事実は元のインスタンスの特徴量と可能な限り似ている必要がある</strong>ということです。 これには2つのインスタンス間の距離を測る必要があります。 また、反事実には元のインスタンスに近いだけでなく、<strong>変更された特徴量の数が少ない</strong>ことも必要です。 これはマンハッタン距離などの適切な尺度を選ぶことにより実現できます。 最後の条件は、<strong>反事実的インスタンスはもっともらしい特徴量の値を持つことが必要である</strong>、ということです。 アパートのサイズが負の値であったり、部屋の数が200もあるようなアパートの家賃に対しては、反事実的説明は意味をなさないでしょう。 反事実がデータの同時分布に従っていると、より良いです。例えば、20m<sup>2</sup> のサイズの部屋が 10 部屋あるアパートは、反事実的説明に用いるべきではありません。</p>
+<!--
+### Generating Counterfactual Explanations
+-->
+<div id="反事実的説明の生成" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> 反事実的説明の生成</h3>
+<!--
+A simple and naive approach to generating counterfactual explanations is searching by trial and error.
+This approach involves randomly changing feature values of the instance of interest and stopping when the desired output is predicted.
+Like the example where Anna tried to find a version of her apartment for which she could charge more rent.
+But there are better approaches than trial and error.
+First, we define a loss function that takes as input the instance of interest, a counterfactual and the desired (counterfactual) outcome.
+The loss measures how far the predicted outcome of the counterfactual is from the predefined outcome and how far the counterfactual is from the instance of interest.
+We can either optimize the loss directly with an optimization algorithm or by searching around the instance, as suggested in the "Growing Spheres" method (see [Software and Alternatives](#example-software)).
+-->
+<p>反事実的説明を生成するためのシンプルかつ素朴な方法は試行錯誤を繰り返しながら探索することです。 この例としては、先のアパートの例で家賃を高くできるアパートの条件を見つけようとしたように、関心のあるインスタンスの特徴量の値をランダムに変え、望む結果が得られたらやめる、といった方法があります。 しかし、試行錯誤して探すよりも良い方法があります。 まず、関心のあるインスタンス、それに対する反事実、そして望む（反事実的な）結果を入力とする損失関数を定義します。 この損失関数は反事実から予測された結果が事前に定義された結果からどの程度離れているか、また反事実そのものがどの程度関心のあるインスタンスから離れているかを測ります。 この損失関数は、直接最適化アルゴリズムを用いるか、&quot;Growing Spheres&quot; という手法で提案されているように、インスタンスの周囲を探索することで最適化できます（詳しくは<a href="#example-software">ソフトウェア及びその代替手法</a>を参照）。</p>
+<!--
+In this section, I will present the approach suggested by Wachter et. al (2017)[^wachter].
+They suggest minimizing the following loss.
+-->
+<p>ここでは、2017年、Wacherらにより提案されたアプローチを紹介します。 このアプローチでは次の損失を最小化することを提案しています。</p>
+<p><span class="math display">\[L(x,x^\prime,y^\prime,\lambda)=\lambda\cdot(\hat{f}(x^\prime)-y^\prime)^2+d(x,x^\prime)\]</span></p>
+<!--
+The first term is the quadratic distance between the model prediction for the counterfactual x' and the desired outcome y', which the user must define in advance.
+The second term is the distance d between the instance x to be explained and the counterfactual x', but more about this later.
+The parameter $\lambda$ balances the distance in prediction (first term) against the distance in feature values (second term).
+The loss is solved for a given $\lambda$ and returns a counterfactual x'.
+A higher value of $\lambda$ means that we prefer counterfactuals that come close to the desired outcome y', a lower value means that we prefer counterfactuals x' that are very similar to x in the feature values.
+If $\lambda$ is very large, the instance with the prediction that comes closest to y' will be selected, regardless how far it is away from x.
+Ultimately, the user must decide how to balance the requirement that the prediction for the counterfactual matches the desired outcome with the requirement that the counterfactual is similar to x.
+The authors of the method suggest instead of selecting a value for $\lambda$ to select a tolerance $\epsilon$ for how far away the prediction of the counterfactual instance is allowed to be from y'.
+This constraint can be written as:
+-->
+<p>この式の最初の項では反事実 x' のモデルの予測と、事前にユーザが定義した望ましい結果 y' の二乗距離を計算しています。 第2項は説明されるインスタンス x と反事実 x' の距離を表します。 この項についての詳細は後ほどします。 パラメータ <span class="math inline">\(\lambda\)</span> は第1項目の予測に対する距離と第2項目の特徴量に対する距離のバランスを決定します。 この損失関数は、与えられた <span class="math inline">\(\lambda\)</span> の値に対して、反事実 x' を求めます。 <span class="math inline">\(\lambda\)</span> の値が大きいとき、得られる反事実が求めたい結果 y' により近くなる結果が得られ、<span class="math inline">\(\lambda\)</span> の値が小さいとき、得られる反事実の特徴量が x と近い結果が得られます。 <span class="math inline">\(\lambda\)</span> が非常に大きい値である場合、x からの距離に関わらず y' に最も近い予測をもつインスタンスが選択されます。 最終的には、ユーザは反事実の予測が、どの程度求める結果と一致するかという点と、反事実がどの程度 x と一致するかという点に関して、バランスを決定する必要があります。 この手法の著者は、<span class="math inline">\(\lambda\)</span> の値を決定する代わりに、どれだけ反事実インスタンスの予測が y' と離れていても良いかを表す許容量 <span class="math inline">\(\epsilon\)</span> を決定することを提案しています。 この条件は以下のように記述できます。</p>
+<p><span class="math display">\[|\hat{f}(x^\prime)-y^\prime|\leq\epsilon\]</span></p>
+<!--
+To minimize this loss function, any suitable optimization algorithm can be used, e.g. Nelder-Mead.
+If you have access to the gradients of the machine learning model, you can use gradient-based methods like ADAM.
+The instance x to be explained, the desired output y' and the tolerance parameter $\epsilon$ must be set in advance.
+The loss function is minimized for x' and the (locally) optimal counterfactual x' returned while increasing $\lambda$ until a sufficiently close solution is found (= within the tolerance parameter).
+-->
+<p>この損失関数を最小化するには、Nelder-Mead法といった多くの最適化アルゴリズムを用いることができます。 もし機械学習モデルの勾配にアクセスできる場合、ADAM などの勾配ベースの手法を用いることもできます。 説明されるインスタンス x 、求めたい結果 y' 、許容量 <span class="math inline">\(\epsilon\)</span> は事前に定めておく必要があります。 <span class="math inline">\(\lambda\)</span> の値を増加させながら（許容パラメータ内において）十分に近い解を探索することで、損失関数は x' について最小化され、（局所的に）最適な反事実 x' が返されます。</p>
+<p><span class="math display">\[\arg\min_{x^\prime}\max_{\lambda}L(x,x^\prime,y^\prime,\lambda)\]</span></p>
+<!--
+The function d for measuring the distance between instance x and counterfactual x' is the Manhattan distance weighted feature-wise with the inverse median absolute deviation (MAD).
+-->
+<p>インスタンス x と反事実 x' の距離を測る関数 d は、中央絶対偏差（median absolute deviation, MAD）の逆数によって特徴量ごとにスケーリングされたマンハッタン距離で表されます。</p>
+<p><span class="math display">\[d(x,x^\prime)=\sum_{j=1}^p\frac{|x_j-x^\prime_j|}{MAD_j}\]</span></p>
+<!--
+The total distance is the sum of all p feature-wise distances, that is, the absolute differences of feature values between instance x and counterfactual x'.
+The feature-wise distances are scaled by the inverse of the median absolute deviation of feature j over the dataset defined as:
+-->
+<p>距離の合計値は全ての p 個の特徴量間の距離の総和、すなわちインスタンス x と反事実 x' の特徴量の差の絶対値を表します。 特徴量ごとの距離は、データセット内の特徴量 j の MAD の逆数によってスケーリングされます。</p>
+<p><span class="math display">\[MAD_j=\text{median}_{i\in{}\{1,\ldots,n\}}(|x_{i,j}-\text{median}_{l\in{}\{1,\ldots,n\}}(x_{l,j})|)\]</span></p>
+<!--
+The median of a vector is the value at which half of the vector values are greater and the other half smaller.
+The MAD is the equivalent of the variance of a feature, but instead of using the mean as the center and summing over the square distances, we use the median as the center and sum over the absolute distances.
+The proposed distance function has the advantage over the Euclidean distance that it introduces sparsity.
+This means that two points are closer to each other when fewer features are different.
+And it is more robust to outliers.
+Scaling with the MAD is necessary to bring all the features to the same scale -- it should not matter whether you measure the size of an apartment in square meters or square feet.
+-->
+<p>ベクトルの中央値はベクトル内の値の半分がこれより大きくなり、残りの半分がこれより小さくなる値を指します。 MAD は特徴量の分散に相当しますが、平均を中心として距離の二乗和をとる代わりに、中央値を中心として距離の絶対値の和を用います。 ユークリッド距離と比較すると、提案された距離関数はスパース性が導入されているという利点があります。 これは、異なる特徴量の数が少ないとき、2点がより近くなることを意味します。 また、外れ値に対してよりロバストになります。 MAD によりスケーリングすることは全ての特徴量を同じスケールにするためことに必要です。 アパートの大きさをメートルで測るかフィートで測るかは結果に影響すべきではありません。</p>
+<!--
+The recipe for producing the counterfactuals is simple:
+-->
+<p>反事実を生成する手順はシンプルです。</p>
+<!--
+1. Select an instance x to be explained, the desired outcome y', a tolerance $\epsilon$ and a (low) initial value for $\lambda$.
+1. Sample a random instance as initial counterfactual.
+1. Optimize the loss with the initially sampled counterfactual as starting point.
+1. While $|\hat{f}(x^\prime)-y^\prime|>\epsilon$:
+    - Increase $\lambda$.
+    - Optimize the loss with the current counterfactual as starting point.
+    - Return the counterfactual that minimizes the loss.
+1. Repeat steps 2-4 and return the list of counterfactuals or the one that minimizes the loss.
+-->
+<ol style="list-style-type: decimal">
+<li>説明したいインスタンス x、望ましい結果 y'、許容量 <span class="math inline">\(\epsilon\)</span>、<span class="math inline">\(\lambda\)</span> の初期値（小さな値）を選択する。</li>
+<li>最初に用いる反事実としてランダムにインスタンスをサンプリングする。</li>
+<li>最初に選んだ反事実を出発点として損失関数を最適化する。</li>
+<li><span class="math inline">\(|\hat{f}(x^\prime)-y^\prime|&gt;\epsilon\)</span> を満たす間、
+<ul>
+<li><span class="math inline">\(\lambda\)</span> の値を増加させる。</li>
+<li>現在の反事実を出発点として損失を最適化する。</li>
+<li>損失を最小化する反事実を返す。</li>
+</ul></li>
+<li>ステップ 2-4 を繰り返し、反事実のリストもしくは損失を最小化するものを返す。</li>
+</ol>
+<!--
+### Examples
+-->
+</div>
+<div id="例-13" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> 例</h3>
+<!--
+Both examples are from the work of Wachter et. al (2017).
+-->
+<p>どちらの例も Wachter らの論文 (2017)より引用しています。</p>
+<!--
+In the first example, the authors train a three-layer fully-connected neural network to predict a student's average grade of the first year at law school, based on grade point average (GPA) prior to law school, race and law school entrance exam scores.
+The goal is to find counterfactual explanations for each student that answer the following question:
+How would the input features need to be changed, to get a predicted score of 0?
+Since the scores have been normalized before, a student with a score of 0 is as good as the average of the students.
+A negative score means a below-average result, a positive score an above-average result.
+-->
+<p>最初の例では、著者は3層の全結合型ニューラルネットを学習し、法科大学入学前の成績（GPA）、人種、入学試験の得点から、入学1年目の学生の成績を予測しようとしています。 目標は次の問いを満たす反事実的説明を各学生に対して求めることです。 予測スコアが 0 となるにはどのように入力特徴量を変更する必要があるでしょうか。 スコアは事前に標準化されているため、スコアが 0 というのはその学生が平均的であることを意味します。 また、スコアが負であることは平均以下、スコアが正であることは平均以上であることを意味します。</p>
+<!--
+The following table shows the learned counterfactuals:
+-->
+<p>次の表は学習された反事実を表しています。</p>
+<!--
+| Score | GPA | LSAT | Race | GPA x' | LSAT x' |  Race x'|
+| ------|--------------| --------------| --------------| -------| --------| ------- |
+| 0.17 | 3.1 | 39.0 | 0 | 3.1 | 34.0 | 0|
+| 0.54 | 3.7 | 48.0 | 0 | 3.7 | 32.4 | 0|
+| -0.77| 3.3 | 28.0 | 1 | 3.3 | 33.5 | 0|
+| -0.83| 2.4 | 28.5 | 1 | 2.4 | 35.8 | 0|
+| -0.57| 2.7 | 18.3 | 0 | 2.7 | 34.9 | 0|
+-->
+<table>
+<thead>
+<tr class="header">
+<th>点数</th>
+<th>GPA</th>
+<th>入学試験の点数</th>
+<th>人種</th>
+<th>GPA x'</th>
+<th>入学試験の点数 x'</th>
+<th>人種 x'</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.17</td>
+<td>3.1</td>
+<td>39.0</td>
+<td>0</td>
+<td>3.1</td>
+<td>34.0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0.54</td>
+<td>3.7</td>
+<td>48.0</td>
+<td>0</td>
+<td>3.7</td>
+<td>32.4</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>-0.77</td>
+<td>3.3</td>
+<td>28.0</td>
+<td>1</td>
+<td>3.3</td>
+<td>33.5</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>-0.83</td>
+<td>2.4</td>
+<td>28.5</td>
+<td>1</td>
+<td>2.4</td>
+<td>35.8</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>-0.57</td>
+<td>2.7</td>
+<td>18.3</td>
+<td>0</td>
+<td>2.7</td>
+<td>34.9</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<!--
+The first column contains the predicted score, the next 3 columns the original feature values and the last 3 columns the counterfactual feature values that result in a score close to 0.
+The first two rows are students with above-average predictions, the other three rows below-average.
+The counterfactuals for the first two rows describe how the student features would have to change to decrease the predicted score and for the other three cases how they would have to change to increase the score to the average.
+The counterfactuals for increasing the score always change the race from black (coded with 1) to white (coded with 0) which shows a racial bias of the model.
+The GPA is not changed in the counterfactuals, but LSAT is.
+-->
+<p>最初の列は予測した点数、次の3列は特徴量の元々の値、そして最後の3列が点数が0に近い値となるような反事実の特徴量の値を表しています。 また、最初の2行は平均以上の予測となった学生、残りの3行は平均以下となった学生を表しています。 ここで、最初の2行の反事実は、予測値が下がるには各生徒の特徴量がどのように変更される必要があるのか、残りの3行では予測値が上がるためには各生徒の特徴量がどのように変更される必要があるのかを示しています。 点数が上がる反事実では常に人種が黒人（1の値）から白人（0の値）となっており、モデルが人種に対するバイアスを持っていることがわかります。 この時、GPAは変化していませんが、入学試験の点数が変化していることがわかります。</p>
+<!--
+The second example shows counterfactual explanations for predicted risk of diabetes.
+A three-layer fully-connected neural network is trained to predict the risk for diabetes depending on age, BMI, number of pregnancies and so on for women of Pima heritage.
+The counterfactuals answer the question: Which feature values must be changed to increase or decrease the risk score of diabetes to 0.5?
+The following counterfactuals were found:
+-->
+<p>2つ目の例では糖尿病のリスクの予測に対する反事実的説明を表しています。 3層全結合ニューラルネットを訓練し、年齢、BMI、妊娠の回数などからピマ族の血を引く女性が糖尿病にかかるリスクを予測しています。 反事実を次の問いとして、糖尿病リスクのスコアを0.5に増加させる、もしくは減少させるにはどの特徴量が変更される必要があるかを考えます。</p>
+<!--
+- Person 1: If your 2-hour serum insulin level was 154.3, you would have a score of 0.51
+- Person 2: If your 2-hour serum insulin level was 169.5, you would have a score of 0.51
+- Person 3: If your Plasma glucose concentration was 158.3 and your 2-hour serum insulin level was 160.5, you would have a score of 0.51
+-->
+<ul>
+<li>1人目：2時間の血中インスリン測定の結果が 154.3 ならば、スコアが0.51となる</li>
+<li>2人目：2時間の血中インスリン測定の結果が 169.5 ならば、スコアが0.51となる</li>
+<li>3人目：血糖値が 158.3 かつ2時間の血中インスリン測定の結果が 160.5 ならば、スコアが0.51となる</li>
+</ul>
+<!--
+### Advantages
+-->
+</div>
+<div id="長所-12" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> 長所</h3>
+<!--
+**The interpretation of counterfactual explanations is very clear**.
+If the feature values of an instance are changed according to the counterfactual, the prediction changes to the predefined prediction.
+There are no additional assumptions and no magic in the background.
+This also means it is not as dangerous as methods like [LIME](#lime), where it is unclear how far we can extrapolate the local model for the interpretation.
+-->
+<p><strong>反事実的説明は単純明快です。</strong> 反事実に従ってあるインスタンスの特徴量を改変すると、予測結果が予め設定した値に変わります。 背景には他の仮定も魔法もありません。 従って、LIMEのように局所的なモデルをどれだけ外挿していいか不明な手法と比べると、危険性が低いです。</p>
+<!--
+The counterfactual method creates a new instance, but we can also summarize a counterfactual by reporting which feature values have changed.
+This gives us **two options for reporting our results**.
+You can either report the counterfactual instance or highlight which features have been changed between the instance of interest and the counterfactual instance.
+-->
+<p>反事実的説明は新たなインスタンスを生成しますが、反事実がどの特徴量を変更したものか要約できます。 結果をまとめるにあたって2つの選択肢が生じます。 反事実インスタンスを報告するか、説明したいインスタンスとその反事実インスタンスとの間でどの特徴量が異なるかを示すか選べます。</p>
+<!--
+The **counterfactual method does not require access to the data or the model**.
+It only requires access to the model's prediction function, which would also work via a web API, for example.
+This is attractive for companies which are audited by third parties or which are offering explanations for users without disclosing the model or data.
+A company has an interest in protecting model and data because of trade secrets or data protection reasons.
+Counterfactual explanations offer a balance between explaining model predictions and protecting the interests of the model owner.
+-->
+<p>反事実的手法はデータやモデルへのアクセスが不要です。 モデルの予測関数にさえアクセスできればよく、web APIなどによる運用も可能です。 この性質は、サードパーティの監査を受ける企業やデータやモデルを非公開にしたままユーザーに説明性を提供したい企業にとって魅力的です。 会社は企業秘密やデータ保護の観点から、モデルやデータの秘匿に関心を寄せています。 反事実による説明は、モデルの予測を説明することと、モデルの所有者の利益を守ることのバランスを取ることができます。</p>
+<!--
+The method **works also with systems that do not use machine learning**.
+We can create counterfactuals for any system that receives inputs and returns outputs.
+The system that predicts apartment rents could also consist of handwritten rules, and counterfactual explanations would still work.
+-->
+<p>反事実的手法は機械学習を用いないシステムにも応用可能です。 入出力を持つ任意のシステムに対して反事実は作れます。 アパートの賃料予測は手書きのルールによる構築も可能ですが、反事実的説明は依然として機能します。</p>
+<!--
+**The counterfactual explanation method is relatively easy to implement**, since it is essentially a loss function that can be optimized with standard optimizer libraries.
+Some additional details must be taken into account, such as limiting feature values to meaningful ranges (e.g. only positive apartment sizes).
+-->
+<p><strong>反事実的説明は比較的簡単に実装できます。</strong> というのも、反事実的説明は標準的な最適化ライブラリによって最適化可能な損失関数にすぎないからです。 ただし、特徴量の範囲の妥当性などいくつか追加で考慮すべき点があります（例えば 、アパートの広さは正の値しか取りません）。</p>
+<!--
+### Disadvantages
+-->
+</div>
+<div id="短所-12" class="section level3">
+<h3><span class="header-section-number">6.1.4</span> 短所</h3>
+<!--
+**For each instance you will usually find multiple counterfactual explanations (Rashomon effect)**.
+This is inconvenient -- most people prefer simple explanations over the complexity of the real world.
+It is also a practical challenge.
+Let us say we generated 23 counterfactual explanations for one instance.
+Are we reporting them all?
+Only the best?
+What if they are all relatively "good", but very different?
+These questions must be answered anew for each project.
+It can also be advantageous to have multiple counterfactual explanations, because then humans can select the ones that correspond to their previous knowledge.
+-->
+<p><strong>通常、各インスタンスは複数の反事実的説明を持ちます（羅生門効果）</strong>。 これは便利ではありません。多くの人は現実世界の複雑さよりも簡単な説明の方を好みます。 また、これは実用面での課題でもあります。 例として1つのインスタンスに対して23個の反事実的説明が生成されたとしましょう。 これらを全て報告すべきでしょうか、それとも最も良いものだけにするべきでしょうか。 もしそれらが全て比較的「良い」もので、中身が異なるものであったならどうでしょうか。 これらの課題はプロジェクトごとに新たに答えを出さなくてはいけません。 過去の経験に合うものを選択できるという理由から、複数の反事実的説明を持つことが有利になることもありえます。</p>
+<!--
+There is **no guarantee that for a given tolerance $\epsilon$ a counterfactual instance is found**.
+That is not necessarily the fault of the method, but rather depends on the data.
+-->
+<p><strong>与えられた許容量 <span class="math inline">\(\epsilon\)</span> に対して、反事実的説明が見つかるとは限りません</strong>。 これは手法による過失ではなく、データに依存しています。</p>
+<!--
+The proposed method **does not handle categorical features** with many different levels well.
+The authors of the method suggested running the method separately for each combination of feature values of the categorical features, but this will lead to a combinatorial explosion if you have multiple categorical features with many values.
+For example, 6 categorical features with 10 unique levels would mean 1 million runs.
+A solution for only categorical features was proposed by Martens et. al (2014)[^martens].
+A solution that handles both numerical and categorical variables with a principled way of generating perturbations for categorical variables is implemented in the Python package [Alibi](https://docs.seldon.io/projects/alibi/en/stable/methods/CFProto.html).
+-->
+<p>提案された手法では異なるレベルを持つカテゴリカル特徴量を上手く扱うことができません。 この手法の著者はカテゴリカル特徴量の組み合わせごとにこの方法を実行することを提案していますが、これも多くの値を持つ複数のカテゴリカル特徴量を持つ場合には組合せ爆発を起こしてしまいます。 例えば10個の固有の値を持つカテゴリカル特徴量が6個あった場合、100万回もの実行が必要となります。 カテゴリカル特徴量のみを扱う際の解決策としては、Martensらが提案した手法(2014)<a href="#fn52" class="footnoteRef" id="fnref52"><sup>52</sup></a> が存在します。 また、量的変数とカテゴリカル変数を両方扱い、カテゴリカル変数に対して原理的に摂動を生成する手法が Python パッケージ <a href="https://docs.seldon.io/projects/alibi/en/stable/methods/CFProto.html">Alibi</a> に実装されています。</p>
+<!--
+### Software and Alternatives {#example-software}
+-->
+</div>
+<div id="ソフトウェアと代替手法-7" class="section level3">
+<h3><span class="header-section-number">6.1.5</span> ソフトウェアと代替手法</h3>
+<!--
+Counterfactuals explanations are implemented in the Python package [Alibi](https://github.com/SeldonIO/alibi). Authors of the package implement a [simple counterfactual method](https://docs.seldon.io/projects/alibi/en/stable/methods/CF.html) as well as an [extended method](https://docs.seldon.io/projects/alibi/en/stable/methods/CFProto.html) that uses class prototypes to improve the interpretability and convergence of the algorithm outputs[^vanlooveren].
+-->
+<p>反事実的説明のPython実装は <a href="https://github.com/SeldonIO/alibi">Alibi</a> パッケージです。パッケージの作者は <a href="https://docs.seldon.io/projects/alibi/en/stable/methods/CF.html">単純な反事実的手法</a> と <a href="https://docs.seldon.io/projects/alibi/en/stable/methods/CFProto.html">その拡張</a> としてプロトタイプクラスを用いて解釈しやすくし、アルゴリズムの収束性を改善したものを実装しています。</p>
+<!--
+A very similar approach was proposed by Martens et. al (2014) for explaining document classifications.
+In their work, they focus on explaining why a document was or was not classified as a particular class.
+The difference to the method presented in this chapter is that Martens et. al (2014) focus on text classifiers, which have word occurrences as inputs.
+-->
+<p>Martens らは文書の分類問題に対して同様の手法を提案しています(2014)。 彼らはある文書がどうして特定のクラスに分類されなかったのか説明することに注力しています。 本章で説明した手法と異なり、Martens らは文書の分類に注目しているので、入力は単語の出現頻度です。</p>
+<!--
+An alternative way to search counterfactuals is the Growing Spheres algorithm by Laugel et. al (2017)[^spheres].
+The method first draws a sphere around the point of interest, samples points within that sphere, checks whether one of the sampled points yields the desired prediction, contracts or expands the sphere accordingly until a (sparse) counterfactual is found and finally returned.
+They do not use the word counterfactual in their paper, but the method is quite similar.
+They also define a loss function that favors counterfactuals with as few changes in the feature values as possible.
+Instead of directly optimizing the function, they suggest the above-mentioned search with spheres.
+-->
+<p>他にも反事実を探す方法として、Laugel らによるGrowing Spheresアルゴリズム (2017)<a href="#fn53" class="footnoteRef" id="fnref53"><sup>53</sup></a>があります。 この手法は、注目したい点の周囲に球を描き、その球に含まれる点を抽出し、抽出した点の予測結果が期待通りか確認しながら、（スパースな）反事実を発見し提示するまで球を拡大していきます。 彼らは論文中で反事実 (counterfactual) という用語を用いていませんが、手法としてはよく似ています。 彼らはさらに特徴量を最小限に改変して反事実を得るための損失関数を定義しています。 損失関数を直接最適化する代わりに、彼らは上述の球を用いた探索を提案しています。</p>
+<!--
+Anchors by Ribeiro et. al (2018)[^anchors] are the opposite of counterfactuals, see chapter about [Scoped Rules (Anchors)](#anchors).
+-->
+<p>Ribeiro らによるAnchor (2018)<a href="#fn54" class="footnoteRef" id="fnref54"><sup>54</sup></a>は反事実とは対極的な存在です。 これについては、<a href="anchors.html#anchors">Scoped Rules (Anchors)</a>の章をご覧下さい。</p>
+
+<!--{pagebreak}-->
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="52">
+<li id="fn52"><p>Martens, David, and Foster Provost. &quot;Explaining data-driven document classifications.&quot; (2014).<a href="反事実的.html#fnref52">↩</a></p></li>
+<li id="fn53"><p>Laugel, Thibault, et al. &quot;Inverse classification for comparison-based interpretability in machine learning.&quot; arXiv preprint arXiv:1712.08443 (2017).<a href="反事実的.html#fnref53">↩</a></p></li>
+<li id="fn54"><p>Ribeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin. &quot;Anchors: High-precision model-agnostic explanations.&quot; AAAI Conference on Artificial Intelligence (2018).<a href="反事実的.html#fnref54">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="example-based.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="adversarial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/christophM/interpretable-ml-book/edit/master/06.1-example-based-counterfactual.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

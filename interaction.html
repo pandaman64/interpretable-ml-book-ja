@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.4 Feature Interaction | Interpretable Machine Learning</title>
+  <title>5.4 特徴量の相互作用 | Interpretable Machine Learning</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.4 Feature Interaction | Interpretable Machine Learning" />
+  <meta property="og:title" content="5.4 特徴量の相互作用 | Interpretable Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="christophM/interpretable-ml-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.4 Feature Interaction | Interpretable Machine Learning" />
+  <meta name="twitter:title" content="5.4 特徴量の相互作用 | Interpretable Machine Learning" />
   
   <meta name="twitter:description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Christoph Molnar" />
 
 
-<meta name="date" content="2021-02-16" />
+<meta name="date" content="2021-04-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -208,109 +208,109 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="5.2.4" data-path="ice.html"><a href="ice.html#ソフトウェアと代替手法-3"><i class="fa fa-check"></i><b>5.2.4</b> ソフトウェアと代替手法</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="ale.html"><a href="ale.html"><i class="fa fa-check"></i><b>5.3</b> Accumulated Local Effects (ALE) Plot</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="ale.html"><a href="ale.html#motivation-and-intuition"><i class="fa fa-check"></i><b>5.3.1</b> Motivation and Intuition</a></li>
-<li class="chapter" data-level="5.3.2" data-path="ale.html"><a href="ale.html#theory"><i class="fa fa-check"></i><b>5.3.2</b> Theory</a></li>
-<li class="chapter" data-level="5.3.3" data-path="ale.html"><a href="ale.html#estimation"><i class="fa fa-check"></i><b>5.3.3</b> Estimation</a></li>
-<li class="chapter" data-level="5.3.4" data-path="ale.html"><a href="ale.html#examples"><i class="fa fa-check"></i><b>5.3.4</b> Examples</a></li>
-<li class="chapter" data-level="5.3.5" data-path="ale.html"><a href="ale.html#advantages"><i class="fa fa-check"></i><b>5.3.5</b> Advantages</a></li>
-<li class="chapter" data-level="5.3.6" data-path="ale.html"><a href="ale.html#disadvantages"><i class="fa fa-check"></i><b>5.3.6</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.3.7" data-path="ale.html"><a href="ale.html#implementation-and-alternatives"><i class="fa fa-check"></i><b>5.3.7</b> Implementation and Alternatives</a></li>
+<li class="chapter" data-level="5.3.1" data-path="ale.html"><a href="ale.html#モチベーションと直感"><i class="fa fa-check"></i><b>5.3.1</b> モチベーションと直感</a></li>
+<li class="chapter" data-level="5.3.2" data-path="ale.html"><a href="ale.html#理論-2"><i class="fa fa-check"></i><b>5.3.2</b> 理論</a></li>
+<li class="chapter" data-level="5.3.3" data-path="ale.html"><a href="ale.html#予測"><i class="fa fa-check"></i><b>5.3.3</b> 予測</a></li>
+<li class="chapter" data-level="5.3.4" data-path="ale.html"><a href="ale.html#例-6"><i class="fa fa-check"></i><b>5.3.4</b> 例</a></li>
+<li class="chapter" data-level="5.3.5" data-path="ale.html"><a href="ale.html#利点"><i class="fa fa-check"></i><b>5.3.5</b> 利点</a></li>
+<li class="chapter" data-level="5.3.6" data-path="ale.html"><a href="ale.html#欠点"><i class="fa fa-check"></i><b>5.3.6</b> 欠点</a></li>
+<li class="chapter" data-level="5.3.7" data-path="ale.html"><a href="ale.html#実装と代替手法"><i class="fa fa-check"></i><b>5.3.7</b> 実装と代替手法</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="interaction.html"><a href="interaction.html"><i class="fa fa-check"></i><b>5.4</b> Feature Interaction</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="interaction.html"><a href="interaction.html#feature-interaction"><i class="fa fa-check"></i><b>5.4.1</b> Feature Interaction?</a></li>
-<li class="chapter" data-level="5.4.2" data-path="interaction.html"><a href="interaction.html#theory-friedmans-h-statistic"><i class="fa fa-check"></i><b>5.4.2</b> Theory: Friedman's H-statistic</a></li>
-<li class="chapter" data-level="5.4.3" data-path="interaction.html"><a href="interaction.html#examples-1"><i class="fa fa-check"></i><b>5.4.3</b> Examples</a></li>
-<li class="chapter" data-level="5.4.4" data-path="interaction.html"><a href="interaction.html#advantages-1"><i class="fa fa-check"></i><b>5.4.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.4.5" data-path="interaction.html"><a href="interaction.html#disadvantages-1"><i class="fa fa-check"></i><b>5.4.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.4.6" data-path="interaction.html"><a href="interaction.html#implementations"><i class="fa fa-check"></i><b>5.4.6</b> Implementations</a></li>
-<li class="chapter" data-level="5.4.7" data-path="interaction.html"><a href="interaction.html#alternatives"><i class="fa fa-check"></i><b>5.4.7</b> Alternatives</a></li>
+<li class="chapter" data-level="5.4" data-path="interaction.html"><a href="interaction.html"><i class="fa fa-check"></i><b>5.4</b> 特徴量の相互作用</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="interaction.html"><a href="interaction.html#特徴量の相互作用とは"><i class="fa fa-check"></i><b>5.4.1</b> 特徴量の相互作用とは</a></li>
+<li class="chapter" data-level="5.4.2" data-path="interaction.html"><a href="interaction.html#friedman-の-h統計量の理論"><i class="fa fa-check"></i><b>5.4.2</b> Friedman の H統計量の理論</a></li>
+<li class="chapter" data-level="5.4.3" data-path="interaction.html"><a href="interaction.html#例-7"><i class="fa fa-check"></i><b>5.4.3</b> 例</a></li>
+<li class="chapter" data-level="5.4.4" data-path="interaction.html"><a href="interaction.html#利点-1"><i class="fa fa-check"></i><b>5.4.4</b> 利点</a></li>
+<li class="chapter" data-level="5.4.5" data-path="interaction.html"><a href="interaction.html#欠点-1"><i class="fa fa-check"></i><b>5.4.5</b> 欠点</a></li>
+<li class="chapter" data-level="5.4.6" data-path="interaction.html"><a href="interaction.html#実装"><i class="fa fa-check"></i><b>5.4.6</b> 実装</a></li>
+<li class="chapter" data-level="5.4.7" data-path="interaction.html"><a href="interaction.html#代替手法"><i class="fa fa-check"></i><b>5.4.7</b> 代替手法</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="feature-importance.html"><a href="feature-importance.html"><i class="fa fa-check"></i><b>5.5</b> Permutation Feature Importance</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="feature-importance.html"><a href="feature-importance.html#theory-1"><i class="fa fa-check"></i><b>5.5.1</b> Theory</a></li>
-<li class="chapter" data-level="5.5.2" data-path="feature-importance.html"><a href="feature-importance.html#feature-importance-data"><i class="fa fa-check"></i><b>5.5.2</b> Should I Compute Importance on Training or Test Data?</a></li>
-<li class="chapter" data-level="5.5.3" data-path="feature-importance.html"><a href="feature-importance.html#example-and-interpretation"><i class="fa fa-check"></i><b>5.5.3</b> Example and Interpretation</a></li>
-<li class="chapter" data-level="5.5.4" data-path="feature-importance.html"><a href="feature-importance.html#advantages-2"><i class="fa fa-check"></i><b>5.5.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.5.5" data-path="feature-importance.html"><a href="feature-importance.html#disadvantages-2"><i class="fa fa-check"></i><b>5.5.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.5.6" data-path="feature-importance.html"><a href="feature-importance.html#software-and-alternatives"><i class="fa fa-check"></i><b>5.5.6</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="5.5.1" data-path="feature-importance.html"><a href="feature-importance.html#理論-3"><i class="fa fa-check"></i><b>5.5.1</b> 理論</a></li>
+<li class="chapter" data-level="5.5.2" data-path="feature-importance.html"><a href="feature-importance.html#feature-importance-data"><i class="fa fa-check"></i><b>5.5.2</b> 特徴量の重要度は、学習データとテストデータのどちらで計算するべきか</a></li>
+<li class="chapter" data-level="5.5.3" data-path="feature-importance.html"><a href="feature-importance.html#例と解釈"><i class="fa fa-check"></i><b>5.5.3</b> 例と解釈</a></li>
+<li class="chapter" data-level="5.5.4" data-path="feature-importance.html"><a href="feature-importance.html#利点-2"><i class="fa fa-check"></i><b>5.5.4</b> 利点</a></li>
+<li class="chapter" data-level="5.5.5" data-path="feature-importance.html"><a href="feature-importance.html#欠点-2"><i class="fa fa-check"></i><b>5.5.5</b> 欠点</a></li>
+<li class="chapter" data-level="5.5.6" data-path="feature-importance.html"><a href="feature-importance.html#ソフトウェアと代替手法-4"><i class="fa fa-check"></i><b>5.5.6</b> ソフトウェアと代替手法</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="global.html"><a href="global.html"><i class="fa fa-check"></i><b>5.6</b> Global Surrogate</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="global.html"><a href="global.html#theory-2"><i class="fa fa-check"></i><b>5.6.1</b> Theory</a></li>
-<li class="chapter" data-level="5.6.2" data-path="global.html"><a href="global.html#example"><i class="fa fa-check"></i><b>5.6.2</b> Example</a></li>
-<li class="chapter" data-level="5.6.3" data-path="global.html"><a href="global.html#advantages-3"><i class="fa fa-check"></i><b>5.6.3</b> Advantages</a></li>
-<li class="chapter" data-level="5.6.4" data-path="global.html"><a href="global.html#disadvantages-3"><i class="fa fa-check"></i><b>5.6.4</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.6.5" data-path="global.html"><a href="global.html#software"><i class="fa fa-check"></i><b>5.6.5</b> Software</a></li>
+<li class="chapter" data-level="5.6" data-path="global.html"><a href="global.html"><i class="fa fa-check"></i><b>5.6</b> グローバルサロゲート (Global Surrogate)</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="global.html"><a href="global.html#理論-4"><i class="fa fa-check"></i><b>5.6.1</b> 理論</a></li>
+<li class="chapter" data-level="5.6.2" data-path="global.html"><a href="global.html#例-8"><i class="fa fa-check"></i><b>5.6.2</b> 例</a></li>
+<li class="chapter" data-level="5.6.3" data-path="global.html"><a href="global.html#長所-7"><i class="fa fa-check"></i><b>5.6.3</b> 長所</a></li>
+<li class="chapter" data-level="5.6.4" data-path="global.html"><a href="global.html#短所-7"><i class="fa fa-check"></i><b>5.6.4</b> 短所</a></li>
+<li class="chapter" data-level="5.6.5" data-path="global.html"><a href="global.html#ソフトウェア-3"><i class="fa fa-check"></i><b>5.6.5</b> ソフトウェア</a></li>
 </ul></li>
 <li class="chapter" data-level="5.7" data-path="lime.html"><a href="lime.html"><i class="fa fa-check"></i><b>5.7</b> Local Surrogate (LIME)</a><ul>
-<li class="chapter" data-level="5.7.1" data-path="lime.html"><a href="lime.html#lime-for-tabular-data"><i class="fa fa-check"></i><b>5.7.1</b> LIME for Tabular Data</a></li>
-<li class="chapter" data-level="5.7.2" data-path="lime.html"><a href="lime.html#lime-for-text"><i class="fa fa-check"></i><b>5.7.2</b> LIME for Text</a></li>
-<li class="chapter" data-level="5.7.3" data-path="lime.html"><a href="lime.html#images-lime"><i class="fa fa-check"></i><b>5.7.3</b> LIME for Images</a></li>
-<li class="chapter" data-level="5.7.4" data-path="lime.html"><a href="lime.html#advantages-4"><i class="fa fa-check"></i><b>5.7.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.7.5" data-path="lime.html"><a href="lime.html#disadvantages-4"><i class="fa fa-check"></i><b>5.7.5</b> Disadvantages</a></li>
+<li class="chapter" data-level="5.7.1" data-path="lime.html"><a href="lime.html#表形式データにおける-lime"><i class="fa fa-check"></i><b>5.7.1</b> 表形式データにおける LIME</a></li>
+<li class="chapter" data-level="5.7.2" data-path="lime.html"><a href="lime.html#テキストデータに対するlime"><i class="fa fa-check"></i><b>5.7.2</b> テキストデータに対するLIME</a></li>
+<li class="chapter" data-level="5.7.3" data-path="lime.html"><a href="lime.html#images-lime"><i class="fa fa-check"></i><b>5.7.3</b> 画像データに対するLIME</a></li>
+<li class="chapter" data-level="5.7.4" data-path="lime.html"><a href="lime.html#長所-8"><i class="fa fa-check"></i><b>5.7.4</b> 長所</a></li>
+<li class="chapter" data-level="5.7.5" data-path="lime.html"><a href="lime.html#短所-8"><i class="fa fa-check"></i><b>5.7.5</b> 短所</a></li>
 </ul></li>
 <li class="chapter" data-level="5.8" data-path="anchors.html"><a href="anchors.html"><i class="fa fa-check"></i><b>5.8</b> Scoped Rules (Anchors)</a><ul>
-<li class="chapter" data-level="5.8.1" data-path="anchors.html"><a href="anchors.html#finding-anchors"><i class="fa fa-check"></i><b>5.8.1</b> Finding Anchors</a></li>
-<li class="chapter" data-level="5.8.2" data-path="anchors.html"><a href="anchors.html#complexity-and-runtime"><i class="fa fa-check"></i><b>5.8.2</b> Complexity and Runtime</a></li>
-<li class="chapter" data-level="5.8.3" data-path="anchors.html"><a href="anchors.html#tabular-data-example"><i class="fa fa-check"></i><b>5.8.3</b> Tabular Data Example</a></li>
-<li class="chapter" data-level="5.8.4" data-path="anchors.html"><a href="anchors.html#advantages-5"><i class="fa fa-check"></i><b>5.8.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.8.5" data-path="anchors.html"><a href="anchors.html#disadvantages-5"><i class="fa fa-check"></i><b>5.8.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.8.6" data-path="anchors.html"><a href="anchors.html#software-and-alternatives-1"><i class="fa fa-check"></i><b>5.8.6</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="5.8.1" data-path="anchors.html"><a href="anchors.html#anchor-の発見"><i class="fa fa-check"></i><b>5.8.1</b> Anchor の発見</a></li>
+<li class="chapter" data-level="5.8.2" data-path="anchors.html"><a href="anchors.html#複雑性と実行時間"><i class="fa fa-check"></i><b>5.8.2</b> 複雑性と実行時間</a></li>
+<li class="chapter" data-level="5.8.3" data-path="anchors.html"><a href="anchors.html#表形式データの例"><i class="fa fa-check"></i><b>5.8.3</b> 表形式データの例</a></li>
+<li class="chapter" data-level="5.8.4" data-path="anchors.html"><a href="anchors.html#長所-9"><i class="fa fa-check"></i><b>5.8.4</b> 長所</a></li>
+<li class="chapter" data-level="5.8.5" data-path="anchors.html"><a href="anchors.html#短所-9"><i class="fa fa-check"></i><b>5.8.5</b> 短所</a></li>
+<li class="chapter" data-level="5.8.6" data-path="anchors.html"><a href="anchors.html#ソフトウェアと代替手法-5"><i class="fa fa-check"></i><b>5.8.6</b> ソフトウェアと代替手法</a></li>
 </ul></li>
-<li class="chapter" data-level="5.9" data-path="shapley.html"><a href="shapley.html"><i class="fa fa-check"></i><b>5.9</b> Shapley Values</a><ul>
-<li class="chapter" data-level="5.9.1" data-path="shapley.html"><a href="shapley.html#general-idea"><i class="fa fa-check"></i><b>5.9.1</b> General Idea</a></li>
-<li class="chapter" data-level="5.9.2" data-path="shapley.html"><a href="shapley.html#examples-and-interpretation"><i class="fa fa-check"></i><b>5.9.2</b> Examples and Interpretation</a></li>
-<li class="chapter" data-level="5.9.3" data-path="shapley.html"><a href="shapley.html#the-shapley-value-in-detail"><i class="fa fa-check"></i><b>5.9.3</b> The Shapley Value in Detail</a></li>
-<li class="chapter" data-level="5.9.4" data-path="shapley.html"><a href="shapley.html#advantages-6"><i class="fa fa-check"></i><b>5.9.4</b> Advantages</a></li>
-<li class="chapter" data-level="5.9.5" data-path="shapley.html"><a href="shapley.html#disadvantages-6"><i class="fa fa-check"></i><b>5.9.5</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.9.6" data-path="shapley.html"><a href="shapley.html#software-and-alternatives-2"><i class="fa fa-check"></i><b>5.9.6</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="5.9" data-path="shapley.html"><a href="shapley.html"><i class="fa fa-check"></i><b>5.9</b> シャープレイ値 (Shapley Values)</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="shapley.html"><a href="shapley.html#一般的なアイデア"><i class="fa fa-check"></i><b>5.9.1</b> 一般的なアイデア</a></li>
+<li class="chapter" data-level="5.9.2" data-path="shapley.html"><a href="shapley.html#例と解釈-1"><i class="fa fa-check"></i><b>5.9.2</b> 例と解釈</a></li>
+<li class="chapter" data-level="5.9.3" data-path="shapley.html"><a href="shapley.html#シャープレイ値の詳細"><i class="fa fa-check"></i><b>5.9.3</b> シャープレイ値の詳細</a></li>
+<li class="chapter" data-level="5.9.4" data-path="shapley.html"><a href="shapley.html#長所-10"><i class="fa fa-check"></i><b>5.9.4</b> 長所</a></li>
+<li class="chapter" data-level="5.9.5" data-path="shapley.html"><a href="shapley.html#短所-10"><i class="fa fa-check"></i><b>5.9.5</b> 短所</a></li>
+<li class="chapter" data-level="5.9.6" data-path="shapley.html"><a href="shapley.html#ソフトウェアと代替手法-6"><i class="fa fa-check"></i><b>5.9.6</b> ソフトウェアと代替手法</a></li>
 </ul></li>
 <li class="chapter" data-level="5.10" data-path="shap.html"><a href="shap.html"><i class="fa fa-check"></i><b>5.10</b> SHAP (SHapley Additive exPlanations)</a><ul>
-<li class="chapter" data-level="5.10.1" data-path="shap.html"><a href="shap.html#definition"><i class="fa fa-check"></i><b>5.10.1</b> Definition</a></li>
+<li class="chapter" data-level="5.10.1" data-path="shap.html"><a href="shap.html#定義"><i class="fa fa-check"></i><b>5.10.1</b> 定義</a></li>
 <li class="chapter" data-level="5.10.2" data-path="shap.html"><a href="shap.html#kernelshap"><i class="fa fa-check"></i><b>5.10.2</b> KernelSHAP</a></li>
 <li class="chapter" data-level="5.10.3" data-path="shap.html"><a href="shap.html#treeshap"><i class="fa fa-check"></i><b>5.10.3</b> TreeSHAP</a></li>
-<li class="chapter" data-level="5.10.4" data-path="shap.html"><a href="shap.html#examples-2"><i class="fa fa-check"></i><b>5.10.4</b> Examples</a></li>
-<li class="chapter" data-level="5.10.5" data-path="shap.html"><a href="shap.html#shap-feature-importance"><i class="fa fa-check"></i><b>5.10.5</b> SHAP Feature Importance</a></li>
+<li class="chapter" data-level="5.10.4" data-path="shap.html"><a href="shap.html#例-12"><i class="fa fa-check"></i><b>5.10.4</b> 例</a></li>
+<li class="chapter" data-level="5.10.5" data-path="shap.html"><a href="shap.html#shap-特徴量重要度-shap-feature-importance"><i class="fa fa-check"></i><b>5.10.5</b> SHAP 特徴量重要度 (SHAP Feature Importance)</a></li>
 <li class="chapter" data-level="5.10.6" data-path="shap.html"><a href="shap.html#shap-summary-plot"><i class="fa fa-check"></i><b>5.10.6</b> SHAP Summary Plot</a></li>
 <li class="chapter" data-level="5.10.7" data-path="shap.html"><a href="shap.html#shap-dependence-plot"><i class="fa fa-check"></i><b>5.10.7</b> SHAP Dependence Plot</a></li>
-<li class="chapter" data-level="5.10.8" data-path="shap.html"><a href="shap.html#shap-interaction-values"><i class="fa fa-check"></i><b>5.10.8</b> SHAP Interaction Values</a></li>
+<li class="chapter" data-level="5.10.8" data-path="shap.html"><a href="shap.html#shap-相互作用値-shap-interaction-values"><i class="fa fa-check"></i><b>5.10.8</b> SHAP 相互作用値 (SHAP Interaction Values)</a></li>
 <li class="chapter" data-level="5.10.9" data-path="shap.html"><a href="shap.html#clustering-shap-values"><i class="fa fa-check"></i><b>5.10.9</b> Clustering SHAP values</a></li>
-<li class="chapter" data-level="5.10.10" data-path="shap.html"><a href="shap.html#advantages-7"><i class="fa fa-check"></i><b>5.10.10</b> Advantages</a></li>
-<li class="chapter" data-level="5.10.11" data-path="shap.html"><a href="shap.html#disadvantages-7"><i class="fa fa-check"></i><b>5.10.11</b> Disadvantages</a></li>
-<li class="chapter" data-level="5.10.12" data-path="shap.html"><a href="shap.html#software-1"><i class="fa fa-check"></i><b>5.10.12</b> Software</a></li>
+<li class="chapter" data-level="5.10.10" data-path="shap.html"><a href="shap.html#長所-11"><i class="fa fa-check"></i><b>5.10.10</b> 長所</a></li>
+<li class="chapter" data-level="5.10.11" data-path="shap.html"><a href="shap.html#短所-11"><i class="fa fa-check"></i><b>5.10.11</b> 短所</a></li>
+<li class="chapter" data-level="5.10.12" data-path="shap.html"><a href="shap.html#ソフトウェア-4"><i class="fa fa-check"></i><b>5.10.12</b> ソフトウェア</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>6</b> Example-Based Explanations</a><ul>
-<li class="chapter" data-level="6.1" data-path="counterfactual.html"><a href="counterfactual.html"><i class="fa fa-check"></i><b>6.1</b> Counterfactual Explanations</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="counterfactual.html"><a href="counterfactual.html#generating-counterfactual-explanations"><i class="fa fa-check"></i><b>6.1.1</b> Generating Counterfactual Explanations</a></li>
-<li class="chapter" data-level="6.1.2" data-path="counterfactual.html"><a href="counterfactual.html#examples-3"><i class="fa fa-check"></i><b>6.1.2</b> Examples</a></li>
-<li class="chapter" data-level="6.1.3" data-path="counterfactual.html"><a href="counterfactual.html#advantages-8"><i class="fa fa-check"></i><b>6.1.3</b> Advantages</a></li>
-<li class="chapter" data-level="6.1.4" data-path="counterfactual.html"><a href="counterfactual.html#disadvantages-8"><i class="fa fa-check"></i><b>6.1.4</b> Disadvantages</a></li>
-<li class="chapter" data-level="6.1.5" data-path="counterfactual.html"><a href="counterfactual.html#example-software"><i class="fa fa-check"></i><b>6.1.5</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="6" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>6</b> 例示に基づいた説明手法</a><ul>
+<li class="chapter" data-level="6.1" data-path="反事実的.html"><a href="反事実的.html"><i class="fa fa-check"></i><b>6.1</b> 反事実的説明 (Counterfactual Explanations)</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="反事実的.html"><a href="反事実的.html#反事実的説明の生成"><i class="fa fa-check"></i><b>6.1.1</b> 反事実的説明の生成</a></li>
+<li class="chapter" data-level="6.1.2" data-path="反事実的.html"><a href="反事実的.html#例-13"><i class="fa fa-check"></i><b>6.1.2</b> 例</a></li>
+<li class="chapter" data-level="6.1.3" data-path="反事実的.html"><a href="反事実的.html#長所-12"><i class="fa fa-check"></i><b>6.1.3</b> 長所</a></li>
+<li class="chapter" data-level="6.1.4" data-path="反事実的.html"><a href="反事実的.html#短所-12"><i class="fa fa-check"></i><b>6.1.4</b> 短所</a></li>
+<li class="chapter" data-level="6.1.5" data-path="反事実的.html"><a href="反事実的.html#ソフトウェアと代替手法-7"><i class="fa fa-check"></i><b>6.1.5</b> ソフトウェアと代替手法</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="adversarial.html"><a href="adversarial.html"><i class="fa fa-check"></i><b>6.2</b> Adversarial Examples</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="adversarial.html"><a href="adversarial.html#methods-and-examples"><i class="fa fa-check"></i><b>6.2.1</b> Methods and Examples</a></li>
-<li class="chapter" data-level="6.2.2" data-path="adversarial.html"><a href="adversarial.html#the-cybersecurity-perspective"><i class="fa fa-check"></i><b>6.2.2</b> The Cybersecurity Perspective</a></li>
+<li class="chapter" data-level="6.2" data-path="adversarial.html"><a href="adversarial.html"><i class="fa fa-check"></i><b>6.2</b> 敵対的サンプル (Adversarial Examples)</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="adversarial.html"><a href="adversarial.html#手法及び例"><i class="fa fa-check"></i><b>6.2.1</b> 手法及び例</a></li>
+<li class="chapter" data-level="6.2.2" data-path="adversarial.html"><a href="adversarial.html#サイバーセキュリティーの観点"><i class="fa fa-check"></i><b>6.2.2</b> サイバーセキュリティーの観点</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="proto.html"><a href="proto.html"><i class="fa fa-check"></i><b>6.3</b> Prototypes and Criticisms</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="proto.html"><a href="proto.html#theory-3"><i class="fa fa-check"></i><b>6.3.1</b> Theory</a></li>
-<li class="chapter" data-level="6.3.2" data-path="proto.html"><a href="proto.html#examples-4"><i class="fa fa-check"></i><b>6.3.2</b> Examples</a></li>
-<li class="chapter" data-level="6.3.3" data-path="proto.html"><a href="proto.html#advantages-9"><i class="fa fa-check"></i><b>6.3.3</b> Advantages</a></li>
-<li class="chapter" data-level="6.3.4" data-path="proto.html"><a href="proto.html#disadvantages-9"><i class="fa fa-check"></i><b>6.3.4</b> Disadvantages</a></li>
-<li class="chapter" data-level="6.3.5" data-path="proto.html"><a href="proto.html#code-and-alternatives"><i class="fa fa-check"></i><b>6.3.5</b> Code and Alternatives</a></li>
+<li class="chapter" data-level="6.3" data-path="proto.html"><a href="proto.html"><i class="fa fa-check"></i><b>6.3</b> prototype と criticism</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="proto.html"><a href="proto.html#理論-5"><i class="fa fa-check"></i><b>6.3.1</b> 理論</a></li>
+<li class="chapter" data-level="6.3.2" data-path="proto.html"><a href="proto.html#例-14"><i class="fa fa-check"></i><b>6.3.2</b> 例</a></li>
+<li class="chapter" data-level="6.3.3" data-path="proto.html"><a href="proto.html#長所-13"><i class="fa fa-check"></i><b>6.3.3</b> 長所</a></li>
+<li class="chapter" data-level="6.3.4" data-path="proto.html"><a href="proto.html#短所-13"><i class="fa fa-check"></i><b>6.3.4</b> 短所</a></li>
+<li class="chapter" data-level="6.3.5" data-path="proto.html"><a href="proto.html#コードと代替手法"><i class="fa fa-check"></i><b>6.3.5</b> コードと代替手法</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="influential.html"><a href="influential.html"><i class="fa fa-check"></i><b>6.4</b> Influential Instances</a><ul>
 <li class="chapter" data-level="6.4.1" data-path="influential.html"><a href="influential.html#deletion-diagnostics"><i class="fa fa-check"></i><b>6.4.1</b> Deletion Diagnostics</a></li>
-<li class="chapter" data-level="6.4.2" data-path="influential.html"><a href="influential.html#influence-functions"><i class="fa fa-check"></i><b>6.4.2</b> Influence Functions</a></li>
-<li class="chapter" data-level="6.4.3" data-path="influential.html"><a href="influential.html#advantages-of-identifying-influential-instances"><i class="fa fa-check"></i><b>6.4.3</b> Advantages of Identifying Influential Instances</a></li>
-<li class="chapter" data-level="6.4.4" data-path="influential.html"><a href="influential.html#disadvantages-of-identifying-influential-instances"><i class="fa fa-check"></i><b>6.4.4</b> Disadvantages of Identifying Influential Instances</a></li>
-<li class="chapter" data-level="6.4.5" data-path="influential.html"><a href="influential.html#software-and-alternatives-3"><i class="fa fa-check"></i><b>6.4.5</b> Software and Alternatives</a></li>
+<li class="chapter" data-level="6.4.2" data-path="influential.html"><a href="influential.html#影響関数-influence-functions"><i class="fa fa-check"></i><b>6.4.2</b> 影響関数 (Influence Functions)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="influential.html"><a href="influential.html#長所-14"><i class="fa fa-check"></i><b>6.4.3</b> 長所</a></li>
+<li class="chapter" data-level="6.4.4" data-path="influential.html"><a href="influential.html#短所-14"><i class="fa fa-check"></i><b>6.4.4</b> 短所</a></li>
+<li class="chapter" data-level="6.4.5" data-path="influential.html"><a href="influential.html#ソフトウェアと代替手法-8"><i class="fa fa-check"></i><b>6.4.5</b> ソフトウェアと代替手法</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="neural-networks.html"><a href="neural-networks.html"><i class="fa fa-check"></i><b>7</b> Neural Network Interpretation</a><ul>
 <li class="chapter" data-level="7.1" data-path="cnn-features.html"><a href="cnn-features.html"><i class="fa fa-check"></i><b>7.1</b> Learned Features</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="cnn-features.html"><a href="cnn-features.html#feature-visualization"><i class="fa fa-check"></i><b>7.1.1</b> Feature Visualization</a></li>
 <li class="chapter" data-level="7.1.2" data-path="cnn-features.html"><a href="cnn-features.html#network-dissection"><i class="fa fa-check"></i><b>7.1.2</b> Network Dissection</a></li>
-<li class="chapter" data-level="7.1.3" data-path="cnn-features.html"><a href="cnn-features.html#advantages-10"><i class="fa fa-check"></i><b>7.1.3</b> Advantages</a></li>
-<li class="chapter" data-level="7.1.4" data-path="cnn-features.html"><a href="cnn-features.html#disadvantages-10"><i class="fa fa-check"></i><b>7.1.4</b> Disadvantages</a></li>
+<li class="chapter" data-level="7.1.3" data-path="cnn-features.html"><a href="cnn-features.html#advantages"><i class="fa fa-check"></i><b>7.1.3</b> Advantages</a></li>
+<li class="chapter" data-level="7.1.4" data-path="cnn-features.html"><a href="cnn-features.html#disadvantages"><i class="fa fa-check"></i><b>7.1.4</b> Disadvantages</a></li>
 <li class="chapter" data-level="7.1.5" data-path="cnn-features.html"><a href="cnn-features.html#software-and-further-material"><i class="fa fa-check"></i><b>7.1.5</b> Software and Further Material</a></li>
 </ul></li>
 </ul></li>
@@ -346,151 +346,340 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="interaction" class="section level2">
-<h2><span class="header-section-number">5.4</span> Feature Interaction</h2>
-<p>When features interact with each other in a prediction model, the prediction cannot be expressed as the sum of the feature effects, because the effect of one feature depends on the value of the other feature. Aristotle's predicate &quot;The whole is greater than the sum of its parts&quot; applies in the presence of interactions.</p>
-<div id="feature-interaction" class="section level3">
-<h3><span class="header-section-number">5.4.1</span> Feature Interaction?</h3>
-<p>If a machine learning model makes a prediction based on two features, we can decompose the prediction into four terms: a constant term, a term for the first feature, a term for the second feature and a term for the interaction between the two features.<br />
-The interaction between two features is the change in the prediction that occurs by varying the features after considering the individual feature effects.</p>
-<p>For example, a model predicts the value of a house, using house size (big or small) and location (good or bad) as features, which yields four possible predictions:</p>
+<h2><span class="header-section-number">5.4</span> 特徴量の相互作用</h2>
+<!--
+## Feature Interaction {#interaction}
+-->
+<!-- 
+When features interact with each other in a prediction model, the prediction cannot be expressed as the sum of the feature effects, because the effect of one feature depends on the value of the other feature.
+Aristotle's predicate "The whole is greater than the sum of its parts" applies in the presence of interactions.
+-->
+<p>予測モデルにおいて特徴量の相互作用がある場合、ある特徴量は他の特徴量の値に影響を受けるため、予測は単に特徴量の影響の和では表現できなくなります。 アリストテレスは「全体は部分の総和より勝る」という言葉を残しましたが、これも相互作用の存在により成り立つといえるでしょう。</p>
+<!--
+### Feature Interaction?
+-->
+<div id="特徴量の相互作用とは" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> 特徴量の相互作用とは</h3>
+<!--
+If a machine learning model makes a prediction based on two features, we can decompose the prediction into four terms: 
+a constant term, a term for the first feature, a term for the second feature and a term for the interaction between the two features.  
+The interaction between two features is the change in the prediction that occurs by varying the features after considering the individual feature effects.
+-->
+<p>機械学習モデルが2つの特徴量に基づいて予測する場合、この予測は定数項、1つ目の特徴量、2つ目の特徴量、2つの特徴量の相互作用の4つの項に分解できます。 2つの特徴量の相互作用は個々の特徴量の効果を考慮したのち、特徴量を変化させることによって生じる予測の変化を指します。</p>
+<!--
+For example, a model predicts the value of a house, using house size (big or small) and location (good or bad) as features, which yields four possible predictions:
+-->
+<p>例として、モデルが家の大きさ（大きいか小さいか）と家の立地（良いか悪いか）の2つを特徴量として家の価値を予測する場合を考えると、以下のような4つの予測が考えられます。</p>
+<!--
+| Location | Size  | Prediction |
+|---------:|------:|----------------:|
+| good     | big   | 300,000         | 
+| good     | small | 200,000         |
+| bad      | big   | 250,000         | 
+| bad      | small | 150,000         |
+-->
 <table>
 <thead>
 <tr class="header">
-<th align="right">Location</th>
-<th align="right">Size</th>
-<th align="right">Prediction</th>
+<th align="right">立地</th>
+<th align="right">大きさ</th>
+<th align="right">予測</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">good</td>
-<td align="right">big</td>
+<td align="right">良い</td>
+<td align="right">大きい</td>
 <td align="right">300,000</td>
 </tr>
 <tr class="even">
-<td align="right">good</td>
-<td align="right">small</td>
+<td align="right">良い</td>
+<td align="right">小さい</td>
 <td align="right">200,000</td>
 </tr>
 <tr class="odd">
-<td align="right">bad</td>
-<td align="right">big</td>
+<td align="right">悪い</td>
+<td align="right">大きい</td>
 <td align="right">250,000</td>
 </tr>
 <tr class="even">
-<td align="right">bad</td>
-<td align="right">small</td>
+<td align="right">悪い</td>
+<td align="right">小さい</td>
 <td align="right">150,000</td>
 </tr>
 </tbody>
 </table>
-<p>We decompose the model prediction into the following parts: A constant term (150,000), an effect for the size feature (+100,000 if big; +0 if small) and an effect for the location (+50,000 if good; +0 if bad). This decomposition fully explains the model predictions. There is no interaction effect, because the model prediction is a sum of the single feature effects for size and location. When you make a small house big, the prediction always increases by 100,000, regardless of location. Also, the difference in prediction between a good and a bad location is 50,000, regardless of size.</p>
-<p>Let's now look at an example with interaction:</p>
+<!--
+We decompose the model prediction into the following parts: 
+A constant term (150,000), an effect for the size feature (+100,000 if big; +0 if small) and an effect for the location (+50,000 if good; +0 if bad). 
+This decomposition fully explains the model predictions.
+There is no interaction effect, because the model prediction is a sum of the single feature effects for size and location. 
+When you make a small house big, the prediction always increases by 100,000, regardless of location. 
+Also, the difference in prediction between a good and a bad location is 50,000, regardless of size.
+-->
+<p>この予測結果は 定数項 (150,000）、家の大きさ（大きければ+100,000、小さければ+0）、家の立地（よければ+50,000、悪ければ+0） のように分解できます。 この分解はモデルの予測を完璧に説明しています。 モデルの予測は大きさと立地の各特徴量の影響の和と等しくなっているため、相互作用による影響はありません。 小さな家から大きな家に変更した場合、予測は立地に関わらず100,000だけ上がり、同様に立地を悪い家から良い家に変更した場合も、予測は家の大きさに関わらず50,000だけ増加します。</p>
+<!--
+Let's now look at an example with interaction:
+-->
+<p>次に、相互作用が存在する場合について考えます。</p>
+<!--
+| Location | Size  | Prediction |
+|---------:|------:|----------------:|
+| good     | big   | 400,000         | 
+| good     | small | 200,000         |
+| bad      | big   | 250,000         | 
+| bad      | small | 150,000         |
+-->
 <table>
 <thead>
 <tr class="header">
-<th align="right">Location</th>
-<th align="right">Size</th>
-<th align="right">Prediction</th>
+<th align="right">立地</th>
+<th align="right">大きさ</th>
+<th align="right">予測</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">good</td>
-<td align="right">big</td>
+<td align="right">良い</td>
+<td align="right">大きい</td>
 <td align="right">400,000</td>
 </tr>
 <tr class="even">
-<td align="right">good</td>
-<td align="right">small</td>
+<td align="right">良い</td>
+<td align="right">小さい</td>
 <td align="right">200,000</td>
 </tr>
 <tr class="odd">
-<td align="right">bad</td>
-<td align="right">big</td>
+<td align="right">悪い</td>
+<td align="right">大きい</td>
 <td align="right">250,000</td>
 </tr>
 <tr class="even">
-<td align="right">bad</td>
-<td align="right">small</td>
+<td align="right">悪い</td>
+<td align="right">小さい</td>
 <td align="right">150,000</td>
 </tr>
 </tbody>
 </table>
-<p>We decompose the prediction table into the following parts: A constant term (150,000), an effect for the size feature (+100,000 if big, +0 if small) and an effect for the location (+50,000 if good, +0 if bad). For this table we need an additional term for the interaction: +100,000 if the house is big and in a good location. This is an interaction between size and location, because in this case the difference in prediction between a big and a small house depends on the location.</p>
-<p>One way to estimate the interaction strength is to measure how much of the variation of the prediction depends on the interaction of the features. This measurement is called H-statistic, introduced by Friedman and Popescu (2008)<a href="#fn31" class="footnoteRef" id="fnref31"><sup>31</sup></a>.</p>
+<!--
+We decompose the prediction table into the following parts: 
+A constant term (150,000), an effect for the size feature (+100,000 if big, +0 if small) and an effect for the location (+50,000 if good, +0 if bad). 
+For this table we need an additional term for the interaction: +100,000 if the house is big and in a good location.
+This is an interaction between size and location, because in this case the difference in prediction between a big and a small house depends on the location. 
+-->
+<p>この予測結果を 定数項 (150,000）、家の大きさ（大きければ+100,000、小さければ+0) 、家の立地 (よければ+50,000、悪ければ+0) のように分解してみます。 ただし、今回は相互作用による項 (家のサイズが大きくかつ立地が良いならば+100,000) を追加で考える必要があります。 この場合、立地によって、家が大きい場合と小さい場合で予測に差が生じるため、家の大きさと立地の間に相互作用があると言えます。</p>
+<!--
+One way to estimate the interaction strength is to measure how much of the variation of the prediction depends on the interaction of the features.
+This measurement is called H-statistic, introduced by Friedman and Popescu (2008)[^Friedman2008].
+-->
+<p>相互作用の大きさを測る1つの方法として、特徴量の相互作用により予測がどの程度変化するかを測る方法があります。 これは H 統計量 と呼ばれ、Friedman と Popescu によって2008年に提案されました<a href="#fn31" class="footnoteRef" id="fnref31"><sup>31</sup></a>。</p>
+<!-- ### Theory: Friedman's H-statistic -->
 </div>
-<div id="theory-friedmans-h-statistic" class="section level3">
-<h3><span class="header-section-number">5.4.2</span> Theory: Friedman's H-statistic</h3>
-<p>We are going to deal with two cases: First, a two-way interaction measure that tells us whether and to what extent two features in the model interact with each other; second, a total interaction measure that tells us whether and to what extent a feature interacts in the model with all the other features. In theory, arbitrary interactions between any number of features can be measured, but these two are the most interesting cases.</p>
-<p>If two features do not interact, we can decompose the <a href="pdp.html#pdp">partial dependence function</a> as follows (assuming the partial dependence functions are centered at zero):</p>
+<div id="friedman-の-h統計量の理論" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Friedman の H統計量の理論</h3>
+<!-- We are going to deal with two cases:
+First, a two-way interaction measure that tells us whether and to what extent two features in the model interact with each other;
+second, a total interaction measure that tells us whether and to what extent a feature interacts in the model with all the other features.
+In theory, arbitrary interactions between any number of features can be measured, but these two are the most interesting cases. -->
+<p>これから、2つのケースについて扱います。 1つ目は、モデル内の2つの特徴が相互作用するかどうかや、その程度を示す双方向相互作用の尺度です。 2つ目は、ある特徴量がモデル内で他の全ての特徴量と相互作用するかどうかやその程度を示す総合的な相互作用の尺度です。 理論的には、任意の数の特徴量間の相互作用を測定できます。しかし、上記の2つが最も興味深いケースです。</p>
+<!-- If two features do not interact, we can decompose the [partial dependence function](#pdp) as follows (assuming the partial dependence functions are centered at zero): -->
+<p>もし2つの特徴量が相互作用しない場合、<a href="pdp.html#pdp">partial dependence function</a> として、以下のように分解できます (ただし、partial dependence function はゼロに中心化されていると仮定) 。</p>
 <p><span class="math display">\[PD_{jk}(x_j,x_k)=PD_j(x_j)+PD_k(x_k)\]</span></p>
-<p>where <span class="math inline">\(PD_{jk}(x_j,x_k)\)</span> is the 2-way partial dependence function of both features and <span class="math inline">\(PD_j(x_j)\)</span> and <span class="math inline">\(PD_k(x_k)\)</span> the partial dependence functions of the single features.</p>
-<p>Likewise, if a feature has no interaction with any of the other features, we can express the prediction function <span class="math inline">\(\hat{f}(x)\)</span> as a sum of partial dependence functions, where the first summand depends only on j and the second on all other features except j:</p>
+<!-- where $PD_{jk}(x_j,x_k)$ is the 2-way partial dependence function of both features and $PD_j(x_j)$ and $PD_k(x_k)$ the partial dependence functions of the single features. -->
+<p>ここで、 <span class="math inline">\(PD_{jk}(x_j,x_k)\)</span> は2つの特徴量に関する2方向の partial dependence function であり、<span class="math inline">\(PD_j(x_j)\)</span> と <span class="math inline">\(PD_k(x_k)\)</span> は1つの特徴量についてのpartial dependence functionです。</p>
+<!-- Likewise, if a feature has no interaction with any of the other features, we can express the prediction function $\hat{f}(x)$ as a sum of partial dependence functions, where the first summand depends only on j and the second on all other features except j: -->
+<p>同様に、もしも1つの特徴量が他のいかなる特徴量とも相互作用しない場合、予測関数 <span class="math inline">\(\hat{f}(x)\)</span> を partial dependence function の和として表現できます。ここで、和の第1項は j にのみ依存し、第2項は j 以外に依存します。</p>
 <p><span class="math display">\[\hat{f}(x)=PD_j(x_j)+PD_{-j}(x_{-j})\]</span></p>
-<p>where <span class="math inline">\(PD_{-j}(x_{-j})\)</span> is the partial dependence function that depends on all features except the j-th feature.</p>
-<p>This decomposition expresses the partial dependence (or full prediction) function without interactions (between features j and k, or respectively j and all other features). In a next step, we measure the difference between the observed partial dependence function and the decomposed one without interactions. We calculate the variance of the output of the partial dependence (to measure the interaction between two features) or of the entire function (to measure the interaction between a feature and all other features). The amount of the variance explained by the interaction (difference between observed and no-interaction PD) is used as interaction strength statistic. The statistic is 0 if there is no interaction at all and 1 if all of the variance of the <span class="math inline">\(PD_{jk}\)</span> or <span class="math inline">\(\hat{f}\)</span> is explained by the sum of the partial dependence functions. An interaction statistic of 1 between two features means that each single PD function is constant and the effect on the prediction only comes through the interaction. The H-statistic can also be larger than 1, which is more difficult to interpret. This can happen when the variance of the 2-way interaction is larger than the variance of the 2-dimensional partial dependence plot.</p>
-<p>Mathematically, the H-statistic proposed by Friedman and Popescu for the interaction between feature j and k is:</p>
+<!-- where $PD_{-j}(x_{-j})$ is the partial dependence function that depends on all features except the j-th feature. -->
+<p>ただし、<span class="math inline">\(PD_{-j}(x_{-j})\)</span> はj番目を除いた全ての特徴量に依存する partial dependence function です。</p>
+<!-- This decomposition expresses the partial dependence (or full prediction) function without interactions (between features j and k, or respectively j and all other features). 
+In a next step, we measure the difference between the observed partial dependence function and the decomposed one without interactions.
+We calculate the variance of the output of the partial dependence (to measure the interaction between two features) or of the entire function (to measure the interaction between a feature and all other features).  -->
+<p>この分解は、(特徴量 j と k、もしくは、特徴量 j とその他に) 相互作用のない partial dependence function (もしくは完全予測関数) を表します。 次のステップとして、観測された partial dependence function と相互作用を持たない分解された関数の差を測定します。 2つの特徴間の相互作用を測るための partial dependence function や、ある特徴量とそれ以外の間の相互作用を測るための関数全体の出力のばらつきを計算します。</p>
+<!-- The amount of the variance explained by the interaction (difference between observed and no-interaction PD) is used as interaction strength statistic.
+The statistic is 0 if there is no interaction at all and 1 if all of the variance of the $PD_{jk}$ or $\hat{f}$ is explained by the sum of the partial dependence functions.
+An interaction statistic of 1 between two features means that each single PD function is constant and the effect on the prediction only comes through the interaction.
+The H-statistic can also be larger than 1, which is more difficult to interpret.
+This can happen when the variance of the 2-way interaction is larger than the variance of the 2-dimensional partial dependence plot. -->
+<p>相互作用 (観測値と理論的な相互作用のない状態のPDの差分)による因子寄与の量が、相互作用の強さを示す統計量として用いられています。 相互作用が何もない場合、統計量は 0 であり、 <span class="math inline">\(PD_{jk}\)</span> もしくは <span class="math inline">\(\hat{f}\)</span> の全ての分散がpartial dependence functionの合計によって説明される場合は1になります。 相互作用の統計量が 1 のとき、2つの特徴量のそれぞれの PD function は定数で、予測の影響が相互作用のみであることを意味しています。 この H 統計量は 1 よりも大きくなることがあり、解釈がより困難になります。 これは、双方向相互作用の分散が2次元の partial dependence plot の分散よりも大きい場合に起こる可能性があります。</p>
+<!-- Mathematically, the H-statistic proposed by Friedman and Popescu for the interaction between feature j and k is: -->
+<p>数学的には、特徴量 j, k 間の H 統計量は Friedman と Popescu によって与えられ、以下の式で書き表されます。</p>
 <p><span class="math display">\[H^2_{jk}=\sum_{i=1}^n\left[PD_{jk}(x_{j}^{(i)},x_k^{(i)})-PD_j(x_j^{(i)})-PD_k(x_{k}^{(i)})\right]^2/\sum_{i=1}^n{PD}^2_{jk}(x_j^{(i)},x_k^{(i)})\]</span></p>
-<p>The same applies to measuring whether a feature j interacts with any other feature:</p>
+<!-- The same applies to measuring whether a feature j interacts with any other feature: -->
+<p>特徴量 j とそれ以外の全ての特徴量との相互作用を測るのも同様にして以下の通りに計算できます。</p>
 <p><span class="math display">\[H^2_{j}=\sum_{i=1}^n\left[\hat{f}(x^{(i)})-PD_j(x_j^{(i)})-PD_{-j}(x_{-j}^{(i)})\right]^2/\sum_{i=1}^n\hat{f}^2(x^{(i)})\]</span></p>
-<p>The H-statistic is expensive to evaluate, because it iterates over all data points and at each point the partial dependence has to be evaluated which in turn is done with all n data points. In the worst case, we need 2n<sup>2</sup> calls to the machine learning models predict function to compute the two-way H-statistic (j vs. k) and 3n<sup>2</sup> for the total H-statistic (j vs. all). To speed up the computation, we can sample from the n data points. This has the disadvantage of increasing the variance of the partial dependence estimates, which makes the H-statistic unstable. So if you are using sampling to reduce the computational burden, make sure to sample enough data points.</p>
-<p>Friedman and Popescu also propose a test statistic to evaluate whether the H-statistic differs significantly from zero. The null hypothesis is the absence of interaction. To generate the interaction statistic under the null hypothesis, you must be able to adjust the model so that it has no interaction between feature j and k or all others. This is not possible for all types of models. Therefore this test is model-specific, not model-agnostic, and as such not covered here.</p>
-<p>The interaction strength statistic can also be applied in a classification setting if the prediction is a probability.</p>
+<!-- The H-statistic is expensive to evaluate, because it iterates over all data points and at each point the partial dependence has to be evaluated which in turn is done with all n data points. 
+In the worst case, we need 2n^2^ calls to the machine learning models predict function to compute the two-way H-statistic (j vs. k) and 3n^2^ for the total H-statistic (j vs. all).
+To speed up the computation, we can sample from the n data points. 
+This has the disadvantage of increasing the variance of the partial dependence estimates, which makes the H-statistic unstable.
+So if you are using sampling to reduce the computational burden, make sure to sample enough data points. -->
+<p>全てのデータ点で反復し、それぞれのデータ点で partial dependence を評価する必要があるため、H 統計量は評価にはコストがかかります。 最悪のケースでは、双方向H統計量 (j vs. k) を計算するために、2n<sup>2</sup> 回の機械学習モデルの予測を呼び出す必要があり、全てのH統計量 (j vs. all) を計算するためには、3n<sup>2</sup> 回必要になります。 計算を高速化するために、n 個のデータ点をサンプリングする方法があります。 この方法は partial dependence の推定のばらつきを高めてしまう欠点があるため、これによって H 統計量は不安定になります。 従って、もしも計算負荷を減らすためにサンプリングを用いている場合は、十分なデータ点が取得できているか注意してください。</p>
+<!-- Friedman and Popescu also propose a test statistic to evaluate whether the H-statistic differs significantly from zero.
+The null hypothesis is the absence of interaction. 
+To generate the interaction statistic under the null hypothesis, you must be able to adjust the model so that it has no interaction between feature j and k or all others.
+This is not possible for all types of models.
+Therefore this test is model-specific, not model-agnostic, and as such not covered here.
+
+The interaction strength statistic can also be applied in a classification setting if the prediction is a probability. -->
+<p>Friedman と Popescu は、H統計量が0と有意に異なるかどうかを評価するための検定も提案しています。 この場合の帰無仮説は、「相互作用がない」です。 帰無仮説の下で相互作用統計量を生み出すには、モデルを調整して特徴量 j と k 、もしくは j と他の全ての特徴量との間に相互作用が無いようにする必要がありますが、これは任意のモデルのタイプで行えるわけではありません。 よって、この検定はモデル非依存ではなく、モデル特有のものなのでここでは扱いません。</p>
+<p>もしも予測対象が確率である場合、相互作用の強さを測る統計量は分類問題にも適用できます。</p>
 </div>
-<div id="examples-1" class="section level3">
-<h3><span class="header-section-number">5.4.3</span> Examples</h3>
-<p>Let us see what feature interactions look like in practice! We measure the interaction strength of features in a support vector machine that predicts the number of <a href="bike-data.html#bike-data">rented bikes</a> based on weather and calendrical features. The following plot shows the feature interaction H-statistic:</p>
+<div id="例-7" class="section level3">
+<h3><span class="header-section-number">5.4.3</span> 例</h3>
+<!--
+### Examples
+-->
+<!--
+Let us see what feature interactions look like in practice!
+We measure the interaction strength of features in a support vector machine that predicts the number of [rented bikes](#bike-data) based on weather and calendrical features. 
+The following plot shows the feature interaction H-statistic:
+-->
+<p>特徴量の相互作用がどんなものか実際に見てみましょう。 <a href="bike-data.html#bike-data">自転車のレンタル数</a>の予測について、天気とカレンダーの特徴量使ってSVMで予測したときの特徴量間の相互作用の強さを計算してみましょう。</p>
+<!--
+fig.cap = 'The interaction strength (H-statistic) for each feature with all other features for a support vector machine predicting bicycle rentals. Overall, the interaction effects between the features are very weak (below 10% of variance explained per feature).', cache = FALSE
+-->
 <div class="figure"><span id="fig:interaction-bike"></span>
-<img src="images/interaction-bike-1.png" alt="The interaction strength (H-statistic) for each feature with all other features for a support vector machine predicting bicycle rentals. Overall, the interaction effects between the features are very weak (below 10% of variance explained per feature)." width="1050" />
+<img src="images/interaction-bike-1.png" alt="自転車レンタル数をSVMで予測した時の、ある特徴量から他の特徴量に対する相互作用の強さ（H統計量）。全体的に、特徴量間の相互作用は非常に弱い（いずれも10%未満）。" width="1050" />
 <p class="caption">
-FIGURE 5.24: The interaction strength (H-statistic) for each feature with all other features for a support vector machine predicting bicycle rentals. Overall, the interaction effects between the features are very weak (below 10% of variance explained per feature).
+FIGURE 5.23: 自転車レンタル数をSVMで予測した時の、ある特徴量から他の特徴量に対する相互作用の強さ（H統計量）。全体的に、特徴量間の相互作用は非常に弱い（いずれも10%未満）。
 </p>
 </div>
-<p>In the next example, we calculate the interaction statistic for a classification problem. We analyze the interactions between features in a random forest trained to predict <a href="cervical.html#cervical">cervical cancer</a>, given some risk factors.</p>
+<!--
+In the next example, we calculate the interaction statistic for a classification problem.
+We analyze the interactions between features in a random forest trained to predict [cervical cancer](#cervical), given some risk factors.
+-->
+<p>次は分類問題に対する相互作用を計算してみましょう。 様々なリスク要因が与えられた時の<a href="cervical.html#cervical">子宮頸がんの予測</a>を学習したランダムフォレストの特徴量間の相互作用を分析してみましょう。</p>
+<!--
+fig.cap = 'The interaction strength (H-statistic) for each feature with all other features for a random forest predicting the probability of cervical cancer. The years on hormonal contraceptives has the highest relative interaction effect with all other features, followed by the number of pregnancies.'
+-->
 <div class="figure"><span id="fig:interaction-cervical-include"></span>
-<img src="images/interaction-cervical-1.png" alt="The interaction strength (H-statistic) for each feature with all other features for a random forest predicting the probability of cervical cancer. The years on hormonal contraceptives has the highest relative interaction effect with all other features, followed by the number of pregnancies." width="672" />
+<img src="images/interaction-cervical-1.png" alt="子宮頸がんになる確率をランダムフォレストを用いて予測した時の、各特徴量から他の特徴量に対する相互作用の強さ（H統計量）。 相互作用の強さは経口避妊薬の服用年数が1番高く、出産人数が次に高い。" width="672" />
 <p class="caption">
-FIGURE 5.25: The interaction strength (H-statistic) for each feature with all other features for a random forest predicting the probability of cervical cancer. The years on hormonal contraceptives has the highest relative interaction effect with all other features, followed by the number of pregnancies.
+FIGURE 5.24: 子宮頸がんになる確率をランダムフォレストを用いて予測した時の、各特徴量から他の特徴量に対する相互作用の強さ（H統計量）。 相互作用の強さは経口避妊薬の服用年数が1番高く、出産人数が次に高い。
 </p>
 </div>
-<p>After looking at the feature interactions of each feature with all other features, we can select one of the features and dive deeper into all the 2-way interactions between the selected feature and the other features.</p>
+<!--
+After looking at the feature interactions of each feature with all other features, we can select one of the features and dive deeper into all the 2-way interactions between the selected feature and the other features.
+-->
+<p>それぞれの特徴量が他の特徴量との相互作用を確認しました。 今度は特定の特徴量に注目して、その変数が他の各々の特徴量とどれだけ相互作用するかの、双方向的な相互作用に掘り下げていきましょう。</p>
+<!--
+fig.cap = 'The 2-way interaction strengths (H-statistic) between number of pregnancies and each other feature. There is a strong interaction between the number of pregnancies and the age.'
+-->
 <div class="figure"><span id="fig:interaction2-cervical-age-include"></span>
-<img src="images/interaction2-cervical-age-1.png" alt="The 2-way interaction strengths (H-statistic) between number of pregnancies and each other feature. There is a strong interaction between the number of pregnancies and the age." width="672" />
+<img src="images/interaction2-cervical-age-1.png" alt="妊娠回数と他の特徴量における双方向的な相互作用の強さ（H統計量）。妊娠回数と年齢に強い相互作用が認められる。" width="672" />
 <p class="caption">
-FIGURE 5.26: The 2-way interaction strengths (H-statistic) between number of pregnancies and each other feature. There is a strong interaction between the number of pregnancies and the age.
+FIGURE 5.25: 妊娠回数と他の特徴量における双方向的な相互作用の強さ（H統計量）。妊娠回数と年齢に強い相互作用が認められる。
 </p>
 </div>
 </div>
-<div id="advantages-1" class="section level3">
-<h3><span class="header-section-number">5.4.4</span> Advantages</h3>
-<p>The interaction H-statistic has an <strong>underlying theory</strong> through the partial dependence decomposition.</p>
-<p>The H-statistic has a <strong>meaningful interpretation</strong>: The interaction is defined as the share of variance that is explained by the interaction.</p>
-<p>Since the statistic is <strong>dimensionless</strong>, it is comparable across features and even across models.</p>
-<p>The statistic <strong>detects all kinds of interactions</strong>, regardless of their particular form.</p>
-<p>With the H-statistic it is also possible to analyze arbitrary <strong>higher interactions</strong> such as the interaction strength between 3 or more features.</p>
+<div id="利点-1" class="section level3">
+<h3><span class="header-section-number">5.4.4</span> 利点</h3>
+<!--
+### Advantages 
+-->
+<!--
+The interaction H-statistic has an **underlying theory** through the partial dependence decomposition.
+-->
+<p>相互作用の強さを計算するH統計量には、partial dependence decompositionという<strong>理論的な背景</strong>があります。</p>
+<!--
+The H-statistic has a **meaningful interpretation**:
+The interaction is defined as the share of variance that is explained by the interaction.
+Since the statistic is **dimensionless**, it is comparable across features and even across models.
+-->
+<p>H 統計量は意味のある解釈を持ちます。 この相互作用は、相互作用による分散の説明度合いとして定義されます。 H 統計量は<strong>無次元</strong>なので、特徴量間やモデル間で比較が可能です。</p>
+<!--
+The statistic **detects all kinds of interactions**, regardless of their particular form.
+With the H-statistic it is also possible to analyze arbitrary **higher interactions** such as the interaction strength between 3 or more features.
+-->
+<p>H 統計量は、特定の形式によらず、どのような種類の相互作用でも検出できます。 H 統計量を使うと、3つ以上の特徴量間における相互作用などの、<strong>より高次の相互作用</strong>も分析できます。</p>
 </div>
-<div id="disadvantages-1" class="section level3">
-<h3><span class="header-section-number">5.4.5</span> Disadvantages</h3>
-<p>The first thing you will notice: The interaction H-statistic takes a long time to compute, because it is <strong>computationally expensive</strong>.</p>
-<p>The computation involves estimating marginal distributions. These <strong>estimates also have a certain variance</strong> if we do not use all data points. This means that as we sample points, the estimates also vary from run to run and the <strong>results can be unstable</strong>. I recommend repeating the H-statistic computation a few times to see if you have enough data to get a stable result.</p>
-<p>It is unclear whether an interaction is significantly greater than 0. We would need to conduct a statistical test, but this <strong>test is not (yet) available in a model-agnostic version</strong>.</p>
-<p>Concerning the test problem, it is difficult to say when the H-statistic is large enough for us to consider an interaction &quot;strong&quot;.</p>
-<p>Also, the H-statistics can be larger than 1, which makes the interpretation difficult.</p>
-<p>The H-statistic tells us the strength of interactions, but it does not tell us how the interactions look like. That is what <a href="pdp.html#pdp">partial dependence plots</a> are for. A meaningful workflow is to measure the interaction strengths and then create 2D-partial dependence plots for the interactions you are interested in.</p>
-<p>The H-statistic cannot be used meaningfully if the inputs are pixels. So the technique is not useful for image classifier.</p>
-<p>The interaction statistic works under the assumption that we can shuffle features independently. If the features correlate strongly, the assumption is violated and <strong>we integrate over feature combinations that are very unlikely in reality</strong>. That is the same problem that partial dependence plots have. You cannot say in general if it leads to overestimation or underestimation.</p>
-<p>Sometimes the results are strange and for small simulations <strong>do not yield the expected results</strong>. But this is more of an anecdotal observation.</p>
+<div id="欠点-1" class="section level3">
+<h3><span class="header-section-number">5.4.5</span> 欠点</h3>
+<!--
+### Disadvantages
+-->
+<!--
+The first thing you will notice: 
+The interaction H-statistic takes a long time to compute, because it is **computationally expensive**.
+-->
+<p>まず始めに、H特徴量は<strong>計算コストが高い</strong>ため、計算に時間がかかります。</p>
+<!--
+The computation involves estimating marginal distributions. 
+These **estimates also have a certain variance** if we do not use all data points. 
+This means that as we sample points, the estimates also vary from run to run and the **results can be unstable**.
+I recommend repeating the H-statistic computation a few times to see if you have enough data to get a stable result.
+-->
+<p>計算には周辺分布の計算が必要です。 この計算は、もし全てのデータ点を使用しないのであれば、推定がばらつきます。 これは、データをサンプリングすると、推定値は実行ごとに異なり<strong>結果が不安定になる</strong>ということです。 安定した結果を得るために、もしデータが十分であれば、数回 H 統計量の計算を繰り返すことをおすすめします。</p>
+<!--
+It is unclear whether an interaction is significantly greater than 0. 
+We would need to conduct a statistical test, but this **test is not (yet) available in a model-agnostic version**. 
+-->
+<p>また、相互作用が 0 より有意に大きいかどうかは不明瞭です。 これには、仮説検定が必要かもしれませんが、この<strong>モデル非依存な検定は存在しません</strong>。</p>
+<!--
+Concerning the test problem, it is difficult to say when the H-statistic is large enough for us to consider an interaction "strong".
+Also, the H-statistics can be larger than 1, which makes the interpretation difficult.
+-->
+<p>検定に関して言えば、相互作用が「強い」と考えるに足るH統計量の大きさを決めることも難しいです。 また、H 統計量は 1 より大きくなる場合もあり、この場合解釈が難しくなります。</p>
+<!--
+The H-statistic tells us the strength of interactions, but it does not tell us how the interactions look like.
+That is what [partial dependence plots](#pdp) are for. 
+A meaningful workflow is to measure the interaction strengths and then create 2D-partial dependence plots for the interactions you are interested in.
+-->
+<p>H 統計量は相互作用の大きさを表しますが、相互作用の性質を説明できません。 そこで <a href="pdp.html#pdp">partial dependence plots</a> が登場します。 主な作業の流れとしては、まず相互作用の大きさを測ったのち、関心のある相互作用について2次元の partial dependence plots を作成します。</p>
+<!--
+The H-statistic cannot be used meaningfully if the inputs are pixels.
+So the technique is not useful for image classifier.
+-->
+<p>H 統計量は入力がピクセルの場合得られる効果が少なくなります。 このため、この方法は画像の分類に対しては有効ではありません。</p>
+<!--
+The interaction statistic works under the assumption that we can shuffle features independently.
+If the features correlate strongly, the assumption is violated and **we integrate over feature combinations that are very unlikely in reality**.
+That is the same problem that partial dependence plots have.
+You cannot say in general if it leads to overestimation or underestimation.
+-->
+<p>相互作用の統計は、特徴量を独立にシャッフルできるという仮定のもとに成り立ちます。 もし特徴量間が強く相関する場合、この仮定は成り立たなくなるため、**実際には起こらないであろう特徴量の組み合わせをつくります。 これは PDP についても同様です。 ただし、これが過大評価に繋がるか過小評価に繋がるのかは一概に言えません。</p>
+<!--
+Sometimes the results are strange and for small simulations **do not yield the expected results**. 
+But this is more of an anecdotal observation.
+-->
+<p>小規模なシミュレーションでは、<strong>期待とは異なる奇妙な振舞い</strong>をします。 しかし、これは観測データの不足による不確かさによるものです。</p>
 </div>
-<div id="implementations" class="section level3">
-<h3><span class="header-section-number">5.4.6</span> Implementations</h3>
-<p>For the examples in this book, I used the R package <code>iml</code>, which is available on <a href="https://cran.r-project.org/web/packages/iml">CRAN</a> and the development version on <a href="https://github.com/christophM/iml">Github</a>. There are other implementations, which focus on specific models: The R package <a href="https://cran.r-project.org/web/packages/pre/index.html">pre</a> implements <a href="rulefit.html#rulefit">RuleFit</a> and H-statistic. The R package <a href="https://github.com/gbm-developers/gbm3">gbm</a> implements gradient boosted models and H-statistic.</p>
+<div id="実装" class="section level3">
+<h3><span class="header-section-number">5.4.6</span> 実装</h3>
+<!--
+### Implementations
+-->
+<!--
+For the examples in this book, I used the R package `iml`, which is available on [CRAN](https://cran.r-project.org/web/packages/iml) and the development version on [Github](https://github.com/christophM/iml).
+There are other implementations, which focus on specific models:
+The R package [pre](https://cran.r-project.org/web/packages/pre/index.html) implements [RuleFit](#rulefit) and H-statistic.
+The R package [gbm](https://github.com/gbm-developers/gbm3) implements gradient boosted models and H-statistic.
+-->
+<p>本書で用いた R の <code>iml</code> パッケージは現行版を<a href="https://cran.r-project.org/web/packages/iml">CRAN</a> から、開発版は <a href="https://github.com/christophM/iml">Github</a> から入手できます。 他にも特定のモデルを対象にした実装があります。 R パッケージの <a href="https://cran.r-project.org/web/packages/pre/index.html">pre</a> は <a href="rulefit.html#rulefit">RuleFit</a> とH統計量を実装しています。 R パッケージの <a href="https://github.com/gbm-developers/gbm3">gbm</a> は勾配ブースティングモデルと H 統計量を実装しています。</p>
+<!--
+### Alternatives
+-->
 </div>
-<div id="alternatives" class="section level3">
-<h3><span class="header-section-number">5.4.7</span> Alternatives</h3>
-<p>The H-statistic is not the only way to measure interactions:</p>
-<p>Variable Interaction Networks (VIN) by Hooker (2004)<a href="#fn32" class="footnoteRef" id="fnref32"><sup>32</sup></a> is an approach that decomposes the prediction function into main effects and feature interactions. The interactions between features are then visualized as a network. Unfortunately no software is available yet.</p>
-<p>Partial dependence based feature interaction by Greenwell et. al (2018)<a href="#fn33" class="footnoteRef" id="fnref33"><sup>33</sup></a> measures the interaction between two features. This approach measures the feature importance (defined as the variance of the partial dependence function) of one feature conditional on different, fixed points of the other feature. If the variance is high, then the features interact with each other, if it is zero, they do not interact. The corresponding R package <code>vip</code> is available on <a href="https://github.com/koalaverse/vip">Github</a>. The package also covers partial dependence plots and feature importance.</p>
+<div id="代替手法" class="section level3">
+<h3><span class="header-section-number">5.4.7</span> 代替手法</h3>
+<!--
+The H-statistic is not the only way to measure interactions: 
+-->
+<p>H 統計量が相互作用を定量化する唯一の手法ではありません。</p>
+<!--
+Variable Interaction Networks (VIN) by Hooker (2004)[^Hooker2004] is an approach that decomposes the prediction function into main effects and feature interactions.
+The interactions between features are then visualized as a network. 
+Unfortunately no software is available yet.
+-->
+<p>Hooker (2004)<a href="#fn32" class="footnoteRef" id="fnref32"><sup>32</sup></a> による Variable Interaction Networks (VIN) は、予測関数を主効果と相互作用に分解する方法です。特徴量間の相互作用はネットワークとして可視化されます。 不運にも、まだVINのソフトウェアは存在しません。</p>
+<!--
+Partial dependence based feature interaction by Greenwell et. al (2018)[^Greenwell2018] measures the interaction between two features.
+This approach measures the feature importance (defined as the variance of the partial dependence function) of one feature conditional on different, fixed points of the other feature. 
+If the variance is high, then the features interact with each other, if it is zero, they do not interact.
+The corresponding R package `vip` is available on [Github](https://github.com/koalaverse/vip).
+The package also covers partial dependence plots and feature importance.
+-->
+<p>Greenwell ら(2018)<a href="#fn33" class="footnoteRef" id="fnref33"><sup>33</sup></a> によって、2つの特徴量の相互作用を定量化するための pertial dependence が提案されました。 この方法は、ある特徴量の重要度（partial dependence functionの分散として定義される）について、他の特徴量の値を固定した上で測ります。 もし分散が大きい場合特徴量は相互作用し、分散が 0 である場合相互作用はありません。 この機能を提供する R パッケージ <code>vip</code> は <a href="https://github.com/koalaverse/vip">Github</a>から利用できます。 このパッケージでは partial dependence plots や feature importance などの機能も含みます。</p>
 
 <!--{pagebreak}-->
 </div>
