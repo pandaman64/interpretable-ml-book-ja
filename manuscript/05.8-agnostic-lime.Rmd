@@ -7,11 +7,18 @@ set.seed(42)
 
 ## Local Surrogate (LIME) {#lime}
 
+<!--
 Local surrogate models are interpretable models that are used to explain individual predictions of black box machine learning models.
 Local interpretable model-agnostic explanations (LIME)[^Ribeiro2016lime] is a paper in which the authors propose a concrete implementation of local surrogate models.
 Surrogate models are trained to approximate the predictions of the underlying black box model.
 Instead of training a global surrogate model, LIME focuses on training local surrogate models to explain individual predictions.
+-->
+ローカルサロゲートモデルは解釈可能なモデルであり、ブラックボックスな機械学習モデルの個々の予測を説明するために用いられます。
+Local interpretable model-agnostic explanations (LIME)[^Ribeiro2016lime]という論文の中で、具体的に局所的なサロゲートモデルの実装が提案されました。
+サロゲートモデルは根底にあるブラックボックスモデルの予測を近似するように学習されます。
+グローバルなサロゲートモデルを学習する代わりに、LIME は個々の予測を説明するためにローカルサロゲートモデルを学習することに焦点を当てています。
 
+<!--
 The idea is quite intuitive.
 First, forget about the training data and imagine you only have the black box model where you can input data points and get the predictions of the model.
 You can probe the box as often as you want.
@@ -22,25 +29,58 @@ On this new dataset LIME then trains an interpretable model, which is weighted b
 The interpretable model can be anything from the [interpretable models chapter](#simple), for example [Lasso](#lasso) or a [decision tree](#tree).
 The learned model should be a good approximation of the machine learning model predictions locally, but it does not have to be a good global approximation.
 This kind of accuracy is also called local fidelity.
+-->
+アイデアはとても直感的です。
+最初に、学習データのことは忘れて、データを入れると予測値を返すブラックボックスモデルを持っているだけの状態を想像してください。
+何度でもボックスを調べることができます。
+目的は機械学習モデルがなぜ特定の予測を返すか理解することです。
+LIME は、機械学習モデルの入力データに変動を加えた時、予測にどのような変化が起こるかを検証します。
+LIME は、サンプルの特徴量の値を置き換えて得られた新しいデータセットを作成し、ブラックボックスモデルで予測します。
+そして、この新しいデータセットに基づいて、解釈可能なモデルを学習します。このモデルは、サンプルされたインスタンスと関心のあるインスタンスの近接性によって重み付けされます。
+解釈可能なモデルには [interpretable models](#simple) の章に記載されている [Lasso](#lasso) や [decision tree](#tree) などのどのモデルも使用できます。
+学習されたモデルは局所的には機械学習モデルの予測を近似していますが、大域的にはよい近似にグローバルになるとは言えません。
+この種の正確性は局所忠実性 (local fidelity) とも呼ばれます。
 
+<!--
 Mathematically, local surrogate models with interpretability constraint can be expressed as follows:
+-->
+数学的には、解釈可能な制約を加えたローカルサロゲートモデルは次のように表現されます。
 
 $$\text{explanation}(x)=\arg\min_{g\in{}G}L(f,g,\pi_x)+\Omega(g)$$
 
+<!--
 The explanation model for instance x is the model g (e.g. linear regression model) that minimizes loss L (e.g. mean squared error), which measures how close the explanation is to the prediction of the original model f (e.g. an xgboost model), while the model complexity $\Omega(g)$ is kept low (e.g. prefer fewer features).
 G is the family of possible explanations, for example all possible linear regression models.
 The proximity measure $\pi_x$ defines how large the neighborhood around instance x is that we consider for the explanation.
 In practice, LIME only optimizes the loss part.
 The user has to determine the complexity, e.g. by selecting the maximum number of features that the linear regression model may use.
+-->
+インスタンス x に対する説明モデルは、元のモデル f (例: xgboost モデル)の予測をどの程度説明できるかを表す損失 L (例: 二乗和誤差)を最小化するようなモデル g（例: 線形回帰モデル）となり、このモデルの複雑さ $\Omega(g)$ は小さい (例: より少ない特徴量)必要があります。
+G は可能な説明の族で、例えばすべての可能な線形回帰モデル、などです。
+近似度 (proximity measure) $\pi_x$ はインスタンス x を説明するために考慮する近傍をどの程度大きくするか定義します。
+実際、LIME は損失関数を最適化しているだけです。
+ユーザーは、線形回帰モデルが使用する特徴量の数の最大を選択することなどにより、複雑性を決定する必要があります。
 
+<!--
 The recipe for training local surrogate models:
+-->
+ローカルサロゲートモデルは、次のように学習されます。
 
+<!--
 - Select your instance of interest for which you want to have an explanation of its black box prediction.
 - Perturb your dataset and  get the black box predictions for these new points.
 - Weight the new samples according to their proximity to the instance of interest.
 - Train a weighted, interpretable model on the dataset with the variations.
 - Explain the prediction by interpreting the local model.
+-->
 
+- ブラックボックスな予測を説明したいインスタンスを選びます。
+- データセットを摂動させ、新たなデータ点に対するブラックボックスな予測を得ます。
+- 新しいサンプルを、関心のあるインスタンスへの近さに応じて重み付けします。
+- ばらつきを加えて作成したデータセットで重み付きの解釈可能なモデルを学習します。
+- 解釈可能な局所的なモデルによって予測を説明します。
+
+<!--
 In the current implementations in [R](https://github.com/thomasp85/lime) and [Python](https://github.com/marcotcr/lime), for example, linear regression can be chosen as interpretable surrogate model.
 In advance, you have to select K, the number of features you want to have in your interpretable model.
 The lower K, the easier it is to interpret the model.
@@ -52,21 +92,52 @@ By retraining the Lasso models with slowly decreasing $\lambda$, one after the o
 If there are K features in the model, you have reached the desired number of features. 
 Other strategies are forward or backward selection of features.
 This means you either start with the full model (= containing all features) or with a model with only the intercept and then test which feature would bring the biggest improvement when added or removed, until a model with K features is reached.
+-->
+例えば、現在の [R](https://github.com/thomasp85/lime) と [Python](https://github.com/marcotcr/lime) での実装では、線形回帰を解釈可能な代理モデルとして選択できます。
+事前に、解釈可能なモデルが持つ特徴量の数 K を選択しなければなりません。
+K が低ければ低いほど、モデルは解釈しやすくなります。
+K が高ければ高いほど、より忠実なモデルとなります。
+ちょうど K 個の特徴量を学習する方法はいくつかあります。
+[Lasso](#lasso) は良い選択と言えます。
+正則化パラメータ $\lambda$ が大きい Lasso は何の特徴量もないモデルとなります。
+ゆっくりと $\lambda$ を減少させていきながら Lasso を再学習していくと、非ゼロの重みをもつ特徴量が現れます。
+モデルが K 個の特徴量を持つならば、希望する特徴量の数にたどり着いたことになります。
+他の戦略は、特徴量の前方選択または後方選択です。
+これは、完全なモデル（= すべての特徴量を含む）もしくは切片のみのモデルから始めて、どの特徴量が追加または削除されたときに最も改善がみられるかを、モデルの特徴量が K 個になるまで繰り返しテストします。
 
+<!--
 How do you get the variations of the data?
 This depends on the type of data, which can be either text, image or tabular data. 
 For text and images, the solution is to turn single words or super-pixels on or off.
 In the case of tabular data, LIME creates new samples by perturbing each feature individually, drawing from a normal distribution with mean and standard deviation taken from the feature.
+-->
+どうやってデータにばらつきを持たせるのでしょうか。
+これは、データのタイプ（テキスト、画像、表形式など）に依存します。
+テキストや画像では、1つの単語もしくはスーパーピクセルのオン・オフを切り替えるという方法があります。
+表形式のデータでは、LIMEはそれぞれの特徴量をその平均と標準偏差を持つ正規分布に基づいて摂動させることによって新たなサンプルを作り出します。
 
-### LIME for Tabular Data
+<!--### LIME for Tabular Data-->
+### 表形式データにおける LIME
 
+<!--
 Tabular data is data that comes in tables, with each row representing an instance and each column a feature.
 LIME samples are not taken around the instance of interest, but from the training data's mass center, which is problematic.
 But it increases the probability that the result for some of the sample points predictions differ from the data point of interest and that LIME can learn at least some explanation.
+-->
+表形式のデータは、各行がインスタンスを表し、各列が特徴量を表しています。
+LIMEのサンプルは、対象のインスタンスの周辺から取得されるのではなく、学習データの重心から取得され、これが問題になります。
+しかし、これにより、サンプル点のいくつかが興味の対象のデータ点と異なる予測値を持つ可能性が高くなります。そのため、LIME が少なくとも何らかの説明を学習できる可能性も高くなります。
 
+<!--
 It is best to visually explain how sampling and local model training works:
+-->
+どのように、サンプリングや局所的なモデルの学習をしているかは視覚的に説明するのがベストです。
 
-```{r lime-fitting, fig.cap='LIME algorithm for tabular data. A) Random forest predictions given features x1 and x2. Predicted classes: 1 (dark) or 0 (light). B) Instance of interest (big dot) and data sampled from a normal distribution (small dots). C) Assign higher weight to points near the instance of interest. D) Signs of the grid show the classifications of the locally learned model from the weighted samples. The white line marks the decision boundary (P(class=1) = 0.5).', fig.height=9, fig.width=9}
+<!--
+fig.cap='LIME algorithm for tabular data. A) Random forest predictions given features x1 and x2. Predicted classes: 1 (dark) or 0 (light). B) Instance of interest (big dot) and data sampled from a normal distribution (small dots). C) Assign higher weight to points near the instance of interest. D) Signs of the grid show the classifications of the locally learned model from the weighted samples. The white line marks the decision boundary (P(class=1) = 0.5).'
+-->
+
+```{r lime-fitting, fig.cap='表形式データのLIMEアルゴリズム。 A) 特徴量 x1, x2 が与えられたときのランダムフォレストの予測。予測されたクラス: 1（暗い領域）または 0（明るい領域）。 B) 対象のインスタンス（大きい点）および正規分布から選ばれたデータ（小さい点）。 C) 対象のインスタンスの周辺に、より大きい重みを割り当てる。 D) グリッドの記号は重みづけされたサンプルから局所的に学習されたモデルの分類を示している。白い線は決定境界 (P(class=1) = 0.5) を示している。', fig.height=9, fig.width=9}
 ## Creating dataset ###########################################################
 library("dplyr")
 library("ggplot2")
@@ -208,6 +279,7 @@ gridExtra::grid.arrange(p_boundaries, p_explain, p_weighted, p_boundaries_lime, 
 
 ```
 
+<!--
 As always, the devil is in the detail.
 Defining a meaningful neighborhood around a point is difficult.
 LIME currently uses an exponential smoothing kernel to define the neighborhood.
@@ -219,9 +291,25 @@ It looks like an innocent line of code, but it is like an elephant sitting in yo
 The big problem is that we do not have a good way to find the best kernel or width.
 And where does the 0.75 even come from?
 In certain scenarios, you can easily turn your explanation around by changing the kernel width, as shown in the following figure:
+-->
+いつものように、悪魔は細部に潜んでいます。
+データ点の周りに意味のある近傍を定義することは難しいです。
+LIMEは現在、近傍を定義するのに指数平滑化カーネル (exponential smoothing kernal) を使用しています。
+平滑化カーネルは、2つのデータのインスタンスを受け取り、近接度を返す関数です。
+カーネルの幅は近傍の大きさを定義します。
+カーネル幅が小さいということは、ローカルモデルに影響を与えるにはインスタンスが非常に近くなければならないことを意味し、カーネル幅が大きいということは、遠くにあるインスタンスもモデルに影響を与えることを意味します。
+[LIME の Python 実装 (file lime/lime_tabular.py)](https://github.com/marcotcr/lime/tree/ce2db6f20f47c3330beb107bb17fd25840ca4606) を見ると、（正規化されたデータ上で）指数平滑化カーネルが用いられていることがわかります。
+また、カーネル幅は、学習データの列の数の平方根の 0.75 倍になっていることもわかります。
+一見、罪のないコードに見えますが、見て見ぬ振りをしている点があります。
+重大な問題は、カーネルやその幅を決める良い方法が無いことです。
+一体どこから 0.75 という数字がきているのでしょうか。
+以下の図のように、カーネル幅を変えることによって説明を簡単にねじ曲げることができます。
 
+<!--
+fig.cap = "Explanation of the prediction of instance x = 1.6. The predictions of the black box model depending on a single feature is shown as a thick line and the distribution of the data is shown with rugs. Three local surrogate models with different kernel widths are computed. The resulting linear regression model depends on the kernel width: Does the feature have a negative, positive or no effect for x = 1.6?"
+-->
 
-```{r lime-fail, fig.cap = "Explanation of the prediction of instance x = 1.6. The predictions of the black box model depending on a single feature is shown as a thick line and the distribution of the data is shown with rugs. Three local surrogate models with different kernel widths are computed. The resulting linear regression model depends on the kernel width: Does the feature have a negative, positive or no effect for x = 1.6?"}
+```{r lime-fail, fig.cap = "x = 1.6 という予測に対しての説明。1つの特徴量に依存しているブラックボックスモデルの予測値は太線で示し、データの分布は底部の棒線で示されている。異なるカーネル幅の3つのローカルサロゲートモデルが計算。線形回帰モデルの結果をみると、特徴量は x = 1.6 に対して負の効果があるか、正の効果があるか、あるいは全く効果がないかは、カーネル幅に依存していることがわかる。"}
 set.seed(42)
 df = data.frame(x = rnorm(200, mean = 0, sd = 3))
 df$x[df$x < -5] = -5
@@ -254,19 +342,33 @@ ggplot(df.all, aes(x = x, y = y)) +
 
 ```
 
+<!--
 The example shows only one feature.
 It gets worse in high-dimensional feature spaces.
 It is also very unclear whether the distance measure should treat all features equally.
 Is a distance unit for feature x1 identical to one unit for feature x2?
 Distance measures are quite arbitrary and distances in different dimensions (aka features) might not be comparable at all.
+-->
+例では1つの特徴量しか取り上げませんでした。
+より高次元な特徴量空間ではもっと悪くなります。
+また、全ての特徴量を同じ距離尺度で扱っていいものかは非常に不明確です。
+特徴量 x1 と特徴量 x2 で 1 だけ変化したとき、同じ距離だけ変化したと扱っていいのでしょうか。
+距離尺度は極めて恣意的で、異なるの次元（別の特徴量）とは全く互換性がないかもしれません。
 
 
-#### Example
+<!--#### Example-->
+#### 例
 
+<!--
 Let us look at a concrete example.
 We go back to the [bike rental data](#bike-data) and turn the prediction problem into a classification:
 After taking into account the trend that the bicycle rental has become more popular over time, we want to know on a certain day whether the number of bicycles rented will be above or below the trend line.
 You can also interpret "above" as being above the average number of bicycles, but adjusted for the trend.
+-->
+具体例を見てみましょう。
+[レンタル自転車のデータ](#bike-data)に戻って、予測問題をクラス分類の問題にします。
+時間が経つにつれてレンタル自転車の人気が高まっているという傾向を考慮した上で、ある日のレンタサイクルの台数がトレンドラインより多いのか、少ないのかを知りたいとします。
+「多い」とは平均のレンタル数を上回っているかどうかと解釈できますが、しかし、トレンドに対して調整されています。
 
 ```{r lime-tabular-example-train-black-box, cache = TRUE}
 data("bike")
@@ -280,13 +382,25 @@ model <- caret::train(bike.train.x,
 n_features_lime = 2
 ```
 
+<!--
 First we train a random forest with `r ntree` trees on the classification task.
 On what day will the number of rental bikes be above the trend-free average, based on weather and calendar information?
+-->
+まず、分類タスクに対して `r ntree` 個の決定木を用いたランダムフォレストを学習します。
+天気やカレンダーの情報を元に、何日にレンタル自転車が平均 (trend-free) を上回るでしょうか。
 
+<!--
 The explanations are created with `r n_features_lime` features.
 The results of the sparse local linear models trained for two instances with different predicted classes:
+-->
+説明は `r n_features_lime` 個の特徴量から作成されます。
+学習されたスパース局所線形モデルによって予測クラスの異なる2つのインスタンスを説明すると、次のようになります。
 
-```{r lime-tabular-example-explain-plot-1, fig.cap=sprintf('LIME explanations for two instances of the bike rental dataset. Warmer temperature and good weather situation have a positive effect on the prediction. The x-axis shows the feature effect: The weight times the actual feature value.') }
+<!--
+fig.cap=sprintf('LIME explanations for two instances of the bike rental dataset. Warmer temperature and good weather situation have a positive effect on the prediction. The x-axis shows the feature effect: The weight times the actual feature value.')
+-->
+
+```{r lime-tabular-example-explain-plot-1, fig.cap=sprintf('レンタル自転車データセットの2つのインスタンスに対する LIME の説明。暖かく天気が良いと予測に正の影響を与える。x 軸は特徴量の効果を示しており、実際の特徴量の値と重みの積に相当する。') }
 library("iml")
 library("gridExtra")
 instance_indices = c(295, 8)
@@ -309,27 +423,52 @@ b = plot(lim2) +
 grid.arrange(a, b, ncol = 1)
 ```
 
+<!--
 From the figure it becomes clear that it is easier to interpret categorical features than numerical features.
 One solution is to categorize the numerical features into bins.
+-->
 
+図から、量的特徴量よりもカテゴリカル特徴量の方が解釈しやすいことがわかりました。
+1つの解決策は量的特徴量を度数によってカテゴライズすることです。
 
-### LIME for Text
+<!--### LIME for Text-->
 
+### テキストデータに対するLIME
+
+<!--
 LIME for text differs from LIME for tabular data.
 Variations of the data are generated differently:
 Starting from the original text, new texts are created by randomly removing words from the original text.
 The dataset is represented with binary features for each word.
 A feature is 1 if the corresponding word is included and 0 if it has been removed.
+-->
+テキストデータに対する LIME は表形式データに対する LIME とは異なります。
+データのバリエーションは異なる方法で生成されます。
+元のテキストから始めて、新たなテキストは元のテキストからランダムに単語を削除することによって作成されます。
+データセットは各単語に対するバイナリ特徴量で表現されます。
+対応する単語が含まれている場合は 1、削除されている場合は 0 です。
 
-#### Example
+<!--#### Example-->
 
+#### 例
+
+<!--
 In this example we classify [YouTube comments](#spam-data) as spam or normal.
+-->
+この例では、[YouTubeのコメント](#spam-data) をスパムか通常のコメントかで分類します。
 
+<!--
 The black box model is a deep decision tree trained on the document word matrix.
 Each comment is one document (= one row) and each column is the number of occurrences of a given word.
 Short decision trees are easy to understand, but in this case the tree is very deep.
 Also in place of this tree there could have been a recurrent neural network or a support vector machine trained on word embeddings (abstract vectors).
 Let us look at the two comments of this dataset and the corresponding classes (1 for spam, 0 for normal comment):
+-->
+ブラックボックスモデルとして、文書の単語行列上で学習した深い決定木を使用します。
+この行列では、各コメントは1つの文書（= 1行）であり、各列は特定の単語の出現回数を表します。
+短い決定木は容易に理解できますが、今回は非常に深い木を扱います。
+この決定木の代わりに、単語の埋め込み（抽象的なベクトル）に対して学習された再帰ニューラルネットワークや SVM を用いることもできます。
+このデータセットから2つのコメントと対応するクラス (スパムなら1、通常のコメントなら0) を見てみましょう。
 
 ```{r load-text-classification-lime}
 data("ycomments")
@@ -341,8 +480,12 @@ texts = ycomments$CONTENT[example_indices]
 kable(ycomments[example_indices, c('CONTENT', 'CLASS')])
 ```
 
+<!--
 The next step is to create some variations of the datasets used in a local model.
 For example, some variations of one of the comments:
+-->
+次のステップでは、局所モデルで使用される、データセットのバリエーションを作成します。
+例えば、1つのコメントに対するバリエーションは次のようになります。
 
 ```{r lime-text-variations}
 library("tm")
@@ -364,18 +507,31 @@ example_sentence = paste(colnames(variations)[variations[2, ] == 1], collapse = 
 kable(variations)
 ```
 
+<!--
 Each column corresponds to one word in the sentence.
 Each row is a variation, 1 means that the word is part of this variation and 0 means that the word has been removed.
 The corresponding sentence for one of the variations is "```r example_sentence```".
 The "prob" column shows the predicted probability of spam for each of the sentence variations.
 The "weight" column shows the proximity of the variation to the original sentence, calculated as 1 minus the proportion of words that were removed, for example if 1 out of 7 words was removed, the proximity is 1 - 1/7 = 0.86.
+-->
+各列は文中の1つの単語に対応します。
+各行が1つのバリエーションを表しており、1 は単語がこのバリエーションの一部であることを意味し、0 はその単語が削除されたことを意味します。
+バリエーションの1つに対応する文は、"```r example_sentence```"です。
+"prob" の列は各バリエーションがスパムである予測確率を表します。
+"weight"の列は元の文へのバリエーションの近接度を表しており、1 から削除された単語の割合を引いたものとして計算されます。
+例えば、7語のうち1語が削除された場合、近接度は 1 - 1/7 = 0.86 となります。
 
-
-
-
+<!--
 Here are the two sentences (one spam, one no spam) with their estimated local weights found by the LIME algorithm:
+-->
 
-```{r lime-text-explanations, fig.cap = "LIME explanations for text classification."}
+2つの文（一方はスパム、もう一方はスパムでない）とLIMEのアルゴリズムによって推定された重みを見てみましょう。
+
+<!--
+fig.cap = "LIME explanations for text classification."
+-->
+
+```{r lime-text-explanations, fig.cap = "テキスト分類に対するLIMEの説明"}
 set.seed(42)
 ycomments.predict = get.ycomments.classifier(ycomments)
 explanations  = data.table::rbindlist(lapply(seq_along(texts), function(i) {
@@ -386,22 +542,38 @@ explanations = data.frame(explanations)
 kable(explanations[c("case", "label_prob", "feature", "feature_weight")])
 ```
 
+<!--
 The word "channel" indicates a high probability of spam.
 For the non-spam comment no non-zero weight was estimated, because no matter which word is removed, the predicted class remains the same.
+-->
+"チャンネル" という単語がスパムである確率が高いことを示しています。
+スパムでないコメントの場合、どの単語が削除されてもクラス予測に影響がないため、ゼロ以外の重みは推定されませんでした。
 
-### LIME for Images {#images-lime}
+<!--### LIME for Images {#images-lime}-->
+### 画像データに対するLIME {#images-lime}
 
-*This section was written by Verena Haunschmid.*
+<!--*This section was written by Verena Haunschmid.*-->
+*このセクションは Verena Haunschmid が執筆しました。*
 
+<!--
 LIME for images works differently than LIME for tabular data and text. 
 Intuitively, it would not make much sense to perturb individual pixels, since many more than one pixel contribute to one class. 
 Randomly changing individual pixels would probably not change the predictions by much.
 Therefore, variations of the images are created by segmenting the image into "superpixels" and turning superpixels off or on. 
 Superpixels are interconnected pixels with similar colors and can be turned off by replacing each pixel with a user-defined color such as gray.
 The user can also specify a probability for turning off a superpixel in each permutation.
+-->
+画像に対する LIME は表形式データやテキストデータに対する LIME とは動作が異なります。
+直感的には、複数のピクセルが1つのクラスに寄与するため、ひとつひとつのピクセルを摂動させることは意味がありません。
+なので、ひとつひとつのピクセルをランダムに変更しても、予測結果はあまり変わらないでしょう。
+そこで、画像を「スーパーピクセル」にセグメント化し、スーパーピクセルをオフ・オンに切り替えることで画像のバリエーションを作ります。
+スーパーピクセルとは類似した色を相互接続したピクセルであり、それぞれのピクセルをグレーなどのユーザ定義の色に置き換えることでオフにできます。
+また、ユーザは、それぞれの置換においてスーパーピクセルをオフにする確率を指定できます。
 
-#### Example
+<!--#### Example-->
+#### 例
 
+<!--
 In this example we look at a classification made by the Inception V3 neural network.
 The image used shows some bread I baked which are in a bowl.
 Since we can have several predicted labels per image (sorted by probability), we can explain the top labels.
@@ -409,65 +581,148 @@ The top prediction is "Bagel" with a probability of 77%, followed by "Strawberry
 The following images show for "Bagel" and "Strawberry" the LIME explanations.
 The explanations can be displayed directly on the image samples.
 Green means that this part of the image increases the probability for the label and red means a decrease.
+-->
 
-```{r lime-images-package-example-include, fig.cap="Left: Image of a bowl of bread. Middle and right: LIME explanations for the top 2 classes (bagel, strawberry) for image classification made by Google's Inception V3 neural network.", out.width=500}
+この例では、Inception V3 ニューラルネットワークによるクラス分類を見ていきます。
+使用したのは、ボウルに入ったパンの画像です。
+画像ごとに複数の予測ラベルを持つことができるので（確率でソートされている）、上位のラベルを説明できます。
+1番目の予測は確率 77% で「ベーグル」であり、次に 4% で「ストロベリー」が続きます。
+下の画像は、「ベーグル」と「ストロベリー」の LIME の説明を示しています。
+説明はサンプル画像上に直接表示できます。
+緑は画像のこの部分がラベルの確率を増加させることを意味し、赤は減少させることを意味します。
+
+<!--
+fig.cap="Left: Image of a bowl of bread. Middle and right: LIME explanations for the top 2 classes (bagel, strawberry) for image classification made by Google's Inception V3 neural network."
+-->
+
+```{r lime-images-package-example-include, fig.cap="左：ボウルに入ったのパンの画像。中央と右: Google の Inception V3 ニューラルネットワークによる画像分類の上位2クラス（ベーグル、ストロベリー）に対する LIME の説明。", out.width=500}
 knitr::include_graphics("images/lime-images-package-example-1.png")
 ```
+
+<!--
 The prediction and explanation for "Bagel" are very reasonable, even if the prediction is wrong -- these are clearly no bagels since the hole in the middle is missing.
+-->
 
+「ベーグル」の予測と説明は、たとえ予測が間違っていたとしても、非常に合理的です。
+実際には、中央に穴がないため、この画像はベーグルではありません。
 
-### Advantages
+<!--### Advantages-->
 
+### 長所
+
+<!--
 Even if you **replace the underlying machine learning model**, you can still use the same local, interpretable model for explanation.
 Suppose the people looking at the explanations understand decision trees best.
 Because you use local surrogate models, you use decision trees as explanations without actually having to use a decision tree to make the predictions.
 For example, you can use a SVM.
 And if it turns out that an xgboost model works better, you can replace the SVM and still use as decision tree to explain the predictions.
+-->
 
+**元の機械学習モデルを置き換えたとしても**、説明にはそのまま同じ局所的な解釈可能モデルを使うことができます。
+説明を受ける人は決定木を十分に理解していると仮定します。
+ローカルサロゲートモデルを使用するため、実際の予測では決定木を使用していなくても、決定木を説明として使用できます。
+例えば、予測モデルとして SVM を使用できます。
+そして、xgboost モデルの方がうまく機能することがわかった場合は、SVM を xgboost モデルに置き換え、予測を説明する決定木はそのまま使用できます。
+
+<!--
 Local surrogate models benefit from the literature and experience of training and interpreting interpretable models.
+-->
+ローカルサロゲートモデルは、解釈可能なモデルの学習や解釈の文献や経験から恩恵を受けています。
 
+<!--
 When using Lasso or short trees, the resulting **explanations are short (= selective) and possibly contrastive**. 
 Therefore, they make [human-friendly explanations](#explanation).
 This is why I see LIME more in applications where the recipient of the explanation is a lay person or someone with very little time.
 It is not sufficient for complete attributions, so I do not see LIME in compliance scenarios where you might be legally required to fully explain a prediction.
 Also for debugging machine learning models, it is useful to have all the reasons instead of a few.
+-->
 
+Lasso や短い木を使用する場合、結果として得られる**説明は短く（= 選択的）、対照的なものになる可能性があります**。
+したがって、[人間に優しい説明](#explanation)になります。
+これが、説明を受ける側が専門家でなかったり時間のない人であるようなアプリケーションで LIME がよく用いられる理由です。
+ただし、完全な帰属に対しては十分ではないので、完全な予測の説明が法的に求められる場合などでは LIME が使われることはありません。
+また、機械学習モデルのデバッグをする際、少しの理由ではなく全ての理由があると便利です。
+
+<!--
 LIME is one of the few methods that **works for tabular data, text and images**.
+-->
+LIME は**表形式データ、テキストデータ、画像データ全てで有効な**数少ない手法の1つです。
 
+<!--
 The **fidelity measure** (how well the interpretable model approximates the black box predictions) gives us a good idea of how reliable the interpretable model is in explaining the black box predictions in the neighborhood of the data instance of interest.
+-->
+**忠実度**（解釈可能なモデルがブラックボックスの予測をどの程度近似しているか）は、対象の入力データ近傍におけるブラックボックスの予測を説明する際に、解釈可能なモデルがどれほど信頼できるかについて良いアイデアを与えてくれます。
 
+<!--
 LIME is implemented in Python ([lime](https://github.com/marcotcr/lime) library) and R ([lime package](https://cran.r-project.org/web/packages/lime/index.html) and [iml package](https://cran.r-project.org/web/packages/iml/index.html)) and is **very easy to use**.
+-->
+LIME は Python ([lime](https://github.com/marcotcr/lime) ライブラリ) や R ([lime package](https://cran.r-project.org/web/packages/lime/index.html) と [iml package](https://cran.r-project.org/web/packages/iml/index.html)) で実装されており、**非常に簡単に使用できます**。
 
+<!--
 The explanations created with local surrogate models **can use other (interpretable) features than the original model was trained on.**.
 Of course, these interpretable features must be derived from the data instances.
 A text classifier can rely on abstract word embeddings as features, but the explanation can be based on the presence or absence of words in a sentence.
 A regression model can rely on a non-interpretable transformation of some attributes, but the explanations can be created with the original attributes.
 For example, the regression model could be trained on components of a principal component analysis (PCA) of answers to a survey, but LIME might be trained on the original survey questions.
 Using interpretable features for LIME can be a big advantage over other methods, especially when the model was trained with non-interpretable features.
+-->
+局所代理モデルで作成された説明は、**元のモデルが学習に使用したもの以外の特徴量を使用できます**。
+もちろん、これらの解釈可能な特徴量は入力データから得られるものでなければなりません。
+テキスト分類器は特徴量として抽象的な単語の埋め込みを使用できますが、その説明は文内の単語の有無に基づいて行なうことができます。
+回帰モデルが特徴量への解釈不可能な変換を用いて学習されたとしても、その説明は元の特徴量を使用して作成できます。
+例えば、回帰モデルがアンケート回答の主成分分析 (PCA) の結果から学習されたとしても、LIME では元のアンケートの質問に対して学習できます。
+LIME に解釈可能な特徴量を使用することは、特にモデルが解釈不可能な特徴量で学習されている場合に、他の手法に比べて大きな利点があります。
 
-### Disadvantages
+<!--### Disadvantages-->
 
+### 短所
+
+<!--
 The correct definition of the neighborhood is a very big, unsolved problem when using LIME with tabular data.
 In my opinion it is the biggest problem with LIME and the reason why I would recommend to use LIME only with great care.
 For each application you have to try different kernel settings and see for yourself if the explanations make sense.
 Unfortunately, this is the best advice I can give to find good kernel widths.
+-->
+表形式のデータに対して LIME を使用する際、近傍の正しい定義を与えることが非常に大きな未解決の問題となっています。
+私はこれが LIME の最大の問題点であると考えており、LIME を慎重に使用することを推奨しています。
+アプリケーションごとに異なるカーネルの設定を試して、説明が意味をなしているかを自分で確認する必要があります。
+残念ながら、これが適切なカーネル幅を見つけるために私ができる最大限のアドバイスです。
 
+<!--
 Sampling could be improved in the current implementation of LIME. 
 Data points are sampled from a Gaussian distribution, ignoring the correlation between features.
 This can lead to unlikely data points which can then be used to learn local explanation models.
+-->
+サンプリングは LIME の現在の実装から改善される可能性があります。
+データ点は、特徴量間の相関を無視して、ガウス分布からサンプリングされます。
+これにより、実際には発生しがたいデータ点が局所的な説明モデルを学習する際に使用される可能性があります。
 
+<!--
 The complexity of the explanation model has to be defined in advance.
 This is just a small complaint, because in the end the user always has to define the compromise between fidelity and sparsity.
+-->
+説明モデルの複雑さをあらかじめ定義する必要があります。
+これに関しては、些細な不満です。
+なぜなら、最終的には常にユーザが忠実度とスパース性の間の妥協点を定義する必要があるからです。
 
+<!--
 Another really big problem is the instability of the explanations.
 In an article [^limerobustness] the authors showed that the explanations of two very close points varied greatly in a simulated setting.
 Also, in my experience, if you repeat the sampling process, then the explantions that come out can be different.
 Instability means that it is difficult to trust the explanations, and you should be very critical.
+-->
+もう1つの非常に大きな問題点は、説明の不安定さです。
+記事 [^limerobustness] の中で、著者はあるシミュレーションにおいて非常に近い2点の説明が大きく異なることを示しました。
+また、私の経験上でも、サンプリングプロセスを繰り返すと得られる説明が異なってしまう場合があります。
+不安定さは説明が信頼しがたいものであることを意味しており、これは致命的です。
 
+<!--
 Conclusion:
 Local surrogate models, with LIME as a concrete implementation, are very promising.
 But the method is still in development phase and many problems need to be solved before it can be safely applied.
-
+-->
+結論として、具体的な実装として LIME を使用したローカルサロゲートモデルは非常に将来有望です。
+しかし、この方法はまだ発展途上段階であり、安全に使用するには多くの問題を解決する必要があります。
 
 [^Ribeiro2016lime]: Ribeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin. "Why should I trust you?: Explaining the predictions of any classifier." Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining. ACM (2016).
 

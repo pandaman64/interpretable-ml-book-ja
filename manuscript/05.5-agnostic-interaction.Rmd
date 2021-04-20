@@ -5,114 +5,206 @@ set.seed(42)
 
 <!--{pagebreak}-->
 
+## 特徴量の相互作用 {#interaction}
+<!--
 ## Feature Interaction {#interaction}
+--> 
 
+<!-- 
 When features interact with each other in a prediction model, the prediction cannot be expressed as the sum of the feature effects, because the effect of one feature depends on the value of the other feature.
 Aristotle's predicate "The whole is greater than the sum of its parts" applies in the presence of interactions.
+-->
+予測モデルにおいて特徴量の相互作用がある場合、ある特徴量は他の特徴量の値に影響を受けるため、予測は単に特徴量の影響の和では表現できなくなります。
+アリストテレスは「全体は部分の総和より勝る」という言葉を残しましたが、これも相互作用の存在により成り立つといえるでしょう。
 
+<!--
 ### Feature Interaction?
+--> 
+### 特徴量の相互作用とは
 
+<!--
 If a machine learning model makes a prediction based on two features, we can decompose the prediction into four terms: 
 a constant term, a term for the first feature, a term for the second feature and a term for the interaction between the two features.  
 The interaction between two features is the change in the prediction that occurs by varying the features after considering the individual feature effects.
+--> 
+機械学習モデルが2つの特徴量に基づいて予測する場合、この予測は定数項、1つ目の特徴量、2つ目の特徴量、2つの特徴量の相互作用の4つの項に分解できます。
+2つの特徴量の相互作用は個々の特徴量の効果を考慮したのち、特徴量を変化させることによって生じる予測の変化を指します。
 
+<!--
 For example, a model predicts the value of a house, using house size (big or small) and location (good or bad) as features, which yields four possible predictions:
+-->
+例として、モデルが家の大きさ（大きいか小さいか）と家の立地（良いか悪いか）の2つを特徴量として家の価値を予測する場合を考えると、以下のような4つの予測が考えられます。
 
+<!--
 | Location | Size  | Prediction |
 |---------:|------:|----------------:|
 | good     | big   | 300,000         | 
 | good     | small | 200,000         |
 | bad      | big   | 250,000         | 
 | bad      | small | 150,000         |
+-->
 
+| 立地 | 大きさ  | 予測 |
+|---------:|------:|----------------:|
+| 良い     | 大きい   | 300,000         | 
+| 良い     | 小さい | 200,000         |
+| 悪い      | 大きい   | 250,000         | 
+| 悪い      | 小さい | 150,000         |
 
+<!--
 We decompose the model prediction into the following parts: 
 A constant term (150,000), an effect for the size feature (+100,000 if big; +0 if small) and an effect for the location (+50,000 if good; +0 if bad). 
 This decomposition fully explains the model predictions.
 There is no interaction effect, because the model prediction is a sum of the single feature effects for size and location. 
 When you make a small house big, the prediction always increases by 100,000, regardless of location. 
 Also, the difference in prediction between a good and a bad location is 50,000, regardless of size.
+-->
+この予測結果は
+定数項 (150,000）、家の大きさ（大きければ+100,000、小さければ+0）、家の立地（よければ+50,000、悪ければ+0）
+のように分解できます。
+この分解はモデルの予測を完璧に説明しています。
+モデルの予測は大きさと立地の各特徴量の影響の和と等しくなっているため、相互作用による影響はありません。
+小さな家から大きな家に変更した場合、予測は立地に関わらず100,000だけ上がり、同様に立地を悪い家から良い家に変更した場合も、予測は家の大きさに関わらず50,000だけ増加します。
 
+<!--
 Let's now look at an example with interaction:
+-->
+次に、相互作用が存在する場合について考えます。
 
+<!--
 | Location | Size  | Prediction |
 |---------:|------:|----------------:|
 | good     | big   | 400,000         | 
 | good     | small | 200,000         |
 | bad      | big   | 250,000         | 
 | bad      | small | 150,000         |
+-->
 
+| 立地 | 大きさ  | 予測 |
+|---------:|------:|----------------:|
+| 良い     | 大きい   | 400,000         | 
+| 良い     | 小さい | 200,000         |
+| 悪い      | 大きい   | 250,000         | 
+| 悪い      | 小さい | 150,000         |
 
-
-
+<!--
 We decompose the prediction table into the following parts: 
 A constant term (150,000), an effect for the size feature (+100,000 if big, +0 if small) and an effect for the location (+50,000 if good, +0 if bad). 
 For this table we need an additional term for the interaction: +100,000 if the house is big and in a good location.
 This is an interaction between size and location, because in this case the difference in prediction between a big and a small house depends on the location. 
+-->
+この予測結果を
+定数項 (150,000）、家の大きさ（大きければ+100,000、小さければ+0) 、家の立地 (よければ+50,000、悪ければ+0) のように分解してみます。
+ただし、今回は相互作用による項 (家のサイズが大きくかつ立地が良いならば+100,000) を追加で考える必要があります。
+この場合、立地によって、家が大きい場合と小さい場合で予測に差が生じるため、家の大きさと立地の間に相互作用があると言えます。
 
+<!--
 One way to estimate the interaction strength is to measure how much of the variation of the prediction depends on the interaction of the features.
 This measurement is called H-statistic, introduced by Friedman and Popescu (2008)[^Friedman2008].
+-->
+相互作用の大きさを測る1つの方法として、特徴量の相互作用により予測がどの程度変化するかを測る方法があります。
+これは H 統計量 と呼ばれ、Friedman と Popescu によって2008年に提案されました[^Friedman2008]。
 
 
-### Theory: Friedman's H-statistic
+<!-- ### Theory: Friedman's H-statistic -->
+### Friedman の H統計量の理論
 
-We are going to deal with two cases:
+<!-- We are going to deal with two cases:
 First, a two-way interaction measure that tells us whether and to what extent two features in the model interact with each other;
 second, a total interaction measure that tells us whether and to what extent a feature interacts in the model with all the other features.
-In theory, arbitrary interactions between any number of features can be measured, but these two are the most interesting cases.
+In theory, arbitrary interactions between any number of features can be measured, but these two are the most interesting cases. -->
+これから、2つのケースについて扱います。
+1つ目は、モデル内の2つの特徴が相互作用するかどうかや、その程度を示す双方向相互作用の尺度です。
+2つ目は、ある特徴量がモデル内で他の全ての特徴量と相互作用するかどうかやその程度を示す総合的な相互作用の尺度です。
+理論的には、任意の数の特徴量間の相互作用を測定できます。しかし、上記の2つが最も興味深いケースです。
 
-
-If two features do not interact, we can decompose the [partial dependence function](#pdp) as follows (assuming the partial dependence functions are centered at zero):
+<!-- If two features do not interact, we can decompose the [partial dependence function](#pdp) as follows (assuming the partial dependence functions are centered at zero): -->
+もし2つの特徴量が相互作用しない場合、[partial dependence function](#pdp) として、以下のように分解できます (ただし、partial dependence function はゼロに中心化されていると仮定) 。
 
 $$PD_{jk}(x_j,x_k)=PD_j(x_j)+PD_k(x_k)$$
 
-where $PD_{jk}(x_j,x_k)$ is the 2-way partial dependence function of both features and $PD_j(x_j)$ and $PD_k(x_k)$ the partial dependence functions of the single features.
+<!-- where $PD_{jk}(x_j,x_k)$ is the 2-way partial dependence function of both features and $PD_j(x_j)$ and $PD_k(x_k)$ the partial dependence functions of the single features. -->
+ここで、 $PD_{jk}(x_j,x_k)$ は2つの特徴量に関する2方向の partial dependence function であり、$PD_j(x_j)$ と $PD_k(x_k)$ は1つの特徴量についてのpartial dependence functionです。
 
-Likewise, if a feature has no interaction with any of the other features, we can express the prediction function $\hat{f}(x)$ as a sum of partial dependence functions, where the first summand depends only on j and the second on all other features except j:
+<!-- Likewise, if a feature has no interaction with any of the other features, we can express the prediction function $\hat{f}(x)$ as a sum of partial dependence functions, where the first summand depends only on j and the second on all other features except j: -->
+同様に、もしも1つの特徴量が他のいかなる特徴量とも相互作用しない場合、予測関数 $\hat{f}(x)$ を partial dependence function の和として表現できます。ここで、和の第1項は j にのみ依存し、第2項は j 以外に依存します。
 
 $$\hat{f}(x)=PD_j(x_j)+PD_{-j}(x_{-j})$$
 
-where $PD_{-j}(x_{-j})$ is the partial dependence function that depends on all features except the j-th feature.
+<!-- where $PD_{-j}(x_{-j})$ is the partial dependence function that depends on all features except the j-th feature. -->
+ただし、$PD_{-j}(x_{-j})$ はj番目を除いた全ての特徴量に依存する partial dependence function です。
 
-This decomposition expresses the partial dependence (or full prediction) function without interactions (between features j and k, or respectively j and all other features). 
+
+<!-- This decomposition expresses the partial dependence (or full prediction) function without interactions (between features j and k, or respectively j and all other features). 
 In a next step, we measure the difference between the observed partial dependence function and the decomposed one without interactions.
-We calculate the variance of the output of the partial dependence (to measure the interaction between two features) or of the entire function (to measure the interaction between a feature and all other features). 
-The amount of the variance explained by the interaction (difference between observed and no-interaction PD) is used as interaction strength statistic.
+We calculate the variance of the output of the partial dependence (to measure the interaction between two features) or of the entire function (to measure the interaction between a feature and all other features).  -->
+この分解は、(特徴量 j と k、もしくは、特徴量 j とその他に) 相互作用のない partial dependence function (もしくは完全予測関数) を表します。
+次のステップとして、観測された partial dependence function と相互作用を持たない分解された関数の差を測定します。
+2つの特徴間の相互作用を測るための partial dependence function や、ある特徴量とそれ以外の間の相互作用を測るための関数全体の出力のばらつきを計算します。
+
+<!-- The amount of the variance explained by the interaction (difference between observed and no-interaction PD) is used as interaction strength statistic.
 The statistic is 0 if there is no interaction at all and 1 if all of the variance of the $PD_{jk}$ or $\hat{f}$ is explained by the sum of the partial dependence functions.
 An interaction statistic of 1 between two features means that each single PD function is constant and the effect on the prediction only comes through the interaction.
 The H-statistic can also be larger than 1, which is more difficult to interpret.
-This can happen when the variance of the 2-way interaction is larger than the variance of the 2-dimensional partial dependence plot.
+This can happen when the variance of the 2-way interaction is larger than the variance of the 2-dimensional partial dependence plot. -->
+相互作用 (観測値と理論的な相互作用のない状態のPDの差分)による因子寄与の量が、相互作用の強さを示す統計量として用いられています。
+相互作用が何もない場合、統計量は 0 であり、 $PD_{jk}$ もしくは $\hat{f}$ の全ての分散がpartial dependence functionの合計によって説明される場合は1になります。
+相互作用の統計量が 1 のとき、2つの特徴量のそれぞれの PD function は定数で、予測の影響が相互作用のみであることを意味しています。
+この H 統計量は 1 よりも大きくなることがあり、解釈がより困難になります。
+これは、双方向相互作用の分散が2次元の partial dependence plot の分散よりも大きい場合に起こる可能性があります。
 
-Mathematically, the H-statistic proposed by Friedman and Popescu for the interaction between feature j and k is:
+<!-- Mathematically, the H-statistic proposed by Friedman and Popescu for the interaction between feature j and k is: --> 
+数学的には、特徴量 j, k 間の H 統計量は Friedman と Popescu によって与えられ、以下の式で書き表されます。
 
 $$H^2_{jk}=\sum_{i=1}^n\left[PD_{jk}(x_{j}^{(i)},x_k^{(i)})-PD_j(x_j^{(i)})-PD_k(x_{k}^{(i)})\right]^2/\sum_{i=1}^n{PD}^2_{jk}(x_j^{(i)},x_k^{(i)})$$
 
-
-The same applies to measuring whether a feature j interacts with any other feature:
+<!-- The same applies to measuring whether a feature j interacts with any other feature: -->
+特徴量 j とそれ以外の全ての特徴量との相互作用を測るのも同様にして以下の通りに計算できます。
 
 $$H^2_{j}=\sum_{i=1}^n\left[\hat{f}(x^{(i)})-PD_j(x_j^{(i)})-PD_{-j}(x_{-j}^{(i)})\right]^2/\sum_{i=1}^n\hat{f}^2(x^{(i)})$$
 
-The H-statistic is expensive to evaluate, because it iterates over all data points and at each point the partial dependence has to be evaluated which in turn is done with all n data points. 
+<!-- The H-statistic is expensive to evaluate, because it iterates over all data points and at each point the partial dependence has to be evaluated which in turn is done with all n data points. 
 In the worst case, we need 2n^2^ calls to the machine learning models predict function to compute the two-way H-statistic (j vs. k) and 3n^2^ for the total H-statistic (j vs. all).
 To speed up the computation, we can sample from the n data points. 
 This has the disadvantage of increasing the variance of the partial dependence estimates, which makes the H-statistic unstable.
-So if you are using sampling to reduce the computational burden, make sure to sample enough data points.
+So if you are using sampling to reduce the computational burden, make sure to sample enough data points. -->
+全てのデータ点で反復し、それぞれのデータ点で partial dependence を評価する必要があるため、H 統計量は評価にはコストがかかります。
+最悪のケースでは、双方向H統計量 (j vs. k) を計算するために、2n^2^ 回の機械学習モデルの予測を呼び出す必要があり、全てのH統計量 (j vs. all) を計算するためには、3n^2^ 回必要になります。
+計算を高速化するために、n 個のデータ点をサンプリングする方法があります。
+この方法は partial dependence の推定のばらつきを高めてしまう欠点があるため、これによって H 統計量は不安定になります。
+従って、もしも計算負荷を減らすためにサンプリングを用いている場合は、十分なデータ点が取得できているか注意してください。
 
-Friedman and Popescu also propose a test statistic to evaluate whether the H-statistic differs significantly from zero.
+<!-- Friedman and Popescu also propose a test statistic to evaluate whether the H-statistic differs significantly from zero.
 The null hypothesis is the absence of interaction. 
 To generate the interaction statistic under the null hypothesis, you must be able to adjust the model so that it has no interaction between feature j and k or all others.
 This is not possible for all types of models.
 Therefore this test is model-specific, not model-agnostic, and as such not covered here.
 
-The interaction strength statistic can also be applied in a classification setting if the prediction is a probability.
+The interaction strength statistic can also be applied in a classification setting if the prediction is a probability. -->
+Friedman と Popescu は、H統計量が0と有意に異なるかどうかを評価するための検定も提案しています。
+この場合の帰無仮説は、「相互作用がない」です。
+帰無仮説の下で相互作用統計量を生み出すには、モデルを調整して特徴量 j と k 、もしくは j と他の全ての特徴量との間に相互作用が無いようにする必要がありますが、これは任意のモデルのタイプで行えるわけではありません。
+よって、この検定はモデル非依存ではなく、モデル特有のものなのでここでは扱いません。
 
+もしも予測対象が確率である場合、相互作用の強さを測る統計量は分類問題にも適用できます。
+
+### 例
+<!--
 ### Examples
+-->
 
+<!--
 Let us see what feature interactions look like in practice!
 We measure the interaction strength of features in a support vector machine that predicts the number of [rented bikes](#bike-data) based on weather and calendrical features. 
 The following plot shows the feature interaction H-statistic:
+-->
+特徴量の相互作用がどんなものか実際に見てみましょう。
+[自転車のレンタル数](#bike-data)の予測について、天気とカレンダーの特徴量使ってSVMで予測したときの特徴量間の相互作用の強さを計算してみましょう。
 
-```{r interaction-bike, fig.cap = 'The interaction strength (H-statistic) for each feature with all other features for a support vector machine predicting bicycle rentals. Overall, the interaction effects between the features are very weak (below 10% of variance explained per feature).', cache = FALSE}
+<!--
+fig.cap = 'The interaction strength (H-statistic) for each feature with all other features for a support vector machine predicting bicycle rentals. Overall, the interaction effects between the features are very weak (below 10% of variance explained per feature).', cache = FALSE
+-->
+```{r interaction-bike, fig.cap = '自転車レンタル数をSVMで予測した時の、ある特徴量から他の特徴量に対する相互作用の強さ（H統計量）。全体的に、特徴量間の相互作用は非常に弱い（いずれも10%未満）。', cache = FALSE}
 data(bike)
 library("mlr")
 library("iml")
@@ -122,13 +214,20 @@ bike.task = makeRegrTask(data = bike, target = "cnt")
 mod.bike = mlr::train(mlr::makeLearner(cl = 'regr.svm', id = 'bike-rf'), bike.task)
 
 pred.bike = Predictor$new(mod.bike, data = bike[setdiff(colnames(bike), "cnt")])
-ia = Interaction$new(pred.bike, grid.size = 50) 
+ia = callr::r( # Split process to avoid error
+  function(pred.bike) iml::Interaction$new(pred.bike, grid.size = 50),
+  args = list(pred.bike = pred.bike)
+)
 plot(ia) +
  scale_y_discrete("")
 ```
 
+<!--
 In the next example, we calculate the interaction statistic for a classification problem.
 We analyze the interactions between features in a random forest trained to predict [cervical cancer](#cervical), given some risk factors.
+-->
+次は分類問題に対する相互作用を計算してみましょう。
+様々なリスク要因が与えられた時の[子宮頸がんの予測](#cervical)を学習したランダムフォレストの特徴量間の相互作用を分析してみましょう。
 
 ```{r interaction-cervical-prep}
 data(cervical)
@@ -145,11 +244,18 @@ plot(ia1) +
  scale_y_discrete("")
 ```
 
-```{r interaction-cervical-include, fig.cap = 'The interaction strength (H-statistic) for each feature with all other features for a random forest predicting the probability of cervical cancer. The years on hormonal contraceptives has the highest relative interaction effect with all other features, followed by the number of pregnancies.'}
+<!--
+fig.cap = 'The interaction strength (H-statistic) for each feature with all other features for a random forest predicting the probability of cervical cancer. The years on hormonal contraceptives has the highest relative interaction effect with all other features, followed by the number of pregnancies.'
+-->
+```{r interaction-cervical-include, fig.cap = '子宮頸がんになる確率をランダムフォレストを用いて予測した時の、各特徴量から他の特徴量に対する相互作用の強さ（H統計量）。 相互作用の強さは経口避妊薬の服用年数が1番高く、出産人数が次に高い。'}
 knitr::include_graphics("images/interaction-cervical-1.png")
 ```
 
+<!--
 After looking at the feature interactions of each feature with all other features, we can select one of the features and dive deeper into all the 2-way interactions between the selected feature and the other features.
+-->
+それぞれの特徴量が他の特徴量との相互作用を確認しました。
+今度は特定の特徴量に注目して、その変数が他の各々の特徴量とどれだけ相互作用するかの、双方向的な相互作用に掘り下げていきましょう。
 
 ```{r interaction2-cervical-age, eval = FALSE, fig.show = "hide"}
 # Due to long running time and timeouts on TravisCI, this has to be run locally. 
@@ -159,80 +265,161 @@ plot(ia2) + scale_x_continuous("2-way interaction strength") +
  scale_y_continuous("")
 ```
 
-```{r interaction2-cervical-age-include, fig.cap = 'The 2-way interaction strengths (H-statistic) between number of pregnancies and each other feature. There is a strong interaction between the number of pregnancies and the age.'}
+<!--
+fig.cap = 'The 2-way interaction strengths (H-statistic) between number of pregnancies and each other feature. There is a strong interaction between the number of pregnancies and the age.'
+-->
+```{r interaction2-cervical-age-include, fig.cap = '妊娠回数と他の特徴量における双方向的な相互作用の強さ（H統計量）。妊娠回数と年齢に強い相互作用が認められる。'}
 knitr::include_graphics("images/interaction2-cervical-age-1.png")
 ```
 
+### 利点
+<!--
 ### Advantages 
+-->
 
+<!--
 The interaction H-statistic has an **underlying theory** through the partial dependence decomposition.
+-->
+相互作用の強さを計算するH統計量には、partial dependence decompositionという**理論的な背景**があります。
 
+<!--
 The H-statistic has a **meaningful interpretation**:
 The interaction is defined as the share of variance that is explained by the interaction.
-
 Since the statistic is **dimensionless**, it is comparable across features and even across models.
+-->
+H 統計量は意味のある解釈を持ちます。
+この相互作用は、相互作用による分散の説明度合いとして定義されます。
+H 統計量は**無次元**なので、特徴量間やモデル間で比較が可能です。
 
+<!--
 The statistic **detects all kinds of interactions**, regardless of their particular form.
-
 With the H-statistic it is also possible to analyze arbitrary **higher interactions** such as the interaction strength between 3 or more features.
+-->
+H 統計量は、特定の形式によらず、どのような種類の相互作用でも検出できます。
+H 統計量を使うと、3つ以上の特徴量間における相互作用などの、**より高次の相互作用**も分析できます。
 
-
+### 欠点
+<!--
 ### Disadvantages
+-->
 
+<!--
 The first thing you will notice: 
 The interaction H-statistic takes a long time to compute, because it is **computationally expensive**.
+-->
+まず始めに、H特徴量は**計算コストが高い**ため、計算に時間がかかります。
 
+<!--
 The computation involves estimating marginal distributions. 
 These **estimates also have a certain variance** if we do not use all data points. 
 This means that as we sample points, the estimates also vary from run to run and the **results can be unstable**.
 I recommend repeating the H-statistic computation a few times to see if you have enough data to get a stable result.
+-->
+計算には周辺分布の計算が必要です。
+この計算は、もし全てのデータ点を使用しないのであれば、推定がばらつきます。
+これは、データをサンプリングすると、推定値は実行ごとに異なり**結果が不安定になる**ということです。
+安定した結果を得るために、もしデータが十分であれば、数回 H 統計量の計算を繰り返すことをおすすめします。
 
+<!--
 It is unclear whether an interaction is significantly greater than 0. 
 We would need to conduct a statistical test, but this **test is not (yet) available in a model-agnostic version**. 
+-->
+また、相互作用が 0 より有意に大きいかどうかは不明瞭です。
+これには、仮説検定が必要かもしれませんが、この**モデル非依存な検定は存在しません**。
 
+<!--
 Concerning the test problem, it is difficult to say when the H-statistic is large enough for us to consider an interaction "strong".
-
 Also, the H-statistics can be larger than 1, which makes the interpretation difficult.
+--> 
+検定に関して言えば、相互作用が「強い」と考えるに足るH統計量の大きさを決めることも難しいです。
+また、H 統計量は 1 より大きくなる場合もあり、この場合解釈が難しくなります。
 
+<!--
 The H-statistic tells us the strength of interactions, but it does not tell us how the interactions look like.
 That is what [partial dependence plots](#pdp) are for. 
 A meaningful workflow is to measure the interaction strengths and then create 2D-partial dependence plots for the interactions you are interested in.
+--> 
+H 統計量は相互作用の大きさを表しますが、相互作用の性質を説明できません。
+そこで [partial dependence plots](#pdp) が登場します。
+主な作業の流れとしては、まず相互作用の大きさを測ったのち、関心のある相互作用について2次元の partial dependence plots を作成します。
 
+<!--
 The H-statistic cannot be used meaningfully if the inputs are pixels.
 So the technique is not useful for image classifier.
+--> 
+H 統計量は入力がピクセルの場合得られる効果が少なくなります。
+このため、この方法は画像の分類に対しては有効ではありません。
 
+<!--
 The interaction statistic works under the assumption that we can shuffle features independently.
 If the features correlate strongly, the assumption is violated and **we integrate over feature combinations that are very unlikely in reality**.
 That is the same problem that partial dependence plots have.
 You cannot say in general if it leads to overestimation or underestimation.
+-->
+相互作用の統計は、特徴量を独立にシャッフルできるという仮定のもとに成り立ちます。
+もし特徴量間が強く相関する場合、この仮定は成り立たなくなるため、**実際には起こらないであろう特徴量の組み合わせをつくります。
+これは PDP についても同様です。
+ただし、これが過大評価に繋がるか過小評価に繋がるのかは一概に言えません。
 
+<!--
 Sometimes the results are strange and for small simulations **do not yield the expected results**. 
 But this is more of an anecdotal observation.
+-->
+小規模なシミュレーションでは、**期待とは異なる奇妙な振舞い**をします。
+しかし、これは観測データの不足による不確かさによるものです。
 
+### 実装
+<!--
 ### Implementations
+-->
 
+<!--
 For the examples in this book, I used the R package `iml`, which is available on [CRAN](https://cran.r-project.org/web/packages/iml) and the development version on [Github](https://github.com/christophM/iml).
 There are other implementations, which focus on specific models:
 The R package [pre](https://cran.r-project.org/web/packages/pre/index.html) implements [RuleFit](#rulefit) and H-statistic.
 The R package [gbm](https://github.com/gbm-developers/gbm3) implements gradient boosted models and H-statistic.
+-->
 
+本書で用いた R の `iml` パッケージは現行版を[CRAN](https://cran.r-project.org/web/packages/iml) から、開発版は [Github](https://github.com/christophM/iml) から入手できます。
+他にも特定のモデルを対象にした実装があります。
+R パッケージの [pre](https://cran.r-project.org/web/packages/pre/index.html) は [RuleFit](#rulefit) とH統計量を実装しています。
+R パッケージの [gbm](https://github.com/gbm-developers/gbm3) は勾配ブースティングモデルと H 統計量を実装しています。
 
+<!--
 ### Alternatives
+-->
+### 代替手法
 
+<!--
 The H-statistic is not the only way to measure interactions: 
+-->
+H 統計量が相互作用を定量化する唯一の手法ではありません。
 
+<!--
 Variable Interaction Networks (VIN) by Hooker (2004)[^Hooker2004] is an approach that decomposes the prediction function into main effects and feature interactions.
 The interactions between features are then visualized as a network. 
 Unfortunately no software is available yet.
+-->
+Hooker (2004)[^Hooker2004] による Variable Interaction Networks (VIN) は、予測関数を主効果と相互作用に分解する方法です。特徴量間の相互作用はネットワークとして可視化されます。
+不運にも、まだVINのソフトウェアは存在しません。
 
+<!--
 Partial dependence based feature interaction by Greenwell et. al (2018)[^Greenwell2018] measures the interaction between two features.
 This approach measures the feature importance (defined as the variance of the partial dependence function) of one feature conditional on different, fixed points of the other feature. 
 If the variance is high, then the features interact with each other, if it is zero, they do not interact.
 The corresponding R package `vip` is available on [Github](https://github.com/koalaverse/vip).
 The package also covers partial dependence plots and feature importance.
+-->
+Greenwell ら(2018)[^Greenwell2018] によって、2つの特徴量の相互作用を定量化するための pertial dependence が提案されました。
+この方法は、ある特徴量の重要度（partial dependence functionの分散として定義される）について、他の特徴量の値を固定した上で測ります。
+もし分散が大きい場合特徴量は相互作用し、分散が 0 である場合相互作用はありません。
+この機能を提供する R パッケージ `vip` は [Github](https://github.com/koalaverse/vip)から利用できます。
+このパッケージでは partial dependence plots や feature importance などの機能も含みます。
 
 [^Hooker2004]: Hooker, Giles. "Discovering additive structure in black box functions." Proceedings of the tenth ACM SIGKDD international conference on Knowledge discovery and data mining. (2004).
 
 [^Greenwell2018]: Greenwell, Brandon M., Bradley C. Boehmke, and Andrew J. McCarthy. "A simple and effective model-based variable importance measure." arXiv preprint arXiv:1805.04755 (2018).
+
+
 
 
