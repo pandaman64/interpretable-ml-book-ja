@@ -1,22 +1,43 @@
-# Contribute to the Book {#contribute}
+# 著者貢献 {#contribute}
 
+<!--# Contribute to the Book {#contribute}-->
+
+<!--
 Thank you for reading my book about Interpretable Machine Learning.
 The book is under continuous development.
 It will be improved over time and more chapters will be added.
 Very similar to how software is developed.
+-->
 
+Interpretable Machine Learningをお読みいただきありがとうございます。
+この本は継続的に執筆中です。
+何度も改善され、さらなる章が追加されていく予定です。
+ソフトウェアが開発されていくのとまるで同じように。
+
+<!--
 All text and code for the book is open source and [available at github.com](https://github.com/christophM/interpretable-ml-book).
 On the Github page you can suggest fixes and [open issues](https://github.com/christophM/interpretable-ml-book/issues) if you find a mistake or if something is missing.
+-->
 
-# Citing this Book {#cite}
+すべてのテキストとコードはオープンソースであり、[github.com](https://github.com/christophM/interpretable-ml-book)で公開されています。
+間違いを発見した場合や、何かが欠けていた場合は、Githubページで修正を提案し、[issueを作成する](https://github.com/christophM/interpretable-ml-book/issues)ことができます。
 
+<!--# Citing this Book {#cite}-->
+
+# この本の引用 {#cite}
+
+<!--
 If you found this book useful for your blog post, research article or product, I would be grateful if you would cite this book.
 You can cite the book like this:
+-->
 
+もしこの本がブログの投稿、研究論文や製品に有用ならば、次のように引用していただけると幸いです。
 
     Molnar, Christoph. "Interpretable machine learning. A Guide for Making Black Box Models Explainable", 2019. https://christophm.github.io/interpretable-ml-book/.
 
-Or use the following bibtex entry:
+<!--Or use the following bibtex entry:-->
+
+もしくは、次の bibtex entry を用いてください。
 
 
     @book{molnar2019,
@@ -28,7 +49,14 @@ Or use the following bibtex entry:
     }
 
 
+<!--
 I am always curious about where and how interpretation methods are used in industry and research.
 If you use the book as a reference, it would be great if you wrote me a line and told me what for.
 This is of course optional and only serves to satisfy my own curiosity and to stimulate interesting exchanges.
 My mail is christoph.molnar.ai@gmail.com .
+-->
+
+私は、産業や研究においてどこでどのように解釈法が用いられているのか、常に興味を持っています。
+この本を参考にするとき、私に一言何のために用いるのかを伝えてくれれば嬉しいです。
+もちろんこれは任意であり、私自身の好奇心を満たし、興味深い交流を刺激するためだけのものです。
+私のメールアドレスは christoph.molnar.ai@gmail.com です。

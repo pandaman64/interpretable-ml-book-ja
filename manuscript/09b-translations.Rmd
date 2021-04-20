@@ -1,33 +1,75 @@
-# Translations {#translations}
+# 翻訳 {#translations}
 
-**Interested in translating the book?**
+<!--# Translations {#translations}-->
 
+<!--**Interested in translating the book?**-->
+
+**この本の翻訳に興味はありませんか？**
+
+<!--
 This book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 This means that you are allowed to translate it and put it online.
 You have to mention me as original author and you are not allowed to sell the book.
+-->
 
+この本のライセンスは[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)です。
+つまり、この本を翻訳してオンライン上にあげることができます。
+原著者である私に知らせる必要があり、本として売ることはできません。
+
+<!--
 If you are interested in translating the book, you can write a message and I can link your translation here.
 My address is christoph.molnar.ai@gmail.com .
+-->
 
-**List of translations**
+もしこの本の翻訳に興味があるのならば、メッセージを送ってくれればここにリンクを載せます。
+私のアドレスは christoph.molnar.ai@gmail.com です。
 
-**Chinese**:
+<!--**List of translations**-->
 
+**翻訳のリスト**
+
+<!--**Chinese**:-->
+
+**中国語**:
+
+<!--
 - https://github.com/MingchaoZhu/InterpretableMLBook Complete translations by [Mingchao Zhu](https://github.com/MingchaoZhu).
 - https://blog.csdn.net/wizardforcel/article/details/98992150 Translation of most chapters, by CSDN, an online community of programmers.
 - https://zhuanlan.zhihu.com/p/63408696 Translation of some chapters by 知乎. The website also includes questions and answers from various users.
+-->
 
+- https://github.com/MingchaoZhu/InterpretableMLBook [Mingchao Zhu](https://github.com/MingchaoZhu)によって翻訳されました。
+- https://blog.csdn.net/wizardforcel/article/details/98992150 CSDN というプログラマのオンラインコミュニティによってほとんどの章が翻訳されています。
+- https://zhuanlan.zhihu.com/p/63408696 知乎によっていくつかの章が翻訳されています。このウェブサイトには様々なユーザからの質問とその答えが含まれています。
 
-**Korean**:
+<!--**Korean**:-->
 
+**韓国語**:
+
+<!--
 - https://tootouch.github.io/IML/taxonomy_of_interpretability_methods/ Complete Korean translation by [TooTouch](https://tootouch.github.io/)
 
 - https://subinium.github.io/IML/ Partial Korean translation by [An Subin](https://subinium.github.io/)
+-->
 
+- https://tootouch.github.io/IML/taxonomy_of_interpretability_methods/ [TooTouch](https://tootouch.github.io/)によって翻訳されました。
 
-**Spanish**
+- https://subinium.github.io/IML/ [An Subin](https://subinium.github.io/)によって一部が翻訳されました。
 
+<!--**Spanish**-->
+
+**スペイン語**:
+
+<!--
 - https://fedefliguer.github.io/AAI/ First chapters translated by [Federico Fliguer](https://fedefliguer.github.io/)
+-->
 
+- https://fedefliguer.github.io/AAI/ [Federico Fliguer](https://fedefliguer.github.io/)によって第1章が翻訳されました。
+
+<!--
 If you know of any other translation of the book or of individual chapters, I would be grateful to hear about it and list it here.
 You can reach me via email: christoph.molnar.ai@gmail.com .
+-->
+
+もしほかにもこの本もしくは各章の翻訳を知っているのなら、email (christoph.molnar.ai@gmail.com) で連絡ください。
+このリストに載せようと思います。

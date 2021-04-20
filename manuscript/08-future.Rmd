@@ -1,11 +1,23 @@
-# A Look into the Crystal Ball {#future}
+# 解釈可能な機械学習の未来{#future} 
 
+<!--# A Look into the Crystal Ball {#future}-->
+
+<!--
 What is the future of interpretable machine learning?
 This chapter is a speculative mental exercise and a subjective guess how interpretable machine learning will develop.
 I opened the book with rather pessimistic [short stories](#storytime) and would like to conclude with a more optimistic outlook. 
+-->
 
+解釈可能な機械学習の未来とは何でしょうか。
+この章では、解釈可能な機械学習が今後どのように発展していくかについて主観的な熟考により推測してみようと思います。
+
+<!--
 I have based my "predictions" on three premises:
+-->
 
+私は、3つの前提に基づいて機械学習の未来を「予測」してみます。
+
+<!--
 1. **Digitization: Any (interesting) information will be digitized.**
 Think of electronic cash and online transactions. 
 Think of e-books, music and videos. 
@@ -35,19 +47,68 @@ Another example that you can experience for yourself is
 WARNING: It is addictive.
 I do not want to spoil it too much, but let's say things get out of control really fast.
 In machine learning, the imperfections in the goal specification come from imperfect data abstractions (biased populations, measurement errors, ...), unconstrained loss functions, lack of knowledge of the constraints, shifting of the distribution between training and application data and much more. 
+-->
 
+1. **デジタル化: （興味のある） 情報は全てデジタル化されるでしょう。**
+電子マネーやオンライン取引について考えてみてください。
+電子書籍、音楽、ビデオについて考えてみてください。
+私たちの環境、行動、産業生産プロセスなどに関する全ての知覚的なデータについて考えてみてください。
+すべてのデジタル化は、安価なコンピュータ/センサー/ストレージ、スケーリング効果（勝者が全てを手に入れる）、新しいビジネスモデル、モジュラーバリューチェーン、コスト圧力などによって推進されます。
+2. **自動化: タスクが自動化可能で、自動化のコストがタスクの実行コストよりも低くなる場合、タスクは自動化されるでしょう。**
+コンピュータが導入される以前でさえ、ある程度の自動化は行われてきました。
+例えば、織機や蒸気式機械です。
+しかしながら、コンピュータとデジタル化は、自動化を次のレベルに引き上げます。
+forループのプログラムやExcelのマクロ、電子メールの自動応答など、個人でも様々な自動化ができます。
+券売機は電車の切符の購入を自動化し（販売係はもう不要です）、洗濯機は洗濯を自動化し、銀行の自動振替は支払い取引を自動化します。
+タスクを自動化すれば時間とお金から開放されるため、自動化は経済的にも個人的にも大きなインセンティブとなります。
+私たちは現在、翻訳、運転、そして僅かな程度であれ科学的な発見の自動化を目の当たりにしています。
+3. **誤った仕様: 私たちは全ての制約を利用して目標を完璧に定めることはできません。**
+あなたの願いを常に文字通り受けとってくれる魔人を考えてみてください。
+「私は世界で一番の金持ちになりたい！」→ あなたは最もリッチな人になりますが、副作用としてあなたの保有する通貨はインフレのために台無しになります。
+「私は残りの人生ずっと幸せでいた！」 → 次の5分はとても幸せだと感じますが、そこで魔人はあなたを殺します。
+「私は世界平和を願っています！」→ 魔人は全人類を抹殺します。
+私たちは、全ての制約を知らないか、あるいは、それらを測定することが出来ないため目標を誤って設定してしまいます。
+不完全な目標の仕様の例として、企業をみてみましょう。
+ある企業は株主のためにお金を稼ぐという単純な目標をもっています。
+しかし、この仕様は、私たちが本当に努力すべき全ての制約をみたす真の目標とは言えません。
+例えば、お金を稼ぐために人を殺したり、川を汚染させたり、単に自社のためにお金を印刷するような企業ではありがたみがありません。
+私たちは、不完全な目標の仕様を修正するために、法律、規制、制裁、コンプライアンス手続き、労働組合などを発明してきました。
+自身で体験できるもう1つの例は、[Paperclips](http://www.decisionproblem.com/paperclips/index2.html)です。
+これは、出来るだけ多くのペーパークリップを生産することを目標とした機械で遊ぶゲームです。
+ただし、中毒性があります。
+台無しにしたくはありませんが、物事があっという間に制御不能になったとしましょう。
+機械学習では、目標仕様の不完全さは、不完全なデータの抽象化（偏った母集団、測定誤差、など）、制約のない損失関数、制約に関する知識の欠如、学習データとアプリケーションデータの間の分布のシフトなどに起因します。
+
+<!--
 Digitization is driving automation. 
 Imperfect goal specification conflicts with automation.
 I claim that this conflict is mediated partially by interpretation methods.
+-->
 
+デジタル化により自動化が進んでいます。
+不完全な目標仕様は自動化と対立します。
+私はこの対立は部分的には解釈法によって媒介されると主張します。
+
+<!--
 The stage for our predictions is set, the crystal ball is ready, now we look at where the field could go!
+-->
 
+これで「予測」の準備が整い水晶玉の準備ができました。
+それでは何処へ向かおうとしているのか占ってみましょう。
 
-## The Future of Machine Learning
+<!--## The Future of Machine Learning-->
 
+## 機械学習の未来
+
+<!--
 Without machine learning there can be no interpretable machine learning.
 Therefore we have to guess where machine learning is heading before we can talk about interpretability.
+-->
 
+機械学習がなければ、解釈可能な機械学習はあり得ません。
+それゆえ、解釈性について語る前に、機械学習がどの方向へ向かっていくか推測する必要があります。
+
+<!--
 Machine learning (or "AI") is associated with a lot of promises and expectations.
 But let's start with a less optimistic observation:
 While science develops a lot of fancy machine learning tools, in my experience it is quite difficult to integrate them into existing processes and products.
@@ -57,12 +118,31 @@ Often companies do not even have data in the required form and the data scientis
 Sometimes companies have such high expectation of AI and Data Science due to the media that data scientists could never fulfill them.
 And often nobody knows how to integrate data scientists into existing structures and many other problems.
 This leads to my first prediction.
+-->
 
-**Machine learning will grow up slowly but steadily**.
+機械学習（もしくはAI）は非常に有望であり、多くの期待が持たれています。
+ですが、あまり楽観的ではない事柄から始めましょう。
+科学は多くの魅力的な機械学習ツールを開発していますが、私の経験上、それらを既存のプロセスやプロダクトに組み込むことは非常に困難です。
+その理由としては、不可能ではないにしても、企業や機関がキャッチアップするのに多くの時間がかかるからです。
+現在AI全盛期のさなかで、企業は「AI研究所」「機械学習部門」を開設し、「データサイエンティスト」「機械学習エキスパート」「AIエンジニア」などを雇っていますが、私の経験上現実は甘くはありません。
+しばしば、企業は要求された形でのデータを持ってすらおらず、データサイエンティストは数か月もの間待ちぼうけの状態であったりします。
+時には、データサイエンティストが決して応えられないようなAIやデータサイエンスに対する期待がメディアによって創り出されてきました。
+そして、多くの場合、データサイエンティストを既存の構造やその他多くの問題にどのように組み込めばいいのか誰も知らないのです。
+これにより、私の第一の予測が導かれます。
 
+<!--**Machine learning will grow up slowly but steadily**.-->
+
+**機械学習はゆっくりだが着実に成長していくでしょう。**
+
+<!--
 Digitalization is advancing and the temptation to automate is constantly pulling.
 Even if the path of machine learning adoption is slow and stony, machine learning is constantly moving from science to business processes, products and real world applications.
+-->
 
+デジタル化は先進的で、自動化への誘惑は常に我々を引っ張っていきます。
+たとえ機械学習の適用への道のりが遅く、石のように不動であったとしても、機械学習は科学からビジネスプロセスや製品、実世界への応用に常にシフトしていきます。
+
+<!--
 I believe we need to better explain to non-experts what types of problems can be formulated as machine learning problems.
 I know many highly paid data scientists who perform Excel calculations or classic business intelligence with reporting and SQL queries instead of applying machine learning.
 But a few companies are already successfully using machine learning, with the big Internet companies at the forefront. 
@@ -70,15 +150,34 @@ We need to find better ways to integrate machine learning into processes and pro
 I believe that  machine learning will become much easier to use: 
 We can already see that machine learning is becoming more accessible, for example through cloud services ("Machine Learning as a service" -- just to throw a few buzzwords around).
 Once machine learning has matured -- and this toddler has already taken its first steps -- my next prediction is:
+-->
 
-**Machine learning will fuel a lot of things.**
+どのタイプの問題が機械学習の問題として形式化できるのかを非専門家にわかりやすく説明する必要があるでしょう。
+私は機械学習を適用するのではなく、レポートやSQLクエリを用いたExcel計算や古典的なビジネスインテリジェンスを行う高給取りのデータサイエンティストを多く知っています。
+しかし、すでにいくつかの企業が機械学習の活用に成功しており、インターネットの大手企業が最前線で活躍しています。
+機械学習をプロセスやプロダクトに取り込み、人々を訓練し、使いやすい機械学習ツールを開発するより良い方法を見つける必要があります。
+機械学習はもっと使いやすくなると私は信じています。
+私たちはすでに、機械学習が、例えばクラウドサービス（「サービスとしての機械学習」 - いくつかのバズワードを投げかけるだけ）を介して、より身近なものになってきていることを見ることができます。
+機械学習が成熟したら - そしてすでにそのはじめの一歩を踏みだしていますが - 私の次の予測はこうです。
 
+<!--**Machine learning will fuel a lot of things.**-->
+
+**機械学習によって様々な物事がたきつけられるでしょう。**
+
+<!--
 Based on the principle "Whatever can be automated will be automated", I conclude that whenever possible, 
 tasks will be formulated as prediction problems and solved with machine learning. 
 Machine learning is a form of automation or can at least be part of it.
 Many tasks currently performed by humans are replaced by machine learning. 
 Here are some examples of tasks where machine learning is used to automate parts of it:
+-->
 
+「自動化できる物は何であれ自動化されるであろう」という原則に基づき、可能な時はいつでもタスクは予測問題として定式化され、機械学習によって解決されるだろうと確信しています。
+機械学習は自動化の1つの形であるか、少なくともその一部となり得ます。
+現在人間の手によって行われてきた多くのタスクは機械学習に置き換えられています。
+ここでは、機械学習を使って部分的に自動化を行うタスクの例を紹介します。
+
+<!--
 - Sorting / decision-making / completion of documents (e.g. in insurance companies, the legal sector or consulting firms)
 - Data-driven decisions such as credit applications
 - Drug discovery
@@ -87,13 +186,28 @@ Here are some examples of tasks where machine learning is used to automate parts
 - Diagnosis of diseases
 - Translation. For this book, I used a translation service called ([DeepL](https://deepl.com)) powered by deep neural networks to improve my sentences by translating them from English into German and back into English. 
 - ...
+-->
 
+- 分類 / 意思決定 / 文書の完成（例えば、保険会社、法律分野、コンサル企業）
+- 与信取引申請書などのデータ主導の意思決定
+- 新薬開発
+- 流れ作業の品質管理
+- 自動運転
+- 病気診断
+- 翻訳 この本においては、私はディープニューラルネットワークを搭載した ([DeepL](https://deepl.com)) という翻訳サービスを使って、英語からドイツ語に翻訳し、英語に戻すことで文章を改善しました。
+- ...
+
+<!--
 The breakthrough for machine learning is not only achieved through better computers / more data / better software, but also:
+-->
 
+機械学習のブレイクスルーはより良いコンピューター / より多くのデータ / より良いソフトウェアだけでなく次のことによっても実現します。
 
+<!--**Interpretability tools catalyze the adoption of machine learning.**-->
 
-**Interpretability tools catalyze the adoption of machine learning.**
+**解釈可能なツールによって機械学習の採用が触媒されること。**
 
+<!--
 Based on the premise that the goal of a machine learning model can never be perfectly specified, it follows that interpretable machine learning is necessary to close the gap between the misspecified and the actual goal. 
 In many areas and sectors, interpretability will be the catalyst for the adoption of machine learning. 
 Some anecdotal evidence:
@@ -103,16 +217,31 @@ In addition to the misspecification of the problem, many industries require inte
 Machine learning automates the modeling process and moves the human a bit further away from the data and the underlying task: 
 This increases the risk of problems with experimental design, choice of training distribution, sampling, data encoding, feature engineering, and so on.
 Interpretation tools make it easier to identify these problems.
+-->
 
+機械学習モデルの目標を完全には指定できないという前提に基づいて、誤って指定された目標と実際の目標の間のギャップを埋めるために、解釈可能な機械学習が必要であるということになります。
+多くの分野やセクターで、解釈可能性が機械学習の採用のきっかけになるでしょう。
+いくつかの逸話的な証拠があります。
+私が話したことのある人の中には、他者にモデルを説明できないからと言って、機械学習を用いない人が多くいます。
+解釈可能性によってこの問題に対処でき、機械学習は透明性を必要とする機関や人々にとって魅力的なものになっていくでしょう。
+問題の誤った仕様に加えて、多くの業界では、法的な理由であれ、リスク回避のためであれ、根本的なタスクの洞察力を得るためであれ、解釈可能性が求められています。
+機械学習によってモデル化プロセスは自動化され、人類はデータと根底にある問題から少しだけ離れた場所に行くことができます。
+これによって、実験デザイン、学習データ分布の選択、サンプリング、データエンコーディング、特徴量エンジニアリングなどの問題が発生するリスクは大きくなります。
+解釈ツールを使用することで、これらの問題点を簡単に特定できます。
 
+<!--## The Future of Interpretability-->
 
-## The Future of Interpretability
+## 解釈性の未来
 
-Let us take a look at the possible future of machine learning interpretability.
+<!--Let us take a look at the possible future of machine learning interpretability.-->
 
+機械学習の解釈可能性の未来について見ていきましょう。
 
-**The focus will be on model-agnostic interpretability tools.**
+<!--**The focus will be on model-agnostic interpretability tools.**-->
 
+**モデル非依存の解釈可能なツールにフォーカスされていくでしょう。**
+
+<!--
 It is much easier to automate interpretability when it is decoupled from the underlying machine learning model. 
 The advantage of model-agnostic interpretability lies in its modularity.
 We can easily replace the underlying machine learning model. 
@@ -120,10 +249,21 @@ We can just as easily replace the interpretation method.
 For these reasons, model-agnostic methods will scale much better. 
 That is why I believe that model-agnostic methods will become more dominant in the long term.
 But intrinsically interpretable methods will also have a place.
+-->
 
+解釈可能性の自動化は元の機械学習モデルから分けて考える方が簡単です。
+モデルに依存しない解釈性の利点にはモジュール性があります。
+基盤となる機械学習モデルを簡単に置き換えることができます。
+解釈方法も同様に簡単に置き換えることができます。
+これらの理由から、モデルに依存しない手法にははるかに優れた拡張性があります。
+長期的にはモデルに依存しない手法が主流となるでしょう。
+しかし、本質的に解釈可能な方法にも居場所はあるでしょう。
 
-**Machine learning will be automated and, with it, interpretability.**
+<!--**Machine learning will be automated and, with it, interpretability.**-->
 
+**機械学習は自動化され、それに伴い解釈性を持つようになるでしょう。**
+
+<!--
 An already visible trend is the automation of model training. 
 That includes automated engineering and selection of features, automated hyperparameter optimization, comparison of different models, and ensembling or stacking of the models. 
 The result is the best possible prediction model. 
@@ -136,10 +276,25 @@ Imagine: You upload a dataset, specify the prediction goal and at the push of a 
 There are already first products and I argue that for many applications it will be sufficient to use these automated machine learning services. 
 Today anyone can build websites without knowing HTML, CSS and Javascript, but there are still many web developers around.
 Similarly, I believe that everyone will be able to train machine learning models without knowing how to program, and there will still be a need for machine learning experts.
+-->
 
+すでに目に見える傾向として、モデルの学習の自動化があります。
+これらには自動化されたエンジニアリングや特徴選択、自動化されたパラメータ最適化、異なるモデルの比較、モデルのアンサンブルまたはスタッキングが含まれます。
+その結果、可能な限りの最良な予測モデルが得られます。
+モデルに依存しない解釈モデルを使用した時、自動化された機械学習のプロセスから作成された任意のモデルに対して自動的に適用できます。
+ある意味では、この2番目のステップも自動化できます。
+これらのすべての解釈を自動的に行うことを止める人はいません。
+実際の解釈では、依然として人が必要です。
+想像してみてください。あなたがデータセットをアップロードし、予測目標を指定すると、ボタンを押すだけで最高の予測モデルが学習され、プログラムはモデルの全ての解釈を吐き出します。
+すでにこれが実現可能な最初の製品は存在し、多くのアプリケーションではこれらの自動化された機械学習サービスで十分だと考えます。
+今日ではHTMLやCSS、Javascriptを知らなくてもWebサイトを作ることができますが、周りにはまだ多くのWeb開発者がいます。
+同様に、プログラミングの知識がなくても機械学習モデルの学習が行えるようになり、機械学習の専門家も必要とされるでしょう。
 
-**We do not analyze data, we analyze models.**
+<!--**We do not analyze data, we analyze models.**-->
 
+**データではなくモデルを分析します。**
+
+<!--
 The raw data itself is always useless.
 (I exaggerate on purpose.
 The reality is that you need a deep understanding of the data to conduct a meaningful analysis.) 
@@ -147,16 +302,36 @@ I don't care about the data;
 I care about the knowledge contained in the data. 
 Interpretable machine learning is a great way to distill knowledge from data.
 You can probe the model extensively, the model automatically recognizes if and how features are relevant for the prediction (many models have built-in feature selection), the model can automatically detect how relationships are represented, and -- if trained correctly -- the final model is a very good approximation of reality.
+-->
 
+生データ自体は常に役に立ちません。
+（これは意図的な誇張です。意味のある分析のためには、データを深く理解する必要があるというのが実際のところです。）
+私はデータ自体は気にしません。
+関心の対象はデータに含まれる知識です。
+解釈可能な機械学習は、データから知識を発見するための優れた手法です。
+あなたはモデルを広範囲に調査でき、モデルがその特徴について予測に関係するかやどのように関係するかを自動的に認識し（多くのモデルには特徴選択機能が組み込まれています）、関係性がどのように表現されるかを自動的に検出できます。
+そして、もしモデルが正しく学習されたのであれば、最終モデルは現実の非常によい近似となります。
 
+<!--
 Many analytical tools are already based on data models (because they are based on distribution assumptions): 
+-->
 
+多くの分析ツールは既にデータモデルに基づいています（それらは分布の仮定に基づいているためです）。
+
+<!--
 - Simple hypothesis tests like Student's t-test.
 - Hypothesis tests with adjustments for confounders (usually GLMs)
 - Analysis of Variance (ANOVA)
 - The correlation coefficient (the standardized linear regression coefficient is related to Pearson's correlation coefficient)
 - ...
+-->
 
+- スチューデントのt検定のような単純な仮説検定
+- 交絡因子を調整した仮説検定（通常はGLM）
+- 分散分析（ANOVA）
+- 相関係数（標準化された線形回帰の係数はピアソンの相関係数と関係があります）
+
+<!--
 What I am telling you here is actually nothing new. 
 So why switch from analyzing assumption-based, transparent models to analyzing assumption-free black box models?
 Because making all these assumptions is problematic:
@@ -168,7 +343,22 @@ With the digitization of everything, we will have ever bigger datasets and there
 We do not make assumptions, we approximate reality as close as possible (while avoiding overfitting of the training data).
 I argue that we should develop all the tools that we have in statistics to answer questions (hypothesis tests, correlation measures, interaction measures, visualization tools, confidence intervals, p-values, prediction intervals, probability distributions) and rewrite them for black box models.
 In a way, this is already happening: 
+-->
 
+ここで私が言っていることは何も新しいことではありません。
+それではなぜ、仮定に基づいた透明性の高いモデルの分析から、仮定のないブラックボックスモデルの分析に切り替えるのでしょうか？
+なぜなら、これらの仮定をすることには問題があるからです。
+これらは通常間違っていて（世界のほとんどがガウス分布に従っていると信じない限り）、チェックが難しく、非常に柔軟性に乏しく、そして自動化が難しいものです。
+多くの領域では仮定に基づくモデルの場合、通常、ブラックボックスの機械学習モデルよりも、未知のテストデータに対する予測性能が劣ります。
+これは、大きなデータセットに対してのみ当てはまります。
+なぜなら、良い仮定をもつ解釈可能モデルは、ブラックボックスモデルよりも小さなデータセットでよりうまくいくことが多いからです。
+ブラックボックスモデルをうまく機能させるためには、多くのデータを必要とします。
+デジタル化によってデータセットがさらに大きくなるため、ブラックボックスモデルはより魅力的になります。
+私たちは、仮定を立てることなく（学習データの過適合を回避しながら）現実を可能な限り近似します。
+私は、統計学で使われている全てのツールを開発し（仮説検定、相関、相互作用、可視化ツール、信頼区間、p-値、予測区間、確立分布）、それらをブラックボックスモデル用に書き直す必要があると主張します。
+ある意味では、これはすでに起きていることです。
+
+<!--
 - Let us take a classical linear model: The standardized regression coefficient is already a feature importance measure. 
 With the [permutation feature importance measure](#feature-importance), we have a tool that works with any model. 
 - In a linear model, the coefficients measures the effect of a single feature on the predicted outcome. 
@@ -176,28 +366,60 @@ The generalized version of this is the [partial dependence plot](#pdp).
 - Test whether A or B is better: 
 For this we can also use partial dependence functions. 
 What we do not have yet (to the best of my best knowledge) are statistical tests for arbitrary black box models.
+-->
 
+- 古典的な線形モデルを考えてみましょう。標準化された回帰係数はすでに特徴量重要度の尺度です。[permutation feature importance measure](#feature-importance)を使えば、任意のモデルで機能するツールが得られます。
+- 線形モデルでは、係数は予測された結果に対して1つの特徴量の影響を測定します。この一般化されたバージョンは、[partial dependence plot](#pdp)です。
+- AとBのどちらがよいかをテストしたい場合にも、partial dependence functionを利用できます。（私の知る限り）まだ持っていないのは、任意のブラックボックスモデルの統計的検定です。
 
-**The data scientists will automate themselves.**
+<!--**The data scientists will automate themselves.**-->
 
+**データサイエンティストは自身のタスクを自動化するでしょう。**
+
+<!--
 I believe that data scientists will eventually automate themselves out of the job for many analysis and prediction tasks.
 For this to happen, the tasks must be well-defined and there must to be some processes and routines around them. 
 Today, these routines and processes are missing, but data scientists and colleagues are working on them.
 As machine learning becomes an integral part of many industries and institutions, many of the tasks will be automated.
- 
+-->
 
-**Robots and programs will explain themselves.**
+私は、データサイエンティストは、最終的には多くの分析や予測の仕事から開放され、自分自身の仕事を自動化すると信じています。
+これを実現するには、タスクを明確に定義し、その周囲にいくつかのプロセスとルーチンが存在する必要があります。
+今日では、これらのルーチンやプロセスは揃っていませんが、データサイエンティストはそれらのことに取り組んでいます。
+機械学習が多くの業界や機関で必要不可欠な役割を負うようになるにつれ、多くのタスクは自動化されるでしょう。
 
+<!--**Robots and programs will explain themselves.**-->
+
+**ロボットやプログラムが自身を説明するでしょう。**
+
+<!--
 We need more intuitive interfaces to machines and programs that make heavy use of machine learning. 
 Some examples:
 A self-driving car that reports why it stopped abruptly ("70% probability that a kid will cross the road");
 A credit default program that explains to a bank employee why a credit application was rejected ("Applicant has too many credit cards and is employed in an unstable job.");
 A robot arm that explains why it moved the item from the conveyor belt into the trash bin ("The item has a craze at the bottom.").
+-->
 
+私たちは、機械学習を多用する機械やプログラムに対する、より直観的なインターフェースを必要としています。
+例えば、突然停止した理由を報告する自動運転車（「子供が道路を横断する確率70%」）や、
+クレジットの申請が却下された理由を銀行の従業員に説明するクレジットデフォルトプログラム（「申請者は非常に多くのクレジットカードを所有しており、不安定な仕事に就いている」）、
+アイテムをベルトコンベアからゴミ箱に移動した理由を説明するロボットアーム（「アイテムの底にひび割れがある」）などです。
 
-**Interpretability could boost machine intelligence research.**
+<!--**Interpretability could boost machine intelligence research.**-->
 
+**解釈可能性は機械知能研究を後押しする可能性があります。**
+
+<!--
 I can imagine that by doing more research on how programs and machines can explain themselves, we can improve improve our understanding of intelligence and become better at creating intelligent machines.
+-->
 
+プログラムや機械がどのように自身を説明できるかについて更なる研究を行うことで、私たちの知能の理解が深まり、より知能の高い機械をつくれるようになるでしょう。
+
+<!--
 In the end, all these predictions are speculations and we have to see what the future really brings. 
 Form your own opinion and continue learning!
+-->
+
+最後に、これらの予測は全て推測にすぎません。
+未来が実際に何をもたらすのかについて見極めていく必要があります。
+自身の意見をもって学習し続けましょう！
