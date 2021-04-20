@@ -5,39 +5,66 @@ set.seed(42)
 
 <!--{pagebreak}-->
 
-## Global Surrogate  {#global}
+## グローバルサロゲート (Global Surrogate)  {#global}
+<!-- ## Global Surrogate  {#global} -->
 
+<!--
 A global surrogate model is an interpretable model that is trained to approximate the predictions of a black box model.
 We can draw conclusions about the black box model by interpreting the surrogate model.
 Solving machine learning interpretability by using more machine learning!
+-->
+グローバルサロゲートモデル (global surrogate model) は、ブラックボックスモデルの予測を近似するよう学習された解釈可能なモデルです。
+サロゲートモデルを解釈することによって、ブラックボックスモデルについて結論を導き出せます。
+機械学習をさらに活用して、機械学習の解釈性を解決するのです。
 
+<!-- ### Theory -->
+### 理論
 
-### Theory
-
+<!--
 Surrogate models are also used in engineering:
 If an outcome of interest is expensive, time-consuming or otherwise difficult to measure (e.g. because it comes from a complex computer simulation), a cheap and fast surrogate model of the outcome can be used instead. 
 The difference between the surrogate models used in engineering and in interpretable machine learning is that the underlying model is a machine learning model (not a simulation) and that the surrogate model must be interpretable. 
 The purpose of (interpretable) surrogate models is to approximate the predictions of the underlying model as accurately as possible and to be interpretable at the same time.
 The idea of surrogate models can be found under different names:
 Approximation model, metamodel, response surface model, emulator, ...
+-->
+サロゲートモデルは、工学の分野でも用いられています。
+興味のある結果を得るのが高価であったり時間がかかったり、そもそも計測が困難である場合 (複雑なコンピュータシミュレーションに依存するなど) には、代わりに安価で高速なサロゲートモデルの結果で代替されます。
+工学の分野で用いられるサロゲートモデルと解釈可能な機械学習で用いられるサロゲートモデルの違いは、モデルはシミュレーションではなく、解釈可能な機械学習モデル (シミュレーションではなく) あるということです。
+(解釈可能な) サロゲートモデルの目的は、元のモデルの予測をできるだけ正確に近似し、同時に解釈可能にすることです。
+サロゲートモデルのアイデアは様々な名称として見つけることができます。
+近似モデル、メタモデル、応答曲面モデル、エミュレータなど。
 
+<!--
 About the theory: 
 There is actually not much theory needed to understand surrogate models. 
 We want to approximate our black box prediction function f as closely as possible with the surrogate model prediction function g, under the constraint that g is interpretable.
 For the function g any interpretable model -- for example from the [interpretable models chapter](#simple) -- can be used.
+-->
+実は、サロゲートモデルを理解するために必要な理論はあまりありません。
+ブラックボックスモデルの予測関数 f を、解釈可能という制約の元、サロゲートモデルの予測関数 g でできるだけ正確に近似したいというだけのことなのです。
+関数 g は任意の解釈モデルで利用できます。 -- 例えば、[interpretable models chapter](#simple) -- で紹介されているものが使えます。
 
-For example a linear model:
+<!--For example a linear model:-->
+線形モデルについて、g は以下のように表せます。
 
 $$g(x)=\beta_0+\beta_1{}x_1{}+\ldots+\beta_p{}x_p$$
 
-Or a decision tree:
+<!-- Or a decision tree: -->
+決定木について、g は以下のように表せます。
 
 $$g(x)=\sum_{m=1}^Mc_m{}I\{x\in{}R_m\}$$
 
+<!--
 Training a surrogate model is a model-agnostic method, since it does not require any information about the inner workings of the black box model, only access to data and the prediction function is necessary. 
 If the underlying machine learning model was replaced with another, you could still use the surrogate method.
 The choice of the black box model type and of the surrogate model type is decoupled.
+-->
+サロゲートモデルの学習は、ブラックボックスモデルの内部の情報を必要とせず、データと予測関数へのアクセスのみアクセスできれば良いので、モデル非依存の手法と言えます。
+元の機械学習モデルが他のものと変わったとしても、引き続きサロゲート手法を利用できます。
+ブラックボックスモデルの種類とサロゲートモデルの選択は切り離されているのです。
 
+<!--
 Perform the following steps to obtain a surrogate model:
 
 1. Select a dataset X. 
@@ -49,39 +76,87 @@ You could even select a subset of the data or a grid of points, depending on you
 1. Congratulations! You now have a surrogate model.
 1. Measure how well the surrogate model replicates the predictions of the black box model.
 1. Interpret the surrogate model.
+-->
+以下の手順を実行することで、サロゲートモデルを得ます。
 
+1. データセット X を選択します。
+これはブラックボックスモデルを学習するのに使用したものと同じデータセット、もしくは、同じ分布の他のデータセット。アプリケーションに応じてデータの部分集合やデータの一部を選択できます。
+1. 選択されたデータセット X について、ブラックボックスモデルの予測値を取得します。
+1. 解釈可能なモデル(線形モデル、決定木など)を選択します。
+1. データセットXと予測値に基づいて解釈可能なモデルを学習します。
+1. おめでとうございます、これでサロゲートモデルを取得できました。
+1. サロゲートモデルがブラックボックスモデルの予測をどの程度再現できているのかを測定します。
+1. サロゲートモデルを解釈します。
+
+<!--
 You may find approaches for surrogate models that have some extra steps or differ a little, but the general idea is usually as described here.
 
 One way to measure how well the surrogate replicates the black box model is the R-squared measure: 
+-->
+あるサロゲートモデルのアプローチには、追加のステップが存在していたり、多少の差はあったりするかもしれませんが、一般的な考え方はここで説明されている通りです。
+
+サロゲートモデルがブラックボックスモデルをどの程度再現しているのかを計測する方法の1つに R^2^ スコアがあります。
 
 $$R^2=1-\frac{SSE}{SST}=1-\frac{\sum_{i=1}^n(\hat{y}_*^{(i)}-\hat{y}^{(i)})^2}{\sum_{i=1}^n(\hat{y}^{(i)}-\bar{\hat{y}})^2}$$
 
+
+<!--
 where $\hat{y}_*^{(i)}$ is the prediction for the i-th instance of the surrogate model, $\hat{y}^{(i)}$ the prediction of the black box model and $\bar{\hat{y}}$ the mean of the black box model predictions.
 SSE stands for sum of squares error and SST for sum of squares total. 
 The R-squared measure can be interpreted as the percentage of variance that is captured by the surrogate model. 
 If R-squared is close to 1 (= low SSE), then the interpretable model approximates the behavior of the black box model very well. 
 If the interpretable model is very close, you might want to replace the complex model with the interpretable model.
 If the R-squared is close to 0 (= high SSE), then the interpretable model fails to explain the black box model.
+-->
+ここで、$\hat{y}_*^{(i)}$ はサロゲートモデルのi番目のインスタンスの予測値で、$\hat{y}^{(i)}$ はブラックボックスモデルの予測値、$\bar{\hat{y}}$ はブラックボックスモデルの予測値の平均です。
+SSE は二乗誤差の総和 (Sum of Squares Error)、SST は二乗の総和 (Sum of Squares Total)です。
+R^2^ の尺度はサロゲートモデルによって捉えられた分散の割合として解釈できます。
+もし、R^2^ が 1 に近い (SSE が低い) 時、解釈可能モデルはブラックボックスモデルの挙動を非常によく近似できているということになります。
+したがって、R^2^ が 1 に近い場合 (SSE が低い)、複雑なモデルを解釈可能なモデルに置き換えたほうが良いかもしれません。
+また、R^2^ が0に近い (SSE が高い)時、解釈可能なモデルはブラックボックスモデルの説明に失敗しているということになります。
 
+<!--
 Note that we have not talked about the model performance of the underlying black box model, i.e. how good or bad it performs in predicting the actual outcome. 
 The performance of the black box model does not play a role in training the surrogate model.
 The interpretation of the surrogate model is still valid because it makes statements about the model and not about the real world.
 But of course the interpretation of the surrogate model becomes irrelevant if the black box model is bad, because then the black box model itself is irrelevant.
+-->
+ここで、ブラックボックスモデルの性能自体、つまり実際の結果とブラックボックスモデルの予測の良し悪し
+には言及していないことに注意してください。
+ブラックボックスモデルの性能は、サロゲートモデルの学習の成否と関係がありません。
+サロゲートモデルの解釈は、現実世界に対してではなくモデルについて解釈するため有効です。
+しかし、ブラックボックスモデルの性能が悪ければブラックボックスモデル自体が無意味になるので、当然サロゲートモデルの解釈は無意味になります。
 
-<!-- More ideas-->
+<!--
+More ideas
 We could also build a surrogate model based on a subset of the original data or reweight the instances.
 In this way, we change the distribution of the surrogate model's input, which changes the focus of the interpretation (then it is no longer really global).
 If we weight the data locally by a specific instance of the data (the closer the instances to the selected instance, the higher their weight), we get a local surrogate model that can explain the individual prediction of the instance.
 Read more about local models in the [following chapter](#lime).
+-->
+また、元のデータの一部や、インスタンスに重み付けしたものに対してもサロゲートモデルを作ることも有効です。
+その場合、サロゲートモデルの入力の分布は変化しているので、どこに注目して解釈するのかが変わります (なので、グローバルではなくなります) 。
+データの特定のインスタンスに従って局所的に重み付けすると (あるインスタンスが選択されたインスタンスに近いほど重みが大きいなど)、個々のインスタンスの予測を説明できる局所的なサロゲートモデルを得られます。
+ローカルなモデルについては[次の章](#lime)で詳しく解説しています。
 
-### Example
+<!--### Example -->
+### 例
 
+<!--
 To demonstrate the surrogate models, we consider a regression and a classification example.
 
 First, we train a support vector machine to predict the [daily number of rented bikes](#bike-data) given weather and calendar information.
 The support vector machine is not very interpretable, so we train a surrogate with a CART decision tree as interpretable model to approximate the behavior of the support vector machine.
+-->
+サロゲートモデルを実演するために回帰と分類の例について考えてみましょう。
 
-```{r surrogate-bike, message = FALSE, warning = FALSE, echo = FALSE, fig.cap = "The terminal nodes of a surrogate tree that approximates the predictions of a support vector machine trained on the bike rental dataset. The distributions in the nodes show that the surrogate tree predicts a higher number of rented bikes when temperature is above 13 degrees Celsius and when the day was later in the 2 year period (cut point at 435 days)."}
+最初に、天気とカレンダーの情報が与えられたときの [1日の自転車のレンタル数](#bike-data)を SVM  で予測するため学習します。
+SVMは解釈性が高くないので、決定木 (CART) を解釈可能なサロゲートモデルとして学習し、SVM の挙動を近似します。
+
+<!--
+fig.cap = "The terminal nodes of a surrogate tree that approximates the predictions of a support vector machine trained on the bike rental dataset. The distributions in the nodes show that the surrogate tree predicts a higher number of rented bikes when temperature is above 13 degrees Celsius and when the day was later in the 2 year period (cut point at 435 days)."
+-->
+```{r surrogate-bike, message = FALSE, warning = FALSE, echo = FALSE, fig.cap = "自転車のレンタルデータセットで学習した SVM の予測を近似したサロゲートモデルの木の終端ノード。ノード内の分布を確認すると、2年後以降 (カットポイントは435日) の気温が13度を超える時にサロゲートモデルが自転車のレンタル数が多くなると予測している。"}
 library("iml")
 data(bike)
 bike.task = makeRegrTask(data = bike, target = "cnt")
@@ -96,13 +171,24 @@ pred.tree  = predict(tree, bike)
 pred.svm = getPredictionResponse(predict(mod.bike, bike.task))
 ```
 
+<!--
 The surrogate model has a R-squared (variance explained) of `r round(tree$r.squared, 2)` which means it approximates the underlying black box behavior quite well, but not perfectly.
 If the fit were perfect, we could throw away the support vector machine and use the tree instead.
+-->
+このサロゲートモデルの R^2^ スコア (因子寄与) は `r round(tree$r.squared, 2)` であり、これは元のブラックボックスの挙動を非常に良く近似していることを示していますが、ただし完全ではありません。
+もし、これが完璧なら、SVM を捨てて、代わりに決定木を使うことができます。
 
+<!--
 In our second example, we predict the probability of [cervical cancer](#cervical) with a random forest.
 Again we train a decision tree with the original dataset, but with the prediction of the random forest as outcome, instead of the real classes (healthy vs. cancer) from the data.
+-->
+2つ目の例として、ランダムフォレストを用いて[子宮頸がん](#cervical)の確率を予測します。
+ここでも元のデータセットを用いて決定木を学習しますが、データからの実際のクラス (健康なクラスとがんのクラス) の代わりに、ランダムフォレストの予測を結果として用います。
 
-```{r surrogate-cervical, message = FALSE, warning = FALSE, echo = FALSE, fig.cap = "The terminal nodes of a surrogate tree that approximates the predictions of a random forest trained on the cervical cancer dataset. The counts in the nodes show the frequency of the black box models classifications in the nodes."}
+<!--
+fig.cap = "The terminal nodes of a surrogate tree that approximates the predictions of a random forest trained on the cervical cancer dataset. The counts in the nodes show the frequency of the black box models classifications in the nodes."}
+-->  
+```{r surrogate-cervical, message = FALSE, warning = FALSE, echo = FALSE, fig.cap = "子宮頸がんのデータセットで学習されたランダムフォレストの予測を近似するサロゲートモデルの木の終端ノード。ノード内のカウントはノード内でのブラックボックスモデルの分類の頻度を表す。"}
 data(cervical)
 cervical.task = makeClassifTask(data = cervical, target = "Biopsy")
 mod.cervical = mlr::train(mlr::makeLearner(cl = 'classif.randomForest', predict.type = "prob"), cervical.task)
@@ -115,10 +201,15 @@ pred.tree.cervical  = predict(tree.cervical, cervical)["Cancer"]
 pred.cervical = getPredictionProbabilities(predict(mod.cervical, cervical.task))
 ```
 
+<!--
 The surrogate model has an R-squared (variance explained) of `r round(tree.cervical$r.squared[1], 2)`, which means it does not approximate the  random forest well and we should not overinterpret the tree when drawing conclusions about the complex model.
+-->
+このサロゲートモデルの R^2^ スコア(因子寄与)は `r round(tree.cervical$r.squared[1], 2)` であり、これはランダムフォレストをうまく近似していないことを示しています。そのため、複雑なモデルについての結論を出す時にこの木の学習結果を使用すべきではありません。
 
-### Advantages 
+<!-- ### Advantages -->
+### 長所
 
+<!--
 The surrogate model method is **flexible**:
 Any model from the [interpretable models chapter](#simple) can be used.
 This also means that you can exchange not only the interpretable model, but also the underlying black box model.
@@ -126,14 +217,29 @@ Suppose you create some complex model and explain it to different teams in your 
 One team is familiar with linear models, the other team can understand decision trees.
 You can train two surrogate models (linear model and decision tree) for the original black box model and offer two kinds of explanations.
 If you find a better performing black box model, you do not have to change your method of interpretation, because you can use the same class of surrogate models.
+-->
+サロゲートモデルの手法は**柔軟**です。
+[解釈可能なモデルの章](#simple)のモデルならどのようなモデルでも使用できます。
+これは、また、解釈可能なモデルだけでなく、ブラックボックスモデルでも使用できることを意味します。
+あなたは、いくつかの複雑なモデルを作って、それをあなたの会社の異なるチームに説明することを想定してください。
+あるチームは線形モデルに精通し、もう一方は決定木が理解できるとしましょう。
+あなたは、元のブラックボックスモデルに対して、2つのサロゲートモデルを学習し、2種類の説明を提示できます。
+もし、より性能の良いブラックボックスモデルを見つけたとしても、同じクラスのサロゲートモデルを使うことができるので解釈手法を変更する必要はありません。
 
+<!--
 I would argue that the approach is very **intuitive** and straightforward.
 This means it is easy to implement, but also easy to explain to people not familiar with data science or machine learning.
 
-With the **R-squared measure**, we can easily measure how good our surrogate models are in approximating the black box predictions. 
+With the **R-squared measure**, we can easily measure how good our surrogate models are in approximating the black box predictions.
+--> 
+私はこの手法が、とても**直感的**でストレートだと考えています。
+つまり、実装しやすいことだけでなくデータサイエンスや機械学習に関わりのない人にも説明しやすいということです。
+**R^2^ スコア**を用いると、サロゲートモデルがブラックボックスモデルの予測をどの程度、近似できているか簡単に計測できます。
 
-### Disadvantages
+### 短所
+<!-- ### Disadvantages -->
 
+<!--
 You have to be aware that you draw **conclusions about the model and not about the data**, since the surrogate model never sees the real outcome.
 
 It is not clear what the best **cut-off for R-squared** is in order to be confident that the surrogate model is close enough to the black box model.
@@ -148,10 +254,28 @@ The interpretable model you choose as a surrogate **comes with all its advantage
 
 Some people argue that there are, in general, **no intrinsically interpretable models** (including even linear models and decision trees) and that it would even be dangerous to have an illusion of interpretability. 
 If you share this opinion, then of course this method is not for you.
+-->
+サロゲートモデルは実際の結果を見ていないので、 **データではなくモデルについての結論**を出していることに気をつける必要があります。
 
-### Software
+サロゲートモデルがブラックボックスモデルを十分近似しているかを示す最良の**R^2^ スコアの閾値**は明らかではありません(ばらつきの 80% が説明されることでしょうか？それとも 50% や 99% でしょうか？)。
 
+サロゲートモデルがブラックボックスモデルにどれだけ近いかを計測できます。
+近すぎないが、十分近くにいると仮定してみましょう。
+**データセットの一部では非常に近いが別の部分に対しては大きく乖離している**ということが起こり得ます。
+この場合、単純なモデルの解釈は全てのデータ点に対して等しく優れているとは言えません。
+
+解釈可能なモデルとして選んだサロゲートモデルには**長所と短所が存在します**。
+一般的に、**本質的に解釈可能なモデル**(線形モデルや決定木も含む)は存在せず、解釈可能であるという幻想を抱くことは危険ですらあると主張する人もいます。
+あなたがこの意見に共感しているのであれば、当然この手法はあなたの求めるものではありません。
+
+### ソフトウェア
+<!-- ### Software -->
+
+<!--
 I used the `iml` R package for the examples.
 If you can train a machine learning model, then you should be able to implement surrogate models yourself.
 Simply train an interpretable model to predict the predictions of the black box model.
-
+-->
+例では R パッケージの `iml` を使用しました。
+機械学習モデルを学習できるのであれば、自分自身でサロゲートモデルを実装できるはずです。
+単に、ブラックボックスモデルの予測値を予測する解釈可能なモデルを学習するだけです。
