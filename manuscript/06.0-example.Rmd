@@ -1,9 +1,17 @@
+# 例示に基づいた説明手法 {#example-based}
+<!--
 # Example-Based Explanations {#example-based}
+-->
 
+<!--
 Example-based explanation methods select particular instances of the dataset to explain the behavior of machine learning models or to explain the underlying data distribution.
+-->
+例示に基づいた説明手法では、データセットにおける特定のインスタンスを用いることで、機械学習モデルの振る舞いや、データの分布を説明できます。
 
+<!-- 元からコメントアウトされていた -->
 <!-- *Keywords: example-based explanations, case-based reasoning (CBR), solving by analogy* -->
 
+<!--
 Example-based explanations are mostly model-agnostic, because they make any machine learning model more interpretable.
 The difference to model-agnostic methods is that the example-based methods explain a model by selecting instances of the dataset and not by creating summaries of features (such as [feature importance](#feature-importance) or [partial dependence](#pdp)).
 Example-based explanations only make sense if we can represent an instance of the data in a humanly understandable way.
@@ -12,29 +20,64 @@ In general, example-based methods work well if the feature values of an instance
 It is more challenging to represent tabular data in a meaningful way, because an instance can consist of hundreds or thousands of (less structured) features.
 Listing all feature values to describe an instance is usually not useful.
 It works well if there are only a handful of features or if we have a way to summarize an instance.
+-->
+例示に基づいた説明手法の大部分は、任意の機械学習モデルをさらに解釈可能なものにできるため、モデル非依存の手法と言えます。
+モデル非依存の手法 (model-agnostic methods) で紹介したものと異なる部分は、例示による方法は、[feature importance](#feature-importance) や [partial dependence](#pdp) のように特徴量の要約をするものではなく、データセットにおけるいくつかのインスタンスを選択することでモデルを説明するという点です。
+例示に基づいた説明手法は、データのインスタンスを人間が理解できる方法で表現できる場合のみ効果があります。
+この手法は、直接表示できるため、画像に対して有効です。
+一般的には、例示に基づいた手法は画像や文章のように、特徴量がより多くの文脈を持つ場合、すなわちデータが何らかの構造を持つ場合、有効な手段となります。
+非常に多くの、かつ構造を持たない特徴量から構成されるような表形式のデータを表現することはより難しくなります。
+1つの要素を表現するのに全ての特徴量を用いることは多くの場合効果的な手段ではありません。
+この手法は、データを表現する特徴量が少ししかない場合や、要素を何らかの方法で要約できる場合に上手く機能します。
 
-
+<!--
 Example-based explanations help humans construct mental models of the machine learning model and the data the machine learning model has been trained on.
 It especially helps to understand complex data distributions.
 But what do I mean by example-based explanations?
 We often use them in our jobs and daily lives.
 Let us start with some examples[^cbr].
+-->
+例示に基づいた説明手法は、人間が機械学習モデル及び機械学習モデルが学習するデータを想像するのに役立ちます。
+特に、複雑なデータ分布を理解するときに有益です。
+しかし、例示に基づいた説明手法というのは具体的にはどのようなことなのでしょうか。
+実は、私たちはこれらの手法を日々の仕事や生活の中でよく使っています。
+まず例をいくつか考えてみましょう。[^cbr]
 
+<!--
 A physician sees a patient with an unusual cough and a mild fever.
 The patient's symptoms remind her of another patient she had years ago with similar symptoms. 
 She suspects that her current patient could have the same disease and she takes a blood sample to test for this specific disease.
+-->
+ある医師が普通ではない咳と微熱の症状のある患者を診察している場合を考えましょう。
+患者の症状から、医師は数年前診察した同様の症状をもつ患者を思い出しました。
+そこで、医師は目の前にいる患者が同じ病気であることを疑い、この病気を検査するための血液検査をしました。
 
+<!--
 A data scientist works on a new project for one of his clients:
 Analysis of the risk factors that lead to the failure of production machines for keyboards.
 The data scientist remembers a similar project he worked on and reuses parts of the code from the old project because he thinks the client wants the same analysis.
+-->
+次に、あるデータサイエンティストが自身の顧客の新しいプロジェクトに取り組む場合を考えます。
+そのプロジェクトは、キーボードを生産する機器の誤作動に繋がるリスク要因を分析するというものです。
+このデータサイエンティストは似たようなプロジェクトに取り組んだことがあることを覚えており、同様の分析を顧客が望んでいると考えて前のプロジェクトのプログラムを一部再利用しました。
 
+<!--
 A kitten sits on the window ledge of a burning and uninhabited house. 
 The fire department has already arrived and one of the firefighters ponders for a second whether he can risk going into the building to save the kitten.
 He remembers similar cases in his life as a firefighter: 
 Old wooden houses that have been burning slowly for some time were often unstable and eventually collapsed.
 Because of the similarity of this case, he decides not to enter, because the risk of the house collapsing is too great. 
 Fortunately, the kitty jumps out of the window, lands safely and nobody is harmed in the fire. Happy end.
+-->
+最後に、とある子猫が燃えさかる無人の家の窓枠に座っている状況を考えましょう。
+消防隊は既に到着しており、そのうちの一人が子猫を助けるため危険を犯して建物に入るべきだろうかと考えをめぐらせました。
+しかし、この消防士は今までの経験で似たような状況に出会ったことがあったことを思い出します。
+古い木造の家はしばらくの間ゆっくりと燃えた後、多くの場合不安定になり最終的に倒壊してしまっていたのです。
+これらの状況を照らし合わせ、この消防士は家が崩れる危険性が高すぎると考え、家に入らないことにしました。
+幸運にも子猫は窓から飛び出してきて上手く着地し、この火事により被害を受けた人はいませんでした。
+ハッピーエンドです。
 
+<!--
 These stories illustrate how we humans think in examples or analogies.
 The blueprint of example-based explanations is: 
 Thing B is similar to thing A and A caused Y, so I predict that B will cause Y as well.
@@ -44,9 +87,23 @@ A decision tree gets the prediction for a new data instance by finding the insta
 The k-nearest neighbors (knn) method works explicitly with example-based predictions. 
 For a new instance, a knn model locates the k-nearest neighbors (e.g. the k=3 closest instances) and returns the average of the outcomes of those neighbors as a prediction.
 The prediction of a knn can be explained by returning the k neighbors, which -- again -- is only meaningful if we have a good way to represent a single instance.
+-->
+これらの例は人間がどのように例やアナロジーを考えるかを示しています。
+例示に基づいた説明手法は、基本的に「BはAと似ており、AはYの原因であるから、Bも同様にYを引き起こすと予測する」という考えを用いています。
+暗黙のうちに、いくつかの機械学習の手法は、これに基づいて動作しています。
+[決定木](#tree)は予測のために重要な特徴量の類似性に基づいて、データをノードに分割していきます。
+決定木は、新しいインスタンスに対して、似たインスタンス(同じ終端ノードに属する)を発見し、それらの平均値を予測値として返すという動作をします。
+また、k近傍法（knn）は、まさに、例示に基づく予測方法です。
+新しいインスタンスにたいして、knn は k 個の最近傍を求め (例えば、k=3 のインスタンス)、それらの平均を予測値として返すように動作します。
+knn の予測は、k 近傍を返すことで説明可能です。
+ただし、個々のインスタンスを表現する良い方法がある場合のみ、有効な手段になります。
 
+<!--
 The chapters in this part cover the following example-based interpretation methods:
+-->
+この章では、以下の例示に基づく説明手法について説明します。
 
+<!--
 - [Counterfactual explanations](#counterfactual) tell us how an instance has to change to significantly change its prediction. 
 By creating counterfactual instances, we learn  about how the model makes its predictions and can explain individual predictions.
 - [Adversarial examples](#adversarial) are counterfactuals used to fool machine learning models. 
@@ -55,7 +112,14 @@ The emphasis is on flipping the prediction and not explaining it.
 - [Influential instances](#influential) are the training data points that were the most influential for the parameters of a prediction model or the predictions themselves. 
 Identifying and analysing influential instances helps to find problems with the data, debug the model and understand the model's behavior better.
 - [k-nearest neighbors model](#other-interpretable): An (interpretable) machine learning model  based on examples.
-
+-->
+- [反事実的説明(Counterfactual explanations)](#counterfactual)では、あるインスタンスの予測を大きく変化させるためには、どのように変更する必要があるかを示します。反事実的なインスタンスを作成することによって、モデルがどのように予測するかが分かり、個々の予測を説明できるようになります。
+- [敵対的サンプル(Adversarial examples)](#adversarial)は、機械学習モデルを騙すために用いられる反事実です。
+これは、予測を説明することが目的ではなく、間違った予測をさせることが目的となります。
+- [プロトタイプ(Prototypes)](#proto)は、データから選択された代表的なインスタンスの集合であり、クリティシズム(criticism)は、それらのプロトタイプではうまく表現できないインスタンスのことを言います。[^critique]
+- [Influential instances](#influential)とは、予測モデルのパラメータや予測そのものに最も影響を与えた学習データのインスタンスを指します。Influential instance は、データそのものの問題の発見や、モデルのデバッグ、モデルの振る舞いをより解釈可能なものとするために役立ちます。
+- [k近傍モデル](#other-interpretable)：例示に基づいた（解釈可能な）機械学習モデル
 
 [^cbr]: Aamodt, Agnar, and Enric Plaza. "Case-based reasoning: Foundational issues, methodological variations, and system approaches." AI communications 7.1 (1994): 39-59.
+
 
