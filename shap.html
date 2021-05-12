@@ -555,7 +555,7 @@ If a coalition consists of all but one feature, we can learn about this features
 If a coalition consists of half the features, we learn little about an individual features contribution, as there are many possible coalitions with half of the features.
 To achieve Shapley compliant weighting, Lundberg et. al propose the SHAP kernel:
 -->
-<p>LIME との大きな違いは回帰モデルの中のインスタンスの重みです。 LIME は、元のインスタンスにどのくらい近いかによってインスタンスの重みを決定します。 連合ベクトルの中の 0 が多いほど、LIME の重みは小さくなります。 SHAP は、連合がシャープレイ値の推定で得るであろう重みに従って、サンプリングされたインスタンスに重み付けをします。 小さな連合（1が少ない）と大きな連合（1が多い）が最も大きな重みをとります。 この理由は以下の通りです。 もし個々の特徴量の影響を個別に調べることができるのであれば、個々の特徴量のほとんどを知ることになります。 もし連合が単一の特徴量で構成されている場合、予測に対する特徴量の個々の主な影響を知ることができます。 もし連合が全て1つの特徴量を基に構成されているなら、特徴量の全体効果(主要な効果+特徴量の相互作用)を知ることができます。 もし連合が特徴量の半分で構成されている場合、半分の特徴量となりうる連合が多くあるため、個々の特徴量についてほどんど知ることができません。 シャープレイ準拠の重みを達成するために、Lundbergらは、SHAP カーネルを提案しました。</p>
+<p>LIME との大きな違いは回帰モデルの中のインスタンスの重みです。 LIME は、元のインスタンスにどのくらい近いかによってインスタンスの重みを決定します。 連合ベクトルの中の 0 が多いほど、LIME の重みは小さくなります。 SHAP は、連合がシャープレイ値の推定で得るであろう重みに従って、サンプリングされたインスタンスに重み付けをします。 小さな連合（1が少ない）と大きな連合（1が多い）が最も大きな重みをとります。 この理由は以下の通りです。 もし個々の特徴量の影響を個別に調べることができるのであれば、個々の特徴量のほとんどを知ることになります。 もし連合が単一の特徴量で構成されている場合、予測に対する特徴量の個々の主な影響を知ることができます。 もし連合が1つを除いたすべての特徴量を基に構成されているなら、特徴量の全体効果(主要な効果+特徴量の相互作用)を知ることができます。 もし連合が特徴量の半分で構成されている場合、半分の特徴量となりうる連合が多くあるため、個々の特徴量についてほどんど知ることができません。 シャープレイ準拠の重みを達成するために、Lundbergらは、SHAP カーネルを提案しました。</p>
 <p><span class="math display">\[\pi_{x}(z&#39;)=\frac{(M-1)}{\binom{M}{|z&#39;|}|z&#39;|(M-|z&#39;|)}\]</span></p>
 <!--
 Here, M is the maximum coalition size and $|z'|$ the number of present features in instance z'.
@@ -580,7 +580,7 @@ From the remaining coalition sizes, we sample with readjusted weights.
 We have the data, the target and the weights.
 Everything to build our weighted linear regression model:
 -->
-<p>ターゲットと重みのデータを持っています。 重み月線形回帰モデルを構築する全ては以下の通りです。</p>
+<p>ターゲットと重みのデータを持っています。 重み付き線形回帰モデルを構築する全ては以下の通りです。</p>
 <p><span class="math display">\[g(z&#39;)=\phi_0+\sum_{j=1}^M\phi_jz_j&#39;\]</span></p>
 <!--
 We train the linear model g by optimizing the following loss function L:
@@ -696,9 +696,9 @@ The following figure shows SHAP explanation force plots for two women from the c
 fig.cap = "SHAP values to explain the predicted cancer probabilities of two individuals. The baseline -- the average predicted probability -- is 0.066. The first woman has a low predicted risk of 0.06. Risk increasing effects such as STDs are offset by decreasing effects such as age. The second woman has a high predicted risk of 0.71. Age of 51 and 34 years of smoking increase her predicted cancer risk."
 -->
 <div class="figure"><span id="fig:unnamed-chunk-34"></span>
-<img src="images/unnamed-chunk-34-1.png" alt="2人の個人の予測される癌の確率を説明するためのSHAP。 ベースライン（平均予測確率）は 0.066 であり、 最初の女性の予測リスクは 0.06 と低くなっている。性感染症（STD）などのリスク増加効果は、年齢などの減少効果によって相殺される。2人目の女性の予測リスクは 0.71 と高くなっている。51歳と34歳の喫煙は、癌の予測リスクを高める。" width="800" />
+<img src="images/unnamed-chunk-34-1.png" alt="2人の個人の予測される癌の確率を説明するためのSHAP。 ベースライン（平均予測確率）は 0.066 であり、 最初の女性の予測リスクは 0.06 と低くなっている。性感染症（STD）などのリスク増加効果は、年齢などの減少効果によって相殺される。2人目の女性の予測リスクは 0.71 と高くなっている。51歳と34年間の喫煙は、癌の予測リスクを高める。" width="800" />
 <p class="caption">
-FIGURE 5.49: 2人の個人の予測される癌の確率を説明するためのSHAP。 ベースライン（平均予測確率）は 0.066 であり、 最初の女性の予測リスクは 0.06 と低くなっている。性感染症（STD）などのリスク増加効果は、年齢などの減少効果によって相殺される。2人目の女性の予測リスクは 0.71 と高くなっている。51歳と34歳の喫煙は、癌の予測リスクを高める。
+FIGURE 5.49: 2人の個人の予測される癌の確率を説明するためのSHAP。 ベースライン（平均予測確率）は 0.066 であり、 最初の女性の予測リスクは 0.06 と低くなっている。性感染症（STD）などのリスク増加効果は、年齢などの減少効果によって相殺される。2人目の女性の予測リスクは 0.71 と高くなっている。51歳と34年間の喫煙は、癌の予測リスクを高める。
 </p>
 </div>
 <!--
@@ -961,7 +961,7 @@ SHAP is integrated into the tree boosting frameworks [xgboost](https://github.co
 In R, there is the [shapper](https://modeloriented.github.io/shapper/) and [fastshap](https://github.com/bgreenwell/fastshap) packages.
 SHAP is also included in the R [xgboost](https://rdrr.io/cran/xgboost/man/xgb.plot.shap.html) package.
 -->
-<p>著者は SHAP の Python パッケージの<a href="https://github.com/slundberg/shap">shap</a> を実装しました。 この実装は Python のための機械学習ライブラリである <a href="https://scikit-learn.org/stable/">scikit-learn</a> の決定木ベースのモデルに対して機能します。 このパッケージはこの章の例でも使用されました。 SHAP は tree boosting のフレームワークである <a href="https://github.com/dmlc/xgboost/tree/master/python-package">xgboost</a> と <a href="https://github.com/microsoft/LightGBM">LightGBM</a>に統合されています。 R では、<a href="https://modeloriented.github.io/shapper/">shapper</a> と <a href="https://github.com/bgreenwell/fastshap">fastshap</a> のパッケージがあります。 SHAP は R の<a href="https://rdrr.io/cran/xgboost/man/xgb.plot.shap.html">xgboost</a> のパッケージにも含まれています。</p>
+<p>SHAP の論文の著者らは SHAP の Python パッケージの<a href="https://github.com/slundberg/shap">shap</a> を実装しました。 この実装は Python のための機械学習ライブラリである <a href="https://scikit-learn.org/stable/">scikit-learn</a> の決定木ベースのモデルに対して機能します。 このパッケージはこの章の例でも使用されました。 SHAP は tree boosting のフレームワークである <a href="https://github.com/dmlc/xgboost/tree/master/python-package">xgboost</a> と <a href="https://github.com/microsoft/LightGBM">LightGBM</a>に統合されています。 R では、<a href="https://modeloriented.github.io/shapper/">shapper</a> と <a href="https://github.com/bgreenwell/fastshap">fastshap</a> のパッケージがあります。 SHAP は R の<a href="https://rdrr.io/cran/xgboost/man/xgb.plot.shap.html">xgboost</a> のパッケージにも含まれています。</p>
 
 </div>
 </div>
