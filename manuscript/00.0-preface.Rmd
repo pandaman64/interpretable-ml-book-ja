@@ -95,7 +95,7 @@ Cover by [\@YvonneDoinel](https://twitter.com/YvonneDoinel)
 
 本書は以下のリポジトリで管理されておりますので、誤字や誤訳を発見された方は Issue や　Pull Request よりご報告いただけると幸いです。詳しくはリポジトリ内の developer_guide.md をご覧ください。
 
-[https://github.com/hacarus/interpretable-ml-book-ja](https://github.com/hacarus/interpretable-ml-book-ja)
+[https://github.com/hacarus/interpretable-ml-book-ja/tree/japanese](https://github.com/hacarus/interpretable-ml-book-ja/tree/japanese)
 
 
 `r if(is.html){"![クリエイティブ・コモンズ・ライセンス](images/by-nc-sa.png)"}`
