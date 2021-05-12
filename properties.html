@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.5 説明に関する性質 | Interpretable Machine Learning</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.5 説明に関する性質 | Interpretable Machine Learning" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Christoph Molnar" />
 
 
-<meta name="date" content="2021-04-20" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -87,6 +89,7 @@ window.cookieconsent.initialise({
   }
 })});
 </script>
+
 
 
 
@@ -356,7 +359,7 @@ For example, we could predict cancer risk using a support vector machine and exp
 Or we could use a linear regression model instead of a support vector machine.
 The linear regression model is already equipped with an explanation method (interpretation of the weights).
 -->
-<p>機械学習モデルの予測を説明するために、いくつかの説明を生成するためのアルゴリズムに頼る必要があります。 <strong>一般的に、説明とは、インスタンスの特徴量とモデルの予測結果を人間にわかりやすい形で関連づけることをいいます。</strong> 他には、k近傍法などのように、いくつかのデータを用いて解釈する手法もあります。 例えば、がんのリスクを SVM を用いて予測し、<a href="lime.html#lime">local surrogate method</a> を用いて決定木を構築することで予測の解釈する方法や、サポートベクタマシンの代わりに線形回帰モデルを用いる方法があります。線形回帰モデルは重みから予測結果の解釈できます。</p>
+<p>機械学習モデルの予測を説明するために、いくつかの説明を生成するためのアルゴリズムに頼る必要があります。 <strong>一般的に、説明とは、インスタンスの特徴量とモデルの予測結果を人間にわかりやすい形で関連づけることをいいます。</strong> 他には、k近傍法などのように、いくつかのデータを用いて解釈する手法もあります。 例えば、がんのリスクを SVM を用いて予測し、<a href="lime.html#lime">local surrogate method</a> を用いて決定木を構築することで予測の解釈する方法や、サポートベクタマシンの代わりに線形回帰モデルを用いる方法があります。線形回帰モデルは重みから予測結果を解釈できます。</p>
 <!--
 We take a closer look at the properties of explanation methods and explanations (Robnik-Sikonja and Bohanec, 2018[^human-ml]).
 These properties can be used to judge how good an explanation method or explanation is.
@@ -488,6 +491,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.4 解釈可能性の評価 | Interpretable Machine Learning</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.4 解釈可能性の評価 | Interpretable Machine Learning" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Christoph Molnar" />
 
 
-<meta name="date" content="2021-04-20" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -87,6 +89,7 @@ window.cookieconsent.initialise({
   }
 })});
 </script>
+
 
 
 
@@ -373,7 +376,7 @@ The difference is that these experiments are not carried out with the domain exp
 This makes experiments cheaper (especially if the domain experts are radiologists) and it is easier to find more testers.
 An example would be to show a user different explanations and the user would choose the best one.
 -->
-<p><strong>人間レベルの評価 (単純な作業)</strong> は単純化されたアプリケーションレベルの評価です。 これらの実験間の違いは、人間レベルの評価実験が分野の専門家によってではなく、素人によって行われることです。 これによって実験が(分野の専門家が放射線科医の場合は特に)安価になり、さらに多くの試験車を探しやすくなります。 実験の例としては、ユーザーにそれぞれ異なるいくつかの説明を見せて、一番良いものを選んでもらう方法があります。</p>
+<p><strong>人間レベルの評価 (単純な作業)</strong> は単純化されたアプリケーションレベルの評価です。 これらの実験間の違いは、人間レベルの評価実験が分野の専門家によってではなく、素人によって行われることです。 これによって実験が(分野の専門家が放射線科医の場合は特に)安価になり、さらに多くの試験者を探しやすくなります。 実験の例としては、ユーザーにそれぞれ異なるいくつかの説明を見せて、一番良いものを選んでもらう方法があります。</p>
 <!--
 **Function level evaluation (proxy task)** does not require humans.
 This works best when the class of model used has already been evaluated by someone else in a human level evaluation.
@@ -422,6 +425,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

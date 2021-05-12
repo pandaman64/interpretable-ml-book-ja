@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.4 Influential Instances | Interpretable Machine Learning</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.4 Influential Instances | Interpretable Machine Learning" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Christoph Molnar" />
 
 
-<meta name="date" content="2021-04-20" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -87,6 +89,7 @@ window.cookieconsent.initialise({
   }
 })});
 </script>
+
 
 
 
@@ -570,7 +573,7 @@ The influence analysis tells us that the model becomes increasingly unstable whe
 This in itself is valuable information. 
 This means that errors in these instances can have a strong effect on the model.
 -->
-<p>モデルのデバッグとは別に、モデルをより良く理解するために何か知見を得ることは出来ないでしょうか。 ただ単に、最も影響力のある上位10個のインスタンスを表示するだけではあまり意味がありません。なぜなら、それらは多くの特徴量から構成されるインスタンスのただの表に過ぎないからです。 インスタンスを戻り値として返すメソッドは、それらをうまく表現する方法があるときにのみ有効です。 しかし、「影響力の無いインスタンスと影響力のあるインスタンスを差別化しているものはなにか」という問いを持つことで、どのような種類のインスタンスが影響力があるのかということをより良く理解できます。 この問いを回帰問題に落とし込み、インスタンスの影響度を、特徴量を入力とする関数としてモデリング出来ます。 &quot;<a href="simple.html#simple">Interpretable Machine Learning Models</a>&quot; の章からどのようなモデルを自由に選択できます。 この例では、私は決定木（以下の図）を選びました。決定木によると、35歳以上の女性のデータがサポートベクトルマシンにとって最も影響力が有ることが示されています。 データセット中の、153 のうちの 858 の女性が 35 歳以上でした。 <a href="pdp.html#pdp">Partial Dependence Plots</a> の章で、40歳を超えると急激にがんの予測確率が上昇する傾向が見られ、<a href="feature-importance.html#feature-importance">Feature Importance</a> の章で、特徴量重要度として年齢が検出されていました。 影響力分析の結果、このモデルは年齢が高い部分でがんの予測が不安定になることを明らかにしています。 これは、それ自体が有益な情報です。 そして、これらのインスタンスに対する誤差がモデルに強い影響を持っていることを意味します。</p>
+<p>モデルのデバッグとは別に、モデルをより良く理解するために何か知見を得ることは出来ないでしょうか。 ただ単に、最も影響力のある上位10個のインスタンスを表示するだけではあまり意味がありません。なぜなら、それらは多くの特徴量から構成されるインスタンスのただの表に過ぎないからです。 インスタンスを戻り値として返すメソッドは、それらをうまく表現する方法があるときにのみ有効です。 しかし、「影響力の無いインスタンスと影響力のあるインスタンスを差別化しているものはなにか」という問いを持つことで、どのような種類のインスタンスが影響力があるのかということをより良く理解できます。 この問いを回帰問題に落とし込み、インスタンスの影響度を、特徴量を入力とする関数としてモデリング出来ます。 &quot;<a href="simple.html#simple">Interpretable Machine Learning Models</a>&quot; の章からどのようなモデルを自由に選択できます。 この例では、私は決定木（以下の図）を選びました。決定木によると、35歳以上の女性のデータがサポートベクトルマシンにとって最も影響力が有ることが示されています。 データセット中の、858 のうちの 153 の女性が 35 歳以上でした。 <a href="pdp.html#pdp">Partial Dependence Plots</a> の章で、40歳を超えると急激にがんの予測確率が上昇する傾向が見られ、<a href="feature-importance.html#feature-importance">Feature Importance</a> の章で、特徴量重要度として年齢が検出されていました。 影響力分析の結果、このモデルは年齢が高い部分でがんの予測が不安定になることを明らかにしています。 これは、それ自体が有益な情報です。 そして、これらのインスタンスに対する誤差がモデルに強い影響を持っていることを意味します。</p>
 <!--
 fig.cap = "A decision tree that models the relationship between the influence of the instances and their features. The maximum depth of the tree is set to 2."
 -->
@@ -785,7 +788,7 @@ For the second line of the equation, we have applied the chain rule of derivativ
 In the third line, we replace the expression with the influence function for the parameters.
 The first term in the third line $\nabla_{\theta}L(z_{test},\hat{\theta})^T{}$ is the gradient of the test instance with respect to the model parameters.
 -->
-<p>この式の1行目は、ある予測 <span class="math inline">\(z_{test}\)</span> に対する学習インスタンスの影響を、インスタンス z をアップウェイトして新しいパラメータを得たときのテストインスタンスの損失の変化として測定することを意味しています。 式の2行目については、導関数の連鎖率を適用して、パラメータに対するテストインスタンスの損失の導関数とパラメータに対する z の影響力の積を求めています。 3行目では、パラメータに対する影響関数に置き換えます。 3行目の第１項 <span class="math inline">\(\nabla_{\theta}L(z_{test},\hat{\theta})^T{}\)</span> は、モデルパラメータに関するテストインスタンスの勾配です。</p>
+<p>この式の1行目は、ある予測 <span class="math inline">\(z_{test}\)</span> に対する学習インスタンスの影響を、インスタンス z をアップウェイトして新しいパラメータを得たときのテストインスタンスの損失の変化として測定することを意味しています。 式の2行目については、導関数の連鎖律を適用して、パラメータに対するテストインスタンスの損失の導関数とパラメータに対する z の影響力の積を求めています。 3行目では、パラメータに対する影響関数に置き換えます。 3行目の第１項 <span class="math inline">\(\nabla_{\theta}L(z_{test},\hat{\theta})^T{}\)</span> は、モデルパラメータに関するテストインスタンスの勾配です。</p>
 <!--
 Having a formula is great and the scientific and accurate way of showing things.
 But I think it is very important to get some intuition about what the formula means.
@@ -854,7 +857,7 @@ The best way is to select patients who have had a high influence on the predicti
 Koh and Liang (2017) showed that this type of selection works much better than random selection or the selection of those with the highest loss or wrong classification.
 -->
 <p><strong>学習データを修正する</strong></p>
-<p>正しさを確認できる学習データの数に限りがある場合、どのように効果的な選択すると良いでしょうか。 最前の方法は、最も影響力のあるインスタンスを選択することです。なぜなら、定義より、それらが最もモデルに影響を与えるからです。 もし、明らかに間違った値を持つインスタンスがあったとしても、インスタンスに影響力がなく、予測モデルのためのデータだけを欲している場合、影響力のあるインスタンスを確認することがより良い方法です。 例えば、患者が病院に残るべきか、それとも早期退院してもよいかを予測するモデルを学習します。 患者を間違った時期に退院させることは、悪い結果を招く恐れがあるため、モデルが頑健で正しい予測をすることを確認する必要があります。 患者の記録はまとまりのない物になることもあり、データの質に完全な自信はありません。 しかし、患者のデータを確認し直すことは、とても時間がかかります。なぜなら、ある患者を再確認するには、病院は保管庫に眠る手書きの記録を調べるために、実際に誰かを派遣する必要があるからです。 患者のデータを確認するには1時間か、それ以上の時間がかかることがあります。 これらの費用を抑えるために、少数の重要なインスタンスを確認する方が合理的です。 最良の方法は、予測モデルに高い影響を与えた患者を選ぶことです。 Koh と Liang (2017)らは、この種類の選択が、ランダムな選択、損失が最も大きい患者、または間違った分類をされた患者を選ぶより遥かにうまく機能することを示しました。</p>
+<p>正しさを確認できる学習データの数に限りがある場合、どのように効果的な選択すると良いでしょうか。 最善の方法は、最も影響力のあるインスタンスを選択することです。なぜなら、定義より、それらが最もモデルに影響を与えるからです。 もし、明らかに間違った値を持つインスタンスがあったとしても、インスタンスに影響力がなく、予測モデルのためのデータだけを欲している場合、影響力のあるインスタンスを確認することがより良い方法です。 例えば、患者が病院に残るべきか、それとも早期退院してもよいかを予測するモデルを学習します。 患者を間違った時期に退院させることは、悪い結果を招く恐れがあるため、モデルが頑健で正しい予測をすることを確認する必要があります。 患者の記録はまとまりのない物になることもあり、データの質に完全な自信はありません。 しかし、患者のデータを確認し直すことは、とても時間がかかります。なぜなら、ある患者を再確認するには、病院は保管庫に眠る手書きの記録を調べるために、実際に誰かを派遣する必要があるからです。 患者のデータを確認するには1時間か、それ以上の時間がかかることがあります。 これらの費用を抑えるために、少数の重要なインスタンスを確認する方が合理的です。 最良の方法は、予測モデルに高い影響を与えた患者を選ぶことです。 Koh と Liang (2017)らは、この種類の選択が、ランダムな選択、損失が最も大きい患者、または間違った分類をされた患者を選ぶより遥かにうまく機能することを示しました。</p>
 <!--
 ### Advantages of Identifying Influential Instances
 -->
@@ -1001,6 +1004,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
