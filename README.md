@@ -1,5 +1,12 @@
 # Interpretable machine learning
 
+## About Translation
+
+This is a Japanese translation for Interpretable Machine Learning by Christoph Molnar. If you find any mistakes or typo, you can make Issue or Pull Request.
+If you are interested in translation activity, please see the `developer_guide.md`
+
+## Original Readme
+
 Explaining the decisions and behaviour of machine learning models.
 
 [![Build Status](https://travis-ci.org/christophM/interpretable-ml-book.svg?branch=master)](https://travis-ci.org/christophM/interpretable-ml-book)
